@@ -45,7 +45,6 @@ class test_upload(unittest.TestCase):
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
 
         waitTime=5
-
         # 私有根目录新建文件夹
         el1=driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
@@ -61,30 +60,30 @@ class test_upload(unittest.TestCase):
         # 上传文件
         # office相关
         fpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\office\\"
-        word1path = fpath+"2017年12月11日-2017年12月15日发行监管部.doc"
-        word2path = fpath+"带图片表格文档.docx"
-        excel1path = fpath+"003_模板_TestLink测试用例导入.xls"
-        excle2path = fpath+"cyprex1.3测试用例.xlsx"
-        pptpath = fpath+"小z素材-商务炫酷风格动态模板-003.ppt"
+        word1name = "2017年12月11日-2017年12月15日发行监管部"
+        word2name = "带图片表格文档"
+        excel1name = "003_模板_TestLink测试用例导入"
+        excle2name = "cyprex1.3测试用例"
+        pptname = "小z素材-商务炫酷风格动态模板-003"
         # 图片
         tpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\图片\\"
-        jpgpath = tpath+"timg.jpg"
-        pngpath = tpath+"验证图片.png"
-        bmppath = tpath+"BMP图片.bmp"
+        jpgname = "timg.jpg"
+        pnname= "验证图片.png"
+        bmpname = "BMP图片.bmp"
         # 音频
         ypath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\音频\\"
-        pampath = ypath+"16k.pcm"
-        wavpath = ypath+"筷子兄弟《小苹果》.wav"
-        amrpath = ypath+"另一种格式.amr"
-        mp3path = ypath+"群星 - 贾谊《过秦论》.mp3"
-        m4apath = ypath+"世纪大道199号.m4a"
+        pamname = "16k.pcm"
+        wavname = "筷子兄弟《小苹果》.wav"
+        amrname = "另一种格式.amr"
+        mp3name = "群星 - 贾谊《过秦论》.mp3"
+        m4aname = "世纪大道199号.m4a"
         # 其他
         qpath="C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\其他\\"
-        pdfpath = qpath+"146页年度报告.PDF"
-        zippath = qpath+"测试解压.zip"
-        hmtlpath = qpath+"厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知.html"
-        rarpath = qpath+"上传文件.rar"
-        txtpath = qpath+"天空1.txt"
+        pdfname = "146页年度报告.PDF"
+        zipname = "测试解压.zip"
+        hmtlname = "厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知.html"
+        rarname = "上传文件.rar"
+        txtname = "天空1.txt"
 
         # 新建office文件夹，并进入
         el1=driver.find_element_by_xpath("//span[text()='新建']")
@@ -99,21 +98,25 @@ class test_upload(unittest.TestCase):
         sleep(1)
         driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
         # 上传office文件
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(word1path)
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(word2path)
-        date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word1name+".doc")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word2name+".docx")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
+        sleep(20)
+        # print("//span[text()=\'"+word1name+"\']")
+        # WebDriverWait(driver, 15,0.2).until(ec.element_to_be_clickable(By.XPATH,"//span[text()=\'"+word1name+"\']"))
 
         date1=str(int(time.time()))
-        imageurl=picturePath+"word上传成功截图"+date
-        driver.get_screenshot_as_file(picturePath+"word上传成功截图"+date1+".png")
-        print("<a href=\""+picturePath+"word上传成功截图"+date1+".png"+"\">word上传成功截图</a>")
+        driver.get_screenshot_as_file(picturePath+date1+".png")
 
-        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">word上传成功截图</a>"
+        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">"+word1name+"上传成功</a>"
             +"<div id=\"light\" class=\"white_content\">"
             +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
-            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+"word上传成功截图"+date1+".png"+"\">"
+            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+date1+".png"+"\">"
             +"</div>" 
             +"<div id=\"fade\" class=\"black_overlay\"></div>")
+        
 
 
  
