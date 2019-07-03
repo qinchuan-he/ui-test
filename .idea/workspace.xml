@@ -50,6 +50,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="343">
               <caret line="72" column="17" lean-forward="true" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+
               <folding>
                 <element signature="e#14#23#0" expanded="true" />
               </folding>
@@ -62,6 +63,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-66">
               <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -102,6 +104,7 @@
       <find>ec</find>
       <find>get_screenshot_as_file</find>
       <find>picturePath</find>
+
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -121,6 +124,7 @@
   <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="384" />
     <option name="y" value="26" />
+
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -313,6 +317,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-66">
           <caret line="32" column="6" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
@@ -323,6 +328,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="72" column="17" lean-forward="true" selection-start-line="72" selection-start-column="17" selection-end-line="72" selection-end-column="17" />
+
           <folding>
             <element signature="e#14#23#0" expanded="true" />
           </folding>

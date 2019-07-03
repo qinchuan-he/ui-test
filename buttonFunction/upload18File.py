@@ -35,13 +35,15 @@ class test_upload(unittest.TestCase):
     '''上传19种类型验证'''
     def all_test(self):
         '''所有的上传'''
-        mode=1
+        mode=2
         driver=execBrower(mode)
         user().login(driver)
 
         # 公共参数
         picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\office\\"
+
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
+
         waitTime=5
 
         # 私有根目录新建文件夹
@@ -100,6 +102,7 @@ class test_upload(unittest.TestCase):
         driver.find_element_by_xpath("//input[@type='file']").send_keys(word1path)
         driver.find_element_by_xpath("//input[@type='file']").send_keys(word2path)
         date=time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
         date1=str(int(time.time()))
         imageurl=picturePath+"word上传成功截图"+date
         driver.get_screenshot_as_file(picturePath+"word上传成功截图"+date1+".png")
@@ -114,6 +117,7 @@ class test_upload(unittest.TestCase):
 
 
  
+
 
 if __name__ == "__main__":
     testunit = unittest.TestSuite()

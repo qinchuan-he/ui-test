@@ -23,6 +23,7 @@ opt=Options()
 opt.add_argument('--disable-gpu')
 opt.add_argument('--headless')
 path="C:\\2services\\driver\\chromedriver.exe"
+
 driver=webdriver.Chrome(path)
 # driver=webdriver.Chrome(options=opt,executable_path=path)  #启动无头模式
 
@@ -30,6 +31,7 @@ driver=webdriver.Chrome(path)
 # url="https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"
 url="http://firai-test.gjzqth.com:4680/"
+
 user="13248131618"
 # user="19956966528"
 pwd="Test123456"

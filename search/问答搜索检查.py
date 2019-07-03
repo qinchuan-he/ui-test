@@ -22,6 +22,7 @@ opt = Options()
 opt.add_argument("--disable-gpu") #谷歌文档提到需要加上这个属性来规避bug
 opt.add_argument('--headless') #无头模式，浏览器不提供可视化页面
 path="C:\\2services\\driver\\chromedriver.exe"
+
 driver=webdriver.Chrome(path)   #有界面启动
 # driver=webdriver.Chrome(options=opt,executable_path = path) #无界面启动
 
@@ -29,6 +30,7 @@ driver=webdriver.Chrome(path)   #有界面启动
 # url="https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"
 url="http://firai-test.gjzqth.com:4680/"
+
 user="13248131618"
 # user="19956966528"
 pwd="Test123456"
