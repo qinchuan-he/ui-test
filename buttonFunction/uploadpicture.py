@@ -51,7 +51,7 @@ class up_picture(unittest.TestCase):
 
 
     def upload_picture(self):
-        '''上传office文件'''
+        '''上传picture文件'''
         # 公共参数
         picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\picture\\"
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/picture/"
