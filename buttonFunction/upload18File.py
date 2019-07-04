@@ -150,7 +150,7 @@ class up_all(unittest.TestCase):
         WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 返回到格式集合目录
-        self.driver.find_element_by_xpath("//a[text()=\'"+folder1+"\']")
+        self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click() 
 
     # 上传图片文件  
     def upload_picture(self):
