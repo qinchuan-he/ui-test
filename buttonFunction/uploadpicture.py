@@ -97,7 +97,7 @@ class up_picture(unittest.TestCase):
         # 等待加载，准备截图
         WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'PreviewContent_imgViewer')]")))
         # 增加一个点击图片的操作
-        self.driver.find_element_by_xpath("//div[@id='J_viewer']/img").click()
+        self.driver.find_element_by_xpath("//div[contains(@class,'PreviewContent_imgViewer')]/img").click()
         sleep(1)
         date2=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date2+".png")
