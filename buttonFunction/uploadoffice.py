@@ -43,7 +43,6 @@ class up_office(unittest.TestCase):
         picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\office\\"
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
 
-
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
         # 私有根目录新建文件夹
@@ -139,13 +138,16 @@ class up_office(unittest.TestCase):
         # 预览下一个
         driver.find_element_by_xpath("//div/span[text()=\'"+pptname+"\']/..").click()
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-        sleep(3)
+        sleep(5)
         date6=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date6+".png")
         comHtml().print_html(pptname, picturePath, date6)  # 输出到html报告
         driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
-        driver.quit()
+
+        # 返回到格式集合目录
+        driver.find_element_by_xpath("//a[text()=\'"+folder1+"\']")
+        # driver.quit()
 
 if __name__ == "__main__":
     testunite = unittest.TestSuite()

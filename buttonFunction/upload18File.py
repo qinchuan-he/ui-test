@@ -68,7 +68,7 @@ class test_upload(unittest.TestCase):
         # 图片
         tpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\图片\\"
         jpgname = "timg.jpg"
-        pnname= "验证图片.png"
+        pngname= "验证图片.png"
         bmpname = "BMP图片.bmp"
         # 音频
         ypath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\音频\\"
