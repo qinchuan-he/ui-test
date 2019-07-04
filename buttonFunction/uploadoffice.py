@@ -27,7 +27,7 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 # 引入公共方法
 from common.comfunction import execBrower
 from common.comfunction import user
-
+from common.comfunction import comHtml
 
 resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 
@@ -42,7 +42,7 @@ class up_office(unittest.TestCase):
         # 公共参数
         picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\office\\"
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
-        
+
 
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
@@ -88,90 +88,64 @@ class up_office(unittest.TestCase):
         # 截图并输出
         date1=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date1+".png")
-
-        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">"+word1name+"等上传成功</a>"
-            +"<div id=\"light\" class=\"white_content\">"
-            +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
-            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+date1+".png"+"\">"
-            +"</div>" 
-            +"<div id=\"fade\" class=\"black_overlay\"></div>")
+        comHtml().print_html(word1name, picturePath, date1)  # 输出到html报告
 
         # 预览文件
         #点击
-        driver.find_element_by_xpath("//span[text=\'"+word1name+"\']").click()
+        driver.find_element_by_xpath("//span[text()=\'"+word1name+"\']").click()
         # 等待加载，准备截图
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date2=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date2+".png")
-        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">"+word1name+"预览</a>"
-            +"<div id=\"light\" class=\"white_content\">"
-            +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
-            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+date2+".png"+"\">"
-            +"</div>" 
-            +"<div id=\"fade\" class=\"black_overlay\"></div>")
-        driver.find_element_by_xpath("//button/span[contains(text(),'返回']")
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        comHtml().print_html(word1name, picturePath, date2)  # 输出到html报告
+
+        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
-        driver.find_element_by_xpath("//span[text=\'"+word2name+"\']").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        driver.find_element_by_xpath("//div/span[text()=\'"+word2name+"\']").click()
+        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date3=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date3+".png")
-        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">"+word2name+"预览</a>"
-            +"<div id=\"light\" class=\"white_content\">"
-            +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
-            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+date3+".png"+"\">"
-            +"</div>" 
-            +"<div id=\"fade\" class=\"black_overlay\"></div>")
-        driver.find_element_by_xpath("//button/span[contains(text(),'返回']")
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        comHtml().print_html(word2name, picturePath, date3)  # 输出到html报告
+
+        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         #预览下一个
-        driver.find_element_by_xpath("//span[text=\'"+excel1name+"\']").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        driver.find_element_by_xpath("//div/span[text()=\'"+excel1name+"\']").click()
+        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date4=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date4+".png")
-        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">"+excel1name+"预览</a>"
-            +"<div id=\"light\" class=\"white_content\">"
-            +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
-            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+date4+".png"+"\">"
-            +"</div>" 
-            +"<div id=\"fade\" class=\"black_overlay\"></div>")
-        driver.find_element_by_xpath("//button/span[contains(text(),'返回']")
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        comHtml().print_html(excel1name, picturePath, date4)  # 输出到html报告
+
+        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
-        driver.find_element_by_xpath("//span[text=\'"+excle2name+"\']").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        driver.find_element_by_xpath("//div/span[text()=\'"+excle2name+"\']").click()
+        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date5=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date5+".png")
-        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">"+excle2name+"预览</a>"
-            +"<div id=\"light\" class=\"white_content\">"
-            +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
-            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+date5+".png"+"\">"
-            +"</div>" 
-            +"<div id=\"fade\" class=\"black_overlay\"></div>")
-        driver.find_element_by_xpath("//button/span[contains(text(),'返回']")
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located(By.XPATH, "//iframe"))
-    
+        comHtml().print_html(excle2name, picturePath, date5)  # 输出到html报告
+
+        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+
         # 预览下一个
-        driver.find_element_by_xpath("//span[text=\'"+pptname+"\']").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located(By.XPATH, "//iframe"))
-        sleep(1)
+        driver.find_element_by_xpath("//div/span[text()=\'"+pptname+"\']").click()
+        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        sleep(3)
         date6=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date6+".png")
-        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'\">"+pptname+"预览</a>"
-            +"<div id=\"light\" class=\"white_content\">"
-            +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
-            +"<img height=\"800\" width=\"1400\" src=\""+picturePath+date6+".png"+"\">"
-            +"</div>" 
-            +"<div id=\"fade\" class=\"black_overlay\"></div>")
-        driver.find_element_by_xpath("//button/span[contains(text(),'返回']")
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located(By.XPATH, "//iframe"))
+        comHtml().print_html(pptname, picturePath, date6)  # 输出到html报告
+        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        driver.quit()
 
 if __name__ == "__main__":
     testunite = unittest.TestSuite()

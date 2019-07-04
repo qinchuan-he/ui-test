@@ -52,4 +52,14 @@ class user:
         "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
+# 生成html相关的类
+class comHtml:
+    def print_html(self,picname,picpath,picid):    #就是传入名称，路径，picid就是时间
+        print("<a href = \"javascript:void(0)\" onclick = \"document.getElementById(\'"+picid+"\').style.display='block';document.getElementById('fade').style.display='block'\">"+picname+"预览</a>"
+            +"<div id=\""+picid+"\" class=\"white_content\">"
+            +"<a href = \"javascript:void(0)\" onclick = \"document.getElementById(\'"+picid+"\').style.display='none';document.getElementById('fade').style.display='none'\" style=\"align-content: center\">点这里关闭</a>"
+            +"<img height=\"800\" width=\"1400\" src=\""+picpath+picid+".png"+"\">"
+            +"</div>" 
+            +"<div id=\"fade\" class=\"black_overlay\"></div>")
+
 
