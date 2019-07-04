@@ -84,11 +84,11 @@ class up_music(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+amrname+".amr")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+mp3name+".mp3")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+m4aname+".m4a")
-        sleep(20)
+        sleep(30)
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
-        comHtml().print_html(pamname, picturePath, date1)  # 输出到html报告
+        comHtml().print_html("音频文件列表", picturePath, date1)  # 输出到html报告
 
         # 预览文件
         #点击

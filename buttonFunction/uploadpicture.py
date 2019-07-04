@@ -32,7 +32,7 @@ from common.comfunction import comHtml
 resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 
 # 上传office相关文件
-class up_office(unittest.TestCase):
+class up_picture(unittest.TestCase):
     '''上传office相关文件'''
     mode=2
     driver = execBrower(mode)
@@ -50,7 +50,7 @@ class up_office(unittest.TestCase):
     driver.find_element_by_xpath("//span[text()="+str(folder1)+"]").click()
 
 
-    def upload_office(self):
+    def upload_picture(self):
         '''上传office文件'''
         # 公共参数
         picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\picture\\"
@@ -89,7 +89,7 @@ class up_office(unittest.TestCase):
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
-        comHtml().print_html(jpgname, picturePath, date1)  # 输出到html报告
+        comHtml().print_html("图片文件列表", picturePath, date1)  # 输出到html报告
 
         # 预览文件
         #点击
@@ -136,10 +136,10 @@ class up_office(unittest.TestCase):
 
 if __name__ == "__main__":
     testunite = unittest.TestSuite()
-    testunite.addTest(up_office("upload_office"))
+    testunite.addTest(up_picture("upload_picture"))
 
     # 生成报告
-    fp = open(resultpath+'up_office.html','wb')
+    fp = open(resultpath+'up_picture.html','wb')
     runner = HTMLTestRunner(stream=fp, title='upoffice', description='执行情况：')
     runner.run(testunite)
     fp.close()

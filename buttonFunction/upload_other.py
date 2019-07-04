@@ -87,7 +87,7 @@ class up_office(unittest.TestCase):
         # 截图并输出
         date1=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date1+".png")
-        comHtml().print_html("office文件列表", picturePath, date1)  # 输出到html报告
+        comHtml().print_html(word1name, picturePath, date1)  # 输出到html报告
 
         # 预览文件
         #点击
