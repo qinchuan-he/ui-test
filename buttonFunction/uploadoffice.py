@@ -28,6 +28,9 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 from common.comfunction import execBrower
 from common.comfunction import user
 
+
+resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+
 # 上传office相关文件
 class up_office(unittest.TestCase):
     '''上传office相关文件'''
@@ -39,7 +42,7 @@ class up_office(unittest.TestCase):
         # 公共参数
         picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\office\\"
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
-        resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+        
 
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
