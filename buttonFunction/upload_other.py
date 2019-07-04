@@ -31,40 +31,47 @@ from common.comfunction import comHtml
 
 resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 
-# 上传office相关文件
-class up_office(unittest.TestCase):
+# 上传其他相关文件
+class up_other(unittest.TestCase):
     '''上传office相关文件'''
-    def upload_office(self):
-        '''上传office文件'''
-        mode=2
-        driver = execBrower(mode)
-        user().login(driver)
+
+    mode=2
+    driver = execBrower(mode)
+    user().login(driver)
+
+            # 私有根目录新建文件夹
+    el1=driver.find_element_by_xpath("//span[text()='新建']")
+    sleep(waitTime)
+    ActionChains(driver).move_to_element(el1).perform()
+    driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+    folder1=int(time.time())
+    print("新建文件夹：%s " %folder1)
+    driver.switch_to.active_element.send_keys(folder1)
+    driver.switch_to.active_element.send_keys(Keys.ENTER)
+    # 进入文件夹
+    driver.find_element_by_xpath("//span[text()="+str(folder1)+"]").click()
+
+
+    def upload_other(self):
+        '''上传其他文件'''
+
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\office\\"
-        showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
+        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\other\\"
+        showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/other/"
 
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
-        # 私有根目录新建文件夹
-        el1=driver.find_element_by_xpath("//span[text()='新建']")
-        sleep(waitTime)
-        ActionChains(driver).move_to_element(el1).perform()
-        driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
-        folder1=int(time.time())
-        print("新建文件夹：%s " %folder1)
-        driver.switch_to.active_element.send_keys(folder1)
-        driver.switch_to.active_element.send_keys(Keys.ENTER)
-        # 进入文件夹
-        driver.find_element_by_xpath("//span[text()="+str(folder1)+"]").click()
 
         # 上传文件
-        # office相关
-        fpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\office\\"
-        word1name = "2017年12月11日-2017年12月15日发行监管部"
-        word2name = "带图片表格文档"
-        excel1name = "003_模板_TestLink测试用例导入"
-        excle2name = "cyprex1.3测试用例"
-        pptname = "小z素材-商务炫酷风格动态模板-003"
+        # 其他
+        qpath="C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\其他\\"
+        pdfname = "146页年度报告"
+        zipname = "测试解压"
+        hmtlname = "厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知"
+        rarname = "上传文件"
+        txtname = "天空1"
+
+        
         # 新建office文件夹，并进入
         el1=driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
@@ -78,83 +85,81 @@ class up_office(unittest.TestCase):
         sleep(1)
         driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
         # 上传office文件
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word1name+".doc")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word2name+".docx")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
-        sleep(20)
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+pdfname+".PDF")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+zipname+".zip")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+hmtlname+".html")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+rarname+".rar")
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+txtname+".txt")
+        sleep(30)
         # 截图并输出
         date1=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date1+".png")
-        comHtml().print_html(word1name, picturePath, date1)  # 输出到html报告
+        comHtml().print_html("其他类型列表", picturePath, date1)  # 输出到html报告
 
         # 预览文件
         #点击
-        driver.find_element_by_xpath("//span[text()=\'"+word1name+"\']/..").click()
+        driver.find_element_by_xpath("//span[text()=\'"+pdfname+"\']/..").click()
         # 等待加载，准备截图
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-        sleep(1)
+        sleep(10)
         date2=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date2+".png")
-        comHtml().print_html(word1name, picturePath, date2)  # 输出到html报告
-
-        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
-
-        # 预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+word2name+"\']/..").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-        sleep(1)
-        date3=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date3+".png")
-        comHtml().print_html(word2name, picturePath, date3)  # 输出到html报告
+        comHtml().print_html(pdfname, picturePath, date2)  # 输出到html报告
 
         driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         #预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+excel1name+"\']/..").click()
+        driver.find_element_by_xpath("//div/span[text()=\'"+hmtlname+"\']/..").click()
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-        sleep(1)
+        sleep(3)
         date4=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date4+".png")
-        comHtml().print_html(excel1name, picturePath, date4)  # 输出到html报告
+        comHtml().print_html(hmtlname, picturePath, date4)  # 输出到html报告
 
         driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+excle2name+"\']/..").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-        sleep(1)
-        date5=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date5+".png")
-        comHtml().print_html(excle2name, picturePath, date5)  # 输出到html报告
-
-        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
-
-        # 预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+pptname+"\']/..").click()
+        driver.find_element_by_xpath("//div/span[text()=\'"+txtname+"\']/..").click()
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(5)
         date6=str(int(time.time()))
         driver.get_screenshot_as_file(picturePath+date6+".png")
-        comHtml().print_html(pptname, picturePath, date6)  # 输出到html报告
+        comHtml().print_html(txtname, picturePath, date6)  # 输出到html报告
         driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
+        # 预览下一个,处理压缩包
+        driver.find_element_by_xpath("//div/span[text()=\'"+zipname+"\']/..").click()
+        sleep(1)
+        date3=str(int(time.time()))
+        driver.get_screenshot_as_file(picturePath+date3+".png")
+        comHtml().print_html(zipname, picturePath, date3)  # 输出到html报告
+
+        driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
+
+
+        # 预览下一个,处理压缩包
+        driver.find_element_by_xpath("//div/span[text()=\'"+rarname+"\']/..").click()
+
+        sleep(1)
+        date5=str(int(time.time()))
+        driver.get_screenshot_as_file(picturePath+date5+".png")
+        comHtml().print_html(rarname, picturePath, date5)  # 输出到html报告
+
+        driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
+
         # 返回到格式集合目录
-        driver.find_element_by_xpath("//a[text()=\'"+folder1+"\']")
+        self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
         # driver.quit()
 
 if __name__ == "__main__":
     testunite = unittest.TestSuite()
-    testunite.addTest(up_office("upload_office"))
+    testunite.addTest(up_other("upload_other"))
 
     # 生成报告
-    fp = open(resultpath+'up_office.html','wb')
+    fp = open(resultpath+'up_other.html','wb')
     runner = HTMLTestRunner(stream=fp, title='upoffice', description='执行情况：')
     runner.run(testunite)
     fp.close()

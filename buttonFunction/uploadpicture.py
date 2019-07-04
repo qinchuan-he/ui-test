@@ -80,7 +80,7 @@ class up_picture(unittest.TestCase):
         print("创建picture分类文件夹成功： %s" %picture)
         sleep(1)
         self.driver.find_element_by_xpath("//span[text()="+"'"+picture+"'"+"]").click()
-        # 上传office文件
+        # 上传picture文件
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+jpgname+".jpg")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+pngname+".png")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+bmpname+".bmp")
@@ -131,7 +131,7 @@ class up_picture(unittest.TestCase):
 
 
         # 返回到格式集合目录
-        self.driver.find_element_by_xpath("//a[text()=\'"+self.folder1+"\']")
+        self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
         # self.driver.quit()
 
 if __name__ == "__main__":

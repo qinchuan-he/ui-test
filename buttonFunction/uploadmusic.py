@@ -126,7 +126,8 @@ class up_music(unittest.TestCase):
         self.driver.get_screenshot_as_file(picturePath+date6+".png")
         comHtml().print_html(m4aname, picturePath, date6)  # 输出到html报告
         # self.driver.quit()
-        # 返回到格式集合
+        # 返回到格式集合目录
+        self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
         
 
 if __name__ == "__main__":
