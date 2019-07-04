@@ -92,7 +92,7 @@ class up_office(unittest.TestCase):
 
         # 预览文件
         #点击
-        driver.find_element_by_xpath("//span[text()=\'"+word1name+"\']").click()
+        driver.find_element_by_xpath("//span[text()=\'"+word1name+"\']/..").click()
         # 等待加载，准备截图
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
@@ -104,7 +104,7 @@ class up_office(unittest.TestCase):
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+word2name+"\']").click()
+        driver.find_element_by_xpath("//div/span[text()=\'"+word2name+"\']/..").click()
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date3=str(int(time.time()))
@@ -115,7 +115,7 @@ class up_office(unittest.TestCase):
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         #预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+excel1name+"\']").click()
+        driver.find_element_by_xpath("//div/span[text()=\'"+excel1name+"\']/..").click()
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date4=str(int(time.time()))
@@ -126,7 +126,7 @@ class up_office(unittest.TestCase):
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+excle2name+"\']").click()
+        driver.find_element_by_xpath("//div/span[text()=\'"+excle2name+"\']/..").click()
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date5=str(int(time.time()))
@@ -137,7 +137,7 @@ class up_office(unittest.TestCase):
         WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+pptname+"\']").click()
+        driver.find_element_by_xpath("//div/span[text()=\'"+pptname+"\']/..").click()
         WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(3)
         date6=str(int(time.time()))
