@@ -36,7 +36,7 @@ resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 class up_all(unittest.TestCase):
     '''上传19种格式'''
     # 启动浏览器,并且登录
-    mode = 2
+    mode = 1
     driver = execBrower(mode)
     user().login(driver)
     
@@ -83,13 +83,9 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
         # 上传office文件
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word1name+".doc")
-        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word2name+".docx")
-        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
-        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
-        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
         sleep(40)
         self.driver.refresh() #刷新下页面
@@ -109,7 +105,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(word1name, picturePath, date2)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+word2name+"\']/..").click()
@@ -120,7 +116,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(word2name, picturePath, date3)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         #预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+excel1name+"\']/..").click()
@@ -131,7 +127,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(excel1name, picturePath, date4)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+excle2name+"\']/..").click()
@@ -142,7 +138,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(excle2name, picturePath, date5)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+pptname+"\']/..").click()
@@ -152,7 +148,7 @@ class up_all(unittest.TestCase):
         self.driver.get_screenshot_as_file(picturePath+date6+".png")
         comHtml().print_html(pptname, picturePath, date6)  # 输出到html报告
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 返回到格式集合目录
         self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click() 
@@ -194,7 +190,7 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+pngname+".png")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+bmpname+".bmp")
 
-        sleep(20)
+        sleep(15)
         self.driver.refresh() #刷新下页面
         # 截图并输出
         date1=str(int(time.time()))
@@ -214,7 +210,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(jpgname, picturePath, date2)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'PreviewContent_imgViewer')]")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'PreviewContent_imgViewer')]")))
 
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+pngname+"\']/..").click()
@@ -225,7 +221,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(pngname, picturePath, date3)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'PreviewContent_imgViewer')]")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'PreviewContent_imgViewer')]")))
 
         #预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+bmpname+"\']/..").click()
@@ -236,7 +232,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(bmpname, picturePath, date4)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'PreviewContent_imgViewer')]")))
+        WebDriverWait(self.driver, 3, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'PreviewContent_imgViewer')]")))
 
 
 
@@ -393,7 +389,7 @@ class up_all(unittest.TestCase):
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+txtname+"\']/..").click()
         WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-        sleep(5)
+        sleep(3)
         date6=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date6+".png")
         comHtml().print_html(txtname, picturePath, date6)  # 输出到html报告
@@ -409,7 +405,7 @@ class up_all(unittest.TestCase):
 
         self.driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
 
-
+        sleep(1)
         # 预览下一个,处理压缩包
         self.driver.find_element_by_xpath("//div/span[text()=\'"+rarname+"\']/..").click()
 
@@ -419,7 +415,7 @@ class up_all(unittest.TestCase):
         comHtml().print_html(rarname, picturePath, date5)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
-
+        sleep(1)
         # 返回到格式集合目录
         self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
 

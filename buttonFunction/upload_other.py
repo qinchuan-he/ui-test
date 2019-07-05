@@ -38,6 +38,7 @@ class up_other(unittest.TestCase):
     mode=2
     driver = execBrower(mode)
     user().login(driver)
+    waitTime = 5
 
             # 私有根目录新建文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")
@@ -77,13 +78,13 @@ class up_other(unittest.TestCase):
         sleep(waitTime)
         ActionChains(self.driver).move_to_element(el1).perform()
         self.driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
-        office = "office"
+        other = "其他"
 
-        self.driver.switch_to.active_element.send_keys(office)
+        self.driver.switch_to.active_element.send_keys(other)
         self.driver.switch_to.active_element.send_keys(Keys.ENTER)
-        print("创建office分类文件夹成功： %s" %office)
+        print("创建office分类文件夹成功： %s" %other)
         sleep(1)
-        self.driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
+        self.driver.find_element_by_xpath("//span[text()="+"'"+other+"'"+"]").click()
         # 上传office文件
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+pdfname+".PDF")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+zipname+".zip")
@@ -139,7 +140,8 @@ class up_other(unittest.TestCase):
 
         self.driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
 
-
+        # self.driver.refresh()
+        sleep(1)
         # 预览下一个,处理压缩包
         self.driver.find_element_by_xpath("//div/span[text()=\'"+rarname+"\']/..").click()
 
@@ -149,9 +151,9 @@ class up_other(unittest.TestCase):
         comHtml().print_html(rarname, picturePath, date5)  # 输出到html报告
 
         self.driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
-
+        sleep(1)
         # 返回到格式集合目录
-        self.self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
+        self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
         # self.driver.quit()
 
 if __name__ == "__main__":

@@ -34,7 +34,7 @@ resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 # 上传office相关文件
 class up_music(unittest.TestCase):
     '''上传music相关文件'''
-    mode=2
+    mode=1
     driver = execBrower(mode)
     user().login(driver)
             # # 私有根目录新建文件夹
