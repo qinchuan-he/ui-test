@@ -87,8 +87,9 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
-        sleep(40)
+        sleep(36)
         self.driver.refresh() #刷新下页面
+        sleep(5)
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
@@ -192,6 +193,7 @@ class up_all(unittest.TestCase):
 
         sleep(15)
         self.driver.refresh() #刷新下页面
+        sleep(3)
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
@@ -276,6 +278,7 @@ class up_all(unittest.TestCase):
         sleep(30)
         self.driver.refresh() #刷新下页面
         # 截图并输出
+        sleep(3)
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
         comHtml().print_html("音频文件列表", picturePath, date1)  # 输出到html报告
@@ -358,6 +361,7 @@ class up_all(unittest.TestCase):
         sleep(30)
         self.driver.refresh() #刷新下页面
         # 截图并输出
+        sleep(4)
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
         comHtml().print_html("其他类型列表", picturePath, date1)  # 输出到html报告
