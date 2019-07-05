@@ -88,6 +88,7 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
         sleep(40)
+        self.driver.refresh() #刷新下页面
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
@@ -188,7 +189,8 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+pngname+".png")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+bmpname+".bmp")
 
-        sleep(10)
+        sleep(20)
+        self.driver.refresh() #刷新下页面
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
@@ -271,6 +273,7 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+mp3name+".mp3")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+m4aname+".m4a")
         sleep(30)
+        self.driver.refresh() #刷新下页面
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
@@ -352,6 +355,7 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+rarname+".rar")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+txtname+".txt")
         sleep(30)
+        self.driver.refresh() #刷新下页面
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
