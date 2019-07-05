@@ -83,9 +83,13 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
         # 上传office文件
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word1name+".doc")
+        sleep(0.2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word2name+".docx")
+        sleep(0.2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
+        sleep(0.2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
+        sleep(0.2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
         sleep(40)
         self.driver.refresh() #刷新下页面
@@ -152,6 +156,7 @@ class up_all(unittest.TestCase):
 
         # 返回到格式集合目录
         self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click() 
+        print("office上传中的返回路径： %s" %str(self.folder1))
 
     # 上传图片文件  
     def upload_picture(self):
@@ -336,19 +341,19 @@ class up_all(unittest.TestCase):
         txtname = "天空1"
 
         
-        # 新建office文件夹，并进入
+        # 新建其他文件夹，并进入
         el1=self.driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
         ActionChains(self.driver).move_to_element(el1).perform()
         self.driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
-        office = "office"
+        other = "其他"
 
-        self.driver.switch_to.active_element.send_keys(office)
+        self.driver.switch_to.active_element.send_keys(other)
         self.driver.switch_to.active_element.send_keys(Keys.ENTER)
-        print("创建office分类文件夹成功： %s" %office)
+        print("创建office分类文件夹成功： %s" %other)
         sleep(1)
-        self.driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
-        # 上传office文件
+        self.driver.find_element_by_xpath("//span[text()="+"'"+other+"'"+"]").click()
+        # 上传other文件
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+pdfname+".PDF")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+zipname+".zip")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+hmtlname+".html")
