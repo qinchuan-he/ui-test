@@ -83,13 +83,13 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
         # 上传office文件
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word1name+".doc")
-        sleep(0.2)
+        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+word2name+".docx")
-        sleep(0.2)
+        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
-        sleep(0.2)
+        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
-        sleep(0.2)
+        sleep(2)
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
         sleep(40)
         self.driver.refresh() #刷新下页面
