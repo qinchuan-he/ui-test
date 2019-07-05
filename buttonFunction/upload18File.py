@@ -61,7 +61,7 @@ class up_all(unittest.TestCase):
 
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
- # 上传文件
+        # 上传文件
         # office相关
         fpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\office\\"
         word1name = "2017年12月11日-2017年12月15日发行监管部"
@@ -87,7 +87,7 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
-        sleep(20)
+        sleep(40)
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
