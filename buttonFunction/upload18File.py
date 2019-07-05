@@ -334,82 +334,82 @@ class up_all(unittest.TestCase):
 
         
         # 新建office文件夹，并进入
-        el1=driver.find_element_by_xpath("//span[text()='新建']")
+        el1=self.driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
-        ActionChains(driver).move_to_element(el1).perform()
-        driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+        ActionChains(self.driver).move_to_element(el1).perform()
+        self.driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
         office = "office"
 
-        driver.switch_to.active_element.send_keys(office)
-        driver.switch_to.active_element.send_keys(Keys.ENTER)
+        self.driver.switch_to.active_element.send_keys(office)
+        self.driver.switch_to.active_element.send_keys(Keys.ENTER)
         print("创建office分类文件夹成功： %s" %office)
         sleep(1)
-        driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
+        self.driver.find_element_by_xpath("//span[text()="+"'"+office+"'"+"]").click()
         # 上传office文件
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+pdfname+".PDF")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+zipname+".zip")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+hmtlname+".html")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+rarname+".rar")
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+txtname+".txt")
+        self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+pdfname+".PDF")
+        self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+zipname+".zip")
+        self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+hmtlname+".html")
+        self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+rarname+".rar")
+        self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+txtname+".txt")
         sleep(30)
         # 截图并输出
         date1=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date1+".png")
+        self.driver.get_screenshot_as_file(picturePath+date1+".png")
         comHtml().print_html("其他类型列表", picturePath, date1)  # 输出到html报告
 
         # 预览文件
         #点击
-        driver.find_element_by_xpath("//span[text()=\'"+pdfname+"\']/..").click()
+        self.driver.find_element_by_xpath("//span[text()=\'"+pdfname+"\']/..").click()
         # 等待加载，准备截图
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(10)
         date2=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date2+".png")
+        self.driver.get_screenshot_as_file(picturePath+date2+".png")
         comHtml().print_html(pdfname, picturePath, date2)  # 输出到html报告
 
-        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         #预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+hmtlname+"\']/..").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        self.driver.find_element_by_xpath("//div/span[text()=\'"+hmtlname+"\']/..").click()
+        WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(3)
         date4=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date4+".png")
+        self.driver.get_screenshot_as_file(picturePath+date4+".png")
         comHtml().print_html(hmtlname, picturePath, date4)  # 输出到html报告
 
-        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个
-        driver.find_element_by_xpath("//div/span[text()=\'"+txtname+"\']/..").click()
-        WebDriverWait(driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        self.driver.find_element_by_xpath("//div/span[text()=\'"+txtname+"\']/..").click()
+        WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(5)
         date6=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date6+".png")
+        self.driver.get_screenshot_as_file(picturePath+date6+".png")
         comHtml().print_html(txtname, picturePath, date6)  # 输出到html报告
-        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-        WebDriverWait(driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        WebDriverWait(self.driver, 5, 0.2).until_not(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
         # 预览下一个,处理压缩包
-        driver.find_element_by_xpath("//div/span[text()=\'"+zipname+"\']/..").click()
+        self.driver.find_element_by_xpath("//div/span[text()=\'"+zipname+"\']/..").click()
         sleep(1)
         date3=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date3+".png")
+        self.driver.get_screenshot_as_file(picturePath+date3+".png")
         comHtml().print_html(zipname, picturePath, date3)  # 输出到html报告
 
-        driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
+        self.driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
 
 
         # 预览下一个,处理压缩包
-        driver.find_element_by_xpath("//div/span[text()=\'"+rarname+"\']/..").click()
+        self.driver.find_element_by_xpath("//div/span[text()=\'"+rarname+"\']/..").click()
 
         sleep(1)
         date5=str(int(time.time()))
-        driver.get_screenshot_as_file(picturePath+date5+".png")
+        self.driver.get_screenshot_as_file(picturePath+date5+".png")
         comHtml().print_html(rarname, picturePath, date5)  # 输出到html报告
 
-        driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
+        self.driver.find_element_by_xpath("//span[contains(text(),'取 消')]/..").click()
 
         # 返回到格式集合目录
         self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
