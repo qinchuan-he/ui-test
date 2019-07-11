@@ -63,3 +63,28 @@ class comHtml:
             +"<div id=\"fade\" class=\"black_overlay\"></div>")
 
 
+#团队相关功能
+class team:
+    def check_team(self,driver):
+        '''检查团队是否存在,不存在就创建，目前没有判断5个团队的情况的'''
+        sleep(1)
+        driver.find_element_by_xpath("//a[text()='团队共享']").click()
+        try:
+            WebDriverWait(driver,2,0.5).until(ec.presence_of_element_located((By.XPATH,"//span[text()='验证的团队']")))
+        except:
+            print("进入异常")
+            driver.find_element_by_xpath("//span[text()='创建新团队并命名团队文件夹']/..").click()
+            driver.find_element_by_xpath("//input[@placeholder='团队及团队文件夹名称']").send_keys("验证的团队")
+            # driver.find_element_by_xpath("//span[text()='确 定']/..").click()
+            sleep(1)
+            driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
+            sleep(1)
+        else:
+            print("进入else")
+        driver.find_element_by_xpath("//span[text()='验证的团队']").click()
+
+
+# # 上传文件,,就一行代码，没必要组件化
+# def com_upload(url):
+
+

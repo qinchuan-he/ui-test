@@ -13,6 +13,12 @@ import time   #生成时间戳用
 import os    #上传autoit用
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 # 2019-06-18，增加了cookie设置，不需要每次登录
+"""解决vscode中不能引用别的模块的问题"""
+import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
+
 
 from common.comfunction import execBrower
 from common.comfunction import user
