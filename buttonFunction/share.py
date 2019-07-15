@@ -57,7 +57,7 @@ class test_share(unittest.TestCase):
     # 进入文件夹
     # driver.find_element_by_xpath("//span[text()="+str(folder1)+"]").click()    
     # 检查团队
-    team().check_team(driver)
+    team_name=team().check_team(driver)
     def test_viewshare(self):
         '''上传并分享'''
         qpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\其他\\"
@@ -78,24 +78,35 @@ class test_share(unittest.TestCase):
         self.driver.find_element_by_xpath("//span[text()="+"'"+folder12+"'"+"]").click()
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+pdfname+".PDF")
         sleep(30)
-        self.driver.refresh()
+        self.driver.refresh() # 刷新是为了防止，上传之后没有刷新出来结果
         sleep(2)
         self.driver.find_element_by_xpath("//span[text()='"+pdfname+"']/..").click() # 打开文件预览
         try:
             WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH,"//iframe")))
             self.driver.find_element_by_xpath("//i[@aria-label='图标: share-alt']").click()
             sleep(1)
-            # 选择团队
-
-
+            # 选择团队,分享
+            self.driver.find_element_by_xpath("//span[text()='"+self.team_name+"']/..").click()
+            sleep(0.5)
+            self.driver.find_element_by_xpath("//span[text()='确 定']/..").click()
+            # 截图
+            date12=str(int(time.time()))
+            self.driver.get_screenshot_as_file(self.picturePath+date12+".png")
+            comHtml.print_html("预览分享", self.picturePath,date12)
+            # 返回预览
+            try:
+                WebDriverWait(self.driver,10,0.5).until_not(ec.presence_of_element_located((By.XPATH, "//span[text()='分享给团队']")))
+            except:
+                self.driver.find_element_by_xpath("//span[@class='ant-modal-close-x']").click()
+            self.driver.find_element_by_xpath("//span[contains(text(), '返回')]/..").click()
         except:
             print("没有打开预览")
 
         # 截图并输出
         sleep(4)
         date1=str(int(time.time()))
-        self.driver.get_screenshot_as_file(picturePath+date1+".png")
-        comHtml().print_html("其他类型列表", self.picturePath, date1)  # 输出到html报告
+        self.driver.get_screenshot_as_file(self.picturePath+date1+".png")
+        comHtml().print_html("预览返回列表截图", self.picturePath, date1)  # 输出到html报告
 
 if __name__ == "__main__":
     testunit = unittest.TestSuite()

@@ -33,9 +33,9 @@ driver.set_window_size(1400,900)  # 调整窗口大小
 search="股份"
 picturePath="C:\\work\\1测试\\10自动化\\截图保存\\边写边搜\\"
 waitTime=12
-# url="https://testcyprex.fir.ai/sign-in"
+url="https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"
-url = "http://firai-test.gjzqth.com:4680/sign-in"
+# url = "http://firai-test.gjzqth.com:4680/sign-in"
 # user="19956966528"
 user="13248131618"
 pwd="Test123456"
@@ -61,7 +61,7 @@ WebDriverWait(driver,10,0.5).until(ec.presence_of_element_located((By.XPATH,"//i
 driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
 
 WebDriverWait(driver,5,0.2).until(ec.presence_of_element_located((By.XPATH,"//div[text()='私有与共享']")))
-driver.find_element_by_xpath("//input[@class='ant-input-suffix'").send_keys(search)
+driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
 driver.switch_to.active_element.send_keys(Keys.ENTER)
 
 sleep(waitTime)

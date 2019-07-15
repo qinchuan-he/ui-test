@@ -22,7 +22,7 @@ def execBrower(mode):
     opt.add_argument('--disable--gpu')
     opt.add_argument('--headless')
     path = "C:\\2services\\driver\\chromedriver.exe"
-    if mode==1:
+    if mode == 1:
         driver=webdriver.Chrome(options=opt, executable_path=path)
     else:
         driver = webdriver.Chrome(path)
@@ -69,12 +69,13 @@ class team:
         '''检查团队是否存在,不存在就创建，目前没有判断5个团队的情况的'''
         sleep(1)
         driver.find_element_by_xpath("//a[text()='团队共享']").click()
+        team_name = "验证的团队"
         try:
             WebDriverWait(driver,2,0.5).until(ec.presence_of_element_located((By.XPATH,"//span[text()='验证的团队']")))
         except:
-            print("进入异常")
+            print("团队不存在准备新建")
             driver.find_element_by_xpath("//span[text()='创建新团队并命名团队文件夹']/..").click()
-            driver.find_element_by_xpath("//input[@placeholder='团队及团队文件夹名称']").send_keys("验证的团队")
+            driver.find_element_by_xpath("//input[@placeholder='团队及团队文件夹名称']").send_keys(team_name)
             # driver.find_element_by_xpath("//span[text()='确 定']/..").click()
             sleep(1)
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
@@ -82,6 +83,7 @@ class team:
         else:
             print("进入else")
         driver.find_element_by_xpath("//span[text()='验证的团队']").click()
+        return team_name
 
 
 # # 上传文件,,就一行代码，没必要组件化
