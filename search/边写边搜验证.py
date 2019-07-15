@@ -96,6 +96,9 @@ if count>0:
 # 中场切换
 driver.find_element_by_xpath("//span[text()='关闭搜索']/..").click()
 driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+sleep(1)
+driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
+driver.switch_to.active_element.send_keys(Keys.ENTER)
 sleep(waitTime)
 # 查询公告
 driver.find_element_by_xpath("//div[text()='公告']").click()
@@ -136,6 +139,9 @@ if count2>0:
 # 中场切换
 driver.find_element_by_xpath("//span[text()='关闭搜索']/..").click()
 driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+sleep(1)
+driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
+driver.switch_to.active_element.send_keys(Keys.ENTER)
 sleep(waitTime)
 
 # 查询研报
@@ -177,6 +183,9 @@ if count3>0:
 # 中场切换
 driver.find_element_by_xpath("//span[text()='关闭搜索']/..").click()
 driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+sleep(1)
+driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
+driver.switch_to.active_element.send_keys(Keys.ENTER)
 sleep(waitTime)
 
 # 查询智库
