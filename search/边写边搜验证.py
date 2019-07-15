@@ -61,7 +61,7 @@ WebDriverWait(driver,10,0.5).until(ec.presence_of_element_located((By.XPATH,"//i
 driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
 
 WebDriverWait(driver,5,0.2).until(ec.presence_of_element_located((By.XPATH,"//div[text()='私有与共享']")))
-driver.find_element_by_xpath("//input[@placeholder='输入关键词搜索相关文件']").send_keys(search)
+driver.find_element_by_xpath("//input[@class='ant-input-suffix'").send_keys(search)
 driver.switch_to.active_element.send_keys(Keys.ENTER)
 
 sleep(waitTime)

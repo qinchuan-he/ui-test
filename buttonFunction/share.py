@@ -31,7 +31,7 @@ from common.comfunction import user  # 用户登录类
 from common.comfunction import comHtml # 生成html报告类
 from common.comfunction import team #团队类
 
-# 分享功能验证，以PDF文件验证，预览中，边写边搜中，艾玛中（碎片分享），文件夹中（工具栏和更多），文件夹内搜索中
+# 分享功能验证，以PDF文件验证，预览中，边写边搜中，艾玛中（碎片分享），文件夹中（工具栏和更多），文件夹内搜索中，比对报告中分享
 resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 class test_share(unittest.TestCase):
     '''分享功能验证'''
@@ -79,6 +79,18 @@ class test_share(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+pdfname+".PDF")
         sleep(30)
         self.driver.refresh()
+        sleep(2)
+        self.driver.find_element_by_xpath("//span[text()='"+pdfname+"']/..").click() # 打开文件预览
+        try:
+            WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH,"//iframe")))
+            self.driver.find_element_by_xpath("//i[@aria-label='图标: share-alt']").click()
+            sleep(1)
+            # 选择团队
+
+
+        except:
+            print("没有打开预览")
+
         # 截图并输出
         sleep(4)
         date1=str(int(time.time()))
