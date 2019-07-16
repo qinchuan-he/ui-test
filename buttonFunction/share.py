@@ -172,7 +172,15 @@ class test_singleFileShare(unittest.TestCase):
             el34 = self.driver.find_elements_by_xpath(
                 "//span[text()='私有'][1]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..")
             el34[0].click()
-
+            try:
+                WebDriverWait(self.driver, 10, 0.5).until(
+                    ec.presence_of_element_located((By.XPATH, "//div[text()='边写边搜']")))
+                sleep(1)
+                el35 = self.driver.find_elements_by_xpath("//i[@class='anticon anticon-more']")
+                ActionChains(self.driver).move_to_element(el35[1]).perform()  # 第一个图标是边写边搜那栏的，这里是第二个
+                self.driver.find_element_by_xpath("//li[text()='分享']").click()
+            except Exception as e:
+                print(e)
             # 点击之后，调用分享弹框公共方法
             team_name = self.team_name
             version = "保留两者"
@@ -180,7 +188,8 @@ class test_singleFileShare(unittest.TestCase):
             pic_path = self.picturePath
             com_share(team_name, version, print_name, pic_path, self.driver)
             self.driver.find_element_by_xpath("//i[@class='anticon anticon-shrink']").click()
-            self.driver.find_element_by_xpath("//span[contains(text(),'返回')]").click()
+            sleep(1)
+            self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         except Exception as e:
             print(e)
 
