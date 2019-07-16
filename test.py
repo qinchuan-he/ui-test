@@ -49,43 +49,20 @@ driver.implicitly_wait(30)
 # 进入文件夹
 
 driver.find_element_by_xpath("//span[text()='1563182344']/..").click()
-driver.find_element_by_xpath("//span[text()='未命名文件']/..").click()
-try:
-    WebDriverWait(driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-    sleep(1)
-    driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
-    sleep(1)
-    driver.find_element_by_xpath("//input[@placeholder='搜文件，也可以通过“#”搜标签']").send_keys("146页年度报告")
-    driver.switch_to.active_element.send_keys(Keys.ENTER)
-    # sleep(5)
-    # el32 = driver.find_element_by_xpath("//span[contains(text(),'搜索结果数量：')]")
-    # count = re.findall("[0-9]+",el32.text)
-    # print(count)
-    # co = int(count[0])
-    # print(co)
-    for i in range(10):
-        el32 = driver.find_element_by_xpath("//span[contains(text(),'搜索结果数量：')]")
-        count = int(re.findall("[0-9]+", el32.text)[0])
-        if count > 0:
-            break
-        else:
-            print("休眠第 %d 次" %i)
-            sleep(1)
+sleep(0.5)
 
-    # el31 = driver.find_element_by_xpath("//span[text()='私有'][1]/../../../../../../..")    # 到了h4上级那一级别
-
-    el31 = driver.find_element_by_xpath("//span[text()='私有'][1]/..")
-    ActionChains(driver).move_to_element(el31).perform()
-    el32 = driver.find_elements_by_xpath("//span[text()='私有'][1]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..")
-    print(len(el32))
-    el32[0].click()
-    driver.quit()
+driver.find_element_by_xpath("//input[@placeholder='搜文件，也可以通过“#”搜标签']").send_keys("146页年度报告")
+driver.switch_to.active_element.send_keys(Keys.ENTER)
+el11 = driver.find_elements_by_xpath("//span[text()='私有']/../../..")
+el11[0].click()
+WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+driver.find_element_by_xpath("//div[contains(@class,'EmmaPage_shareIcon')]").click()
 
 
 
-except Exception as e:
-    print(e)
-    print("出错了")
+
+
+
 
 
 

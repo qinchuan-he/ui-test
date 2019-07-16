@@ -33,8 +33,8 @@ from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
 from common.comfunction import com_share # 分享按钮点击之后的判断
 
-# 分享功能验证，以PDF文件验证，预览中，边写边搜中，艾玛中（碎片分享），文件夹中（工具栏），文件夹内搜索中，比对报告中分享
-# 不包含比对分享
+# 分享功能验证，以PDF文件验证，预览中，边写边搜中，文件夹中（工具栏），文件夹内搜索中
+# 不包含比对分享,艾玛分享，word分享（编辑中）
 resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 
 
@@ -68,7 +68,7 @@ class test_singleFileShare(unittest.TestCase):
     team_name = team().check_team(driver)
 
     # 预览分享
-    def test_viewshare(self):
+    def test_viewShare(self):
         '''上传并预览分享'''
 
         self.driver.find_element_by_xpath("//a[contains(@class,'GlobalHeader_logo')]").click()
@@ -193,18 +193,33 @@ class test_singleFileShare(unittest.TestCase):
         except Exception as e:
             print(e)
 
-    # # 文件夹内搜索分享
-    # def test_folderSearchShare(self):
-    #     '''文件夹内搜索分享'''
-    #     # 搜索文件
+    # 文件夹内搜索分享
+    def test_folderSearchShare(self):
+        '''文件夹内搜索分享'''
+        # 搜索文件
+        sleep(1)
+        self.driver.find_element_by_xpath("//input[@placeholder='搜文件，也可以通过“#”搜标签']").send_keys(self.pdfname)
+        self.driver.switch_to.active_element.send_keys(Keys.ENTER)
+        el11 = self.driver.find_elements_by_xpath("//span[text()='私有']/../../..")
+        el11[0].click()
+        WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        self.driver.find_element_by_xpath("//div[contains(@class,'EmmaPage_shareIcon')]").click()
+        # 点击之后，调用分享弹框公共方法
+        team_name = self.team_name
+        version = "保留两者"
+        print_name = "文件夹内搜索分享"
+        pic_path = self.picturePath
+        com_share(team_name, version, print_name, pic_path, self.driver)
+
 
 
 
 if __name__ == "__main__":
     testunit = unittest.TestSuite()
-    testunit.addTest(test_singleFileShare("test_viewshare"))
+    testunit.addTest(test_singleFileShare("test_viewShare"))
     testunit.addTest(test_singleFileShare("test_listShare"))
     testunit.addTest(test_singleFileShare("test_modifyShare"))
+    testunit.addTest(test_singleFileShare("test_folderSearchShare"))
 
     fp = open(resultpath + "分享验证.html", "wb")
     runner = HTMLTestRunner(stream=fp, title="分享功能测试报告", description="分享功能回归验证")
