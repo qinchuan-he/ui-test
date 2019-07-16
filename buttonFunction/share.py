@@ -210,9 +210,9 @@ class test_singleFileShare(unittest.TestCase):
         print_name = "文件夹内搜索分享"
         pic_path = self.picturePath
         com_share(team_name, version, print_name, pic_path, self.driver)
-
-
-
+        # 执行完成之后关闭浏览器
+        sleep(2)
+        self.driver.quit()
 
 if __name__ == "__main__":
     testunit = unittest.TestSuite()

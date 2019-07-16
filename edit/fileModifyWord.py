@@ -13,8 +13,11 @@ from selenium.webdriver.chrome.options import Options
 from time import sleep
 import time   #生成时间戳用
 import os    #上传autoit用
+# 调用公共方法
+from common.comfunction import team
+from common.comfunction import com_share
 
-# 上传word，修改word（未用边写边搜），下载word
+# 上传word，修改word（未用边写边搜），下载word, 20190716增加了分享功能
 
 opt=Options()
 opt.add_argument('--disable-gpu')
@@ -26,9 +29,9 @@ driver=webdriver.Chrome(path)
 search="股份"
 picturePath="C:\\work\\1测试\\10自动化\\截图保存\\编辑文件截图\\"
 waitTime=2
-# url="https://testcyprex.fir.ai/sign-in"
+url="https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"
-url = "http://firai-test.gjzqth.com:4680/sign-in"
+# url = "http://firai-test.gjzqth.com:4680/sign-in"
 user="13248131618"
 pwd="Test123456"
 uploadPath="C:\\work\\1测试\\10自动化\\word插入图片脚本\\upfile.exe"
@@ -45,6 +48,10 @@ driver.find_element_by_id("username_no").send_keys(user)
 driver.find_element_by_id("password").send_keys(pwd)
 driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()   # 登录，好像伪类中的文字不能识别
 WebDriverWait(driver,10,0.2).until(ec.presence_of_element_located((By.XPATH,"//span[text()='艾玛同学']")))
+
+team_name = team().check_team(driver)
+driver.find_element_by_xpath("//a[contains(@class,'GlobalHeader_logo')]").click()
+sleep(1)
 
 # 创建文件夹，以当前时间命名
 el1=driver.find_element_by_xpath("//span[text()='新建']")
@@ -189,6 +196,17 @@ driver.get_screenshot_as_file(picturePath+"边写边搜截图"+str(int(time.time
 driver.switch_to.default_content()
 driver.find_element_by_xpath("//i[@class='anticon anticon-download']").click()
 
+# 下载之后增加分享功能
+# 调用团队验证方法
+driver.find_element_by_xpath("//i[@class='anticon anticon-share-alt']").click()
+
+# 点击之后，调用分享弹框公共方法
+version = "保留两者"
+print_name = "文件夹内搜索分享"
+pic_path = picturePath
+com_share(team_name, version, print_name, pic_path, driver)
+
+# 等待下载时间
 sleep(waitTime)
 sleep(waitTime)
 sleep(waitTime)
