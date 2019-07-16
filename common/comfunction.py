@@ -87,7 +87,7 @@ class team:
         return team_name
 
 # 分享，公共方法,这个方法不带批注关联权限--->>>点击了分享按钮之后调用这个方法
-def com_share(team_name,wersion, pic_name, pic_path, driver): # 分别是团队名字，冲突覆盖方式，截图的图片汉字名字,driver
+def com_share(team_name,version, print_name, pic_path, driver): # 分别是团队名字，冲突覆盖方式，截图的图片汉字名字,driver
     sleep(1)
     # 选择团队,分享
     driver.find_element_by_xpath("//span[text()='" + team_name + "']/..").click()
@@ -96,7 +96,7 @@ def com_share(team_name,wersion, pic_name, pic_path, driver): # 分别是团队�
     # 截图
     datename = str(int(time.time()))
     driver.get_screenshot_as_file(pic_path + datename + ".png")
-    comHtml().print_html(pic_name, pic_path, datename)
+    comHtml().print_html(print_name, pic_path, datename)
     # 检查弹框是否关闭
     try:
         WebDriverWait(driver, 10, 0.5).until_not(
@@ -104,9 +104,9 @@ def com_share(team_name,wersion, pic_name, pic_path, driver): # 分别是团队�
         # 兼容版本冲突
         try:
             WebDriverWait(driver, 5, 0.5).until(
-                ec.presence_of_element_located((By.XPATH, "//div[text()='"+wersion+"']")))
+                ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
             # print("找到了")
-            driver.find_element_by_xpath("//span[text()='"+wersion+"']/..").click()
+            driver.find_element_by_xpath("//span[text()='"+version+"']/..").click()
             sleep(0.5)
         except Exception as e:
             print(e)

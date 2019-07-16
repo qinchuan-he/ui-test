@@ -93,31 +93,12 @@ class test_singleFileShare(unittest.TestCase):
             WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
             self.driver.find_element_by_xpath("//i[@aria-label='图标: share-alt']").click()
             sleep(1)
-            # 选择团队,分享
-            self.driver.find_element_by_xpath("//span[text()='" + self.team_name + "']/..").click()
-            sleep(0.5)
-            self.driver.find_element_by_xpath("//span[text()='确 定']/..").click()
-            # 截图
-            date12 = str(int(time.time()))
-            self.driver.get_screenshot_as_file(self.picturePath + date12 + ".png")
-            comHtml().print_html("预览分享", self.picturePath, date12)
-            # 返回预览
-            try:
-                WebDriverWait(self.driver, 10, 0.5).until_not(
-                    ec.presence_of_element_located((By.XPATH, "//span[text()='分享给团队']")))
-                # 兼容版本冲突
-                try:
-                    WebDriverWait(self.driver, 5, 0.5).until(
-                        ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
-                    # print("找到了")
-                    self.driver.find_element_by_xpath("//span[text()='保留两者']/..").click()
-                    sleep(0.5)
-                except Exception as e:
-                    print(e)
-                    print("没有版本冲突")
-            except Exception as e:
-                print(e)
-                self.driver.find_element_by_xpath("//span[@class='ant-modal-close-x']").click()
+            # 调用分享弹框公共方法
+            team_name = self.team_name
+            version = "保留两者"
+            print_name = "预览分享"
+            pic_path = self.picturePath
+            com_share(team_name, version, print_name, pic_path, self.driver)
             self.driver.find_element_by_xpath("//span[contains(text(), '返回')]/..").click()
         except Exception as e:
             print(e)
@@ -138,30 +119,14 @@ class test_singleFileShare(unittest.TestCase):
         try:
             self.driver.find_element_by_xpath("//i[@class='anticon anticon-share-alt']").click()
             sleep(0.5)
-            # 选择团队,分享
-            self.driver.find_element_by_xpath("//span[text()='" + self.team_name + "']/..").click()
-            sleep(0.5)
-            self.driver.find_element_by_xpath("//span[text()='确 定']/..").click()
-            # 截图
-            date12 = str(int(time.time()))
-            self.driver.get_screenshot_as_file(self.picturePath + date12 + ".png")
-            comHtml().print_html("列表分享", self.picturePath, date12)
-            # 检查弹框是否关闭
-            try:
-                WebDriverWait(self.driver, 10, 0.5).until_not(
-                    ec.presence_of_element_located((By.XPATH, "//span[text()='分享给团队']")))
-                # 兼容版本冲突
-                try:
-                    WebDriverWait(self.driver, 5, 0.5).until(
-                        ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
-                    # print("找到了")
-                    self.driver.find_element_by_xpath("//span[text()='保留两者']/..").click()
-                    sleep(0.5)
-                except Exception as e:
-                    print(e)
-                    print("没有版本冲突")
-            except Exception as e:
-                print(e)
+
+            # 点击之后，调用分享弹框公共方法
+            team_name = self.team_name
+            version = "保留两者"
+            print_name = "列表分享"
+            pic_path = self.picturePath
+            com_share(team_name, version, print_name, pic_path, self.driver)
+
         except Exception as e:
             print(e)
 
@@ -194,47 +159,28 @@ class test_singleFileShare(unittest.TestCase):
             el33 = self.driver.find_elements_by_xpath("//i[@class='anticon anticon-share-alt']/..")
             el33[1].click()
             sleep(1)
-            self.driver.find_element_by_xpath("//span[text()='验证的团队']/..").click()
+            # 点击之后，调用分享弹框公共方法
+            team_name = self.team_name
+            version = "保留两者"
+            print_name = "边写边搜-列表分享"
+            pic_path = self.picturePath
+            com_share(team_name, version, print_name, pic_path, self.driver)
+
+            # 进入双屏分享
+            ActionChains(self.driver).move_to_element(el31).perform()
             sleep(0.5)
-            self.driver.find_element_by_xpath("//span[text()='确 定']/..").click()
-            # 截图
-            date31=str(int(time.time()))
-            self.driver.get_screenshot_as_file(self.picturePath+date31+".png")
-            comHtml().print_html("边写边搜列表分享", self.picturePath, date31)
-            # 检查弹框是否关闭
-            try:
-                WebDriverWait(self.driver, 10, 0.5).until_not(
-                    ec.presence_of_element_located((By.XPATH, "//span[text()='分享给团队']")))
-                # 兼容版本冲突
-                try:
-                    WebDriverWait(self.driver, 5, 0.5).until(
-                        ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
-                    # print("找到了")
-                    self.driver.find_element_by_xpath("//span[text()='保留两者']/..").click()
-                    sleep(0.5)
-                except Exception as e:
-                    print(e)
-                    print("没有版本冲突")
-                ActionChains( self.driver).move_to_element(el31).perform()
-                sleep(0.5)
-                el34 = self.driver.find_elements_by_xpath(
-                    "//span[text()='私有'][1]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..")
-                el34[0].click()
-                # 检查是否展开
-                try:
-                    WebDriverWait(self.driver, 10, 0.5).until(
-                        ec.presence_of_element_located((By.XPATH, "//div[text()='边写边搜']")))
-                    sleep(1)
-                    el35 = self.driver.find_elements_by_xpath("//i[@class='anticon anticon-more']")
-                    ActionChains(self.driver).move_to_element(el35[1]).perform()  # 第一个图标是边写边搜那栏的，这里是第二个
-                    self.driver.find_element_by_xpath("//li[text()='分享']").click()
-                except Exception as e:
-                    print(e)
+            el34 = self.driver.find_elements_by_xpath(
+                "//span[text()='私有'][1]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..")
+            el34[0].click()
 
-            except Exception as e:
-                print(e)
-                print("弹框关闭出现异常")
-
+            # 点击之后，调用分享弹框公共方法
+            team_name = self.team_name
+            version = "保留两者"
+            print_name = "边写边搜-展开分享"
+            pic_path = self.picturePath
+            com_share(team_name, version, print_name, pic_path, self.driver)
+            self.driver.find_element_by_xpath("//i[@class='anticon anticon-shrink']").click()
+            self.driver.find_element_by_xpath("//span[contains(text(),'返回')]").click()
         except Exception as e:
             print(e)
 
@@ -249,6 +195,7 @@ if __name__ == "__main__":
     testunit = unittest.TestSuite()
     testunit.addTest(test_singleFileShare("test_viewshare"))
     testunit.addTest(test_singleFileShare("test_listShare"))
+    testunit.addTest(test_singleFileShare("test_modifyShare"))
 
     fp = open(resultpath + "分享验证.html", "wb")
     runner = HTMLTestRunner(stream=fp, title="分享功能测试报告", description="分享功能回归验证")
