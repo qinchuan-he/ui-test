@@ -72,7 +72,7 @@ class team:
         team_name = "验证的团队"
         try:
             WebDriverWait(driver,2,0.5).until(ec.presence_of_element_located((By.XPATH,"//span[text()='验证的团队']")))
-        except:
+        except Exception as e:
             print("团队不存在准备新建")
             driver.find_element_by_xpath("//span[text()='创建新团队并命名团队文件夹']/..").click()
             driver.find_element_by_xpath("//input[@placeholder='团队及团队文件夹名称']").send_keys(team_name)
@@ -80,10 +80,39 @@ class team:
             sleep(1)
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
             sleep(1)
+            print(e)
         else:
             print("进入else")
         driver.find_element_by_xpath("//span[text()='验证的团队']").click()
         return team_name
+
+# 分享，公共方法,这个方法不带批注关联权限--->>>点击了分享按钮之后调用这个方法
+def com_share(team_name,wersion, pic_name, pic_path, driver): # 分别是团队名字，冲突覆盖方式，截图的图片汉字名字,driver
+    sleep(1)
+    # 选择团队,分享
+    driver.find_element_by_xpath("//span[text()='" + team_name + "']/..").click()
+    sleep(0.5)
+    driver.find_element_by_xpath("//span[text()='确 定']/..").click()
+    # 截图
+    datename = str(int(time.time()))
+    driver.get_screenshot_as_file(pic_path + datename + ".png")
+    comHtml().print_html(pic_name, pic_path, datename)
+    # 检查弹框是否关闭
+    try:
+        WebDriverWait(driver, 10, 0.5).until_not(
+            ec.presence_of_element_located((By.XPATH, "//span[text()='分享给团队']")))
+        # 兼容版本冲突
+        try:
+            WebDriverWait(driver, 5, 0.5).until(
+                ec.presence_of_element_located((By.XPATH, "//div[text()='"+wersion+"']")))
+            # print("找到了")
+            driver.find_element_by_xpath("//span[text()='"+wersion+"']/..").click()
+            sleep(0.5)
+        except Exception as e:
+            print(e)
+            print("没有版本冲突")
+    except Exception as e:
+        print(e)
 
 
 # # 上传文件,,就一行代码，没必要组件化
