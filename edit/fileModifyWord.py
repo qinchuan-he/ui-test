@@ -13,6 +13,14 @@ from selenium.webdriver.chrome.options import Options
 from time import sleep
 import time   #生成时间戳用
 import os    #上传autoit用
+
+"""解决vscode中不能引用别的模块的问题"""
+import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
+
+
 # 调用公共方法
 from common.comfunction import team
 from common.comfunction import com_share

@@ -99,7 +99,7 @@ def com_share(team_name,version, print_name, pic_path, driver): # 分别是团�
     comHtml().print_html(print_name, pic_path, datename)
     # 检查弹框是否关闭
     try:
-        WebDriverWait(driver, 10, 0.5).until_not(
+        WebDriverWait(driver, 5, 0.5).until_not(
             ec.presence_of_element_located((By.XPATH, "//span[text()='分享给团队']")))
         # 兼容版本冲突
         try:
@@ -114,8 +114,19 @@ def com_share(team_name,version, print_name, pic_path, driver): # 分别是团�
     except Exception as e:
         print(e)
 
-
-# # 上传文件,,就一行代码，没必要组件化
-# def com_upload(url):
+# 上传文件,冲突弹框公共方法
+def com_upload(version, print_name, pic_path, uploadUrl, driver):
+    driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadUrl)
+    sleep(2)
+    datename = str(int(time.time()))
+    driver.get_screenshot_as_file(pic_path + datename + ".png")
+    comHtml.print_html(print_name, pic_path, datename)
+    try:
+        # self.driver.find_element_by_xpath("//div[text()='版本冲突']")
+        WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "版本冲突")))
+        driver.find_element_by_xpath("//span[text()='"+version+"']/..").click()
+    except:
+        print("没有冲突")
+    sleep(30)
 
 

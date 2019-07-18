@@ -18,7 +18,6 @@ import sys
 import re # 正则提取
 """解决vscode中不能引用别的模块的问题"""
 import os
-
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
@@ -212,7 +211,7 @@ class test_singleFileShare(unittest.TestCase):
         com_share(team_name, version, print_name, pic_path, self.driver)
         # 执行完成之后关闭浏览器
         sleep(2)
-        self.driver.quit()
+
 
 if __name__ == "__main__":
     testunit = unittest.TestSuite()
