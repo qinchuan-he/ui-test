@@ -11,7 +11,17 @@ from selenium.webdriver.chrome.options import Options
 from time import sleep
 import time   #生成时间戳用
 import os    #上传autoit用
-# 公共方法
+# 发送邮件
+import smtplib
+from email.mime.text import  MIMEText  # 正文
+from email.header import Header  # 头部
+from email.mime.multipart import MIMEMultipart # 上传附件用
+
+# 服务器上传
+import paramiko
+
+
+
 
 
 
@@ -35,7 +45,8 @@ class user:
     url="https://testcyprex.fir.ai/sign-in"
     # url = "https://cyprex.fir.ai/sign-in"
     # url = "http://firai-test.gjzqth.com:4680/"
-    user = "13248131618"
+    user = "19967893456"
+    # user = "13248131618"
     # user="19956966528"
     pwd = "Test123456"
     # def __init__(self, url, user, pwd):
@@ -81,8 +92,6 @@ class team:
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
             sleep(1)
             print(e)
-        else:
-            print("进入else")
         driver.find_element_by_xpath("//span[text()='验证的团队']").click()
         return team_name
 
@@ -114,7 +123,7 @@ def com_share(team_name,version, print_name, pic_path, driver): # 分别是团�
     except Exception as e:
         print(e)
 
-# 上传文件,冲突弹框公共方法
+# 上传文件,冲突弹框公共方法,传入截图路径，上传路径，html输出名字，冲突处理方法。包含截图输出搭配html
 def com_upload(version, print_name, pic_path, uploadUrl, driver):
     driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadUrl)
     sleep(2)
@@ -123,10 +132,216 @@ def com_upload(version, print_name, pic_path, uploadUrl, driver):
     comHtml.print_html(print_name, pic_path, datename)
     try:
         # self.driver.find_element_by_xpath("//div[text()='版本冲突']")
-        WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "版本冲突")))
+        WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
         driver.find_element_by_xpath("//span[text()='"+version+"']/..").click()
-    except:
-        print("没有冲突")
+    except Exception as e:
+        print(e)
+        print("--没有冲突--")
     sleep(30)
+
+#  公共的弹窗类，所有弹窗相关的封装都放这里
+class com_alert(object):
+    #  点击按钮之后的冲突弹框公共方法，传入截图存放路径，html输出名字，冲突处理方法。包含截图输出搭配html
+    def com_equal(driver, pic_path, print_name, version):
+        #  第一步，截图，并且输出到html
+        sleep(2)
+        datename = str(int(time.time()))
+        driver.get_screenshot_as_file(pic_path + datename + ".png")
+        comHtml.print_html(print_name, pic_path, datename)
+        #  第二步，判断是否有弹框
+        try:
+            WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
+            driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
+        except Exception as e:
+            print(e)
+            print("--没有冲突--")
+        sleep(0.5)
+
+
+# 发送邮件,传入参数为邮件主题和html文件url，不带附件
+def send_mail(subject,fileurl):
+    # 配置发送邮件参数
+    # 发送邮箱服务器
+    smtpServer = "smtp.exmail.qq.com"
+    # 发送邮箱用户
+    user = "qinchuan.he@fir.ai"
+    pwd = "Test123456"
+    # 发送邮箱
+    sender = "qinchuan.he@fir.ai"
+    # 接收邮箱
+    receiver = "qinchuan.he@fir.ai"
+    # 发送邮件主题
+    subject = subject
+    # 发送邮件内容，这里发送传入html的内容
+    fp = open(fileurl, 'rb')
+    mail_body = fp.read()
+    fp.close()
+    msg = MIMEText(mail_body, 'html', 'utf-8')
+    msg['Subject'] = Header(subject, 'utf-8')
+    # 发送邮件
+    smtp = smtplib.SMTP()
+    smtp.connect(smtpServer)
+    smtp.login(user, pwd)
+    smtp.sendmail(sender, receiver, msg.as_string())
+    smtp.quit()
+
+# 重构发送邮件方法，添加了附件参数
+def send_mail(subject,fileurl, addfileurl,addfilename):
+    # 配置发送邮件参数
+    # 发送邮箱服务器
+    smtpServer = "smtp.exmail.qq.com"
+    # 发送邮箱用户
+    user = "qinchuan.he@fir.ai"
+    pwd = "Test123456"
+    # 发送邮箱
+    sender = "qinchuan.he@fir.ai"
+    # 接收邮箱
+    receiver = "qinchuan.he@fir.ai"
+    # 发送邮件主题
+    subject = subject
+    # 发送邮件内容，这里发送传入html的内容
+    fp = open(fileurl, 'rb')
+    mail_body = fp.read()
+    fp.close()
+    msg = MIMEText(mail_body, 'html', 'utf-8')
+    msg['Subject'] = Header(subject, 'utf-8')
+    # 附件
+    af = open(addfileurl, 'rb').read()
+    att = MIMEText(af, 'base64', 'utf-8')
+    att['Content-Type'] = 'application/octet-stream'
+    att['Content-Disposition'] = 'attachment; filename = '+addfilename
+    msgRoot = MIMEMultipart('related')
+    msgRoot['Subject'] = Header(subject, 'utf-8')
+    msgRoot.attach(att)
+    msgRoot.attach(msg) # 添加文案描述信息
+    # 发送邮件
+    smtp = smtplib.SMTP()
+    smtp.connect(smtpServer)
+    smtp.login(user, pwd)
+    smtp.sendmail(sender, receiver, msgRoot.as_string())
+    smtp.quit()
+
+# 上传文件，上传图片到服务器
+def server_upload(localFile, remoteFile):
+    # 创建ssh对象
+    ssh = paramiko.SSHClient()
+    # 允许连接不在know_hosts文件的主机
+    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    # 本地文件路径
+    localpath = localFile
+    # 服务器文件路径
+    remotePath = remoteFile
+
+    # 连接服务器
+    transport = paramiko.Transport(("192.168.1.223",22))
+    transport.connect(username="root", password="fir2018518")
+    ssh = paramiko.SSHClient()
+    ssh._transport = transport
+    # ssh.connect(hostname="192.168.1.223", port=22, username="root", password="fir2018518")
+    # 打开一个channel（频道）并执行命令
+    stdin, stdout, stderr = ssh.exec_command('docker exec -i testpingtai bash;cd /opt;ls')
+    # stdin, stdout, stderr = ssh.exec_command('df -h;ls', timeout=30, get_pty=True)
+    # stdin, stdout, stderr = ssh.exec_command("ls")
+    print(stdout.read().decode('utf-8'))
+    transport.close()
+
+#  封装定位
+class com_xpath(object):
+    # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）
+    def com_preview(self, driver, button):
+        '''预览中的定位'''
+        el1 = ""  # 返回的参数
+        try:
+            # 首先确定是否进入预览界面
+            WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+            # mode = 1，代表私有，其余都是团队
+            el = driver.find_elements_by_xpath("//div[contains(@class,'FileToolbar_toolButton')]")
+            if button =='textSearch':
+                el1 = el[0]
+            elif button == 'history':
+                el1 = el[1]
+            elif button == 'label':
+                el1 = el[2]
+            elif button == 'share':
+                el1 = el[3]
+            elif button == 'store':
+                el1 = el[3]
+            elif button == 'notes':
+                el1 = el[4]
+            elif button == 'connect':
+                el1 = el[5]
+            elif button == 'compare':
+                el1 = el[-3]
+            elif button == 'details':
+                el1 = el[-3]
+            elif button == 'download':
+                el1 = el[-2]
+            elif button == 'delete':
+                el1 = el[-1]
+            else:
+                el1 = ""
+                print("传入预览按钮类型不对")
+        except Exception as e:
+            print(e)
+            print("没有进入预览")
+        return el1
+
+    #  列表预览顶部的按钮，button代表按钮类型
+    def com_listButton(self, driver, button):
+        el21 = ""  #  返回参数
+        try:
+            WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[@class='FileListToolbar_toolButton']")))
+            el2 = driver.find_elements_by_xpath("//div[@class='FileListToolbar_toolButton']")
+            if button == 'create':
+                el21 = el2[0]
+            elif button == 'upload':
+                el21 = el2[1]
+            elif button == 'import1':
+                el21 = el2[2]
+            elif button == 'share':
+                el21 = el2[-5]
+            elif button == 'store':
+                el21 = el2[-5]
+            elif button == 'move':
+                el21 = el2[-4]
+            elif button == 'download':
+                el21 = el2[-3]
+            elif button == 'delete':
+                el21 = el2[-2]
+            elif button == 'switch':
+                el21 = el2[-1]
+            else:
+                print("传入按钮类型错误")
+
+        except Exception as e:
+            print(e)
+            print("没有处在资源页面中")
+
+
+        return el21
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
