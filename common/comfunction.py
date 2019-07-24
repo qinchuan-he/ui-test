@@ -63,6 +63,17 @@ class user:
         "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
+    #  新建文件夹
+    def createFolder(self,driver, folder):
+        createType = "create"
+        el11 = com_xpath().com_listButton(driver, createType)
+        ActionChains(driver).move_to_element(el11).perform()
+        driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+        driver.switch_to.active_element.send_keys(folder)
+        driver.switch_to.active_element.send_keys(Keys.ENTER)
+
+
+
 # 生成html相关的类
 class comHtml:
     def print_html(self,picname,picpath,picid):    #就是传入名称，路径，picid就是时间
@@ -129,7 +140,7 @@ def com_upload(version, print_name, pic_path, uploadUrl, driver):
     sleep(2)
     datename = str(int(time.time()))
     driver.get_screenshot_as_file(pic_path + datename + ".png")
-    comHtml.print_html(print_name, pic_path, datename)
+    comHtml().print_html(print_name, pic_path, datename)
     try:
         # self.driver.find_element_by_xpath("//div[text()='版本冲突']")
         WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
@@ -142,20 +153,53 @@ def com_upload(version, print_name, pic_path, uploadUrl, driver):
 #  公共的弹窗类，所有弹窗相关的封装都放这里
 class com_alert(object):
     #  点击按钮之后的冲突弹框公共方法，传入截图存放路径，html输出名字，冲突处理方法。包含截图输出搭配html
-    def com_equal(driver, pic_path, print_name, version):
+    def com_equal(self, driver, pic_path, print_name, version):
         #  第一步，截图，并且输出到html
         sleep(2)
         datename = str(int(time.time()))
         driver.get_screenshot_as_file(pic_path + datename + ".png")
-        comHtml.print_html(print_name, pic_path, datename)
+        comHtml().print_html(print_name, pic_path, datename)
         #  第二步，判断是否有弹框
         try:
             WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
-            driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
+            # driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
+            # 2019-07-23,增加兼容，点击一次出现两次弹框文案的情况
+            el1 = driver.find_elements_by_xpath("//span[text()='" + version + "']/..")
+            if len(el1) > 1:
+                el1[-1].click()
+            else:
+                el1[0].click()
         except Exception as e:
             print(e)
             print("--没有冲突--")
         sleep(0.5)
+
+    #  比对弹框,选中并且截图
+    def com_alertCompare(self, driver, folder, file, pic_path, print_name):
+        sleep(1)
+        try:
+            WebDriverWait(driver, 5,0.5).until(ec.presence_of_element_located((By.XPATH, "//div[@class='ant-modal-title']")))
+            # driver.find_element_by_xpath("//span[text()='"+folder+"']/../../..").click()
+            # 目前弹框有问题，增加兼容
+            folder2 = folder.split(".",2)[0]
+            driver.find_element_by_xpath("//span[contains(text(),'"+folder2+"')]/../../..").click()
+            sleep(0.5)
+            driver.find_element_by_xpath("//span[text()='"+file+"']/../../..").click()
+            sleep(0.5)
+            driver.find_element_by_xpath("//span[text()='开始比对']/..").click()
+            datename = str(int(time.time()))
+            driver.get_screenshot_as_file(pic_path + datename + ".png")
+            comHtml().print_html(print_name, pic_path, datename)
+            sleep(30)
+            try:
+                WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class, 'ComparisonHeader_comHeaderTitle')]")))
+            except Exception as e:
+                print(e)
+                print("比对超时")
+        except Exception as e:
+            print(e)
+            print("比对弹框未弹出")
+
 
 
 # 发送邮件,传入参数为邮件主题和html文件url，不带附件
@@ -248,7 +292,7 @@ def server_upload(localFile, remoteFile):
 #  封装定位
 class com_xpath(object):
     # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）
-    def com_preview(self, driver, button):
+    def com_previewButton(self, driver, button):
         '''预览中的定位'''
         el1 = ""  # 返回的参数
         try:
@@ -288,10 +332,10 @@ class com_xpath(object):
 
     #  列表预览顶部的按钮，button代表按钮类型
     def com_listButton(self, driver, button):
-        el21 = ""  #  返回参数
+        el21 = ""
         try:
-            WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[@class='FileListToolbar_toolButton']")))
-            el2 = driver.find_elements_by_xpath("//div[@class='FileListToolbar_toolButton']")
+            WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'FileListToolbar_toolButton')]")))
+            el2 = driver.find_elements_by_xpath("//div[contains(@class,'FileListToolbar_toolButton')]")
             if button == 'create':
                 el21 = el2[0]
             elif button == 'upload':
@@ -316,9 +360,49 @@ class com_xpath(object):
         except Exception as e:
             print(e)
             print("没有处在资源页面中")
-
-
         return el21
+
+    #  文件夹内搜索,边写边搜，艾玛搜索,传入搜索关键字进行搜索跳转
+    def com_internalSearch(self, driver, key):
+        sleep(1)
+        driver.find_element_by_xpath("//input[contains(@placeholder,'搜文件，也可以通过')]").clear()
+        driver.find_element_by_xpath("//input[contains(@placeholder,'搜文件，也可以通过')]").send_keys(key)
+        driver.switch_to.active_element.send_keys(Keys.ENTER)
+        sleep(3)
+
+    #  文件夹内搜索，选中时间和类型,前提是处于文件夹内搜索界面
+    def com_internalChooseType(self,driver, time, type):
+        # 选择时间
+        el11 = driver.find_elements_by_xpath("//div[@class='ant-select-selection__rendered']") #  选项框外层
+        el12 = driver.find_elements_by_xpath("//div[@class='ant-select-selection-selected-value']")# 选项框当前值
+        checktime = el12[0].text
+        if checktime != time:
+            el11[0].click()
+            driver.find_element_by_xpath("//li[text()='"+time+"']").click()
+        checktype = el12[1].text
+        if checktype != type:
+            el11[1].click()
+            driver.find_element_by_xpath("//li[text()='" + type + "']").click()
+        try:
+            WebDriverWait(driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        except Exception as e:
+            print(e)
+            print("加载iframe超时")
+
+    #  进入预览界面,有iframe的
+    def com_preview(self, driver, fileName):
+        driver.find_element_by_xpath("//span[text()='" + fileName + "']/..").click()
+        try:
+            WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        except Exception as e:
+            print(e)
+            print("没有进入预览或者加载超时")
+
+
+
+
+
+
 
 
 

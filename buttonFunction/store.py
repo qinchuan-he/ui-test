@@ -48,7 +48,7 @@ class test_store(unittest.TestCase):
     folder12 = time.time()   #  新建的文件夹，私有中边写边搜用
 
     # 启动浏览器
-    mode = 2
+    mode = 1
     driver = execBrower(mode)
     user().login(driver)
     driver.implicitly_wait(30)
@@ -58,7 +58,6 @@ class test_store(unittest.TestCase):
     # 上传预览中收藏
     def test_viewStore(self):
         '''团队预览中收藏'''
-
         # 上传文件
         uploadUrl = self.qpath + self.pdfname + ".PDF"
         version = "以新版本覆盖"
@@ -73,18 +72,20 @@ class test_store(unittest.TestCase):
             #  确认文件已打开预览
             WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
             buttonType = "store"  # 表明是收藏按钮
-            el11 = com_xpath().com_preview(self.driver, buttonType)
+            el11 = com_xpath().com_previewButton(self.driver, buttonType)
             if el11 != "":
                 el11.click()
                 version = "以新版本覆盖"
                 print_name = "预览收藏"
                 com_alert().com_equal(self.driver, pic_path, print_name, version)
-                self.driver.find_elements_by_xpath("//span[contains(text(),'返回')]")
+                sleep(1)
+                self.driver.find_element_by_xpath("//span[contains(text(), '返回')]/..").click()
                 sleep(1)
         except Exception as e:
             print(e)
             print("没有打开预览")
 
+    #  列表中收藏
     def test_listStore(self):
         '''列表中收藏'''
         el21 = self.driver.find_element_by_xpath("//span[text()='"+self.pdfname+"']")
@@ -98,22 +99,92 @@ class test_store(unittest.TestCase):
             el23.click()
             version = "以新版本覆盖"
             print_name = "列表收藏"
-            com_alert().com_equal(self.driver, self.picturePath, print_name, type)
+            com_alert().com_equal(self.driver, self.picturePath, print_name, version)
             sleep(1)
 
+    #  文件夹内搜索中收藏
+    def test_folderSearchStore(self):
+        '''文件夹内搜索收藏'''
+        searchKey = self.pdfname
+        com_xpath().com_internalSearch(self.driver, searchKey)
+        self.driver.find_element_by_xpath("//span[contains(text(),'团队共...')]/../..").click()
+        sleep(1)
+        print_name = "文件夹内收藏"
+        version = "以新版本覆盖"
+        try:
+            WebDriverWait(self.driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))# 未考虑txt
+            self.driver.find_element_by_xpath("//div[contains(@class,'EmmaPage_fileViewBarList')]/div[3]").click()
+            com_alert().com_equal(self.driver, self.picturePath, print_name, version)
+        except Exception as e:
+            print(e)
+            print("超时未加载出来或者选中为txt")
+        # self.driver.find_element_by_xpath("//button[@type='button']").click()
+        sleep(0.5)
+
+    #  边写边搜中收藏，列表和双屏.从文件夹内搜索中进入边写边搜
+    def test_modifyStore(self):
+        sleep(0.5)
+        searchKey = "doc"
+        com_xpath().com_internalSearch(self.driver, searchKey)
+        searchTime = "时间不限"
+        searchType = "Word文档"
+        com_xpath().com_internalChooseType(self.driver, searchTime, searchType)
+        self.driver.find_element_by_xpath("//span[text()='私有']/../..").click()
+        sleep(3)
+        #  进入编辑界面
+        self.driver.find_element_by_xpath("//span[contains(@class,'GlobalSearchPage_cusFixButton')]").click()
+        try:
+            WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+            self.driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+            # searchKey2 = self.pdfname
+            com_xpath().com_internalSearch(self.driver,self.pdfname)
+            for i in range(10):
+                el43 = self.driver.find_element_by_xpath("//span[contains(text(),'搜索结果数量：')]")
+                el44 = int(re.findall("[0-9]+",el43.text)[0])
+                if el44 > 0:
+                    break
+                else:
+                    sleep(1)
+            el45 = self.driver.find_element_by_xpath("//span[contains(text(),'团队共')]/../..")
+            ActionChains(self.driver).move_to_element(el45).perform()
+            # self.driver.find_element_by_xpath("//div[contains(@class,'SearchFileContentPanel_toolButton')]/i[@class='anticon']").click()
+            self.driver.find_element_by_xpath(
+                "//span[contains(text(),'团队共')]/../../../../../../../h4//i[@class='anticon']/..").click()
+            print_name = "边写边搜列表收藏"
+            version = "以新版本覆盖"
+            com_alert().com_equal(self.driver, self.picturePath, print_name, version)
+            sleep(1)
+            el51 = self.driver.find_element_by_xpath("//span[contains(text(),'团队共')]/../..")
+            ActionChains(self.driver).move_to_element(el51).perform()
+            self.driver.find_element_by_xpath(
+                "//span[contains(text(),'团队共')]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..").click()
+            try:
+                WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='边写边搜']")))
+                el46 = self.driver.find_elements_by_xpath("//i[@class='anticon anticon-more']")
+                ActionChains(self.driver).move_to_element(el46[1]).perform()
+                self.driver.find_element_by_xpath("//li[text()='收藏到私有']").click()
+                print_name="边写边搜双屏收藏"
+                com_alert().com_equal(self.driver, self.picturePath, print_name, version)
+                self.driver.find_element_by_xpath("//i[@class='anticon anticon-shrink']").click()
+                sleep(1)
+                self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+            except Exception as e:
+                print(e)
+                print("双屏展开校验超时")
+        except Exception as e:
+            print(e)
+            print("未从文件夹内搜索中打开编辑")
 
 
-    # def test_folderSearchStore(self):
-    #     '''文件夹内搜索收藏'''
 
-    # def test_modifyStore(self):
-    #     '''边写边搜中收藏'''
 
 
 if __name__ == "__main__":
     testUnite = unittest.TestSuite()
     testUnite.addTest(test_store("test_viewStore"))
     testUnite.addTest(test_store("test_listStore"))
+    testUnite.addTest(test_store("test_folderSearchStore"))
+    testUnite.addTest(test_store("test_modifyStore"))
 
     fp = open(resultpath + "收藏验证.html", "wb")
     runner = HTMLTestRunner(stream=fp, title="收藏功能测试报告", description="预览，列表、搜索、边写边搜验证收藏")

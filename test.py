@@ -32,9 +32,17 @@ from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
 from common.comfunction import com_share # 分享按钮点击之后的判断
 
-from buttonFunction.store import test_store
+# from buttonFunction.store import test_store
+el2 = str(time.time())
+# el3 = str(int(time.time()))
 
-test_store().test_listStore()
+el4 = el2.split(".",2)[0]
+print(el2)
+print(el4)
+
+# print(el4)
+
+
 
 
 
