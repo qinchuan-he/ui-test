@@ -30,7 +30,7 @@ driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2
 el1=driver.find_element_by_xpath("//span[text()='新建']")
 sleep(2)
 ActionChains(driver).move_to_element(el1).perform()
-driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+driver.find_element_by_xpath("//li[text()='文件夹']").click()
 folder1=int(time.time())
 print(folder1)
 driver.switch_to.active_element.send_keys(folder1)
@@ -41,7 +41,7 @@ driver.find_element_by_xpath("//span[text()="+str(folder1)+"]").click()
 sleep(2)
 # 新建文件
 ActionChains(driver).move_to_element(el1).perform()
-driver.find_element_by_xpath("//li[text()='新建文档']").click()
+driver.find_element_by_xpath("//li[text()='见远笔记(.doc)']").click()
 sleep(2)
 
 # 编辑内容：

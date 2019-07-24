@@ -45,7 +45,7 @@ class test_compare(unittest.TestCase):
     pdfname2 = "合同1扫描件（8张合并）"
     pdfname3 = "36页"  # 后缀是大写的PDF
     pdfname4 = "30页图片"
-    folder = str(time.time()) # 名字
+    folder = str(time.time()) #  文件夹名字
 
     # 启动浏览器
     mode =2
@@ -56,7 +56,7 @@ class test_compare(unittest.TestCase):
     team_name = team().check_team(driver)
     driver.find_element_by_xpath("//a[contains(@class,'GlobalHeader_logo')]").click()
 
-    #  新建文件夹，存放比对文件
+    #  文件夹，存放比对文件
     user().createFolder(driver, folder)
     # 进入文件夹
     driver.find_element_by_xpath("//span[text()='"+folder+"']/..").click()

@@ -37,13 +37,13 @@ class up_music(unittest.TestCase):
     mode=1
     driver = execBrower(mode)
     user().login(driver)
-            # # 私有根目录新建文件夹
+            # # 私有根目录文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")
     sleep(3)
     ActionChains(driver).move_to_element(el1).perform()
-    driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+    driver.find_element_by_xpath("//li[text()='文件夹']").click()
     folder1=int(time.time())
-    print("新建文件夹：%s " %folder1)
+    print("文件夹：%s " %folder1)
     driver.switch_to.active_element.send_keys(folder1)
     driver.switch_to.active_element.send_keys(Keys.ENTER)
     # 进入文件夹
@@ -70,7 +70,7 @@ class up_music(unittest.TestCase):
         el1=self.driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
         ActionChains(self.driver).move_to_element(el1).perform()
-        self.driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+        self.driver.find_element_by_xpath("//li[text()='文件夹']").click()
         musicfolder = "音频"
 
         self.driver.switch_to.active_element.send_keys(musicfolder)

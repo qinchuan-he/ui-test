@@ -63,14 +63,16 @@ class user:
         "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
-    #  新建文件夹
+    #  文件夹
     def createFolder(self,driver, folder):
+        sleep(0.5)
         createType = "create"
         el11 = com_xpath().com_listButton(driver, createType)
         ActionChains(driver).move_to_element(el11).perform()
-        driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+        driver.find_element_by_xpath("//li[text()='文件夹']").click()
         driver.switch_to.active_element.send_keys(folder)
         driver.switch_to.active_element.send_keys(Keys.ENTER)
+        sleep(0.5)
 
 
 
@@ -89,6 +91,8 @@ class comHtml:
 class team:
     def check_team(self,driver):
         '''检查团队是否存在,不存在就创建，目前没有判断5个团队的情况的'''
+        sleep(0.5)
+        driver.find_element_by_xpath("//a[@class='GlobalHeader_logo__A65OH']").click()
         sleep(1)
         driver.find_element_by_xpath("//a[text()='团队共享']").click()
         team_name = "验证的团队"
@@ -179,10 +183,18 @@ class com_alert(object):
         sleep(1)
         try:
             WebDriverWait(driver, 5,0.5).until(ec.presence_of_element_located((By.XPATH, "//div[@class='ant-modal-title']")))
-            # driver.find_element_by_xpath("//span[text()='"+folder+"']/../../..").click()
             # 目前弹框有问题，增加兼容
-            folder2 = folder.split(".",2)[0]
-            driver.find_element_by_xpath("//span[contains(text(),'"+folder2+"')]/../../..").click()
+            try:
+                driver.find_element_by_xpath("//span[text()='"+folder+"']/../../..").click()
+            except Exception as e:
+                print("弹框中文件名显示有问题，截图")
+                print("文件夹名： %s" %folder)
+                folder2 = folder.split(".", 2)[0]
+                driver.find_element_by_xpath("//span[contains(text(),'"+folder2+"')]/../../..").click()
+                print_name1 = "弹窗截图"
+                datename = str(int(time.time()))
+                driver.get_screenshot_as_file(pic_path + datename + ".png")
+                comHtml().print_html(print_name1, pic_path, datename)
             sleep(0.5)
             driver.find_element_by_xpath("//span[text()='"+file+"']/../../..").click()
             sleep(0.5)
@@ -199,6 +211,63 @@ class com_alert(object):
         except Exception as e:
             print(e)
             print("比对弹框未弹出")
+
+    #  团队导入文件弹框
+    def com_importalert(self, driver, folder, file, pic_path, print_name):
+        sleep(1)
+        try:
+            WebDriverWait(driver, 5,0.5).until(ec.presence_of_element_located((By.XPATH, "//div[@class='ant-modal-title']")))
+            # 目前弹框有问题，增加兼容
+            try:
+                driver.find_element_by_xpath("//span[text()='"+folder+"']/../../..").click()
+            except Exception as e:
+                print("弹框中文件名显示有问题，截图")
+                print("文件夹名： %s" %folder)
+                folder2 = folder.split(".", 2)[0]
+                driver.find_element_by_xpath("//span[contains(text(),'"+folder2+"')]/../../..").click()
+                print_name1 = "弹窗截图"
+                datename = str(int(time.time()))
+                driver.get_screenshot_as_file(pic_path + datename + ".png")
+                comHtml().print_html(print_name1, pic_path, datename)
+            sleep(0.5)
+            driver.find_element_by_xpath("//span[text()='"+file+"']/../../..").click()
+            sleep(0.5)
+            driver.find_element_by_xpath("//span[text()='确 定']/..").click()
+            sleep(1)
+            datename = str(int(time.time()))
+            driver.get_screenshot_as_file(pic_path + datename + ".png")
+            comHtml().print_html(print_name, pic_path, datename)
+            sleep(15)
+        except Exception as e:
+            print(e)
+            print("导入弹框未弹出")
+
+    #  图例加入碎片弹框，传入参数包括按钮类型，确定或者取消
+    def com_addFrager(self, driver, name, pic_path, print_name, button):
+        sleep(0.5)
+        try:
+            WebDriverWait(driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[@id='rcDialogTitle0']")))
+            printName = "未输入弹框截图"
+            datename2 = str(int(time.time()))
+            driver.get_screenshot_as_file(pic_path + datename2 + ".png")
+            comHtml().print_html(printName, pic_path, datename2)
+            driver.find_element_by_xpath("//div[contains(@class,'FileImages_modalImageAction')]/input").send_keys(name)
+            driver.switch_to.active_element.send_keys(Keys.ENTER)
+            driver.find_element_by_xpath("//span[text()='"+button+"']/..").click()
+            datename3 = str(int(time.time()))
+            driver.get_screenshot_as_file(pic_path+datename3+".png")
+            comHtml().print_html(print_name, pic_path, datename3)
+
+
+        except Exception as e:
+            print(e)
+            print("弹框未弹出")
+            printName = "碎片弹框异常截图"
+            datename = str(int(time.time()))
+            driver.get_screenshot_as_file(pic_path + datename + ".png")
+            comHtml().print_html(printName, pic_path, datename)
+        pass
+
 
 
 

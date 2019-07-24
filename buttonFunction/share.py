@@ -47,7 +47,7 @@ class test_singleFileShare(unittest.TestCase):
     pdfname = "146页年度报告"    # 上传文件名
     folder12 = "分享"   # 新建的分享文件夹
     # 启动浏览器
-    mode = 2
+    mode = 1
     driver = execBrower(mode)
     user().login(driver)
     driver.implicitly_wait(30)
@@ -56,9 +56,9 @@ class test_singleFileShare(unittest.TestCase):
     el1 = driver.find_element_by_xpath("//span[text()='新建']")
     sleep(1)
     ActionChains(driver).move_to_element(el1).perform()
-    driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+    driver.find_element_by_xpath("//li[text()='文件夹']").click()
     folder1 = int(time.time())
-    print("新建文件夹：%s " % folder1)
+    print("文件夹：%s " % folder1)
     driver.switch_to.active_element.send_keys(folder1)
     driver.switch_to.active_element.send_keys(Keys.ENTER)
     # 进入文件夹
@@ -76,9 +76,9 @@ class test_singleFileShare(unittest.TestCase):
         el12 = self.driver.find_element_by_xpath("//span[text()='新建']")
         sleep(1)
         ActionChains(self.driver).move_to_element(el12).perform()
-        self.driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+        self.driver.find_element_by_xpath("//li[text()='文件夹']").click()
 
-        print("新建文件夹：%s " % self.folder12)
+        print("文件夹：%s " % self.folder12)
         self.driver.switch_to.active_element.send_keys(self.folder12)
         self.driver.switch_to.active_element.send_keys(Keys.ENTER)
         sleep(1)
@@ -137,7 +137,7 @@ class test_singleFileShare(unittest.TestCase):
         el31 = self.driver.find_element_by_xpath("//i[@class='anticon anticon-plus']/..")
         ActionChains(self.driver).move_to_element(el31).perform()
         sleep(0.5)
-        self.driver.find_element_by_xpath("//li[text()='新建文档']").click()
+        self.driver.find_element_by_xpath("//li[text()='见远笔记(.doc)']").click()
         try:
             WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
             self.driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()

@@ -2,12 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a2aebbb-1706-4124-b7fc-2c98f7978b4d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/buttonFunction/compareFile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Cyprex-ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Cyprex-ui.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buttonFunction/picturePick.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/buttonFunction/teamImport.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttonFunction/store.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/store.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/compareFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/compareFile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/share.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/share.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/upload18File.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/upload18File.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/upload_other.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/upload_other.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/uploadmusic.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/uploadmusic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/uploadoffice.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/uploadoffice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/uploadpicture.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/uploadpicture.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/comfunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/comfunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit/fileModifyWord.py" beforeDir="false" afterPath="$PROJECT_DIR$/edit/fileModifyWord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit/movefile.py" beforeDir="false" afterPath="$PROJECT_DIR$/edit/movefile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/边写边搜验证.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/边写边搜验证.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,32 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/search/collectionAndsubScribe.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="625">
-              <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
-              <folding>
-                <element signature="e#15#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/edit/fileModifyWord.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/edit/movefile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="175">
+              <caret line="218" column="16" selection-end-line="243" />
             </state>
           </provider>
         </entry>
@@ -71,18 +58,21 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/comfunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-128">
-              <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
+            <state relative-caret-position="172">
+              <caret line="245" column="40" selection-start-line="245" selection-start-column="36" selection-end-line="245" selection-end-column="40" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
                 <element signature="e#2015#2728#0" />
                 <element signature="e#2755#3652#0" />
+                <element signature="e#3800#4730#0" />
+                <element signature="e#4859#5457#0" />
+                <element signature="e#5641#6188#0" />
+                <element signature="e#7045#8593#0" />
+                <element signature="e#8662#10210#0" />
                 <element signature="e#6259#6867#0" />
                 <element signature="e#6948#7922#0" />
                 <element signature="e#7986#8803#0" />
-                <element signature="e#11364#11549#0" />
                 <element signature="e#11745#12490#0" />
-                <element signature="e#13254#13534#0" />
               </folding>
             </state>
           </provider>
@@ -91,8 +81,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/store.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="74" column="72" selection-start-line="74" selection-start-column="62" selection-end-line="74" selection-end-column="72" />
+            <state relative-caret-position="142">
+              <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -100,11 +90,37 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+            <state relative-caret-position="250">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
+                <element signature="e#1308#6820#0" />
+                <element signature="e#6856#7148#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/buttonFunction/teamImport.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/buttonFunction/picturePick.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="84" column="30" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -124,8 +140,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/share.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="99" column="18" selection-start-line="99" selection-start-column="18" selection-end-line="99" selection-end-column="18" />
+            <state relative-caret-position="189">
+              <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
               <folding>
                 <element signature="e#16#25#0" expanded="true" />
               </folding>
@@ -144,10 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>unittest</find>
-      <find>self.driver</find>
-      <find>self</find>
-      <find>showPath</find>
       <find>picturePath</find>
       <find>ActionChains</find>
       <find>self.</find>
@@ -168,16 +180,22 @@
       <find>没有处在资源页面中</find>
       <find>com_listButton</find>
       <find>store</find>
-      <find>send</find>
       <find>.text</find>
       <find>active_element</find>
       <find>swit</find>
+      <find>waitTime</find>
       <find>create</find>
+      <find>send</find>
+      <find>FileImages_imageAction</find>
       <find>com_preview</find>
+      <find>新建文件夹</find>
+      <find>新建文档</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>com_previewButton</replace>
+      <replace>见远笔记(.doc)</replace>
+      <replace>文件夹</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -191,14 +209,16 @@
         <option value="$PROJECT_DIR$/edit/movefile.py" />
         <option value="$PROJECT_DIR$/buttonFunction/upload18File.py" />
         <option value="$PROJECT_DIR$/buttonFunction/shore.py" />
-        <option value="$PROJECT_DIR$/buttonFunction/share.py" />
-        <option value="$PROJECT_DIR$/edit/fileModifyWord.py" />
         <option value="$PROJECT_DIR$/test2.py" />
         <option value="$PROJECT_DIR$/search/边写边搜验证.py" />
         <option value="$PROJECT_DIR$/buttonFunction/store.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/common/comfunction.py" />
         <option value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
+        <option value="$PROJECT_DIR$/buttonFunction/teamImport.py" />
+        <option value="$PROJECT_DIR$/edit/fileModifyWord.py" />
+        <option value="$PROJECT_DIR$/common/comfunction.py" />
+        <option value="$PROJECT_DIR$/buttonFunction/picturePick.py" />
+        <option value="$PROJECT_DIR$/buttonFunction/share.py" />
       </list>
     </option>
   </component>
@@ -264,7 +284,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/buttonFunction/share.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -294,49 +314,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.compareFile">
-    <configuration name="边写边搜验证" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Cyprex-ui" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/search" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/search/边写边搜验证.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="comfunction" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Cyprex-ui" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/common/comfunction.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.share">
     <configuration name="compareFile" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -350,6 +328,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="share" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Cyprex-ui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/buttonFunction" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buttonFunction/share.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -400,17 +396,15 @@
     <list>
       <item itemvalue="Python.store" />
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.边写边搜验证" />
-      <item itemvalue="Python.comfunction" />
       <item itemvalue="Python.compareFile" />
+      <item itemvalue="Python.share" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.share" />
+        <item itemvalue="Python.store" />
         <item itemvalue="Python.compareFile" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.store" />
-        <item itemvalue="Python.comfunction" />
-        <item itemvalue="Python.边写边搜验证" />
       </list>
     </recent_temporary>
   </component>
@@ -428,12 +422,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_for_store_test_store_test_viewStore - 2019.07.22 at 18h 16m 59s.xml">
-      <configuration name="Unittests for store.test_store.test_viewStore" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_for_store_test_store_test_viewStore - 2019.07.22 at 18h 22m 09s.xml">
-      <configuration name="Unittests for store.test_store.test_viewStore" configurationId="tests" />
-    </history-entry>
     <history-entry file="Unittests_in_store_py - 2019.07.22 at 18h 58m 14s.xml">
       <configuration name="Unittests in store.py" configurationId="tests" />
     </history-entry>
@@ -457,6 +445,12 @@
     </history-entry>
     <history-entry file="Unittests_in_store_py - 2019.07.23 at 10h 32m 10s.xml">
       <configuration name="Unittests in store.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_share_test_singleFileShare - 2019.07.24 at 17h 28m 33s.xml">
+      <configuration name="Unittests for share.test_singleFileShare" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_for_share_test_singleFileShare - 2019.07.24 at 17h 28m 55s.xml">
+      <configuration name="Unittests for share.test_singleFileShare" configurationId="tests" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -536,13 +530,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/edit/fileModifyWord.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/edit/movefile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="350">
@@ -574,51 +561,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/share.py">
+    <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="99" column="18" selection-start-line="99" selection-start-column="18" selection-end-line="99" selection-end-column="18" />
+        <state relative-caret-position="250">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
-            <element signature="e#16#25#0" expanded="true" />
+            <element signature="e#15#24#0" expanded="true" />
+            <element signature="e#1308#6820#0" />
+            <element signature="e#6856#7148#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonFunction/teamImport.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/common/comfunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-128">
-          <caret line="109" column="4" selection-start-line="109" selection-start-column="4" selection-end-line="109" selection-end-column="4" />
+        <state relative-caret-position="172">
+          <caret line="245" column="40" selection-start-line="245" selection-start-column="36" selection-end-line="245" selection-end-column="40" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
             <element signature="e#2015#2728#0" />
             <element signature="e#2755#3652#0" />
+            <element signature="e#3800#4730#0" />
+            <element signature="e#4859#5457#0" />
+            <element signature="e#5641#6188#0" />
+            <element signature="e#7045#8593#0" />
+            <element signature="e#8662#10210#0" />
             <element signature="e#6259#6867#0" />
             <element signature="e#6948#7922#0" />
             <element signature="e#7986#8803#0" />
-            <element signature="e#11364#11549#0" />
             <element signature="e#11745#12490#0" />
-            <element signature="e#13254#13534#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonFunction/picturePick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="84" column="30" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/buttonFunction/store.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="74" column="72" selection-start-line="74" selection-start-column="62" selection-end-line="74" selection-end-column="72" />
+        <state relative-caret-position="142">
+          <caret line="52" column="24" lean-forward="true" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
+    <entry file="file://$PROJECT_DIR$/buttonFunction/share.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+        <state relative-caret-position="189">
+          <caret line="59" column="30" lean-forward="true" selection-start-line="59" selection-start-column="30" selection-end-line="59" selection-end-column="30" />
           <folding>
-            <element signature="e#15#24#0" expanded="true" />
+            <element signature="e#16#25#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/edit/fileModifyWord.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="218" column="16" selection-end-line="243" />
         </state>
       </provider>
     </entry>

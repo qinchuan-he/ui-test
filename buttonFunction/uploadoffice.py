@@ -45,13 +45,13 @@ class up_office(unittest.TestCase):
 
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
-        # 私有根目录新建文件夹
+        # 私有根目录文件夹
         el1=driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
         ActionChains(driver).move_to_element(el1).perform()
-        driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+        driver.find_element_by_xpath("//li[text()='文件夹']").click()
         folder1=int(time.time())
-        print("新建文件夹：%s " %folder1)
+        print("文件夹：%s " %folder1)
         driver.switch_to.active_element.send_keys(folder1)
         driver.switch_to.active_element.send_keys(Keys.ENTER)
         # 进入文件夹
@@ -69,7 +69,7 @@ class up_office(unittest.TestCase):
         el1=driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
         ActionChains(driver).move_to_element(el1).perform()
-        driver.find_element_by_xpath("//li[text()='新建文件夹']").click()
+        driver.find_element_by_xpath("//li[text()='文件夹']").click()
         office = "office"
 
         driver.switch_to.active_element.send_keys(office)

@@ -52,10 +52,10 @@ driver.find_element_by_id("password").send_keys(pwd)
 driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()   # 登录，好像伪类中的文字不能识别
 WebDriverWait(driver,10,0.2).until(ec.presence_of_element_located((By.XPATH,"//span[text()='艾玛同学']")))
 
-# 新建文档
+# 见远笔记(.doc)
 el1=driver.find_element_by_xpath("//span[text()='新建']")
 ActionChains(driver).move_to_element(el1).perform()
-driver.find_element_by_xpath("//li[text()='新建文档']").click()
+driver.find_element_by_xpath("//li[text()='见远笔记(.doc)']").click()
 WebDriverWait(driver,10,0.5).until(ec.presence_of_element_located((By.XPATH,"//iframe")))
 
 driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
