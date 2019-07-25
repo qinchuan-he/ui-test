@@ -36,7 +36,7 @@ resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 class up_all(unittest.TestCase):
     '''上传19种格式'''
     # 启动浏览器,并且登录
-    mode = 1
+    mode = 2
     driver = execBrower(mode)
     user().login(driver)
     
@@ -99,6 +99,9 @@ class up_all(unittest.TestCase):
         #点击
         self.driver.find_element_by_xpath("//span[text()=\'"+word1name+"\']/..").click()
         # 等待加载，准备截图
+        sleep(waitTime)
+        sleep(waitTime)
+        sleep(waitTime)
         WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date2=str(int(time.time()))
@@ -110,6 +113,9 @@ class up_all(unittest.TestCase):
 
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+word2name+"\']/..").click()
+        sleep(waitTime)
+        sleep(waitTime)
+        sleep(waitTime)
         WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date3=str(int(time.time()))
@@ -121,6 +127,9 @@ class up_all(unittest.TestCase):
 
         #预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+excel1name+"\']/..").click()
+        sleep(waitTime)
+        sleep(waitTime)
+        sleep(waitTime)
         WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date4=str(int(time.time()))
@@ -132,6 +141,9 @@ class up_all(unittest.TestCase):
 
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+excle2name+"\']/..").click()
+        sleep(waitTime)
+        sleep(waitTime)
+        sleep(waitTime)
         WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(1)
         date5=str(int(time.time()))
@@ -143,6 +155,9 @@ class up_all(unittest.TestCase):
 
         # 预览下一个
         self.driver.find_element_by_xpath("//div/span[text()=\'"+pptname+"\']/..").click()
+        sleep(waitTime)
+        sleep(waitTime)
+        sleep(waitTime)
         WebDriverWait(self.driver, 15, 0.2).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(5)
         date6=str(int(time.time()))
@@ -422,6 +437,7 @@ class up_all(unittest.TestCase):
         sleep(1)
         # 返回到格式集合目录
         self.driver.find_element_by_xpath("//a[text()=\'"+str(self.folder1)+"\']").click()
+        self.driver.quit()
 
 if __name__ == "__main__":
     testunit = unittest.TestSuite()

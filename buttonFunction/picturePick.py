@@ -82,7 +82,7 @@ class test_Pick(unittest.TestCase):
                 ActionChains(self.driver).move_to_element(el12)
                 self.driver.find_element_by_xpath("//div[contains(@class,'FileImages_imageAction')]/div")
                 name = "预览加入碎片"
-                print_name = ""
+                print_name = "预览图例加入碎片"
                 com_alert().com_addFrager()
 
 
