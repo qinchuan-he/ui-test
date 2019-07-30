@@ -45,6 +45,7 @@ class user:
     url="https://testcyprex.fir.ai/sign-in"
     # url = "https://cyprex.fir.ai/sign-in"
     # url = "http://firai-test.gjzqth.com:4680/"
+    # user = "19958585555"
     user = "19967893456"
     # user = "13248131618"
     # user="19956966528"
@@ -61,16 +62,20 @@ class user:
         driver.find_element_by_id("password").send_keys(self.pwd)
         driver.find_element_by_xpath(
         "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
+        sleep(3)
+        driver.find_element_by_xpath("//a[text()='私有']").click()
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
     #  文件夹
-    def createFolder(self,driver, folder):
+    def createFolder(self, driver, folder):
         sleep(0.5)
         createType = "create"
         el11 = com_xpath().com_listButton(driver, createType)
         ActionChains(driver).move_to_element(el11).perform()
         driver.find_element_by_xpath("//li[text()='文件夹']").click()
+        sleep(0.5)
         driver.switch_to.active_element.send_keys(folder)
+        sleep(0.5)
         driver.switch_to.active_element.send_keys(Keys.ENTER)
         sleep(0.5)
 
@@ -86,13 +91,19 @@ class comHtml:
             +"</div>" 
             +"<div id=\"fade\" class=\"black_overlay\"></div>")
 
+    #屏幕截图screenshot
+    def screen_shot(self, driver, pic_path, print_name):
+        datename = str(time.time())
+        driver.get_screenshot_as_file(pic_path + datename + ".png")
+        comHtml().print_html(print_name, pic_path, datename)
+
 
 #团队相关功能
 class team:
     def check_team(self,driver):
         '''检查团队是否存在,不存在就创建，目前没有判断5个团队的情况的'''
         sleep(0.5)
-        driver.find_element_by_xpath("//a[@class='GlobalHeader_logo__A65OH']").click()
+        driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
         sleep(1)
         driver.find_element_by_xpath("//a[text()='团队共享']").click()
         team_name = "验证的团队"
@@ -118,7 +129,7 @@ def com_share(team_name,version, print_name, pic_path, driver): # 分别是团�
     sleep(0.5)
     driver.find_element_by_xpath("//span[text()='确 定']/..").click()
     # 截图
-    datename = str(int(time.time()))
+    datename = str(time.time())
     driver.get_screenshot_as_file(pic_path + datename + ".png")
     comHtml().print_html(print_name, pic_path, datename)
     # 检查弹框是否关闭
@@ -142,7 +153,7 @@ def com_share(team_name,version, print_name, pic_path, driver): # 分别是团�
 def com_upload(version, print_name, pic_path, uploadUrl, driver):
     driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadUrl)
     sleep(2)
-    datename = str(int(time.time()))
+    datename = str(time.time())
     driver.get_screenshot_as_file(pic_path + datename + ".png")
     comHtml().print_html(print_name, pic_path, datename)
     try:
@@ -160,7 +171,7 @@ class com_alert(object):
     def com_equal(self, driver, pic_path, print_name, version):
         #  第一步，截图，并且输出到html
         sleep(2)
-        datename = str(int(time.time()))
+        datename = str(time.time())
         driver.get_screenshot_as_file(pic_path + datename + ".png")
         comHtml().print_html(print_name, pic_path, datename)
         #  第二步，判断是否有弹框
@@ -192,14 +203,14 @@ class com_alert(object):
                 folder2 = folder.split(".", 2)[0]
                 driver.find_element_by_xpath("//span[contains(text(),'"+folder2+"')]/../../..").click()
                 print_name1 = "弹窗截图"
-                datename = str(int(time.time()))
+                datename = str(time.time())
                 driver.get_screenshot_as_file(pic_path + datename + ".png")
                 comHtml().print_html(print_name1, pic_path, datename)
             sleep(0.5)
             driver.find_element_by_xpath("//span[text()='"+file+"']/../../..").click()
             sleep(0.5)
             driver.find_element_by_xpath("//span[text()='开始比对']/..").click()
-            datename = str(int(time.time()))
+            datename = str(time.time())
             driver.get_screenshot_as_file(pic_path + datename + ".png")
             comHtml().print_html(print_name, pic_path, datename)
             sleep(30)
@@ -226,7 +237,7 @@ class com_alert(object):
                 folder2 = folder.split(".", 2)[0]
                 driver.find_element_by_xpath("//span[contains(text(),'"+folder2+"')]/../../..").click()
                 print_name1 = "弹窗截图"
-                datename = str(int(time.time()))
+                datename = str(time.time())
                 driver.get_screenshot_as_file(pic_path + datename + ".png")
                 comHtml().print_html(print_name1, pic_path, datename)
             sleep(0.5)
@@ -234,7 +245,7 @@ class com_alert(object):
             sleep(0.5)
             driver.find_element_by_xpath("//span[text()='确 定']/..").click()
             sleep(1)
-            datename = str(int(time.time()))
+            datename = str(time.time())
             driver.get_screenshot_as_file(pic_path + datename + ".png")
             comHtml().print_html(print_name, pic_path, datename)
             sleep(15)
@@ -246,24 +257,23 @@ class com_alert(object):
     def com_addFrager(self, driver, name, pic_path, print_name, button):
         sleep(0.5)
         try:
-            WebDriverWait(driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[@id='rcDialogTitle0']")))
             printName = "未输入弹框截图"
-            datename2 = str(int(time.time()))
+            datename2 = str(time.time())
             driver.get_screenshot_as_file(pic_path + datename2 + ".png")
             comHtml().print_html(printName, pic_path, datename2)
+            sleep(0.5)
             driver.find_element_by_xpath("//div[contains(@class,'FileImages_modalImageAction')]/input").send_keys(name)
             driver.switch_to.active_element.send_keys(Keys.ENTER)
             driver.find_element_by_xpath("//span[text()='"+button+"']/..").click()
-            datename3 = str(int(time.time()))
+            datename3 = str(time.time())
             driver.get_screenshot_as_file(pic_path+datename3+".png")
             comHtml().print_html(print_name, pic_path, datename3)
-
-
+            sleep(1)
         except Exception as e:
             print(e)
             print("弹框未弹出")
             printName = "碎片弹框异常截图"
-            datename = str(int(time.time()))
+            datename = str(time.time())
             driver.get_screenshot_as_file(pic_path + datename + ".png")
             comHtml().print_html(printName, pic_path, datename)
         pass

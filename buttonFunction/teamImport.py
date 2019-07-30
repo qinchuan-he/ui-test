@@ -72,7 +72,7 @@ class test_teamImportFile(unittest.TestCase):
     def test_teamSubImport(self):
         '''团队子目录导入文件'''
         user().createFolder(self.driver, self.folder)
-        self.driver.find_element_by_xpath("span[text()='"+self.folder+"']/..").click()
+        self.driver.find_element_by_xpath("//span[text()='"+self.folder+"']/..").click()
         sleep(0.5)
         button = "import1"
         el11 = com_xpath().com_listButton(self.driver, button)
@@ -99,12 +99,17 @@ class test_teamImportFile(unittest.TestCase):
             picname = "异常截图"
             comHtml().print_html(picname, self.picturePath, datename21)
         sleep(1)
+
+    # 退出浏览器方法，兼容报错的情况
+    def test_quit(self):
+        '''退出浏览器'''
         self.driver.quit()
 
 if __name__ == "__main__":
     testcase = unittest.TestSuite()
     testcase.addTest(test_teamImportFile("test_teamRootImport"))
     testcase.addTest(test_teamImportFile("test_teamSubImport"))
+    testcase.addTest(test_teamImportFile("test_quit"))
 
     fp = open(resultPath+"团队导入测试结果.html", "wb")
     runner = HTMLTestRunner(stream=fp, title="测试团队导入功能", description="根目录和子目录的导入，并且预览")

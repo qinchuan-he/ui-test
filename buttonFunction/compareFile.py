@@ -48,7 +48,7 @@ class test_compare(unittest.TestCase):
     folder = str(time.time()) #  文件夹名字
 
     # 启动浏览器
-    mode =2
+    mode =1
     driver = execBrower(mode)
     user().login(driver)
     driver.implicitly_wait(30)
@@ -137,9 +137,21 @@ class test_compare(unittest.TestCase):
             comHtml().print_html(printName, self.picturePath, datename2)
             # 下载
             self.driver.find_element_by_xpath("//i[@class='anticon anticon-download']/..").click()
+            sleep(0.5)
+            datename21 = str(int(time.time()))
+            print_name = "下载报告"
+            self.driver.get_screenshot_as_file(self.picturePath+datename21+".png")
+            comHtml().print_html(print_name, self.picturePath, datename21)
             sleep(1)
 
             #  收藏
+            self.driver.find_element_by_xpath("//i[@class='anticon']/..").click()
+            sleep(0.5)
+            print_name = "比对报告收藏"
+            version = "以新版本覆盖"
+            com_alert().com_equal(self.driver, self.picturePath, print_name, version)
+            # 验证功能，再次收藏
+            sleep(1)
             self.driver.find_element_by_xpath("//i[@class='anticon']/..").click()
             sleep(0.5)
             print_name = "比对报告收藏"
@@ -152,6 +164,15 @@ class test_compare(unittest.TestCase):
             version = "以新版本覆盖"
             # com_alert().com_equal(self.driver, self.picturePath, print_name, version)
             com_share(self.team_name, version, print_name, self.picturePath, self.driver)
+            # 验证再次分享功能
+            sleep(1)
+            self.driver.find_element_by_xpath("//i[@class='anticon anticon-share-alt']/..").click()
+            sleep(0.5)
+            print_name = "比对报告分享"
+            version = "以新版本覆盖"
+            # com_alert().com_equal(self.driver, self.picturePath, print_name, version)
+            com_share(self.team_name, version, print_name, self.picturePath, self.driver)
+
             sleep(2)
             #  返回
             self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
@@ -162,9 +183,10 @@ class test_compare(unittest.TestCase):
             print("比对报告超时")
         #  退出比对结果
         self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
-        sleep(0.5)
+        sleep(8)  # 等待下载完毕
         #  退出预览
         self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
+
         self.driver.quit()
 
 
