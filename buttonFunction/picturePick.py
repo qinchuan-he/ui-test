@@ -65,7 +65,7 @@ class test_Pick(unittest.TestCase):
     table_pdf = "股票上市交易所"
 
     # 启动浏览器并登陆
-    mode = 12
+    mode = 1
     driver = execBrower(mode)
     user().login(driver)
     team_name = team().check_team(driver)
@@ -364,8 +364,8 @@ class test_Pick(unittest.TestCase):
 
 if __name__ == "__main__":
     testCase = unittest.TestSuite()
-    # testCase.addTest(test_Pick("test_textPick"))
-    # testCase.addTest(test_Pick("test_vectorPick"))
+    testCase.addTest(test_Pick("test_textPick"))
+    testCase.addTest(test_Pick("test_vectorPick"))
     testCase.addTest(test_Pick("test_pdfPick"))
 
     fp = open(resultPath+"图例提取验证.html", 'wb')
