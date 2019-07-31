@@ -62,7 +62,7 @@ driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2
 WebDriverWait(driver,10,0.2).until(ec.presence_of_element_located((By.XPATH,"//span[text()='艾玛同学']")))
 
 team_name = team().check_team(driver)
-driver.find_element_by_xpath("//a[contains(@class,'GlobalHeader_logo')]").click()
+driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
 sleep(1)
 
 # 创建文件夹，以当前时间命名

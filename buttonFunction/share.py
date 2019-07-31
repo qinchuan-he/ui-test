@@ -70,7 +70,7 @@ class test_singleFileShare(unittest.TestCase):
     def test_viewShare(self):
         '''上传并预览分享'''
 
-        self.driver.find_element_by_xpath("//a[contains(@class,'GlobalHeader_logo')]").click()
+        self.driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
         self.driver.find_element_by_xpath("//span[text()=" + str(self.folder1) + "]").click()
         # 创建文件夹
         el12 = self.driver.find_element_by_xpath("//span[text()='新建']")
