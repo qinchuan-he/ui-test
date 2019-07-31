@@ -62,7 +62,7 @@ class user:
         driver.find_element_by_id("password").send_keys(self.pwd)
         driver.find_element_by_xpath(
         "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
-        sleep(3)
+        sleep(1.5)
         driver.find_element_by_xpath("//a[text()='私有']").click()
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
@@ -277,6 +277,34 @@ class com_alert(object):
             driver.get_screenshot_as_file(pic_path + datename + ".png")
             comHtml().print_html(printName, pic_path, datename)
         pass
+
+    # 移动弹框，传入移动的文件夹层级，三级
+    def com_move(self, driver, pic_path, button, folder, folder2=None, folder3=None):
+        try:
+            WebDriverWait(driver, 1.5, 0.5).until(ec.presence_of_element_located((
+                By.XPATH, "//div[@class='ant-modal-title']")))
+            comHtml().screen_shot(driver, pic_path, print_name="移动弹窗截图")
+            sleep(0.5)
+            driver.find_element_by_xpath(
+                "//li[@class='moveToFile ant-tree-treenode-switcher-open']//span[text()='" + folder + "']").click()
+            sleep(0.5)
+            if folder2:
+                el2 = driver.find_elements_by_xpath(
+                    "//li[@class='moveToFile ant-tree-treenode-switcher-open']//span[text()='" + folder + "']")
+                el2[-1].click()
+                sleep(0.5)
+                if folder3:
+                    el3 = driver.find_elements_by_xpath(
+                        "//li[@class='moveToFile ant-tree-treenode-switcher-open']//span[text()='" + folder + "']")
+                    el3[-1].click()
+                    sleep(0.5)
+            driver.find_element_by_xpath("//span[text()='"+button+"']/..").click()
+            comHtml().screen_shot(driver, pic_path, print_name="移动确定截图")
+            sleep(1)
+        except Exception as e:
+            print(e)
+            comHtml().screen_shot(driver, pic_path, print_name="移动弹窗异常")
+            sleep(1)
 
 
 

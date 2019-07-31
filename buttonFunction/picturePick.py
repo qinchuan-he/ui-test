@@ -79,7 +79,8 @@ class test_Pick(unittest.TestCase):
         com_alert().com_equal(self.driver, self.picturePath, print_name, version)
         sleep(20)
         try:
-            WebDriverWait(self.driver, 20, 0.5).until(ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.wordTextName+"']/..")))
+            WebDriverWait(self.driver, 20, 0.5).until(
+                ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.wordTextName+"']/..")))
             self.driver.find_element_by_xpath("//span[text()='"+self.wordTextName+"']/..").click()
             try:
                 WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
@@ -308,7 +309,7 @@ class test_Pick(unittest.TestCase):
                 ActionChains(self.driver).double_click(el33).perform()
                 el33.send_keys(self.page_redirect)
                 self.driver.switch_to.active_element.send_keys(Keys.ENTER)
-                comHtml().screen_shot(self.driver, self.picturePath, print_name="跳到第四页")
+                comHtml().screen_shot(self.driver, self.picturePath, print_name="跳到第"+self.page_redirect+"页")
                 sleep(0.5)
                 el33.click()
                 el33.clear()
@@ -356,6 +357,7 @@ class test_Pick(unittest.TestCase):
         except Exception as e:
             print(e)
             comHtml().screen_shot(self.driver, self.picturePath, print_name="上传异常")
+        self.driver.quit()
 
 
 
