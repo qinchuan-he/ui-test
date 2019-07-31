@@ -71,6 +71,7 @@ class test_singleFileShare(unittest.TestCase):
         '''上传并预览分享'''
 
         self.driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
+        self.driver.find_element_by_xpath("//a[text()='私有']").click()
         self.driver.find_element_by_xpath("//span[text()=" + str(self.folder1) + "]").click()
         # 创建文件夹
         el12 = self.driver.find_element_by_xpath("//span[text()='新建']")

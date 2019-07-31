@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a2aebbb-1706-4124-b7fc-2c98f7978b4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/buttonFunction/compareFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/compareFile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/buttonFunction/share.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/share.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edit/fileModifyWord.py" beforeDir="false" afterPath="$PROJECT_DIR$/edit/fileModifyWord.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,14 +66,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/comfunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="107" column="66" lean-forward="true" selection-start-line="107" selection-start-column="66" selection-end-line="107" selection-end-column="66" />
+            <state relative-caret-position="448">
+              <caret line="48" column="23" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="23" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
-                <element signature="e#1091#2562#0" />
                 <element signature="e#4735#5660#0" />
                 <element signature="e#5789#6382#0" />
                 <element signature="e#6566#7353#0" />
@@ -114,13 +111,25 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/buttonFunction/share.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="53">
-              <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="32" />
+            <state relative-caret-position="228">
+              <caret line="65" column="10" lean-forward="true" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
               <folding>
                 <element signature="e#16#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/buttonFunction/store.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="69" column="89" lean-forward="true" selection-start-line="69" selection-start-column="89" selection-end-line="69" selection-end-column="89" />
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -165,8 +174,8 @@
       <find>screen_shot</find>
       <find>upload_picture</find>
       <find>el11</find>
-      <find>GlobalHeader_logo</find>
       <find>//a[contains(@class,'GlobalHeader_logo')]</find>
+      <find>GlobalHeader_logo</find>
     </findStrings>
     <replaceStrings>
       <replace>见远笔记(.doc)</replace>
@@ -177,8 +186,8 @@
       <replace>= str(time.time())</replace>
       <replace>time.time()</replace>
       <replace>vector</replace>
-      <replace />
       <replace>//div[contains(@class,'GlobalHeader_logo')]</replace>
+      <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -200,7 +209,6 @@
         <option value="$PROJECT_DIR$/search/边写边搜验证.py" />
         <option value="$PROJECT_DIR$/buttonFunction/store.py" />
         <option value="$PROJECT_DIR$/edit/fileModifyWord.py" />
-        <option value="$PROJECT_DIR$/buttonFunction/share.py" />
         <option value="$PROJECT_DIR$/buttonFunction/upload18File.py" />
         <option value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
         <option value="$PROJECT_DIR$/buttonFunction/teamImport.py" />
@@ -209,6 +217,7 @@
         <option value="$PROJECT_DIR$/buttonFunction/picturePick.py" />
         <option value="$PROJECT_DIR$/common/comfunction.py" />
         <option value="$PROJECT_DIR$/buttonFunction/moveFile.py" />
+        <option value="$PROJECT_DIR$/buttonFunction/share.py" />
       </list>
     </option>
   </component>
@@ -624,12 +633,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.2973274" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.2973274" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -703,16 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/store.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -750,16 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/share.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="53">
-          <caret line="58" column="32" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="32" />
-          <folding>
-            <element signature="e#16#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/buttonFunction/moveFile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -789,11 +778,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/common/comfunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="107" column="66" lean-forward="true" selection-start-line="107" selection-start-column="66" selection-end-line="107" selection-end-column="66" />
+        <state relative-caret-position="448">
+          <caret line="48" column="23" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="23" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
-            <element signature="e#1091#2562#0" />
             <element signature="e#4735#5660#0" />
             <element signature="e#5789#6382#0" />
             <element signature="e#6566#7353#0" />
@@ -803,6 +791,26 @@
             <element signature="e#11607#12215#0" />
             <element signature="e#12296#13270#0" />
             <element signature="e#13334#14151#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonFunction/store.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="69" column="89" lean-forward="true" selection-start-line="69" selection-start-column="89" selection-end-line="69" selection-end-column="89" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonFunction/share.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="65" column="10" lean-forward="true" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="10" />
+          <folding>
+            <element signature="e#16#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
