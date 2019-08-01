@@ -55,7 +55,8 @@ class test_compare(unittest.TestCase):
     # 检查团队
     team_name = team().check_team(driver)
     driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
-
+    sleep(0.5)
+    driver.find_element_by_xpath("//a[text()='私有']").click()
     #  文件夹，存放比对文件
     user().createFolder(driver, folder)
     # 进入文件夹

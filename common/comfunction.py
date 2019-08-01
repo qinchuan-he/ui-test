@@ -37,7 +37,7 @@ def execBrower(mode):
     else:
         driver = webdriver.Chrome(path)
     driver.set_window_size(1400, 900)  #设置窗口大小
-    driver.implicitly_wait(20)
+    driver.implicitly_wait(3)
     return driver
 
 # 登录相关
@@ -46,7 +46,7 @@ class user:
     # url = "https://cyprex.fir.ai/sign-in"
     # url = "http://firai-test.gjzqth.com:4680/"
     # user = "19958585555"
-    user = "19967893456"
+    user = "19925253635"
     # user = "13248131618"
     # user="19956966528"
     pwd = "Test123456"
@@ -62,11 +62,11 @@ class user:
         driver.find_element_by_id("password").send_keys(self.pwd)
         driver.find_element_by_xpath(
         "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
-        sleep(1.5)
-        driver.find_element_by_xpath("//a[text()='私有']").click()
+        # sleep(1.5)
+        # driver.find_element_by_xpath("//a[text()='私有']").click()
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
-    #  文件夹
+    #  创建文件夹
     def createFolder(self, driver, folder):
         sleep(0.5)
         createType = "create"
@@ -79,6 +79,11 @@ class user:
         driver.switch_to.active_element.send_keys(Keys.ENTER)
         sleep(0.5)
 
+    # 返回私有根目录
+    def root_private(self, driver):
+        sleep(0.5)
+        driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
+        sleep(0.5)
 
 
 # 生成html相关的类
@@ -164,6 +169,21 @@ def com_upload(version, print_name, pic_path, uploadUrl, driver):
         print(e)
         print("--没有冲突--")
     sleep(30)
+
+def com_upload_min(version, print_name, pic_path, uploadUrl, driver):
+    driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadUrl)
+    sleep(1)
+    datename = str(time.time())
+    driver.get_screenshot_as_file(pic_path + datename + ".png")
+    comHtml().print_html(print_name, pic_path, datename)
+    try:
+        # self.driver.find_element_by_xpath("//div[text()='版本冲突']")
+        WebDriverWait(driver, 1.5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
+        driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
+    except Exception as e:
+        print(e)
+        print("--没有冲突--")
+    sleep(5)
 
 #  公共的弹窗类，所有弹窗相关的封装都放这里
 class com_alert(object):
@@ -280,6 +300,7 @@ class com_alert(object):
 
     # 移动弹框，传入移动的文件夹层级，三级
     def com_move(self, driver, pic_path, button, folder, folder2=None, folder3=None):
+        sleep(0.5)
         try:
             WebDriverWait(driver, 1.5, 0.5).until(ec.presence_of_element_located((
                 By.XPATH, "//div[@class='ant-modal-title']")))
@@ -441,14 +462,15 @@ class com_xpath(object):
     def com_listButton(self, driver, button):
         el21 = ""
         try:
-            WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'FileListToolbar_toolButton')]")))
+            WebDriverWait(driver, 2, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'FileListToolbar_toolButton')]")))
             el2 = driver.find_elements_by_xpath("//div[contains(@class,'FileListToolbar_toolButton')]")
+            el3 = driver.find_elements_by_xpath("//button[contains(@class,'ant-btn FileListToolbar_toolButton')]")
             if button == 'create':
-                el21 = el2[0]
+                el21 = el3[0]
             elif button == 'upload':
-                el21 = el2[1]
+                el21 = el3[1]
             elif button == 'import1':
-                el21 = el2[2]
+                el21 = el3[2]
             elif button == 'share':
                 el21 = el2[-5]
             elif button == 'store':

@@ -212,6 +212,7 @@ class test_singleFileShare(unittest.TestCase):
         com_share(team_name, version, print_name, pic_path, self.driver)
         # 执行完成之后关闭浏览器
         sleep(2)
+        self.driver.quit()
 
 
 if __name__ == "__main__":

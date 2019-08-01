@@ -50,6 +50,7 @@ driver.find_element_by_xpath("//div[text()='账号登录']").click()
 driver.find_element_by_id("username_no").send_keys(user)
 driver.find_element_by_id("password").send_keys(pwd)
 driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()   # 登录，好像伪类中的文字不能识别
+driver.find_element_by_xpath("//a[text()='私有']").click()
 WebDriverWait(driver,10,0.2).until(ec.presence_of_element_located((By.XPATH,"//span[text()='艾玛同学']")))
 
 # 见远笔记(.doc)
@@ -194,7 +195,7 @@ sleep(waitTime)
 driver.get_screenshot_as_file(picturePath+"智库列表截图"+str(int(time.time()))+".png")
 strcountlist4=driver.find_elements_by_xpath("//div[contains(@class,'SearchFileContentPanel_searchToolbar__')]/span[1]")
 count4=int(re.findall("[0-9]+",strcountlist4[1].text)[0])
-print("智库查询结果数： %d" %count3)
+print("智库查询结果数： %d" %count4)
 show=1
 if count3>20:
     show=21

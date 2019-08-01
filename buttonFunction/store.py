@@ -174,6 +174,7 @@ class test_store(unittest.TestCase):
         except Exception as e:
             print(e)
             print("未从文件夹内搜索中打开编辑")
+        self.driver.quit()
 
 
 
