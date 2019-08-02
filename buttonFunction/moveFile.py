@@ -50,7 +50,7 @@ class test_move(unittest.TestCase):
     upload_name = "表格图片"
     upUrl = upload_url + upload_name + ".doc"
 
-    mode = 2
+    mode = 1
     driver = execBrower(mode)
     user().login(driver)
     def test_moveFolder_private(self):
@@ -70,9 +70,11 @@ class test_move(unittest.TestCase):
         # 验证移动弹框取消功能
         type = "取 消"
         type1 = "私有"
-        com_alert().com_move(self.driver, self.picturePath, type, folder1)
-        el12.click()
         type3 = "确 定"
+        com_alert().com_move(self.driver, self.picturePath, type3, folder1) # 验证移动选择自己的情况
+        sleep(0.5)
+        self.driver.find_element_by_xpath("//span[text()='"+type+"']/..").click()
+        el12.click()
         com_alert().com_move(self.driver, self.picturePath, type3, type1)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="子目录到根目录移动")
         self.driver.find_element_by_xpath("//a[text()='私有']").click()
@@ -113,10 +115,12 @@ class test_move(unittest.TestCase):
         el23 = com_xpath().com_listButton(self.driver, button)
         el23.click()
         button = "取 消"
-        com_alert().com_move(self.driver, self.picturePath, button, folder=folder2)
+        button2 = "确 定"
+        com_alert().com_move(self.driver, self.picturePath, button2, folder=folder2) # 移动选择自己
+        sleep(0.5)
+        self.driver.find_element_by_xpath("//span[text()='"+button+"']/..").click()
         el23.click()
-        button = "确 定"
-        com_alert().com_move(self.driver, self.picturePath, button, folder=team_name)
+        com_alert().com_move(self.driver, self.picturePath, button2, folder=team_name)
         sleep(0.5)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="子目录移动到根目录")
         self.driver.back()

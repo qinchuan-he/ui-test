@@ -50,7 +50,7 @@ driver.find_element_by_xpath("//div[text()='账号登录']").click()
 driver.find_element_by_id("username_no").send_keys(user)
 driver.find_element_by_id("password").send_keys(pwd)
 driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()   # 登录，好像伪类中的文字不能识别
-driver.find_element_by_xpath("//a[text()='私有']").click()
+# driver.find_element_by_xpath("//a[text()='私有']").click()
 WebDriverWait(driver,10,0.2).until(ec.presence_of_element_located((By.XPATH,"//span[text()='艾玛同学']")))
 
 # 见远笔记(.doc)
