@@ -32,27 +32,21 @@ from common.comfunction import com_upload # 公共上传函数
 from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
+from  buttonFunction import store
+from buttonFunction.moveFile import test_move
 
-mode = 2
-driver = execBrower(mode)
-user().login(driver)
-driver.find_element_by_xpath("//img[@type='folder']").click()
-upload_name = "表格图片"
-for i in range(15):
-    try:
-        print(i)
-        el44 = driver.find_element_by_xpath("//span[text()='" + upload_name + "']")
-        el45 = driver.find_element_by_xpath(
-            "//span[text()='" + upload_name + "']/../../../../../../../../..//input[@class='ant-checkbox-input']")
-        ActionChains(driver).move_to_element(el44).perform()
-        ActionChains(driver).move_to_element(el44).perform()
-        el45.click()
-        # el43.click()
-        break
-    except Exception as e:
-        ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
+resultPath = "C:\\work\\1测试\\10自动化\\报告\\"
+case = unittest.TestSuite()
+case.addTest(test_move("test_moveFolder_private"))
+case.addTest(test_move("test_moveFolder_team"))
+case.addTest(test_move("test_moveFile_team"))
+case.addTest(test_move("test_moveFile_private"))
+case.addTest(test_move("test_quit"))
 
-
+fp = open(resultPath + "移动功能验证.html", "wb")
+runner = HTMLTestRunner(stream=fp, title="移动验证报告", description="验证文件夹、文件移动和移动重名")
+runner.run(case)
+fp.close()
 
 
 
