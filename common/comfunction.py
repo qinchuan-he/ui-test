@@ -124,6 +124,7 @@ class team:
             sleep(1)
             print(e)
         driver.find_element_by_xpath("//span[text()='验证的团队']").click()
+        sleep(0.5)
         return team_name
 
 # 分享，公共方法,这个方法不带批注关联权限--->>>点击了分享按钮之后调用这个方法

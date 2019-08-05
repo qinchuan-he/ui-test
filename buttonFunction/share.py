@@ -86,9 +86,13 @@ class test_singleFileShare(unittest.TestCase):
         self.driver.find_element_by_xpath("//span[text()=" + "'" + self.folder12 + "'" + "]").click()
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(self.qpath + self.pdfname + ".PDF")
         sleep(30)
-        self.driver.refresh()  # 刷新是为了防止，上传之后没有刷新出来结果
-        sleep(2)
-        self.driver.find_element_by_xpath("//span[text()='" + self.pdfname + "']/..").click()  # 打开文件预览
+        # self.driver.refresh()  # 刷新是为了防止，上传之后没有刷新出来结果。# 不要了，如果没有刷新出来就是有问题
+        # sleep(2)
+        try:
+            self.driver.find_element_by_xpath("//span[text()='" + self.pdfname + "']/..").click()  # 打开文件预览
+        except Exception as e:
+            print(e)
+            comHtml().screen_shot(self.driver, self.picturePath, print_name="上传未显示异常截图")
         try:
             WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
             self.driver.find_element_by_xpath("//i[@aria-label='图标: share-alt']").click()
