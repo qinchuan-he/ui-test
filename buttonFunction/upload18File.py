@@ -29,6 +29,7 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 from common.comfunction import execBrower # 启动浏览器函数
 from common.comfunction import user  # 用户登录类
 from common.comfunction import comHtml # 生成html报告类
+from common.comfunction import com_alert # 弹窗类公共方法
 
 # 上传19种格式并且预览，每个截图
 
@@ -87,9 +88,12 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excel1name+".xls")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+excle2name+".xlsx")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(fpath+pptname+".ppt")
-        sleep(36)
-        self.driver.refresh() #刷新下页面
-        sleep(5)
+        for i in range(2):
+            sleep(3)
+            com_alert().com_equal(self.driver, version="保留两者")
+        sleep(20)
+        # self.driver.refresh() #刷新下页面,不刷新
+        # sleep(5)
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
@@ -206,9 +210,12 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+pngname+".png")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(tpath+bmpname+".bmp")
 
-        sleep(15)
-        self.driver.refresh() #刷新下页面
-        sleep(3)
+        for i in range(2):
+            sleep(3)
+            com_alert().com_equal(self.driver, version="保留两者")
+        sleep(20)
+        # self.driver.refresh() #刷新下页面 ，不要刷新
+        # sleep(3)
         # 截图并输出
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
@@ -290,10 +297,13 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+amrname+".amr")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+mp3name+".mp3")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(ypath+m4aname+".m4a")
-        sleep(30)
-        self.driver.refresh() #刷新下页面
+        for i in range(2):
+            sleep(3)
+            com_alert().com_equal(self.driver, version="保留两者")
+        sleep(20)
+        # self.driver.refresh() #刷新下页面
         # 截图并输出
-        sleep(3)
+        # sleep(3)
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
         comHtml().print_html("音频文件列表", picturePath, date1)  # 输出到html报告
@@ -373,10 +383,13 @@ class up_all(unittest.TestCase):
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+hmtlname+".html")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+rarname+".rar")
         self.driver.find_element_by_xpath("//input[@type='file']").send_keys(qpath+txtname+".txt")
-        sleep(30)
-        self.driver.refresh() #刷新下页面
-        # 截图并输出
-        sleep(4)
+        for i in range(2):
+            sleep(3)
+            com_alert().com_equal(self.driver, version="保留两者")
+        sleep(23)
+        # self.driver.refresh() #刷新下页面
+        # # 截图并输出
+        # sleep(4)
         date1=str(int(time.time()))
         self.driver.get_screenshot_as_file(picturePath+date1+".png")
         comHtml().print_html("其他类型列表", picturePath, date1)  # 输出到html报告

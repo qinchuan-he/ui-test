@@ -186,25 +186,28 @@ def com_upload_min(version, print_name, pic_path, uploadUrl, driver):
         print("--没有冲突--")
     sleep(5)
 
-#  公共的弹窗类，所有弹窗相关的封装都放这里
+#  公共的弹窗类，所有弹窗相关的封装都放这里，20190809优化，控制传参
 class com_alert(object):
     #  点击按钮之后的冲突弹框公共方法，传入截图存放路径，html输出名字，冲突处理方法。包含截图输出搭配html
-    def com_equal(self, driver, pic_path, print_name, version):
+    def com_equal(self, driver, pic_path=None, print_name=None, version=None):
         #  第一步，截图，并且输出到html
         sleep(2)
-        datename = str(time.time())
-        driver.get_screenshot_as_file(pic_path + datename + ".png")
-        comHtml().print_html(print_name, pic_path, datename)
+        if pic_path and print_name:
+            datename = str(time.time())
+            driver.get_screenshot_as_file(pic_path + datename + ".png")
+            comHtml().print_html(print_name, pic_path, datename)
         #  第二步，判断是否有弹框
         try:
             WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
             # driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
             # 2019-07-23,增加兼容，点击一次出现两次弹框文案的情况
-            el1 = driver.find_elements_by_xpath("//span[text()='" + version + "']/..")
-            if len(el1) > 1:
-                el1[-1].click()
-            else:
-                el1[0].click()
+            if version:
+                el1 = driver.find_elements_by_xpath("//span[text()='" + version + "']/..")
+                if len(el1) > 1:
+                    el1[-1].click()
+                else:
+                    el1[0].click()
+
         except Exception as e:
             print(e)
             print("--没有冲突--")
@@ -526,7 +529,7 @@ class com_xpath(object):
             WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         except Exception as e:
             print(e)
-            print("没有进入预览或者加载超时")
+            print("没有进入预览或者加载超时或者解析失败")
 
 
 

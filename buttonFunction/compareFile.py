@@ -48,7 +48,7 @@ class test_compare(unittest.TestCase):
     folder = str(time.time()) #  文件夹名字
 
     # 启动浏览器
-    mode =1
+    mode =2
     driver = execBrower(mode)
     user().login(driver)
     driver.implicitly_wait(30)
@@ -76,42 +76,53 @@ class test_compare(unittest.TestCase):
     # driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadPdfUrl3)
     # driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadPdfUrl4)
     #  上传等待时间
-    sleep(30)
+    for i in range(2):
+        sleep(3)
+        com_alert().com_equal(driver, version="保留两者")
+        try:
+            pass
+        except Exception as e:
+            print()
+    sleep(14)
+
 
     #  比对纯文字型文件
     def test_text(self):
         '''纯文字的word和PDF比对'''
-        com_xpath().com_preview(self.driver, self.pdfname1)
-        buttont = "compare"
-        el21 = com_xpath().com_previewButton(self.driver, buttont)
-        el21.click()
-        printName = "开始比对"
-        com_alert().com_alertCompare(self.driver, self.folder, self.wordname1, self.picturePath, printName)
-        datename = str(int(time.time()))
-        self.driver.get_screenshot_as_file(self.picturePath+datename+".png")
-        printName = "比对结果"
-        comHtml().print_html(printName, self.picturePath, datename)
-        #  生成报告
-        self.driver.find_element_by_xpath("//span[text()='生成报告']/..").click()
         try:
-            WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'ComparisonReportHeader_comHeaderTitle')]")))
-            # 比对报告截图
-            datename2 = str(int(time.time()))
-            printName = "比对报告"
-            self.driver.get_screenshot_as_file(self.picturePath+datename2+".png")
-            comHtml().print_html(printName, self.picturePath, datename2)
-            #  返回
+            com_xpath().com_preview(self.driver, self.pdfname1)
+            buttont = "compare"
+            el21 = com_xpath().com_previewButton(self.driver, buttont)
+            el21.click()
+            printName = "开始比对"
+            com_alert().com_alertCompare(self.driver, self.folder, self.wordname1, self.picturePath, printName)
+            datename = str(int(time.time()))
+            self.driver.get_screenshot_as_file(self.picturePath+datename+".png")
+            printName = "比对结果"
+            comHtml().print_html(printName, self.picturePath, datename)
+            #  生成报告
+            self.driver.find_element_by_xpath("//span[text()='生成报告']/..").click()
+            try:
+                WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'ComparisonReportHeader_comHeaderTitle')]")))
+                # 比对报告截图
+                datename2 = str(int(time.time()))
+                printName = "比对报告"
+                self.driver.get_screenshot_as_file(self.picturePath+datename2+".png")
+                comHtml().print_html(printName, self.picturePath, datename2)
+                #  返回
+                self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
+                sleep(0.5)
+
+            except Exception as e:
+                print(e)
+                print("比对报告超时")
+            #  退出比对结果
             self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
             sleep(0.5)
-
+            #  退出预览
+            self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
         except Exception as e:
-            print(e)
-            print("比对报告超时")
-        #  退出比对结果
-        self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
-        sleep(0.5)
-        #  退出预览
-        self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
+            comHtml().screen_shot(self.driver, self.picturePath, print_name="上传出现异常")
 
     #  含有ocr的比对报告
     def test_ocr(self):
@@ -188,7 +199,9 @@ class test_compare(unittest.TestCase):
         #  退出预览
         self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
 
-        self.driver.quit()
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
 
 
 
