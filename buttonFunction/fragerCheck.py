@@ -107,6 +107,11 @@ class test_frager(unittest.TestCase):
         sleep(0.5)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="团队列表截图")
         sleep(1)
+        searchKey = "doc"
+        com_xpath().com_internalSearch(self.driver, searchKey)
+        sleep(15)
+        comHtml().screen_shot(self.driver, self.picturePath, print_name="文件夹内搜索截图")
+        sleep(0.5)
         self.driver.quit()
 
 

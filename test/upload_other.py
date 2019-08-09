@@ -40,6 +40,7 @@ class up_other(unittest.TestCase):
     user().login(driver)
     waitTime = 5
 
+
             # 私有根目录文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")
     sleep(waitTime)

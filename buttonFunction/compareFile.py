@@ -91,8 +91,8 @@ class test_compare(unittest.TestCase):
         self.driver.get_screenshot_as_file(self.picturePath+datename+".png")
         printName = "比对结果"
         comHtml().print_html(printName, self.picturePath, datename)
-        #  查看报告
-        self.driver.find_element_by_xpath("//span[text()='查看报告']/..").click()
+        #  生成报告
+        self.driver.find_element_by_xpath("//span[text()='生成报告']/..").click()
         try:
             WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'ComparisonReportHeader_comHeaderTitle')]")))
             # 比对报告截图
@@ -126,8 +126,8 @@ class test_compare(unittest.TestCase):
         self.driver.get_screenshot_as_file(self.picturePath + datename + ".png")
         printName = "比对结果"
         comHtml().print_html(printName, self.picturePath, datename)
-        #  查看报告
-        self.driver.find_element_by_xpath("//span[text()='查看报告']/..").click()
+        #  生成报告
+        self.driver.find_element_by_xpath("//span[text()='生成报告']/..").click()
         try:
             WebDriverWait(self.driver, 15, 0.5).until(ec.presence_of_element_located(
                 (By.XPATH, "//div[contains(@class,'ComparisonReportHeader_comHeaderTitle')]")))
