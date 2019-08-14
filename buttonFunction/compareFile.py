@@ -48,7 +48,7 @@ class test_compare(unittest.TestCase):
     folder = str(time.time()) #  文件夹名字
 
     # 启动浏览器
-    mode =2
+    mode =1
     driver = execBrower(mode)
     user().login(driver)
     driver.implicitly_wait(30)

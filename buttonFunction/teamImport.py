@@ -50,7 +50,7 @@ class test_teamImportFile(unittest.TestCase):
     folder = str(time.time())
 
     # 启动浏览器,并且登录
-    mode  = 2
+    mode  = 1
     driver = execBrower(mode)
     user().login(driver)
     user().createFolder(driver, folder)
