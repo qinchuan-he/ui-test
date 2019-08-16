@@ -116,7 +116,7 @@ class team:
             WebDriverWait(driver,2,0.5).until(ec.presence_of_element_located((By.XPATH,"//span[text()='验证的团队']")))
         except Exception as e:
             print("团队不存在准备新建")
-            driver.find_element_by_xpath("//span[text()='创建新团队并命名团队文件夹']/..").click()
+            driver.find_element_by_xpath("//span[text()='创建新团队']/..").click()
             driver.find_element_by_xpath("//input[@placeholder='团队及团队文件夹名称']").send_keys(team_name)
             # driver.find_element_by_xpath("//span[text()='确 定']/..").click()
             sleep(1)
@@ -207,7 +207,6 @@ class com_alert(object):
                     el1[-1].click()
                 else:
                     el1[0].click()
-
         except Exception as e:
             print(e)
             print("--没有冲突--")

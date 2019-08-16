@@ -79,10 +79,6 @@ class test_compare(unittest.TestCase):
     for i in range(2):
         sleep(3)
         com_alert().com_equal(driver, version="保留两者")
-        try:
-            pass
-        except Exception as e:
-            print()
     sleep(14)
 
 

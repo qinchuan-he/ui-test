@@ -8,9 +8,9 @@ from selenium.webdriver.chrome.options import Options as CH_Options
 from selenium.webdriver.firefox.options import Options as FF_Options
 
 # 项目目录配置
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-REPORT_DIR = BASE_DIR + "/test_report/"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+# BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+REPORT_DIR = BASE_DIR + "/test_report1/"
 # REPORT_DIR = "C:\\work\\1测试\\1需求\\cyprex1.13\\ui\\"
 ############################
 

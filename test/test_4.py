@@ -25,6 +25,7 @@ def init_env(now_time):
     """
     os.mkdir(REPORT_DIR + now_time)
     os.mkdir(REPORT_DIR + now_time + "/image")
+    print("----------------")
 
 
 @click.command()
