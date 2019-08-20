@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a2aebbb-1706-4124-b7fc-2c98f7978b4d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/page/baidu_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/page/login_page.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seting/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_dir/1test_baidu.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_dir/test_Alogin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttonFunction/compareFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/compareFile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/comfunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/comfunction.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/test_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_3.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_4.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/log.xml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/comfunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="48" column="23" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="23" />
+            <state relative-caret-position="225">
+              <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="78" selection-end-column="61" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -28,56 +33,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/buttonFunction/moveFile.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="337">
-              <caret line="169" column="20" lean-forward="true" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
-              <folding>
-                <element signature="e#15#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/buttonFunction/store.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1600">
-              <caret line="79" column="37" selection-start-line="79" selection-start-column="28" selection-end-line="79" selection-end-column="37" />
-              <folding>
-                <element signature="e#15#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="625">
-              <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-              <folding>
-                <element signature="e#15#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/test_4.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/buttonFunction/teamImport.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+            <state relative-caret-position="125">
+              <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -88,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="81" />
+            <state relative-caret-position="3650">
+              <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -100,8 +60,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/picturePick.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+            <state relative-caret-position="100">
+              <caret line="4" column="64" lean-forward="true" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/conftest.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="117" column="14" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test_dir/test_Alogin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="60" column="96" selection-start-line="60" selection-start-column="96" selection-end-line="60" selection-end-column="96" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -110,21 +91,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/buttonFunction/upload18File.py">
+        <entry file="file://$PROJECT_DIR$/test_dir/1test_baidu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-895">
-              <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conftest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+            <state relative-caret-position="175">
+              <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
               <folding>
-                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -141,36 +113,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>el14</find>
-      <find>datename</find>
-      <find>ocr</find>
-      <find>screen_shot</find>
-      <find>upload_picture</find>
-      <find>el11</find>
-      <find>//a[contains(@class,'GlobalHeader_logo')]</find>
-      <find>FileListToolbar_toolButton</find>
-      <find>GlobalHeader_logo</find>
-      <find>upload_name</find>
-      <find>send</find>
-      <find>com_upload</find>
-      <find>self.upload_name</find>
-      <find>except</find>
-      <find>driver.find_element_by_xpath(&quot;//a[text()='私有']&quot;).click()</find>
-      <find>私有</find>
-      <find>active_element</find>
-      <find>send_Keys</find>
-      <find>send_keys</find>
-      <find>ActionChains</find>
-      <find>\\</find>
       <find>列表</find>
       <find>查看报告</find>
       <find>生成报告</find>
       <find>版本冲突</find>
-      <find>cases_path</find>
       <find>max_fail</find>
       <find>收藏</find>
       <find>REPORT_DIR</find>
       <find>比对报告超时</find>
+      <find>创建新团队并命名团队文件夹</find>
+      <find>cases_path</find>
+      <find>rerun</find>
+      <find>driver_type</find>
+      <find>xfail</find>
+      <find>new_report_dir</find>
+      <find>capture_screenshot</find>
+      <find>browser</find>
+      <find>description</find>
+      <find>session</find>
+      <find>@pytest.fixture</find>
+      <find>base_url</find>
+      <find>url</find>
+      <find>hookwrapper</find>
+      <find>hook</find>
+      <find>optionalhook</find>
+      <find>description_html</find>
+      <find>获取的目录</find>
+      <find>new_report_time</find>
+      <find>images_path</find>
+      <find>driver</find>
+      <find>fixture</find>
     </findStrings>
     <replaceStrings>
       <replace>见远笔记(.doc)</replace>
@@ -188,6 +160,7 @@
       <replace>/</replace>
       <replace>生成报告</replace>
       <replace />
+      <replace>创建新团队</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -224,19 +197,26 @@
         <option value="$PROJECT_DIR$/test/conftest.py" />
         <option value="$PROJECT_DIR$/test_back/__init__.py" />
         <option value="$PROJECT_DIR$/test_dir/__init__.py" />
-        <option value="$PROJECT_DIR$/test/test_3.py" />
         <option value="$PROJECT_DIR$/buttonFunction/upload18File.py" />
         <option value="$PROJECT_DIR$/buttonFunction/teamImport.py" />
-        <option value="$PROJECT_DIR$/conftest.py" />
-        <option value="$PROJECT_DIR$/test/test_4.py" />
         <option value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
         <option value="$PROJECT_DIR$/common/comfunction.py" />
+        <option value="$PROJECT_DIR$/test/test_4.py" />
+        <option value="$PROJECT_DIR$/test/test_3.py" />
+        <option value="$PROJECT_DIR$/run_tests.py" />
+        <option value="$PROJECT_DIR$/test_dir/test_login.py" />
+        <option value="$PROJECT_DIR$/page/baidu_page.py" />
+        <option value="$PROJECT_DIR$/test_dir/test_baidu.py" />
+        <option value="$PROJECT_DIR$/page/login_page.py" />
+        <option value="$PROJECT_DIR$/seting/conftest.py" />
+        <option value="$PROJECT_DIR$/conftest.py" />
+        <option value="$PROJECT_DIR$/test_dir/test_Alogin.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="359" />
-    <option name="y" value="171" />
+    <option name="x" value="420" />
+    <option name="y" value="18" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -245,28 +225,12 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
               <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="buttonFunction" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="test_back" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
@@ -278,15 +242,47 @@
               <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
               <item name="test_report" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_08_20_20_21_24" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_08_20_20_24_22" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_08_20_20_25_11" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_08_20_20_26_45" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_08_20_20_26_45" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/test/testlogin.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="tasks.servers" />
   </component>
   <component name="PyConsoleOptionsProvider">
@@ -298,13 +294,16 @@
     </option>
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\work\8python\Cyprex-ui\test" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\work\8python\Cyprex-ui" />
       <recent name="C:\work\8python\Cyprex-ui\buttonFunction" />
       <recent name="C:\work\8python\Cyprex-ui\edit" />
       <recent name="C:\work\8python\Cyprex-ui\search" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\work\8python\Cyprex-ui" />
+      <recent name="C:\work\8python\Cyprex-ui\seting" />
+      <recent name="C:\work\8python\Cyprex-ui\test" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -319,7 +318,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_4">
+  <component name="RunManager" selected="Python.run_tests">
     <configuration name="智能搜索检查" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -362,7 +361,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="comfunction" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="conftest (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -370,32 +369,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/common" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/common/comfunction.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="compareFile" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Cyprex-ui" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/buttonFunction" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
+      <option name="SCRIPT_NAME" value="C:\work\8python\Cyprex-ui\conftest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -412,11 +390,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/seting" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/conftest.py" />
+      <option name="SCRIPT_NAME" value="C:\work\8python\Cyprex-ui\conftest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -488,7 +466,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="runnertest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="run_tests" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -496,11 +474,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/runnertest.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/run_tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -593,6 +571,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="test_4 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Cyprex-ui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\work\8python\Cyprex-ui\run_tests.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="test_4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -605,7 +604,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test_4.py" />
+      <option name="SCRIPT_NAME" value="C:\work\8python\Cyprex-ui\run_tests.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -636,28 +635,28 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.test3" />
-      <item itemvalue="Python.test_3" />
-      <item itemvalue="Python.testlogin" />
       <item itemvalue="Python.智能搜索检查" />
       <item itemvalue="Python.fragerCheck" />
       <item itemvalue="Python.moveFile" />
       <item itemvalue="Python.picturePick" />
       <item itemvalue="Python.teamImport" />
+      <item itemvalue="Python.test3" />
       <item itemvalue="Python.test" />
-      <item itemvalue="Python.runnertest" />
-      <item itemvalue="Python.comfunction" />
-      <item itemvalue="Python.compareFile" />
-      <item itemvalue="Python.conftest" />
+      <item itemvalue="Python.test_3" />
+      <item itemvalue="Python.testlogin" />
       <item itemvalue="Python.test_4" />
+      <item itemvalue="Python.conftest (1)" />
+      <item itemvalue="Python.test_4 (1)" />
+      <item itemvalue="Python.run_tests" />
+      <item itemvalue="Python.conftest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test_4" />
-        <item itemvalue="Python.compareFile" />
-        <item itemvalue="Python.comfunction" />
+        <item itemvalue="Python.run_tests" />
         <item itemvalue="Python.conftest" />
-        <item itemvalue="Python.runnertest" />
+        <item itemvalue="Python.test_4 (1)" />
+        <item itemvalue="Python.test_4" />
+        <item itemvalue="Python.conftest (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -716,22 +715,22 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12802951" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23393045" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962137" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.33964366" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.27282852" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49894625" weight="0.32962137" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32962137" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32850778" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5021075" side_tool="true" weight="0.33407572" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50263435" side_tool="true" weight="0.33964366" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49947312" weight="0.3129176" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -890,22 +889,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_report/log.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-75">
-          <folding>
-            <element signature="e#252#256#0" expanded="true" />
-            <element signature="e#326#330#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_report/log.xml" />
     <entry file="file://$PROJECT_DIR$/buttonFunction/share.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1975">
           <caret line="94" column="45" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
           <folding>
             <element signature="e#16#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonFunction/moveFile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5900">
+          <caret line="251" column="21" selection-start-line="251" selection-start-column="16" selection-end-line="251" selection-end-column="21" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -920,47 +920,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="39" column="59" selection-start-line="39" selection-start-column="59" selection-end-line="39" selection-end-column="59" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/moveFile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="337">
-          <caret line="169" column="20" lean-forward="true" selection-start-line="169" selection-start-column="20" selection-end-line="169" selection-end-column="20" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/test_4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/conftest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test_report/log.html" />
     <entry file="file://$PROJECT_DIR$/buttonFunction/teamImport.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="54" column="14" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="14" />
+        <state relative-caret-position="275">
+          <caret line="11" column="41" selection-start-line="11" selection-start-column="41" selection-end-line="11" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/test/test_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
@@ -969,35 +941,101 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/buttonFunction/upload18File.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-895">
-          <caret line="41" column="24" lean-forward="true" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        <state relative-caret-position="490">
+          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/page/baidu_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/login_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="60" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_16_23_34/image/1566289418.1721675.png" />
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_16_31_29/image/1566289895.1306634.png" />
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_16_31_29/image/1566289903.050929.png" />
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_17_03_50/report.html" />
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="1041" column="8" selection-start-line="1041" selection-start-column="8" selection-end-line="1041" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_18_53_07/image/1566298391.3186128.png" />
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_18_53_07/image/1566298395.783446.png" />
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_18_53_07/image/1566298395.4633856.png" />
+    <entry file="file://$PROJECT_DIR$/test_report/2019_08_20_19_43_18/image/test_login_case-error-1566301415.2894828.png" />
     <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="81" />
+        <state relative-caret-position="3650">
+          <caret line="161" column="20" selection-start-line="161" selection-start-column="20" selection-end-line="161" selection-end-column="20" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_dir/1test_baidu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/buttonFunction/picturePick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
+        <state relative-caret-position="100">
+          <caret line="4" column="64" lean-forward="true" selection-start-line="4" selection-start-column="64" selection-end-line="4" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="78" selection-end-column="61" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
+    <entry file="file://$PROJECT_DIR$/conftest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="48" column="23" selection-start-line="48" selection-start-column="12" selection-end-line="48" selection-end-column="23" />
+        <state relative-caret-position="266">
+          <caret line="117" column="14" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_dir/test_Alogin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="60" column="96" selection-start-line="60" selection-start-column="96" selection-end-line="60" selection-end-column="96" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="26" column="13" lean-forward="true" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>

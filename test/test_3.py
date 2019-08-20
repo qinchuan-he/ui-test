@@ -19,6 +19,7 @@ import sys
 import os
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
+print("rootPath: "+rootPath)
 sys.path.append(rootPath)
 import pytest
 import math
@@ -41,16 +42,18 @@ from test.conftest import test_url
 def test_baidu():
     sleep(3)
     assert 2 + 2 ==4
-def test_bi():
-    sleep(2)
-    print("hahha")
-def test_acf():
-    sleep(2)
-    print("acfun")
+
+# def test_bi():
+#     sleep(2)
+#     print("hahha")
+# def test_acf():
+#     sleep(2)
+#     print("acfun")
 if __name__ == "__main__":
     # pytest.main(['-s'])
     # pytest.main(['-sv',  'test_3.py', '--html=C:\\work\\1测试\\10自动化\\报告\\3.html'])
     # pytest.main(['-sv', 'test_3.py', '--tests-per-worker', 'auto', '--html=C:\\work\\1测试\\10自动化\\报告\\3.html'])
-    pytest.main(['-sv', 'test_3.py', '--junit-xml=../test_report/log.xml'])
+    # pytest.main(['-sv', 'test_3.py', '--junit-xml=../test_report/log1.xml'])
+    pytest.main(['-sv', 'test_3.py', '--html=../test_report/log.html'])
 
 
