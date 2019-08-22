@@ -55,9 +55,8 @@ def pytest_html_results_table_header(cells):
 @pytest.mark.optionalhook
 def pytest_html_results_table_row(report, cells):
     cells.insert(2, html.td(report.description))
-    cells.insert(3, html.td(time.time(), class_='col-time'))
+    cells.insert(3, html.td(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), class_='col-time'))
     cells.pop()
-
 
 @pytest.mark.hookwrapper
 def pytest_runtest_makereport(item):
@@ -123,8 +122,8 @@ def pytest_runtest_makereport(item):
     for img in images:
         img_name = img.split("-")
         if img_name[0] == case_path:  # 选择截图中当前路径的
-            html = '<div><a href="%s" >"%s"</a></div>' % ("image/" + img, img_name[1])
-            extra.append(pytest_html.extras.html(html))
+            screen_html = '<div><a href="%s">%s</a></div>' % ("image/" + img, img_name[1])
+            extra.append(pytest_html.extras.html(screen_html))
             report.extra = extra
     # case_name = str(time.time()) + ".png"
     # capture_screenshot(case_name)

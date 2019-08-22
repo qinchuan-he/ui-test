@@ -23,6 +23,12 @@ sys.path.append(rootPath)
 
 # print(sys.path)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
+
+# 公共方法
+from common.comfunction import new_screen_short
+
+# 第二例子
+
 class Testsign():
     '''测试登录'''
     # user = "19925253635"
@@ -58,7 +64,8 @@ class Testsign():
         driver.switch_to.active_element.send_keys(str(time.time()))
         sleep(0.5)
         driver.switch_to.active_element.send_keys(Keys.ENTER)
-        driver.get_screenshot_as_file(images_path+"test_create-执行完成-" + str(time.time()) + ".png" )
+        new_screen_short(browser, images_path, pic_name="test_create-执行完成")
+        sleep(2)
 
 
 

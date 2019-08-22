@@ -5,7 +5,7 @@ from os.path import dirname, abspath
 sys.path.insert(0, dirname(dirname(abspath(__file__))))
 from page.baidu_page import BaiduPage
 
-
+# 我最初的pytest例子，来源于网络
 class TestSearch:
     """百度搜索"""
 
