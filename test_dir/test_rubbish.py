@@ -24,7 +24,7 @@ sys.path.append(rootPath)
 # print(sys.path)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 # 引入公共方法
-from common.comfunction import new_user
+from common.newcomfunction import new_user
 
 
 # 回收站验证

@@ -25,9 +25,9 @@ url = "https://testcyprex.fir.ai/sign-in"
 # url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
 # user = "19958585555"
-user = "19925253635"
-# user = "13248131618"
-# user="19956966528"
+user = "10025253635"
+# # user = "13248131618"
+# # user="10056966528"
 pwd = "Test123456"
 
 
@@ -50,12 +50,12 @@ def execBrower(mode):
 
 # 登录相关
 class user:
-    url="https://testcyprex.fir.ai/sign-in"
+    # url="https://testcyprex.fir.ai/sign-in"
     # url = "https://cyprex.fir.ai/sign-in"
-    # url = "http://firai-test.gjzqth.com:4680/"
+    url = "http://firai-test.gjzqth.com:4680/"
     # user = "19958585555"
-    user = "19925253635"
-    # user = "13248131618"
+    # user = "19925253635"
+    user = "13248131618"
     # user="19956966528"
     pwd = "Test123456"
     # def __init__(self, url, user, pwd):
@@ -543,42 +543,7 @@ class com_xpath(object):
             print("没有进入预览或者加载超时或者解析失败")
 
 
-######################################################################################
-# 使用了pytest框架以后新的公共方法都是放在下面的
 
-# pytest的公共截图方法，传入driver，images_path图片存放路径，pic_name图片名字(函数名-目标名字)
-def new_screen_short(driver, images_path, pic_name):
-    driver.get_screenshot_as_file(images_path + pic_name + "-" + str(time.time()) + ".png")
-
-
-# 封装user相关方法
-class new_user():
-
-    # 登录方法
-    def new_login(self, driver, base_url=None, bae_user=None, base_pwd=None):
-        if base_url:
-            driver.get(base_url)
-        else:
-            driver.get(url)
-        driver.find_element_by_xpath("//div[text()='账号登录']").click()
-        if bae_user:
-            driver.find_element_by_id("username_no").send_keys(bae_user)
-        else:
-            driver.find_element_by_id("username_no").send_keys(user)
-        if base_pwd:
-            driver.find_element_by_id("password").send_keys(base_pwd)
-        else:
-            driver.find_element_by_id("password").send_keys(pwd)
-        driver.find_element_by_xpath(
-            "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
-        try:
-            WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
-        except Exception as e:
-            print(e)
-            print("异常")
-
-    # 创建文件夹
-    # def create_folder(self, driver,folder_name=None):
 
 
 
