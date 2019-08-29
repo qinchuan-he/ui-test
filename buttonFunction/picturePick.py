@@ -65,7 +65,7 @@ class test_Pick(unittest.TestCase):
     table_pdf = "股票上市交易所"
 
     # 启动浏览器并登陆
-    mode = 1
+    mode = 2
     driver = execBrower(mode)
     user().login(driver)
     team_name = team().check_team(driver)

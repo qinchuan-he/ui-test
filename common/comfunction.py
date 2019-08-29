@@ -50,18 +50,11 @@ def execBrower(mode):
 
 # 登录相关
 class user:
-    # url="https://testcyprex.fir.ai/sign-in"
-    # url = "https://cyprex.fir.ai/sign-in"
-    url = "http://firai-test.gjzqth.com:4680/"
-    # user = "19958585555"
-    # user = "19925253635"
-    user = "13248131618"
-    # user="19956966528"
-    pwd = "Test123456"
-    # def __init__(self, url, user, pwd):
-    #     self.url = url
-    #     self.user = user
-    #     self.pwd = pwd
+
+    def __init__(self):
+        self.url = url
+        self.user = user
+        self.pwd = pwd
     # 登录
     def login(self, driver):
         driver.get(self.url)
@@ -121,11 +114,11 @@ class team:
         driver.find_element_by_xpath("//a[text()='协作共享']").click()
         team_name = "验证的团队"
         try:
-            WebDriverWait(driver,2,0.5).until(ec.presence_of_element_located((By.XPATH,"//span[text()='验证的团队']")))
+            WebDriverWait(driver, 2, 0.5).until(ec.presence_of_element_located((By.XPATH, "//span[text()='验证的团队']")))
         except Exception as e:
             print("团队不存在准备新建")
             driver.find_element_by_xpath("//span[text()='创建新项目']/..").click()
-            driver.find_element_by_xpath("//input[@placeholder='请输入项目及项目文件夹名称']").send_keys(team_name)
+            driver.find_element_by_xpath("//input[@placeholder='项目及项目文件夹名称']").send_keys(team_name)
             # driver.find_element_by_xpath("//span[text()='确 定']/..").click()
             sleep(1)
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
