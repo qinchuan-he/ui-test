@@ -107,7 +107,7 @@ class test_store(unittest.TestCase):
         '''文件夹内搜索收藏'''
         searchKey = self.pdfname
         com_xpath().com_internalSearch(self.driver, searchKey)
-        self.driver.find_element_by_xpath("//span[contains(text(),'团队共...')]/../..").click()
+        self.driver.find_element_by_xpath("//span[contains(text(),'协作共...')]/../..").click()
         sleep(1)
         print_name = "文件夹内收藏"
         version = "以新版本覆盖"
@@ -145,19 +145,19 @@ class test_store(unittest.TestCase):
                     break
                 else:
                     sleep(1)
-            el45 = self.driver.find_element_by_xpath("//span[contains(text(),'团队共')]/../..")
+            el45 = self.driver.find_element_by_xpath("//span[contains(text(),'协作共')]/../..")
             ActionChains(self.driver).move_to_element(el45).perform()
             # self.driver.find_element_by_xpath("//div[contains(@class,'SearchFileContentPanel_toolButton')]/i[@class='anticon']").click()
             self.driver.find_element_by_xpath(
-                "//span[contains(text(),'团队共')]/../../../../../../../h4//i[@class='anticon']/..").click()
+                "//span[contains(text(),'协作共')]/../../../../../../../h4//i[@class='anticon']/..").click()
             print_name = "边写边搜列表收藏"
             version = "以新版本覆盖"
             com_alert().com_equal(self.driver, self.picturePath, print_name, version)
             sleep(1)
-            el51 = self.driver.find_element_by_xpath("//span[contains(text(),'团队共')]/../..")
+            el51 = self.driver.find_element_by_xpath("//span[contains(text(),'协作共')]/../..")
             ActionChains(self.driver).move_to_element(el51).perform()
             self.driver.find_element_by_xpath(
-                "//span[contains(text(),'团队共')]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..").click()
+                "//span[contains(text(),'协作共')]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..").click()
             try:
                 WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='边写边搜']")))
                 el46 = self.driver.find_elements_by_xpath("//i[@class='anticon anticon-more']")

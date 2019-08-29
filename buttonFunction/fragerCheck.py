@@ -40,7 +40,7 @@ resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
 class test_frager(unittest.TestCase):
     '''零散的验证，主要是ui方面的检查'''
     # 公共参数
-    mode = 2
+    mode = 1
     picturePath = "C:\\work\\1测试\\10自动化\\截图保存\\零散\\"  # 生成截图路径
     fpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\office\\"
     word1name = "2017年12月11日-2017年12月15日发行监管部"
