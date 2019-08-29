@@ -26,7 +26,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 # 引入公共方法
 from common.comfunction import execBrower  # 启动浏览器函数
-from common.comfunction import user  # 用户登录类
+from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
 from common.comfunction import com_upload # 公共上传函数
@@ -48,17 +48,17 @@ class test_frager(unittest.TestCase):
 
     # 启动浏览器
     driver = execBrower(mode)
-    user().login(driver)
+    User().login(driver)
 
     def test_filePath(self):
         '''检查文件夹路径'''
         folder1 = str(time.time())
 
 
-        user().createFolder(self.driver, folder1)
+        User().createFolder(self.driver, folder1)
         self.driver.find_element_by_xpath("//span[text()='"+folder1+"']").click()
         sleep(0.5)
-        user().createFolder(self.driver, self.lname)
+        User().createFolder(self.driver, self.lname)
         self.driver.find_element_by_xpath("//span[text()='"+self.lname+"']").click()
         sleep(0.5)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="路径栏中名称显示")
@@ -81,11 +81,11 @@ class test_frager(unittest.TestCase):
         comHtml().screen_shot(self.driver, self.picturePath, print_name="列表截图")
         sleep(1)
         team_name = team().check_team(self.driver)
-        user().createFolder(self.driver, folder1)
+        User().createFolder(self.driver, folder1)
         sleep(0.5)
         self.driver.find_element_by_xpath("//span[text()='"+folder1+"']").click()
         sleep(0.5)
-        user().createFolder(self.driver, self.lname)
+        User().createFolder(self.driver, self.lname)
         self.driver.find_element_by_xpath("//span[text()='"+self.lname+"']").click()
         sleep(0.5)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="团队路径栏截图")

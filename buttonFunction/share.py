@@ -27,7 +27,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 # 引入公共方法
 from common.comfunction import execBrower  # 启动浏览器函数
-from common.comfunction import user  # 用户登录类
+from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
 from common.comfunction import com_share # 分享按钮点击之后的判断
@@ -49,7 +49,7 @@ class test_singleFileShare(unittest.TestCase):
     # 启动浏览器
     mode = 1
     driver = execBrower(mode)
-    user().login(driver)
+    User().login(driver)
     driver.implicitly_wait(30)
 
     # 创建文件夹

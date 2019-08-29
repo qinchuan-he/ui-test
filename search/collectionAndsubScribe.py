@@ -21,7 +21,7 @@ sys.path.append(rootPath)
 
 
 from common.comfunction import execBrower
-from common.comfunction import user
+from common.comfunction import User
 
 
 # 检查搜索功能，最近收藏和数据订阅
@@ -53,7 +53,7 @@ waitTime =  1
 # driver.set_window_size(1400,900)
 # driver.implicitly_wait(20)
 
-user().login(driver)
+User().login(driver)
 # driver.get(url)
 # driver.find_element_by_xpath("//div[text()='账号登录']").click()
 # driver.find_element_by_id("username_no").send_keys(user)

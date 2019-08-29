@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 # 引入公共方法
 from common.comfunction import execBrower  # 启动浏览器函数
-from common.comfunction import user  # 用户登录类
+from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
 from common.comfunction import com_upload # 公共上传函数
@@ -48,9 +48,9 @@ class test_compare(unittest.TestCase):
     folder = str(time.time()) #  文件夹名字
 
     # 启动浏览器
-    mode = 1
+    mode = 2
     driver = execBrower(mode)
-    user().login(driver)
+    User().login(driver)
     driver.implicitly_wait(30)
     # 检查团队
     team_name = team().check_team(driver)
@@ -58,7 +58,7 @@ class test_compare(unittest.TestCase):
     sleep(0.5)
     # driver.find_element_by_xpath("//a[text()='私有']").click()
     #  文件夹，存放比对文件
-    user().createFolder(driver, folder)
+    User().createFolder(driver, folder)
     # 进入文件夹
     driver.find_element_by_xpath("//span[text()='"+folder+"']/..").click()
 

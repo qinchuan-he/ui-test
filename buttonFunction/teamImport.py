@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 # 引入公共方法
 from common.comfunction import execBrower  # 启动浏览器函数
-from common.comfunction import user  # 用户登录类
+from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
 from common.comfunction import com_upload # 公共上传函数
@@ -52,8 +52,8 @@ class test_teamImportFile(unittest.TestCase):
     # 启动浏览器,并且登录
     mode  = 1
     driver = execBrower(mode)
-    user().login(driver)
-    user().createFolder(driver, folder)
+    User().login(driver)
+    User().createFolder(driver, folder)
     #  进入文件夹上传文件
     driver.find_element_by_xpath("//span[text()='"+folder+"']/..").click()
     driver.find_element_by_xpath("//input[@type='file']").send_keys(wordurl)
@@ -71,7 +71,7 @@ class test_teamImportFile(unittest.TestCase):
     # 团队子目录导入
     def test_teamSubImport(self):
         '''团队子目录导入文件'''
-        user().createFolder(self.driver, self.folder)
+        User().createFolder(self.driver, self.folder)
         self.driver.find_element_by_xpath("//span[text()='"+self.folder+"']/..").click()
         sleep(0.5)
         button = "import1"

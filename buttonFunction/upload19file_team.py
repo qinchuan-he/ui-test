@@ -27,7 +27,7 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 # 引入公共方法
 from common.comfunction import execBrower # 启动浏览器函数
-from common.comfunction import user  # 用户登录类
+from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml # 生成html报告类
 from common.comfunction import team #团队类
 
@@ -38,7 +38,7 @@ from common.comfunction import team #团队类
 
 mode = 2
 driver = execBrower(mode)
-user().login(driver)
+User().login(driver)
 
 # 进入团队
 team().check_team(driver)

@@ -27,7 +27,7 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 # 引入公共方法
 from common.comfunction import execBrower # 启动浏览器函数
-from common.comfunction import user  # 用户登录类
+from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml # 生成html报告类
 from common.comfunction import com_alert # 弹窗类公共方法
 
@@ -39,7 +39,7 @@ class up_all(unittest.TestCase):
     # 启动浏览器,并且登录
     mode = 1
     driver = execBrower(mode)
-    user().login(driver)
+    User().login(driver)
     
     # 公共的创建文件夹方法,私有根目录下创建一个文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")

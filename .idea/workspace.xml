@@ -2,7 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a2aebbb-1706-4124-b7fc-2c98f7978b4d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/compareFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/compareFile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/fragerCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/fragerCheck.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/moveFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/moveFile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/picturePick.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/picturePick.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/share.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/share.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/store.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/store.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/teamImport.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/teamImport.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/upload18File.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/upload18File.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonFunction/upload19file_team.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/upload19file_team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/comfunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/comfunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/newcomfunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/newcomfunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search/collectionAndsubScribe.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/collectionAndsubScribe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/upload_other.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/upload_other.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/uploadmusic.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/uploadmusic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/uploadoffice.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/uploadoffice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/uploadpicture.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/uploadpicture.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/comfunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+            <state relative-caret-position="425">
+              <caret line="57" column="37" lean-forward="true" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -24,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.vscode/settings.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -36,8 +53,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/picturePick.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+            <state relative-caret-position="314">
+              <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="189">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -56,7 +85,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>比对报告超时</find>
       <find>创建新团队并命名团队文件夹</find>
       <find>cases_path</find>
       <find>rerun</find>
@@ -86,6 +114,7 @@
       <find>团队共</find>
       <find>new_user</find>
       <find>images_path</find>
+      <find>user</find>
     </findStrings>
     <replaceStrings>
       <replace>见远笔记(.doc)</replace>
@@ -156,18 +185,18 @@
         <option value="$PROJECT_DIR$/conftest.py" />
         <option value="$PROJECT_DIR$/test_dir/1test_baidu.py" />
         <option value="$PROJECT_DIR$/test_dir/test_Alogin.py" />
-        <option value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
         <option value="$PROJECT_DIR$/buttonFunction/fragerCheck.py" />
         <option value="$PROJECT_DIR$/common/com_parameter.py" />
         <option value="$PROJECT_DIR$/common/newcomfunction.py" />
         <option value="$PROJECT_DIR$/test_dir/test_rubbish.py" />
-        <option value="$PROJECT_DIR$/buttonFunction/picturePick.py" />
-        <option value="$PROJECT_DIR$/common/comfunction.py" />
         <option value="$PROJECT_DIR$/.vscode/settings.json" />
+        <option value="$PROJECT_DIR$/buttonFunction/picturePick.py" />
+        <option value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
+        <option value="$PROJECT_DIR$/common/comfunction.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -178,6 +207,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -225,7 +255,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,7 +295,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.picturePick">
+  <component name="RunManager" selected="Python.compareFile">
     <configuration name="智能搜索检查" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -585,7 +614,6 @@
     <list>
       <item itemvalue="Python.智能搜索检查" />
       <item itemvalue="Python.compareFile" />
-      <item itemvalue="Python.conftest" />
       <item itemvalue="Python.fragerCheck" />
       <item itemvalue="Python.moveFile" />
       <item itemvalue="Python.picturePick" />
@@ -594,9 +622,10 @@
       <item itemvalue="Python.test3" />
       <item itemvalue="Python.test" />
       <item itemvalue="Python.test_3" />
+      <item itemvalue="Python.testlogin" />
+      <item itemvalue="Python.conftest" />
       <item itemvalue="Python.test_4 (1)" />
       <item itemvalue="Python.test_4" />
-      <item itemvalue="Python.testlogin" />
     </list>
     <recent_temporary>
       <list>
@@ -665,12 +694,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23393045" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23393045" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962137" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" weight="0.3129176" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.3129176" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -949,16 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/conftest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2999">
@@ -986,30 +1005,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
+    <entry file="file://$PROJECT_DIR$/.vscode/settings.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/buttonFunction/picturePick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
+        <state relative-caret-position="314">
+          <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.vscode/settings.json">
+    <entry file="file://$PROJECT_DIR$/buttonFunction/compareFile.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+        <state relative-caret-position="189">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="57" column="37" lean-forward="true" selection-start-line="57" selection-start-column="37" selection-end-line="57" selection-end-column="37" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 # 引入公共方法
 from common.comfunction import execBrower  # 启动浏览器函数
-from common.comfunction import user  # 用户登录类
+from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
 from common.comfunction import com_upload   # 公共上传函数
@@ -52,14 +52,14 @@ class test_move(unittest.TestCase):
 
     mode = 1
     driver = execBrower(mode)
-    user().login(driver)
+    User().login(driver)
     def test_moveFolder_private(self):
         '''私有中移动文件夹(重名)'''
         folder1 = str(time.time())
         # 子目录到根目录
-        user().createFolder(self.driver, folder1)
+        User().createFolder(self.driver, folder1)
         self.driver.find_element_by_xpath("//span[text()='"+folder1+"']").click()
-        user().createFolder(self.driver, folder1)
+        User().createFolder(self.driver, folder1)
         el11 = self.driver.find_elements_by_xpath("//input[@class='ant-checkbox-input']")
         el13 = self.driver.find_element_by_xpath("//span[text()='"+folder1+"']")
         ActionChains(self.driver).move_to_element(el13).perform()
@@ -82,9 +82,9 @@ class test_move(unittest.TestCase):
         comHtml().screen_shot(self.driver, self.picturePath, print_name="根目:"+folder1+"为移动文件")
         # 根目录移动到子目录
         folder12 = str(time.time())
-        user().createFolder(self.driver, folder12)
+        User().createFolder(self.driver, folder12)
         self.driver.find_element_by_xpath("//span[text()='"+folder12+"']").click()
-        user().createFolder(self.driver, folder1)
+        User().createFolder(self.driver, folder1)
         self.driver.back()
         el15 = self.driver.find_element_by_xpath("//span[text()='" + folder1 + "']")
         el14 = self.driver.find_element_by_xpath(
@@ -104,9 +104,9 @@ class test_move(unittest.TestCase):
         team_name = team().check_team(self.driver)
         folder2 = str(time.time())
         # 新建文件夹
-        user().createFolder(self.driver, folder2)
+        User().createFolder(self.driver, folder2)
         self.driver.find_element_by_xpath("//span[text()='"+folder2+"']").click()
-        user().createFolder(self.driver, folder2)
+        User().createFolder(self.driver, folder2)
         el21 = self.driver.find_element_by_xpath("//span[text()='"+folder2+"']")
         ActionChains(self.driver).move_to_element(el21).perform()
         el22 = self.driver.find_elements_by_xpath("//input[@class='ant-checkbox-input']")
@@ -129,9 +129,9 @@ class test_move(unittest.TestCase):
 
         # 根目录移动到子目录
         folder21 = str(time.time())
-        user().createFolder(self.driver, folder21)
+        User().createFolder(self.driver, folder21)
         self.driver.find_element_by_xpath("//span[text()='"+folder21+"']").click()
-        user().createFolder(self.driver, folder2)
+        User().createFolder(self.driver, folder2)
         self.driver.back()
         el24 = self.driver.find_element_by_xpath("//span[text()='" + folder2 + "']")
         el25 = self.driver.find_element_by_xpath(
@@ -153,7 +153,7 @@ class test_move(unittest.TestCase):
         version = "以新版本覆盖"
         print_name = "团队根目录上传"
         com_upload_min(version, print_name, self.picturePath, self.upUrl, self.driver)
-        user().createFolder(self.driver, folder3)
+        User().createFolder(self.driver, folder3)
         self.driver.find_element_by_xpath("//span[text()='"+folder3+"']").click()
         print_name = "团队子目录上传"
         com_upload_min(version, print_name, self.picturePath, self.upUrl, self.driver)
@@ -177,7 +177,7 @@ class test_move(unittest.TestCase):
         sleep(0.5)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="移动目录为："+folder3)
         folder31 = str(time.time())
-        user().createFolder(self.driver, folder31)
+        User().createFolder(self.driver, folder31)
         self.driver.find_element_by_xpath("//span[text()='"+folder31+"']").click()
         com_upload_min(version, print_name, self.picturePath, self.upUrl, self.driver)
         self.driver.back()
@@ -204,14 +204,14 @@ class test_move(unittest.TestCase):
     # 私有中移动文件
     def test_moveFile_private(self):
         '''私有中移动文件（重名）'''
-        user().root_private(self.driver)
+        User().root_private(self.driver)
         sleep(0.5)
         folder4 = str(time.time())
         version = "以新版本覆盖"
         print_name = "私有根目录上传"
         com_upload_min(version, print_name, self.picturePath, self.upUrl, self.driver)
         sleep(0.5)
-        user().createFolder(self.driver, folder4)
+        User().createFolder(self.driver, folder4)
         self.driver.find_element_by_xpath("//span[text()='"+folder4+"']").click()
         version = "以新版本覆盖"
         print_name = "私有子目录上传"
@@ -233,7 +233,7 @@ class test_move(unittest.TestCase):
         comHtml().screen_shot(self.driver, self.picturePath, print_name="子目录移动到根目录")
         self.driver.back()
         folder41 = str(time.time())
-        user().createFolder(self.driver, folder41)
+        User().createFolder(self.driver, folder41)
         self.driver.find_element_by_xpath("//span[text()='"+folder41+"']").click()
         version = "以新版本覆盖"
         print_name = "私有子目录上传"
