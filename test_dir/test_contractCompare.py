@@ -28,18 +28,19 @@ from common.newcomfunction import new_user
 # 公共参数
 upload_path1 = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\比对文件\\合同1.docx"
 upload_path2 = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\比对文件\\合同1扫描件（8张合并）.pdf"
-
+name1 = "合同1"
+name2 = "合同1扫描件（8张合并）"
 
 class TestContractCompare:
-    ''' 合同防伪校验'''
+    ''' 合同防伪模块'''
 
     def test_one(self, browser, base_url, images_path):
-        ''' 比对模块验证'''
-        driver = browser
-        new_user().new_login(driver, base_url)
+        ''' 合同防伪校验'''
 
+        new_user().new_login(browser, base_url)
+        driver = browser
         # 进入模块
-        driver.find_element_by_xpath("//a[text()='find_element_by_xpath']").click()
+        driver.find_element_by_xpath("//a[text()='合同防伪校验']").click()
         uploads = driver.find_elements_by_xpath("//input[@type='file']")
         uploads[0].send_keys(upload_path1)
         uploads[1].send_keys(upload_path2)
@@ -47,6 +48,36 @@ class TestContractCompare:
             WebDriverWait(driver, 5, 0.5).until(ec.element_to_be_clickable((By.XPATH, "//span[text()='开始比对']/..")))
             driver.find_element_by_xpath("//span[text()='开始比对']/..").click()
             sleep(2)
-            driver.get_screenshot_as_file(images_path+"比对之后截图"+str(time.time())+".png")
+            driver.get_screenshot_as_file(images_path+"test_one-比对之后截图"+str(time.time())+".png")
+            # 预览文件
+            driver.find_element_by_xpath("//span[text()='"+name1+"']").click()
+            try:
+                WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+                sleep(5) # 加载时间
+                driver.get_screenshot_as_file(images_path+"test_one-预览word"+str(time.time())+".png")
+                # 预览纯文本，存在的话
+                try:
+                    WebDriverWait(driver, 3, 0.5)\
+                        .until(ec.element_to_be_clickable((By.XPATH, "//span[text()='纯文本']/..")))
+                    driver.find_element_by_xpath("//span[text()='纯文本']/..").click()
+                    sleep(0.5)
+                    driver.get_screenshot_as_file(images_path+"test_one-预览纯文本"+str(time.time())+".png")
+                except Exception as e:
+                    print(e)
+                driver.back()
+                sleep(0.5)
+                # 预览另一个文件
+                driver.find_element_by_xpath("//span[text()='"+name2+"']").click()
+                try:
+                    WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+                    sleep(3)
+                    driver.get_screenshot_as_file(images_path+"test_one-预览pdf"+str(time.time())+".png")
+                    driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+                    sleep(1)
+                    driver.get_screenshot_as_file(images_path+"test_one-预览返回"+str(time.time())+".png")
+                except Exception as e:
+                    print(e)
+            except Exception as e:
+                print(e)
         except Exception as e:
             print(e)

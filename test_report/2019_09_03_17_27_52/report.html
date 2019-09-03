@@ -398,7 +398,7 @@ function filter_table(elem) {
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 28-Aug-2019 at 20:56:57 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v1.22.0</p>
+    <p>Report generated on 03-Sep-2019 at 17:28:27 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v1.22.0</p>
     <h2>Environment</h2>
     <table id="environment">
       <tr>
@@ -421,8 +421,8 @@ function filter_table(elem) {
         <td><a href="https://testcyprex.fir.ai/sign-in" target="_blank">https://testcyprex.fir.ai/sign-in</a></td></tr></table>
     <h2>Summary</h2>
     <p>测试人: 乌鸦</p>
-    <p>1 tests ran in 13.30 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">0 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
+    <p>1 tests ran in 34.49 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>, <input checked="true" class="filter" data-test-result="rerun" disabled="true" hidden="true" name="filter_checkbox" onChange="filter_table(this)" type="checkbox"/><span class="rerun">0 rerun</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -434,20 +434,23 @@ function filter_table(elem) {
           <th class="sortable numeric" col="duration">Duration</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="5">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="failed results-table-row">
+      <tbody class="passed results-table-row">
         <tr>
-          <td class="col-result">Failed</td>
-          <td class="col-name">test_dir/test_rubbish.py::Testrubbist::test_folder</td>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_dir/test_contractCompare.py::TestContractCompare::test_one</td>
           <td>
             <html>
               <head>
                 <meta name="Content-Type" value="text/html; charset=latin1"/></head>
               <body>
-                <p>删除恢复文件夹</p></body></html></td>
-          <td class="col-time">2019-08-28 20:56:54</td>
-          <td class="col-duration">1.23</td></tr>
+                <p>合同防伪校验</p></body></html></td>
+          <td class="col-time">2019-09-03 17:28:25</td>
+          <td class="col-duration">22.67</td></tr>
         <tr>
           <td class="extra" colspan="5">
-            <div><div><img src="image/test_folder-error-1566997014.5933237.png" alt="screenshot" style="width:304px;height:228px;" onclick="window.open(this.src)" align="right"/></div></div>
-            <div><div><a href="image/test_folder-error-1566997014.5933237.png">error</a></div></div>
-            <div class="log">self = &lt;test_dir.test_rubbish.Testrubbist object at 0x000001FEAA9EA588&gt;<br/>browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;ef72e12f82b3dda5de92828f5428ab8c&quot;)&gt;<br/>base_url = &#x27;https://testcyprex.fir.ai/sign-in&#x27;<br/>images_path = &#x27;C:\\work\\8python\\Cyprex-ui/test_report/2019_08_28_20_56_43/image/&#x27;<br/><br/>    def test_folder(self, browser, base_url, images_path):<br/>        &quot;&quot;&quot; 删除恢复文件夹&quot;&quot;&quot;<br/>        # 调用登录方法<br/>&gt;       new_user().new_login(browser, base_url)<br/><br/>test_dir\test_rubbish.py:37: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/>common\newcomfunction.py:49: in new_login<br/>    driver.find_element_by_id(&quot;username_no&quot;).send_keys(user)<br/>C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webelement.py:478: in send_keys<br/>    {&#x27;text&#x27;: &quot;&quot;.join(keys_to_typing(value)),<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br/><br/>value = (&lt;class &#x27;common.comfunction.user&#x27;&gt;,)<br/><br/>    def keys_to_typing(value):<br/>        &quot;&quot;&quot;Processes the values that will be typed in the element.&quot;&quot;&quot;<br/>        typing = []<br/>        for val in value:<br/>            if isinstance(val, Keys):<br/>                typing.append(val)<br/>            elif isinstance(val, int):<br/>                val = str(val)<br/>                for i in range(len(val)):<br/>                    typing.append(val[i])<br/>            else:<br/>&gt;               for i in range(len(val)):<br/><span class="error">E               TypeError: object of type &#x27;type&#x27; has no len()</span><br/><br/>C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\common\utils.py:150: TypeError<br/></div></td></tr></tbody></table></body></html>
+            <div><div><a href="image/test_one-比对之后截图1567502888.184032.png">比对之后截图1567502888.184032.png</a></div></div>
+            <div><div><a href="image/test_one-预览pdf1567502903.3826983.png">预览pdf1567502903.3826983.png</a></div></div>
+            <div><div><a href="image/test_one-预览word1567502897.9001548.png">预览word1567502897.9001548.png</a></div></div>
+            <div><div><a href="image/test_one-预览纯文本1567502898.9134395.png">预览纯文本1567502898.9134395.png</a></div></div>
+            <div><div><a href="image/test_one-预览返回1567502904.8867378.png">预览返回1567502904.8867378.png</a></div></div>
+            <div class="empty log">No log output captured.</div></td></tr></tbody></table></body></html>

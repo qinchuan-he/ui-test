@@ -21,7 +21,7 @@ from email.mime.multipart import MIMEMultipart # 上传附件用
 import paramiko
 
 # 引入公共参数
-from common.comfunction import User
+from common.comfunction import user
 from common.comfunction import url
 from common.comfunction import pwd
 
@@ -46,7 +46,7 @@ class new_user():
         if bae_user:
             driver.find_element_by_id("username_no").send_keys(bae_user)
         else:
-            driver.find_element_by_id("username_no").send_keys(User)
+            driver.find_element_by_id("username_no").send_keys(user)
         if base_pwd:
             driver.find_element_by_id("password").send_keys(base_pwd)
         else:

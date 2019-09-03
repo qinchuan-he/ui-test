@@ -4,23 +4,25 @@ import pytest
 from py._xmlgen import html # 使用这个代替上面的
 from selenium import webdriver
 from selenium.webdriver import Remote
-from selenium.webdriver.chrome.options import Options as CH_Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FF_Options
 import time
+# 引入公共参数，把url和用户信息放在一起的
+from common.comfunction import url
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # 移动了配置文件，调整路径
 # BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
-# REPORT_DIR = "C:\\work\\1测试\\1需求\\cyprex1.13\\ui\\"
 ############################
 
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
 driver_type = "chrome"
-path = "C:\\2services\\driver\\chromedriver.exe"
-# 配置运行的 URL
-# url = "https://www.baidu.com"
-url = "https://testcyprex.fir.ai/sign-in"
+# driver_type = "chrome-headless"
+
+# 配置运行的 URL, 改为了登录方法中控制,为了切换环境时候方便
+# url = "https://cyprex.fir.ai/sign-in"
+# url = "https://testcyprex.fir.ai/sign-in"
 
 # 失败重跑次数
 rerun = "0"
@@ -31,7 +33,7 @@ max_fail = "1"
 # 运行测试用例的目录或文件
 cases_path = "./test_dir/"
 # -------------我自己增加的变量
-
+path = "C:\\2services\\driver\\chromedriver.exe"
 
 ############################
 
@@ -65,54 +67,24 @@ def pytest_runtest_makereport(item):
     :param item:
     """
     pytest_html = item.config.pluginmanager.getplugin('html')
-    # print("pytest_html: ---")
-    # print(pytest_html)
     outcome = yield
     report = outcome.get_result()
-    # print("report----")
-    # print(report)
     report.description = description_html(item.function.__doc__)
-    # print("report.description----")
-    # print(report.description)
     extra = getattr(report, 'extra', [])
-    # print("extra-----")
-    # print(extra)
-    # print("report.when----")
-    # print(report.when)
-
-
     case_path = report.nodeid.split("::")[-1] # 取函数的名字作为截图前缀
-    # print(case_path)
     case_name_e = case_path+"-error-"+str(time.time())+".png"  # -连接截图路径
     if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')
-        # print("xfail----")
-        # print(xfail)
-        # print("report.skipped----")
-        # print(report.skipped)
-        # print("report.failed---")
-        # print(report.failed)
         if (report.skipped and xfail) or (report.failed and not xfail):
-            # 根据我的需要（一个用例可能截图多张），截图名需要为时间戳
-            # case_path = report.nodeid.replace("::", "_") + ".png"
-            # if "[" in case_path:
-            #     case_name = case_path.split("-")[0] + "].png"
-            # else:
-            #     case_name = case_path
             print("进入失败判断")
             case_name = case_name_e
             capture_screenshot(case_name)
             # img_path = "image/" + case_name.split("/")[-1] # 根据我的需要，截图为时间戳
             img_path = "image/" + case_name
-            # print("打印img_path")
-            # print(img_path)
             if img_path:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
                        'onclick="window.open(this.src)" align="right"/></div>' % img_path
                 extra.append(pytest_html.extras.html(html))
-
-                # html1 = '<div><a href="%s" >"%s"</a></div>' % (img_path, case_name)
-                # extra.append(pytest_html.extras.html(html1))
         report.extra = extra
     image_path = str(REPORT_DIR)+str(new_report_time())+"/image/"
     images = os.listdir(image_path)
@@ -120,18 +92,11 @@ def pytest_runtest_makereport(item):
     print("获取列表中文件----")
     print(images)
     for img in images:
-        img_name = img.split("-")
+        img_name = img.split("-")  # 约定，截图规则为：函数名-名称+时间戳。test_folder-1566997014.5933237.png
         if img_name[0] == case_path:  # 选择截图中当前路径的
             screen_html = '<div><a href="%s">%s</a></div>' % ("image/" + img, img_name[1])
             extra.append(pytest_html.extras.html(screen_html))
             report.extra = extra
-    # case_name = str(time.time()) + ".png"
-    # capture_screenshot(case_name)
-    # img_path = "image/" + case_name
-    # if img_path:
-    #     html1 = '<div><a href="%s" >"验证截图的我"</a></div>' % img_path
-    #     extra.append(pytest_html.extras.html(html1))
-    #     report.extra = extra
 
 ##########################################################
 # 我自己增加的方法
@@ -181,30 +146,20 @@ def capture_screenshot(case_name):
     :param case_name: 用例名
     :return:
     """
-    # print("图片名称: ")
-    # print(case_name)
     global driver
-    # file_name = case_name.split("/")[-1]
     new_report_dir = new_report_time()
-    # print("图片路径 REPORT_DIR"+REPORT_DIR)
-    # print("图片路径 new_report_dir---"+new_report_dir)
     if new_report_dir is None:
         raise RuntimeError('没有初始化测试目录')
-    # image_dir = os.path.join(REPORT_DIR, new_report_dir, "image", file_name) # 路径拼接
     image_dir = os.path.join(REPORT_DIR, new_report_dir, "image", case_name) # 调整了图片名称
-    # print("拼接路径 image_dir "+image_dir)
     driver.save_screenshot(image_dir)
 
 
 def new_report_time():
     """
-    获取最新报告的目录名（即运行时间，例如：2018_11_21_17_40_44）
+    获取最新报告的目录名（即运行时间，例如：2018_11_21_17_40_44，因为我有init文件，所以是-2）
     """
     files = os.listdir(REPORT_DIR)
     files.sort()
-    # print("获取的目录：")
-    # print(files)
-    # print(files[-2])
     try:
         return files[-2]
     except IndexError:
@@ -220,7 +175,6 @@ def browser():
     """
     global driver
     global driver_type
-
     if driver_type == "chrome":
         # 本地chrome浏览器
         print("进入chrome浏览器流程")
@@ -234,11 +188,11 @@ def browser():
 
     elif driver_type == "chrome-headless":
         # chrome headless模式
-        chrome_options = CH_Options()
+        chrome_options = Options()
         chrome_options.add_argument("--headless")
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument("--window-size=1920x1080")
-        driver = webdriver.Chrome(options=chrome_options)
+        driver = webdriver.Chrome(options=chrome_options, executable_path=path)
 
     elif driver_type == "firefox-headless":
         # firefox headless模式

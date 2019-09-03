@@ -4,45 +4,8 @@
     <list default="true" id="4a2aebbb-1706-4124-b7fc-2c98f7978b4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/newcomfunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/newcomfunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search/边写边搜验证.py" beforeDir="false" afterPath="$PROJECT_DIR$/search/边写边搜验证.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_20_37/image/1566303642.4519644.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_20_37/image/1566303646.3352847.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_20_37/image/test_login_case-1566303642.177696.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_20_37/image/test_login_case-1566303645.960288.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_20_37/image/test_login_case-验证截图-1566303644.1570845.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_20_37/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_21_24/image/1566303689.0911477.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_21_24/image/1566303692.2644682.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_21_24/image/test_login_case-1566303688.8219078.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_21_24/image/test_login_case-1566303691.9323914.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_21_24/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_24_22/image/1566303867.3749452.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_24_22/image/1566303870.4250314.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_24_22/image/test_login_case-1566303867.104683.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_24_22/image/test_login_case-1566303870.1188493.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_24_22/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_25_11/image/1566303915.5136845.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_25_11/image/1566303919.317116.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_25_11/image/test_login_case-1566303915.243876.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_25_11/image/test_login_case-1566303919.0398583.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_25_11/image/test_login_case-error-1566303918.7177567.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_25_11/image/test_login_case-验证截图-1566303917.1043112.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_25_11/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_26_45/image/test_login_case-验证截图-1566304011.01545.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_26_45/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_44_58/image/test_create-执行完成-1566305107.2925043.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_44_58/image/test_login_case-验证截图-1566305103.6844819.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_20_44_58/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_13_51/image/test_create-执行完成-1566306841.2274966.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_13_51/image/test_login_case-验证截图-1566306837.3201206.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_13_51/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_16_25/image/test_create-执行完成-1566306995.2066286.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_16_25/image/test_login_case-验证截图-1566306991.4315686.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_16_25/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_26_18/image/test_create-执行完成-1566307589.7616284.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_26_18/image/test_login_case-验证截图-1566307585.4229596.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_20_21_26_18/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_08_28_20_50_46/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_dir/test_contractCompare.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_contractCompare.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,20 +18,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/comfunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4375">
-              <caret line="194" column="34" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="34" />
+            <state relative-caret-position="150">
+              <caret line="24" selection-start-line="24" selection-end-line="24" selection-end-column="39" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.vscode/settings.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -106,11 +60,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_dir/test_contractCompare.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="42" column="72" lean-forward="true" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="72" />
+            <state relative-caret-position="217">
+              <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -121,8 +87,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/common/newcomfunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+            <state relative-caret-position="289">
+              <caret line="43" column="26" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="26" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -130,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/conftest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="146" column="21" selection-start-line="146" selection-start-column="11" selection-end-line="146" selection-end-column="21" />
+            <state relative-caret-position="325">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -145,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_dir/1test_Alogin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="56" column="19" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="19" />
+            <state relative-caret-position="400">
+              <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -165,17 +131,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>cases_path</find>
-      <find>rerun</find>
-      <find>driver_type</find>
-      <find>xfail</find>
-      <find>new_report_dir</find>
-      <find>capture_screenshot</find>
       <find>description</find>
       <find>session</find>
       <find>@pytest.fixture</find>
       <find>base_url</find>
-      <find>url</find>
       <find>hook</find>
       <find>optionalhook</find>
       <find>description_html</find>
@@ -185,7 +144,6 @@
       <find>fixture</find>
       <find>hookwrapper</find>
       <find>report</find>
-      <find>browser</find>
       <find>创建新团队</find>
       <find>团队共享</find>
       <find>团队及团队文件夹名称</find>
@@ -195,6 +153,14 @@
       <find>images_path</find>
       <find>user</find>
       <find>WebDriverWait</find>
+      <find>纯文本</find>
+      <find>退</find>
+      <find>browser_close</find>
+      <find>browser</find>
+      <find>进入失败判断</find>
+      <find>CH_Options</find>
+      <find>url</find>
+      <find>Options</find>
     </findStrings>
     <replaceStrings>
       <replace>见远笔记(.doc)</replace>
@@ -260,7 +226,6 @@
         <option value="$PROJECT_DIR$/test_dir/test_baidu.py" />
         <option value="$PROJECT_DIR$/page/login_page.py" />
         <option value="$PROJECT_DIR$/seting/conftest.py" />
-        <option value="$PROJECT_DIR$/conftest.py" />
         <option value="$PROJECT_DIR$/test_dir/1test_baidu.py" />
         <option value="$PROJECT_DIR$/test_dir/test_Alogin.py" />
         <option value="$PROJECT_DIR$/buttonFunction/fragerCheck.py" />
@@ -275,6 +240,7 @@
         <option value="$PROJECT_DIR$/test_dir/contractCompare.py" />
         <option value="$PROJECT_DIR$/common/newcomfunction.py" />
         <option value="$PROJECT_DIR$/test_dir/test_contractCompare.py" />
+        <option value="$PROJECT_DIR$/conftest.py" />
       </list>
     </option>
   </component>
@@ -316,6 +282,38 @@
               <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
               <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
               <item name="test_report" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_08_28_20_56_43" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_08_28_20_56_43" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_09_03_16_52_55" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_09_03_17_15_01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_09_03_17_15_01" type="462c0819:PsiDirectoryNode" />
+              <item name="image" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -361,7 +359,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_contractCompare">
+  <component name="RunManager" selected="Python.run_tests">
     <configuration name="智能搜索检查" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -438,6 +436,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/buttonFunction/compareFile.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="conftest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Cyprex-ui" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/conftest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -626,7 +645,7 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test_dir/test_contractCompare.py" />
+      <option name="SCRIPT_NAME" value="C:\work\8python\Cyprex-ui\test_dir\test_contractCompare.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -668,10 +687,12 @@
       <item itemvalue="Python.test" />
       <item itemvalue="Python.test_3" />
       <item itemvalue="Python.testlogin" />
-      <item itemvalue="Python.test_contractCompare" />
+      <item itemvalue="Python.1test_contractCompare" />
+      <item itemvalue="Python.conftest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.conftest" />
         <item itemvalue="Python.run_tests" />
       </list>
     </recent_temporary>
@@ -734,12 +755,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23393045" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23393045" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32962137" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.3129176" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49789253" visible="true" weight="0.3129176" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -754,16 +775,6 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/ide/ide-scripting.groovy">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/edit/movefile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
@@ -946,16 +957,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1075">
-          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/buttonFunction/moveFile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -970,16 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="650">
           <caret line="41" column="10" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4375">
-          <caret line="194" column="34" selection-start-line="194" selection-start-column="24" selection-end-line="194" selection-end-column="34" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1027,10 +1018,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/newcomfunction.py">
+    <entry file="file://$PROJECT_DIR$/search/边写边搜验证.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="38" column="23" selection-start-line="38" selection-start-column="23" selection-end-line="38" selection-end-column="23" />
+        <state relative-caret-position="275">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test_dir/1test_rubbish.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="47" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
@@ -1039,7 +1037,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_dir/1test_baidu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1200">
+        <state relative-caret-position="-500">
           <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -1047,37 +1045,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/conftest.py">
+    <entry file="file://$PROJECT_DIR$/test_dir/1test_Alogin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="146" column="21" selection-start-line="146" selection-start-column="11" selection-end-line="146" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/search/边写边搜验证.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="12" column="22" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test_dir/test_rubbish.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="33" column="43" selection-start-line="33" selection-start-column="35" selection-end-line="33" selection-end-column="43" />
+        <state relative-caret-position="400">
+          <caret line="49" column="37" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_dir/1test_Alogin.py">
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/selenium/webdriver/chrome/webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="56" column="19" selection-start-line="56" selection-start-column="8" selection-end-line="56" selection-end-column="19" />
+        <state relative-caret-position="197">
+          <caret line="32" column="23" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/Microsoft Visual Studio/Shared/Python37_64/Lib/site-packages/selenium/webdriver/chrome/options.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/newcomfunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="43" column="26" selection-start-line="43" selection-start-column="23" selection-end-line="43" selection-end-column="26" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="24" selection-start-line="24" selection-end-line="24" selection-end-column="39" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
@@ -1086,10 +1091,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test_dir/test_contractCompare.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="42" column="72" lean-forward="true" selection-start-line="42" selection-start-column="72" selection-end-line="42" selection-end-column="72" />
+        <state relative-caret-position="217">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/conftest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
