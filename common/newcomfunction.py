@@ -36,7 +36,7 @@ def new_screen_short(driver, images_path, pic_name):
 # 封装user相关方法
 class new_user():
 
-    # 登录方法
+    # 登录方法,针对有内容管理权限的账号
     def new_login(self, driver, base_url=None, bae_user=None, base_pwd=None):
         if base_url:
             driver.get(base_url)
