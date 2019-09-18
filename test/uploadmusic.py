@@ -29,7 +29,7 @@ from common.comfunction import execBrower
 from common.comfunction import User
 from common.comfunction import comHtml
 
-resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultpath = com_path()+"报告\\"
 
 # 上传office相关文件
 class up_music(unittest.TestCase):
@@ -52,14 +52,15 @@ class up_music(unittest.TestCase):
     def upload_music(self):
         '''上传music文件'''
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\music\\"
+        picturePath=com_path()+"截图\\"+"19种上传格式截图\\music\\"
+        os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/music/"
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
 
         # 上传文件
         # 音频
-        ypath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\音频\\"
+        ypath = com_path()+"19种格式\\音频\\"
         pamname = "16k"
         wavname = "筷子兄弟《小苹果》"
         amrname = "另一种格式"

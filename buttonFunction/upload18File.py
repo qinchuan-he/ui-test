@@ -30,10 +30,11 @@ from common.comfunction import execBrower # 启动浏览器函数
 from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml # 生成html报告类
 from common.comfunction import com_alert # 弹窗类公共方法
+from common.comfunction import com_path
 
 # 上传19种格式并且预览，每个截图
 
-resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultpath = com_path()+"报告\\"
 class up_all(unittest.TestCase):
     '''上传19种格式'''
     # 启动浏览器,并且登录
@@ -57,14 +58,15 @@ class up_all(unittest.TestCase):
     def upload_office(self):
         '''上传office文件'''
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\office\\"
+        picturePath=com_path()+"截图\\"+"19种上传格式截图\\office\\"
+        os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
 
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
         # 上传文件
         # office相关
-        fpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\office\\"
+        fpath = com_path()+"19种格式\\office\\"
         word1name = "2017年12月11日-2017年12月15日发行监管部"
         word2name = "带图片表格文档"
         excel1name = "003_模板_TestLink测试用例导入"
@@ -178,7 +180,8 @@ class up_all(unittest.TestCase):
     def upload_picture(self):
         '''上传picture文件'''
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\picture\\"
+        picturePath=com_path()+"截图\\"+"19种上传格式截图\\picture\\"
+        os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/picture/"
 
         waitTime=5
@@ -187,7 +190,7 @@ class up_all(unittest.TestCase):
         # 上传文件
         # 图片相关
 
-        tpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\图片\\"
+        tpath = com_path()+"19种格式\\图片\\"
         jpgname = "timg"
         pngname= "验证图片"
         bmpname = "BMP图片"
@@ -265,14 +268,15 @@ class up_all(unittest.TestCase):
     def upload_music(self):
         '''上传音频文件'''
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\music\\"
+        picturePath=com_path()+"截图\\"+"19种上传格式截图\\music\\"
+        os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/music/"
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
 
         # 上传文件
         # 音频
-        ypath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\音频\\"
+        ypath = com_path()+"19种格式\\音频\\"
         pamname = "16k"
         wavname = "筷子兄弟《小苹果》"
         amrname = "另一种格式"
@@ -349,7 +353,8 @@ class up_all(unittest.TestCase):
     def upload_other(self):
         '''上传其他类型文件'''       
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\other\\"
+        picturePath=com_path()+"截图\\"+"19种上传格式截图\\other\\"
+        os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/other/"
 
         waitTime=5
@@ -357,7 +362,7 @@ class up_all(unittest.TestCase):
 
         # 上传文件
         # 其他
-        qpath="C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\其他\\"
+        qpath=com_path()+"19种格式\\其他\\"
         pdfname = "146页年度报告"
         zipname = "测试解压"
         hmtlname = "厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知"

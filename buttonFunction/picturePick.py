@@ -32,8 +32,9 @@ from common.comfunction import com_upload # 公共上传函数
 from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
+from common.comfunction import com_path
 
-resultPath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultPath = com_path()+"报告\\"
 
 #  验证图例表格提取和同句搜索，图例提取有三个操作（数据组），新增，更新，复制
 # 1.新建word，插入图片，然后文件夹内搜索word，（第一步更新验证）----新建word用例中
@@ -45,8 +46,9 @@ resultPath = "C:\\work\\1测试\\10自动化\\报告\\"
 class test_Pick(unittest.TestCase):
     '''图例表格提取验证和同句验证'''
     #  公共参数
-    picturePath = "C:\\work\\1测试\\10自动化\\截图保存\\图例\\"  # 生成截图路径
-    uploadPath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\图例提取文件\\"  # 上传路径
+    picturePath = com_path()+"截图\\"+"图例\\"  # 生成截图路径
+    os.makedirs(picturePath)
+    uploadPath = com_path()+"19种格式\\图例提取文件\\"  # 上传路径
     wordTextName = "表格图片"   # 后缀是doc
     wordvectorName = "纯矢量图"   # 后缀是docx
     pdfName = "验证图例文件"  # 后缀是pdf

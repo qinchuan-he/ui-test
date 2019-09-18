@@ -11,6 +11,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from time import sleep
 import time
+from common.comfunction import com_path
 
 """上传word，修改word（未用边写边搜），下载word"""
 
@@ -64,7 +65,7 @@ driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
 
 
 # 上传文件
-driver.find_element_by_xpath("//input[@type='file']").send_keys("C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\回归的word文档.docx")
+driver.find_element_by_xpath("//input[@type='file']").send_keys(com_path()+"回归的word文档.docx")
 
 # sleep(10)
 

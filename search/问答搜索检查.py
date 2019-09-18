@@ -34,7 +34,8 @@ url="http://firai-test.gjzqth.com:4680/"
 user="13248131618"
 # user="19956966528"
 pwd="Test123456"
-picturePath="C:\\work\\1测试\\10自动化\\截图保存\\问答搜索\\"
+picturePath=com_path()+"截图\\"+"问答搜索\\"
+os.makedirs(picturePath)
 search="股份"   
 wiatTime=30
 # 调整窗口大小

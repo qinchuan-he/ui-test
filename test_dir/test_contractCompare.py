@@ -22,12 +22,12 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 # 引入公共方法
 from common.newcomfunction import new_user
-
+from common.comfunction import com_path
 
 # 验证合同防伪校验模块，这里不验证比对结果，其他用例查看
 # 公共参数
-upload_path1 = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\比对文件\\合同1.docx"
-upload_path2 = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\比对文件\\合同1扫描件（8张合并）.pdf"
+upload_path1 = com_path()+"19种格式\比对文件\\合同1.docx"
+upload_path2 = com_path()+"19种格式\比对文件\\合同1扫描件（8张合并）.pdf"
 name1 = "合同1"
 name2 = "合同1扫描件（8张合并）"
 
@@ -36,7 +36,7 @@ class TestContractCompare:
 
     def test_one(self, browser, base_url, images_path):
         ''' 合同防伪校验'''
-
+        print("base_url:"+base_url)
         new_user().new_login(browser, base_url)
         driver = browser
         # 进入模块

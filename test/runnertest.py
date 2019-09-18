@@ -21,7 +21,7 @@ from HTMLTestRunner import HTMLTestRunner
 # 服务器上传
 import paramiko
 
-resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultpath = com_path()+"报告\\"
 
 if __name__ == "__main__":
     case = unittest.defaultTestLoader.discover(start_dir='test', pattern='testlogin.py')

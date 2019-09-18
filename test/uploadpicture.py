@@ -29,7 +29,7 @@ from common.comfunction import execBrower
 from common.comfunction import User
 from common.comfunction import comHtml
 
-resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultpath = com_path()+"报告\\"
 
 # 上传office相关文件
 class up_picture(unittest.TestCase):
@@ -53,7 +53,8 @@ class up_picture(unittest.TestCase):
     def upload_picture(self):
         '''上传picture文件'''
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\picture\\"
+        picturePath=com_path()+"截图\\"+"19种上传格式截图\\picture\\"
+        os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/picture/"
 
         waitTime=5
@@ -62,7 +63,7 @@ class up_picture(unittest.TestCase):
         # 上传文件
         # 图片相关
 
-        tpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\图片\\"
+        tpath = com_path()+"19种格式\\图片\\"
         jpgname = "timg"
         pngname= "验证图片"
         bmpname = "BMP图片"

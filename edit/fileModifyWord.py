@@ -26,7 +26,7 @@ from common.comfunction import team
 from common.comfunction import com_share
 from common.comfunction import com_xpath
 from common.comfunction import com_alert
-
+from common.comfunction import com_path
 
 # 上传word，修改word（未用边写边搜），下载word, 20190716增加了分享功能
 # 2019-07-24 增加图例表格提取的验证，分别是更新和copy的验证，增加在返回列表之后，准备重构这个类
@@ -39,15 +39,16 @@ driver=webdriver.Chrome(path)
 # driver=webdriver.Chrome(options=opt,executable_path=path)   #无头模式
 
 search="股份"
-picturePath="C:\\work\\1测试\\10自动化\\截图保存\\编辑文件截图\\"
+picturePath =com_path()+"截图\\"+"编辑文件截图\\"
+os.makedirs(picturePath)
 waitTime=2
 # url="https://testcyprex.fir.ai/sign-in"
 url="https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/sign-in"
 user="13248131618"
 pwd="Test123456"
-uploadPath="C:\\work\\1测试\\10自动化\\word插入图片脚本\\upfile.exe"
-
+# uploadPath="C:\\work\\1测试\\10自动化\\word插入图片脚本\\upfile.exe"
+uploadPath = com_path()+"word插入图片脚本\\upfile.exe"
 driver.set_window_size(1400,900) 
 
 

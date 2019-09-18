@@ -32,18 +32,20 @@ from common.comfunction import team  # 团队类
 from common.comfunction import com_upload # 公共上传函数
 from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
+from common.comfunction import com_path
 
 # 收藏功能验证，以PDF文件验证，预览中，边写边搜中，文件夹中（工具栏），文件夹内搜索中
 # 不包含比对报告收藏
 
-resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultpath = com_path()+"报告\\"
 # 收藏
 class test_store(unittest.TestCase):
     '''测试收藏功能'''
     # 公共参数
-    picturePath = "C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\other\\" # 生成截图路径
+    picturePath = com_path()+"截图\\"+"19种上传格式截图\\other\\" # 生成截图路径
+    os.makedirs(picturePath)
     showPath = "file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/other/" # 截图输出路径，目前废弃
-    qpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\其他\\"    # 上传路径
+    qpath = com_path()+"19种格式\\其他\\"    # 上传路径
     pdfname = "146页年度报告"    # 上传文件名
     folder12 = time.time()   #  新建的文件夹，私有中边写边搜用
 

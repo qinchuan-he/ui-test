@@ -15,33 +15,23 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
 ############################
-
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
 driver_type = "chrome"
 # driver_type = "chrome-headless"
-
-# 配置运行的 URL, 改为了登录方法中控制,为了切换环境时候方便
-# url = "https://cyprex.fir.ai/sign-in"
+path = "C:\\2services\\driver\\chromedriver.exe"
+# 配置运行的 URL, ---------改为了登录方法中控制,为了切换环境时候方便
 # url = "https://testcyprex.fir.ai/sign-in"
-
 # 失败重跑次数
 rerun = "0"
-
 # 当达到最大失败数，停止执行
 max_fail = "1"
-
 # 运行测试用例的目录或文件
 cases_path = "./test_dir/"
-# -------------我自己增加的变量
-path = "C:\\2services\\driver\\chromedriver.exe"
-
 ############################
-
 
 # 定义基本测试环境
 @pytest.fixture(scope='function')
 def base_url():
-    global url
     return url
 
 
@@ -180,6 +170,7 @@ def browser():
         print("进入chrome浏览器流程")
         driver = webdriver.Chrome(path)
         driver.set_window_size(1400, 900)
+        driver.implicitly_wait(0.5)
 
     elif driver_type == "firefox":
         # 本地firefox浏览器
@@ -193,6 +184,7 @@ def browser():
         chrome_options.add_argument('--disable-gpu')
         chrome_options.add_argument("--window-size=1920x1080")
         driver = webdriver.Chrome(options=chrome_options, executable_path=path)
+        driver.implicitly_wait(30)
 
     elif driver_type == "firefox-headless":
         # firefox headless模式
@@ -220,7 +212,3 @@ def browser_close():
     yield driver
     driver.quit()
     print("test end!")
-
-
-if __name__ == "__main__":
-    capture_screenshot("test_dir/test_baidu_search.test_search_python.png")

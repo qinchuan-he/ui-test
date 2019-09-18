@@ -26,7 +26,7 @@ url = "https://testcyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
 # user = "19958585555"
 user = "10025253635"
-# # user = "13248131618"
+# user = "13248131618"
 # # user="10056966528"
 pwd = "Test123456"
 
@@ -45,6 +45,11 @@ def execBrower(mode):
     driver.implicitly_wait(30)
     return driver
 
+# 设置上传文件、报告、截图的根路径
+def com_path():
+    root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    folder_path = root_path+"\\自动化验证文档\\"
+    return folder_path
 
 # 登录相关
 class User:
@@ -62,14 +67,17 @@ class User:
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
     #  创建文件夹
-    def createFolder(self, driver, folder):
+    def createFolder(self, driver, folder=None):
         sleep(0.5)
         createType = "create"
         el11 = com_xpath().com_listButton(driver, createType)
         ActionChains(driver).move_to_element(el11).perform()
         driver.find_element_by_xpath("//li[text()='文件夹']").click()
         sleep(0.5)
-        driver.switch_to.active_element.send_keys(folder)
+        if folder:
+            driver.switch_to.active_element.send_keys(folder)
+        else:
+            driver.switch_to.active_element.send_keys(str(time.time()))
         sleep(0.5)
         driver.switch_to.active_element.send_keys(Keys.ENTER)
         sleep(0.5)
@@ -84,6 +92,7 @@ class User:
 # 生成html相关的类
 class comHtml:
     def print_html(self, picname, picpath, picid):  # 就是传入名称，路径，picid就是时间
+        # 增加对于绝对路径的处理，处理之后本地不能打开查看图片了
         print(
             "<a href = \"javascript:void(0)\" onclick = \"document.getElementById(\'" + picid + "\').style.display='block';document.getElementById('fade').style.display='block'\">" + picname + "预览</a>"
             + "<div id=\"" + picid + "\" class=\"white_content\">"
@@ -538,3 +547,8 @@ class com_xpath(object):
         except Exception as e:
             print(e)
             print("没有进入预览或者加载超时或者解析失败")
+
+    # log定位
+    def com_log(self, driver):
+        driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]/img").click()
+        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))

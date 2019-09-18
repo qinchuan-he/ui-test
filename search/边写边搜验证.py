@@ -31,7 +31,8 @@ driver.set_window_size(1400, 900)  # 调整窗口大小
 # 通用变量,搜索变量,保存图片路径,等待时间
 # search="公司"
 search = "股份"
-picturePath = "C:\\work\\1测试\\10自动化\\截图保存\\边写边搜\\"
+picturePath = com_path()+"截图\\"+"边写边搜\\"
+os.makedirs(picturePath)
 waitTime = 12
 url = "https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"

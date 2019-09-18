@@ -28,8 +28,8 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 from common.comfunction import execBrower
 from common.comfunction import User
 from common.comfunction import comHtml
-
-resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+from common.comfunction import com_path
+resultpath = com_path()+"报告\\"
 
 # 上传其他相关文件
 class up_other(unittest.TestCase):
@@ -58,7 +58,8 @@ class up_other(unittest.TestCase):
         '''上传其他文件'''
 
         # 公共参数
-        picturePath="C:\\work\\1测试\\10自动化\\截图保存\\19种上传格式截图\\other\\"
+        picturePath=com_path()+"截图\\"+"19种上传格式截图\\other\\"
+        os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/other/"
 
         waitTime=5
@@ -66,7 +67,7 @@ class up_other(unittest.TestCase):
 
         # 上传文件
         # 其他
-        qpath="C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\其他\\"
+        qpath=com_path()+"19种格式\\其他\\"
         pdfname = "146页年度报告"
         zipname = "测试解压"
         hmtlname = "厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知"

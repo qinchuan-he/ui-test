@@ -38,7 +38,8 @@ driver=execBrower(mode)
 
 # 通用变量,搜索变量,保存图片路径,等待时间
 search="股份"
-picturePath = "C:\\work\\1测试\\10自动化\\截图保存\\收藏订阅\\"
+picturePath = com_path()+"截图\\"+"收藏订阅\\"
+os.makedirs(picturePath)
 waitTime =  1
 # # url="https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"

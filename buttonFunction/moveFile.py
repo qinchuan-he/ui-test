@@ -33,8 +33,9 @@ from common.comfunction import com_upload_min # 公共上传函数,时间缩短
 from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
+from common.comfunction import com_path
 
-resultPath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultPath = com_path()+"报告\\"
 
 # 验证移动功能，文件移动，文件夹移动，移动的重名处理
 # 移动文件夹，私有，根目录到子目录，子目录到根目录(直接重名验证)
@@ -45,8 +46,9 @@ resultPath = "C:\\work\\1测试\\10自动化\\报告\\"
 class test_move(unittest.TestCase):
     '''验证文件和文件夹的移动'''
     # 公共参数
-    picturePath = "C:\\work\\1测试\\10自动化\\截图保存\\移动\\"  # 生成截图路径
-    upload_url = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\图例提取文件\\"
+    picturePath = com_path()+"截图\\"+"移动\\"  # 生成截图路径
+    os.makedirs(picturePath)
+    upload_url = com_path()+"19种格式\\图例提取文件\\"
     upload_name = "表格图片"
     upUrl = upload_url + upload_name + ".doc"
 

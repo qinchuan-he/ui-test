@@ -41,7 +41,7 @@ def run(m):
         html_report = os.path.join(REPORT_DIR, now_time, "report.html")
         xml_report = os.path.join(REPORT_DIR, now_time, "junit-xml.xml")
         pytest.main(["-s", "-v",
-                     # "test/test_3.py",
+                    # "test_dir/test_rubbish.py",
                      cases_path,
                      "--html=" + html_report,
                      # "--junit-xml=" + xml_report,

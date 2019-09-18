@@ -25,7 +25,7 @@ from common.comfunction import user
 from common.comfunction import url
 from common.comfunction import pwd
 
-# 针对pytest框架的封装
+# 针对pytest框架的封装---20190903,还是用一部分原来的封装
 
 
 # pytest的公共截图方法，传入driver，images_path图片存放路径，pic_name图片名字(函数名-目标名字)
@@ -59,5 +59,6 @@ class new_user():
             print(e)
             print("异常")
 
-    # 创建文件夹
-    # def create_folder(self, driver,folder_name=None):
+    # 创建文件夹---用原来的
+    #
+

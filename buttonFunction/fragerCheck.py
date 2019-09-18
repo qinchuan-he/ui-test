@@ -32,17 +32,20 @@ from common.comfunction import team  # 团队类
 from common.comfunction import com_upload # 公共上传函数
 from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
+from common.comfunction import com_path
 
 # 零散功能验证，验证文件何文件夹名字长度，看板显示等
 
-resultpath = "C:\\work\\1测试\\10自动化\\报告\\"
+resultpath = com_path()+"报告\\"
 
 class test_frager(unittest.TestCase):
     '''零散的验证，主要是ui方面的检查'''
     # 公共参数
     mode = 1
-    picturePath = "C:\\work\\1测试\\10自动化\\截图保存\\零散\\"  # 生成截图路径
-    fpath = "C:\\Users\\fir\\Desktop\\上传文件\\自动化验证文档\\19种格式\\office\\"
+    picturePath = com_path()+"截图\\"+"零散\\"  # 生成截图路径
+    os.makedirs(picturePath)
+    print("============="+picturePath)
+    fpath = com_path()+"19种格式\\office\\"
     word1name = "2017年12月11日-2017年12月15日发行监管部"
     lname = "赵客缦胡缨吴钩霜雪明银鞍照白马飒沓如流星十步杀一人千里不留行事了拂衣去深藏身与名闲过信陵饮脱剑膝前横将炙啖朱亥持觞劝侯嬴"
 
