@@ -16,8 +16,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
 ############################
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
-driver_type = "chrome"
-# driver_type = "chrome-headless"
+# driver_type = "chrome"
+driver_type = "chrome-headless"
 path = "C:\\2services\\driver\\chromedriver.exe"
 # 配置运行的 URL, ---------改为了登录方法中控制,为了切换环境时候方便
 # url = "https://testcyprex.fir.ai/sign-in"

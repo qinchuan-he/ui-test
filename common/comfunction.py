@@ -93,6 +93,7 @@ class User:
 class comHtml:
     def print_html(self, picname, picpath, picid):  # 就是传入名称，路径，picid就是时间
         # 增加对于绝对路径的处理，处理之后本地不能打开查看图片了
+        picpath = "\Cyprex-ui" + picpath.split("Cyprex-ui", 2)[1]  # 注释掉之后本地打开html可以了
         print(
             "<a href = \"javascript:void(0)\" onclick = \"document.getElementById(\'" + picid + "\').style.display='block';document.getElementById('fade').style.display='block'\">" + picname + "预览</a>"
             + "<div id=\"" + picid + "\" class=\"white_content\">"
