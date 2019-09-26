@@ -41,12 +41,13 @@ class up_office(unittest.TestCase):
         User().login(driver)
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\office\\"
-        os.makedirs(picturePath)
+        if not (os.path.exists(picturePath)):
+            os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
 
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
-        # 私有根目录文件夹
+        # 私有资料根目录文件夹
         el1=driver.find_element_by_xpath("//span[text()='新建']")
         sleep(waitTime)
         ActionChains(driver).move_to_element(el1).perform()

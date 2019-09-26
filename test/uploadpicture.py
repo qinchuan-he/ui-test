@@ -28,6 +28,7 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 from common.comfunction import execBrower
 from common.comfunction import User
 from common.comfunction import comHtml
+from common.comfunction import com_path
 
 resultpath = com_path()+"报告\\"
 
@@ -37,7 +38,7 @@ class up_picture(unittest.TestCase):
     mode=2
     driver = execBrower(mode)
     User().login(driver)
-        # # 私有根目录文件夹
+        # # 私有资料根目录文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")
     sleep(3)
     ActionChains(driver).move_to_element(el1).perform()
@@ -54,7 +55,8 @@ class up_picture(unittest.TestCase):
         '''上传picture文件'''
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\picture\\"
-        os.makedirs(picturePath)
+        if not (os.path.exists(picturePath)):
+            os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/picture/"
 
         waitTime=5

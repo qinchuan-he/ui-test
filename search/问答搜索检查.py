@@ -15,6 +15,8 @@ import time   #生成时间戳用
 import os    #上传autoit用
 import re
 
+from common.comfunction import com_path
+
 
 # 检查搜索功能，最近收藏和数据订阅
 
@@ -35,7 +37,8 @@ user="13248131618"
 # user="19956966528"
 pwd="Test123456"
 picturePath=com_path()+"截图\\"+"问答搜索\\"
-os.makedirs(picturePath)
+if not(os.path.exists(picturePath)):
+    os.makedirs(picturePath)
 search="股份"   
 wiatTime=30
 # 调整窗口大小
@@ -47,7 +50,7 @@ driver.find_element_by_xpath("//div[text()='账号登录']").click()
 driver.find_element_by_id("username_no").send_keys(user)
 driver.find_element_by_id("password").send_keys(pwd)
 driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()   # 登录，好像伪类中的文字不能识别
-# driver.find_element_by_xpath("//a[text()='私有']").click()
+# driver.find_element_by_xpath("//a[text()='私有资料']").click()
 WebDriverWait(driver,10,0.2).until(ec.presence_of_element_located((By.XPATH,"//span[text()='艾玛同学']")))
 
 

@@ -15,6 +15,7 @@ from selenium.webdriver.chrome.options import Options
 import time  # 生成时间戳用
 import os  # 上传autoit用
 import re
+from common.comfunction import com_path
 
 # 检查搜索功能，最近收藏和数据订阅
 
@@ -32,7 +33,8 @@ driver.set_window_size(1400, 900)  # 调整窗口大小
 # search="公司"
 search = "股份"
 picturePath = com_path()+"截图\\"+"边写边搜\\"
-os.makedirs(picturePath)
+if not(os.path.exists(picturePath)):
+    os.makedirs(picturePath)
 waitTime = 12
 url = "https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"
@@ -49,7 +51,7 @@ driver.find_element_by_id("username_no").send_keys(user)
 driver.find_element_by_id("password").send_keys(pwd)
 driver.find_element_by_xpath(
     "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
-# driver.find_element_by_xpath("//a[text()='私有']").click()
+# driver.find_element_by_xpath("//a[text()='私有资料']").click()
 WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
 # 见远笔记(.doc)
@@ -60,7 +62,7 @@ WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "
 
 driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
 
-WebDriverWait(driver, 5, 0.2).until(ec.presence_of_element_located((By.XPATH, "//div[text()='私有与共享']")))
+WebDriverWait(driver, 5, 0.2).until(ec.presence_of_element_located((By.XPATH, "//div[text()='私有资料与共享']")))
 driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
 driver.switch_to.active_element.send_keys(Keys.ENTER)
 
@@ -70,7 +72,7 @@ driver.get_screenshot_as_file(picturePath + "默认列表截图" + str(int(time.
 strcountlist = driver.find_elements_by_xpath("//div[contains(@class,'SearchFileContentPanel_searchToolbar__')]/span[1]")
 # print(strcountlist[0].text)
 count = int(re.findall("[0-9]+", strcountlist[0].text)[0])
-print("私有共享资源数量： %d" % count)
+print("私有资料共享资源数量： %d" % count)
 if count > 0:
     el2 = driver.find_element_by_xpath("//div[@class='ant-spin-container']/div[1]")
     ActionChains(driver).move_to_element(el2).perform()

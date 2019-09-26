@@ -36,7 +36,7 @@ from common.comfunction import com_path
 
 resultPath = com_path()+"报告\\"
 # 验证团队导入功能
-# 1.私有中文件夹，上传文件
+# 1.私有资料中文件夹，上传文件
 # 2.检查团队，进入团队，导入文件（截图弹窗，刷新之后截图导入结果）
 # 3.团队中创建目录，进入目录导入（截图弹窗，刷新之后截图导入结果）
 # 4.预览导入的文件（截图预览结果），然后退出
@@ -45,7 +45,8 @@ class test_teamImportFile(unittest.TestCase):
     '''验证团队导入功能'''
     # 设置公共参数
     picturePath = com_path()+"截图\\"+"19种上传格式截图\\other\\"  # 生成截图路径
-    os.makedirs(picturePath)
+    if not (os.path.exists(picturePath)):
+        os.makedirs(picturePath)
     uploadPath = com_path()+"19种格式\\图例提取文件\\"  # 上传路径
     wordName = "结构复杂的文件"   # 后缀是doc
     wordurl = uploadPath+wordName+".doc"

@@ -78,7 +78,7 @@ class Testrubbist:
         # 退出文件夹
         sleep(1)
         print("准备退出二级目录")
-        driver.find_element_by_xpath("//a[text()='私有']").click()
+        driver.find_element_by_xpath("//a[text()='私有资料']").click()
         # driver.back()
         try:
             WebDriverWait(driver, 5, 0.5) \
@@ -150,7 +150,7 @@ class Testrubbist:
                     ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
                     print("往后滚动")
 
-            # 返回私有
+            # 返回私有资料
             com_xpath().com_log(driver)
             driver.get_screenshot_as_file(images_path + "Testrubbist-恢复目录查看" + ".png")
             driver.find_element_by_xpath("//span[text()='" + folder + "']").click()

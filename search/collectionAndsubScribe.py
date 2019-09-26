@@ -22,7 +22,7 @@ sys.path.append(rootPath)
 
 from common.comfunction import execBrower
 from common.comfunction import User
-
+from common.comfunction import com_path
 
 # 检查搜索功能，最近收藏和数据订阅
 # opt = Options()
@@ -39,7 +39,8 @@ driver=execBrower(mode)
 # 通用变量,搜索变量,保存图片路径,等待时间
 search="股份"
 picturePath = com_path()+"截图\\"+"收藏订阅\\"
-os.makedirs(picturePath)
+if not(os.path.exists(picturePath)):
+    os.makedirs(picturePath)
 waitTime =  1
 # # url="https://testcyprex.fir.ai/sign-in"
 # url="https://cyprex.fir.ai/sign-in"

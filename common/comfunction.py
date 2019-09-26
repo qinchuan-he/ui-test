@@ -63,7 +63,7 @@ class User:
         driver.find_element_by_xpath(
             "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         # sleep(1.5)
-        # driver.find_element_by_xpath("//a[text()='私有']").click()
+        # driver.find_element_by_xpath("//a[text()='私有资料资料']").click()
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
     #  创建文件夹
@@ -82,7 +82,7 @@ class User:
         driver.switch_to.active_element.send_keys(Keys.ENTER)
         sleep(0.5)
 
-    # 返回私有根目录
+    # 返回私有资料资料根目录
     def root_private(self, driver):
         sleep(0.5)
         driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
@@ -230,16 +230,19 @@ class com_alert(object):
                 ec.presence_of_element_located((By.XPATH, "//div[@class='ant-modal-title']")))
             # 目前弹框有问题，增加兼容
             try:
+                print('folder：'+folder)
                 driver.find_element_by_xpath("//span[text()='" + folder + "']/../../..").click()
             except Exception as e:
                 print("弹框中文件名显示有问题，截图")
-                print("文件夹名： %s" % folder)
-                folder2 = folder.split(".", 2)[0]
-                driver.find_element_by_xpath("//span[contains(text(),'" + folder2 + "')]/../../..").click()
-                print_name1 = "弹窗截图"
-                datename = str(time.time())
-                driver.get_screenshot_as_file(pic_path + datename + ".png")
-                comHtml().print_html(print_name1, pic_path, datename)
+                print(e)
+                # 219/09/25 去掉兼容
+                # print("文件夹名： %s" % folder)
+                # folder2 = folder.split(".", 2)[0]
+                # driver.find_element_by_xpath("//span[contains(text(),'" + folder2 + "')]/../../..").click()
+                # print_name1 = "弹窗截图"
+                # datename = str(time.time())
+                # driver.get_screenshot_as_file(pic_path + datename + ".png")
+                # comHtml().print_html(print_name1, pic_path, datename)
             sleep(0.5)
             driver.find_element_by_xpath("//span[text()='" + file + "']/../../..").click()
             sleep(0.5)
@@ -440,43 +443,52 @@ def server_upload(localFile, remoteFile):
 
 #  封装定位
 class com_xpath(object):
-    # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）
+    # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）,
     def com_previewButton(self, driver, button):
         '''预览中的定位'''
         el1 = ""  # 返回的参数
         try:
             # 首先确定是否进入预览界面
             WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-            # mode = 1，代表私有，其余都是团队
-            el = driver.find_elements_by_xpath("//div[contains(@class,'FileToolbar_toolButton')]")
-            if button == 'textSearch':
-                el1 = el[0]
-            elif button == 'history':
-                el1 = el[1]
-            elif button == 'label':
-                el1 = el[2]
-            elif button == 'share':
-                el1 = el[3]
-            elif button == 'store':
-                el1 = el[3]
-            elif button == 'notes':
-                el1 = el[4]
-            elif button == 'connect':
-                el1 = el[5]
-            elif button == 'compare':
-                el1 = el[-3]
-            elif button == 'details':
-                el1 = el[-3]
-            elif button == 'download':
-                el1 = el[-2]
-            elif button == 'delete':
-                el1 = el[-1]
+            # mode = 1，代表私有资料资料，其余都是团队
+            # 2019/09/24根据需求调整，本次需求改了预览模式的按钮规则和排列，这一步是打开更多按钮
+            driver.find_element_by_xpath("//i[@class='anticon anticon-more']").click()
+            # el = driver.find_elements_by_xpath("//div[contains(@class,'FileToolbar_toolButton')]") #  样式改了废弃
+            # if button == 'textSearch':  # 搜索按钮
+                # el1 = el[0]
+            if button == 'innerSearchModel': # 内容搜索模式
+                el1 = el1 = driver.find_element_by_xpath("//span[text()='内容搜索']/..")
+            elif button == 'modifyModel': #  编辑模式
+                el1 = el1 = driver.find_element_by_xpath("//span[text()='编辑文档']/..")
+            elif button == 'history':  # 覆盖历史
+                el1 = driver.find_element_by_xpath("//div[text()='覆盖历史']/..")
+            elif button == 'label':  # 标签
+                el1 = driver.find_element_by_xpath("//div[text()='标签']/..")
+            # elif button == 'share':  # 分享
+                # el1 = el[3]
+            # elif button == 'store':  # 收藏
+                # el1 = el[3]
+            # elif button == 'notes':  # 批注
+                # el1 = el[4]
+            elif button == 'connect':  # 关联引用
+                el1 = driver.find_element_by_xpath("//div[text()='关联引用']/..")
+            elif button == 'compare':  # 比对
+                el1 = driver.find_element_by_xpath("//div[text()='文件对比']/..")
+            # elif button == 'details':  # 共享信息
+                # el1 = el[-3]
+            # elif button == 'download':  # 下载
+                #  el1 = el[-2]
+            elif button == 'delete':  # 删除
+                el1 = driver.find_element_by_xpath("//div[text()='删除']/..")
+            elif button == 'cover':  # PDF覆盖
+                el1 = driver.find_element_by_xpath("//div[text()='PDF覆盖']/..")
             else:
                 el1 = ""
                 print("传入预览按钮类型不对")
         except Exception as e:
             print(e)
             print("没有进入预览")
+        sleep(0.5)
         return el1
 
     #  列表预览顶部的按钮，button代表按钮类型
@@ -542,9 +554,12 @@ class com_xpath(object):
 
     #  进入预览界面,有iframe的
     def com_preview(self, driver, fileName):
+        print(fileName)
         driver.find_element_by_xpath("//span[text()='" + fileName + "']/..").click()
+        print("点击完成")
         try:
             WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+            print("等待1完成")
         except Exception as e:
             print(e)
             print("没有进入预览或者加载超时或者解析失败")

@@ -43,7 +43,8 @@ class test_frager(unittest.TestCase):
     # 公共参数
     mode = 1
     picturePath = com_path()+"截图\\"+"零散\\"  # 生成截图路径
-    os.makedirs(picturePath)
+    if not (os.path.exists(picturePath)):
+        os.makedirs(picturePath)
     print("============="+picturePath)
     fpath = com_path()+"19种格式\\office\\"
     word1name = "2017年12月11日-2017年12月15日发行监管部"

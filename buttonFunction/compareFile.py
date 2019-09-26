@@ -40,7 +40,8 @@ class test_compare(unittest.TestCase):
     '''测试比对'''
     #  公共参数
     picturePath = com_path()+"截图\\"+"19种上传格式截图\\other\\"  # 生成截图路径
-    os.makedirs(picturePath)
+    if not (os.path.exists(picturePath)):
+        os.makedirs(picturePath)
     uploadPath = com_path()+"19种格式\\比对文件\\" #  上传路径
     wordname1 = "合同1"
     pdfname1 = "合同"
@@ -53,17 +54,16 @@ class test_compare(unittest.TestCase):
     mode = 2
     driver = execBrower(mode)
     User().login(driver)
-    driver.implicitly_wait(30)
+    driver.implicitly_wait(45)
     # 检查团队
     team_name = team().check_team(driver)
     driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
     sleep(0.5)
-    # driver.find_element_by_xpath("//a[text()='私有']").click()
+    driver.find_element_by_xpath("//a[text()='私有资料']").click()
     #  文件夹，存放比对文件
     User().createFolder(driver, folder)
     # 进入文件夹
     driver.find_element_by_xpath("//span[text()='"+folder+"']/..").click()
-
     #  上传文件
     version = "以新版本覆盖"
     print_name = "比对上传文件"
@@ -77,11 +77,14 @@ class test_compare(unittest.TestCase):
     driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadPdfUrl2)
     # driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadPdfUrl3)
     # driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadPdfUrl4)
-    #  上传等待时间
-    for i in range(2):
-        sleep(3)
-        com_alert().com_equal(driver, version="保留两者")
-    sleep(14)
+    #  上传等待时间,比对不要看解析，速度加快2019/09/24
+    print('开始时间：'+ time.strftime('%Y-%m-%d %H:%M:S', time.localtime(time.time())))
+    # for i in range(2):
+    #     sleep(3)
+    #     com_alert().com_equal(driver, version="保留两者")
+    # # sleep(14)
+    sleep(4)
+    print('结束时间：'+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
 
 
     #  比对纯文字型文件
@@ -89,13 +92,18 @@ class test_compare(unittest.TestCase):
         '''纯文字的word和PDF比对'''
         try:
             com_xpath().com_preview(self.driver, self.pdfname1)
+            print("已点击预览")
+            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             buttont = "compare"
             el21 = com_xpath().com_previewButton(self.driver, buttont)
             el21.click()
+            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             printName = "开始比对"
             com_alert().com_alertCompare(self.driver, self.folder, self.wordname1, self.picturePath, printName)
+            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             datename = str(int(time.time()))
             self.driver.get_screenshot_as_file(self.picturePath+datename+".png")
+            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             printName = "比对结果"
             comHtml().print_html(printName, self.picturePath, datename)
             #  生成报告
@@ -121,6 +129,7 @@ class test_compare(unittest.TestCase):
             self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
         except Exception as e:
             comHtml().screen_shot(self.driver, self.picturePath, print_name="上传出现异常")
+        sleep(600)
 
     #  含有ocr的比对报告
     def test_ocr(self):

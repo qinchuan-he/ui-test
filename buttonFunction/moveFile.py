@@ -38,16 +38,17 @@ from common.comfunction import com_path
 resultPath = com_path()+"报告\\"
 
 # 验证移动功能，文件移动，文件夹移动，移动的重名处理
-# 移动文件夹，私有，根目录到子目录，子目录到根目录(直接重名验证)
+# 移动文件夹，私有资料，根目录到子目录，子目录到根目录(直接重名验证)
 # 移动文件夹，团队，根目录到子目录，子目录到根目录(直接重名验证)
-# 移动文件，私有，子目录到根目录，根目录到子目录，移动重名问题（同类型，不同类型）,艾玛文件移动出来
+# 移动文件，私有资料，子目录到根目录，根目录到子目录，移动重名问题（同类型，不同类型）,艾玛文件移动出来
 # 移动文件，团队，子目录到根目录，根目录到子目录，移动文件重名问题（同类型，不同类型）
 
 class test_move(unittest.TestCase):
     '''验证文件和文件夹的移动'''
     # 公共参数
     picturePath = com_path()+"截图\\"+"移动\\"  # 生成截图路径
-    os.makedirs(picturePath)
+    if not (os.path.exists(picturePath)):
+        os.makedirs(picturePath)
     upload_url = com_path()+"19种格式\\图例提取文件\\"
     upload_name = "表格图片"
     upUrl = upload_url + upload_name + ".doc"
@@ -56,7 +57,7 @@ class test_move(unittest.TestCase):
     driver = execBrower(mode)
     User().login(driver)
     def test_moveFolder_private(self):
-        '''私有中移动文件夹(重名)'''
+        '''私有资料中移动文件夹(重名)'''
         folder1 = str(time.time())
         # 子目录到根目录
         User().createFolder(self.driver, folder1)
@@ -71,7 +72,7 @@ class test_move(unittest.TestCase):
         el12.click()
         # 验证移动弹框取消功能
         type = "取 消"
-        type1 = "私有"
+        type1 = "私有资料"
         type3 = "确 定"
         com_alert().com_move(self.driver, self.picturePath, type3, folder1) # 验证移动选择自己的情况
         sleep(0.5)
@@ -79,7 +80,7 @@ class test_move(unittest.TestCase):
         el12.click()
         com_alert().com_move(self.driver, self.picturePath, type3, type1)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="子目录到根目录移动")
-        self.driver.find_element_by_xpath("//a[text()='私有']").click()
+        self.driver.find_element_by_xpath("//a[text()='私有资料']").click()
         sleep(1)
         comHtml().screen_shot(self.driver, self.picturePath, print_name="根目:"+folder1+"为移动文件")
         # 根目录移动到子目录
@@ -203,20 +204,20 @@ class test_move(unittest.TestCase):
         self.driver.forward()
         comHtml().screen_shot(self.driver, self.picturePath, print_name="根目录移动到子目录")
 
-    # 私有中移动文件
+    # 私有资料中移动文件
     def test_moveFile_private(self):
-        '''私有中移动文件（重名）'''
+        '''私有资料中移动文件（重名）'''
         User().root_private(self.driver)
         sleep(0.5)
         folder4 = str(time.time())
         version = "以新版本覆盖"
-        print_name = "私有根目录上传"
+        print_name = "私有资料根目录上传"
         com_upload_min(version, print_name, self.picturePath, self.upUrl, self.driver)
         sleep(0.5)
         User().createFolder(self.driver, folder4)
         self.driver.find_element_by_xpath("//span[text()='"+folder4+"']").click()
         version = "以新版本覆盖"
-        print_name = "私有子目录上传"
+        print_name = "私有资料子目录上传"
         com_upload_min(version, print_name, self.picturePath, self.upUrl, self.driver)
         el41 = self.driver.find_element_by_xpath("//span[text()='"+self.upload_name+"']")
         el42 = self.driver.find_element_by_xpath(
@@ -230,7 +231,7 @@ class test_move(unittest.TestCase):
         com_alert().com_move(self.driver, self.picturePath, type, folder4)
         type = "确 定"
         el43.click()
-        com_alert().com_move(self.driver, self.picturePath, type, folder="私有")
+        com_alert().com_move(self.driver, self.picturePath, type, folder="私有资料")
         com_alert().com_equal(self.driver, self.picturePath, print_name="移动冲突", version="保留两者")
         comHtml().screen_shot(self.driver, self.picturePath, print_name="子目录移动到根目录")
         self.driver.back()
@@ -238,7 +239,7 @@ class test_move(unittest.TestCase):
         User().createFolder(self.driver, folder41)
         self.driver.find_element_by_xpath("//span[text()='"+folder41+"']").click()
         version = "以新版本覆盖"
-        print_name = "私有子目录上传"
+        print_name = "私有资料子目录上传"
         com_upload_min(version, print_name, self.picturePath, self.upUrl, self.driver)
         self.driver.back()
         sleep(1)

@@ -28,6 +28,7 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 from common.comfunction import execBrower
 from common.comfunction import User
 from common.comfunction import comHtml
+from common.comfunction import com_path
 
 resultpath = com_path()+"报告\\"
 
@@ -37,7 +38,7 @@ class up_music(unittest.TestCase):
     mode=1
     driver = execBrower(mode)
     User().login(driver)
-            # # 私有根目录文件夹
+            # # 私有资料根目录文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")
     sleep(3)
     ActionChains(driver).move_to_element(el1).perform()
@@ -52,8 +53,9 @@ class up_music(unittest.TestCase):
     def upload_music(self):
         '''上传music文件'''
         # 公共参数
-        picturePath=com_path()+"截图\\"+"19种上传格式截图\\music\\"
-        os.makedirs(picturePath)
+        picturePath = com_path()+"截图\\"+"19种上传格式截图\\music\\"
+        if not (os.path.exists(picturePath)):
+            os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/music/"
         waitTime=5
         uploadwait= 15 #上传之后的等待时间

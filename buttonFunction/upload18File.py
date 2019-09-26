@@ -42,7 +42,7 @@ class up_all(unittest.TestCase):
     driver = execBrower(mode)
     User().login(driver)
     
-    # 公共的创建文件夹方法,私有根目录下创建一个文件夹
+    # 公共的创建文件夹方法,私有资料根目录下创建一个文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")
     sleep(1)
     ActionChains(driver).move_to_element(el1).perform()
@@ -59,7 +59,8 @@ class up_all(unittest.TestCase):
         '''上传office文件'''
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\office\\"
-        os.makedirs(picturePath)
+        if not (os.path.exists(picturePath)):
+            os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"
 
         waitTime=5
@@ -181,7 +182,8 @@ class up_all(unittest.TestCase):
         '''上传picture文件'''
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\picture\\"
-        os.makedirs(picturePath)
+        if not (os.path.exists(picturePath)):
+            os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/picture/"
 
         waitTime=5
@@ -269,7 +271,8 @@ class up_all(unittest.TestCase):
         '''上传音频文件'''
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\music\\"
-        os.makedirs(picturePath)
+        if not (os.path.exists(picturePath)):
+            os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/music/"
         waitTime=5
         uploadwait= 15 #上传之后的等待时间
@@ -354,7 +357,8 @@ class up_all(unittest.TestCase):
         '''上传其他类型文件'''       
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\other\\"
-        os.makedirs(picturePath)
+        if not (os.path.exists(picturePath)):
+            os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/other/"
 
         waitTime=5
@@ -466,6 +470,6 @@ if __name__ == "__main__":
 
     # 生成报告
     fp = open(resultpath+"19种格式上传验证.html", "wb")
-    runner = HTMLTestRunner(stream=fp, title="上传预览测试报告", description="私有中19中格式上传和打开")
+    runner = HTMLTestRunner(stream=fp, title="上传预览测试报告", description="私有资料中19中格式上传和打开")
     runner.run(testunit)
     fp.close()

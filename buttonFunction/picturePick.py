@@ -47,7 +47,8 @@ class test_Pick(unittest.TestCase):
     '''图例表格提取验证和同句验证'''
     #  公共参数
     picturePath = com_path()+"截图\\"+"图例\\"  # 生成截图路径
-    os.makedirs(picturePath)
+    if not (os.path.exists(picturePath)):
+        os.makedirs(picturePath)
     uploadPath = com_path()+"19种格式\\图例提取文件\\"  # 上传路径
     wordTextName = "表格图片"   # 后缀是doc
     wordvectorName = "纯矢量图"   # 后缀是docx

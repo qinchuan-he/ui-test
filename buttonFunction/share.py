@@ -43,7 +43,8 @@ class test_singleFileShare(unittest.TestCase):
     # 公共参数
 
     picturePath = com_path()+"截图\\"+"19种上传格式截图\\other\\" # 生成截图路径
-    os.makedirs(picturePath)
+    if not (os.path.exists(picturePath)):
+        os.makedirs(picturePath)
     showPath = "file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/other/" # 截图输出路径，目前废弃
     qpath = com_path()+"19种格式\\其他\\"    # 上传路径
     pdfname = "146页年度报告"    # 上传文件名
@@ -73,7 +74,7 @@ class test_singleFileShare(unittest.TestCase):
         '''上传并预览分享'''
 
         self.driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
-        self.driver.find_element_by_xpath("//a[text()='私有']").click()
+        self.driver.find_element_by_xpath("//a[text()='私有资料资料']").click()
         self.driver.find_element_by_xpath("//span[text()=" + str(self.folder1) + "]").click()
         # 创建文件夹
         el12 = self.driver.find_element_by_xpath("//span[text()='新建']")
@@ -160,7 +161,7 @@ class test_singleFileShare(unittest.TestCase):
                 else:
                     # print("休眠第 %d 次" % i)
                     sleep(1)
-            el31 = self.driver.find_element_by_xpath("//span[text()='私有'][1]/..")
+            el31 = self.driver.find_element_by_xpath("//span[text()='私有资料'][1]/..")
             ActionChains( self.driver).move_to_element(el31).perform()
             el33 = self.driver.find_elements_by_xpath("//i[@class='anticon anticon-share-alt']/..")
             el33[1].click()
@@ -176,7 +177,7 @@ class test_singleFileShare(unittest.TestCase):
             ActionChains(self.driver).move_to_element(el31).perform()
             sleep(0.5)
             el34 = self.driver.find_elements_by_xpath(
-                "//span[text()='私有'][1]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..")
+                "//span[text()='私有资料'][1]/../../../../../../../h4//i[@class='anticon anticon-arrows-alt']/..")
             el34[0].click()
             try:
                 WebDriverWait(self.driver, 10, 0.5).until(
@@ -206,7 +207,7 @@ class test_singleFileShare(unittest.TestCase):
         sleep(1)
         self.driver.find_element_by_xpath("//input[@placeholder='搜文件，也可以通过“#”搜标签']").send_keys(self.pdfname)
         self.driver.switch_to.active_element.send_keys(Keys.ENTER)
-        el11 = self.driver.find_elements_by_xpath("//span[text()='私有']/../../..")
+        el11 = self.driver.find_elements_by_xpath("//span[text()='私有资料']/../../..")
         el11[0].click()
         WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         self.driver.find_element_by_xpath("//div[contains(@class,'EmmaPage_shareIcon')]").click()

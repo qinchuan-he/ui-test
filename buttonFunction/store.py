@@ -43,11 +43,12 @@ class test_store(unittest.TestCase):
     '''测试收藏功能'''
     # 公共参数
     picturePath = com_path()+"截图\\"+"19种上传格式截图\\other\\" # 生成截图路径
-    os.makedirs(picturePath)
+    if not (os.path.exists(picturePath)):
+        os.makedirs(picturePath)
     showPath = "file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/other/" # 截图输出路径，目前废弃
     qpath = com_path()+"19种格式\\其他\\"    # 上传路径
     pdfname = "146页年度报告"    # 上传文件名
-    folder12 = time.time()   #  新建的文件夹，私有中边写边搜用
+    folder12 = time.time()   #  新建的文件夹，私有资料中边写边搜用
 
     # 启动浏览器
     mode = 1
@@ -131,7 +132,7 @@ class test_store(unittest.TestCase):
         searchTime = "时间不限"
         searchType = "Word文档"
         com_xpath().com_internalChooseType(self.driver, searchTime, searchType)
-        self.driver.find_element_by_xpath("//span[text()='私有']/../..").click()
+        self.driver.find_element_by_xpath("//span[text()='私有资料']/../..").click()
         sleep(3)
         #  进入编辑界面
         self.driver.find_element_by_xpath("//span[contains(@class,'GlobalSearchPage_cusFixButton')]").click()
@@ -164,7 +165,7 @@ class test_store(unittest.TestCase):
                 WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='边写边搜']")))
                 el46 = self.driver.find_elements_by_xpath("//i[@class='anticon anticon-more']")
                 ActionChains(self.driver).move_to_element(el46[1]).perform()
-                self.driver.find_element_by_xpath("//li[text()='收藏到私有']").click()
+                self.driver.find_element_by_xpath("//li[text()='收藏到私有资料']").click()
                 print_name="边写边搜双屏收藏"
                 com_alert().com_equal(self.driver, self.picturePath, print_name, version)
                 self.driver.find_element_by_xpath("//i[@class='anticon anticon-shrink']").click()

@@ -36,7 +36,7 @@ class login_test(login.MyTest):
         "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         sleep(5)
         # sleep(1.5)
-        # driver.find_element_by_xpath("//a[text()='私有']").click()
+        # driver.find_element_by_xpath("//a[text()='私有资料资料']").click()
         # WebDriverWait(self.driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
     def test_login2(self):
         '''第二个用例'''

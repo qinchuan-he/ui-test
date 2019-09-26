@@ -15,6 +15,7 @@ import time   #生成时间戳用
 import os    #上传autoit用
 import re
 
+from common.comfunction import com_path
 
 # 检查搜索功能，智能搜索，默认搜索等待3秒，超出3秒无响应会报错
 
@@ -36,7 +37,8 @@ user="13248131618"
 # user="19956966528"
 pwd="Test123456"
 picturePath=com_path()+"截图\\"+"智能搜索\\"
-os.makedirs(picturePath)
+if not(os.path.exists(picturePath)):
+    os.makedirs(picturePath)
 search="股份"   #搜索关键字
 wiatTime=15
 
