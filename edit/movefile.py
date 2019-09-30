@@ -13,7 +13,7 @@ from time import sleep
 import time
 from common.comfunction import com_path
 
-"""上传word，修改word（未用边写边搜），下载word"""
+"""上传word，修改word（未用 边写边搜），下载word"""
 
 path="C:\\2services\\driver\\chromedriver.exe"
 driver=webdriver.Chrome(path)
@@ -91,8 +91,8 @@ print('用时  %d  秒' %(end-start))
 # 进入文档
 driver.find_element_by_xpath("//span[text()='回归的word文档']").click()
 # sleep(3)
-# WebDriverWait(driver,10,0.5).until(ec.presence_of_element_located((By.XPATH,"//span[text()='边写边搜']")))
-WebDriverWait(driver,10,0.5).until(ec.element_to_be_clickable((By.XPATH,"//span[text()='边写边搜']")))
+# WebDriverWait(driver,10,0.5).until(ec.presence_of_element_located((By.XPATH,"//span[text()=' 边写边搜']")))
+WebDriverWait(driver,10,0.5).until(ec.element_to_be_clickable((By.XPATH,"//span[text()=' 边写边搜']")))
 
 # 切换iframe
 id2=driver.find_element_by_xpath("//iframe").get_attribute("id")

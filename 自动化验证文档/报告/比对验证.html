@@ -246,8 +246,8 @@ function html_escape(s) {
 <div class='heading'>
 <h4 style="font-family: Microsoft YaHei">比对测试结果</h4>
 <p class='attribute'><strong>测试人员 : </strong> 乌鸦</p>
-<p class='attribute'><strong>开始时间 : </strong> 2019-09-25 17:51:26</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:11:39.274314</p>
+<p class='attribute'><strong>开始时间 : </strong> 2019-09-30 11:19:22</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:01:35.496658</p>
 <p class='attribute'><strong>测试结果 : </strong> 共 2，通过 1，错误 1，通过率= 50.00%</p>
 
 <p class='description'>纯文本和ocr的验证</p>
@@ -309,19 +309,7 @@ function html_escape(s) {
 			 
     
 pt1_1: 合同
-点击完成
-等待1完成
-已点击预览
-2019-09-25 17:51:26
-2019-09-25 17:51:26
-Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='合同1']/../../.."}
-  (Session info: chrome=77.0.3865.90)
-
-比对弹框未弹出
-2019-09-25 17:52:13
-2019-09-25 17:52:13
-<a href = "javascript:void(0)" onclick = "document.getElementById('1569405133').style.display='block';document.getElementById('fade').style.display='block'">比对结果预览</a><div id="1569405133" class="white_content"><a href = "javascript:void(0)" onclick = "document.getElementById('1569405133').style.display='none';document.getElementById('fade').style.display='none'" style="align-content: center">点这里关闭</a><img height="800" width="1400" src="\Cyprex-ui\自动化验证文档\截图\19种上传格式截图\other\1569405133.png"></div><div id="fade" class="black_overlay"></div>
-<a href = "javascript:void(0)" onclick = "document.getElementById('1569405178.995434').style.display='block';document.getElementById('fade').style.display='block'">上传出现异常预览</a><div id="1569405178.995434" class="white_content"><a href = "javascript:void(0)" onclick = "document.getElementById('1569405178.995434').style.display='none';document.getElementById('fade').style.display='none'" style="align-content: center">点这里关闭</a><img height="800" width="1400" src="\Cyprex-ui\自动化验证文档\截图\19种上传格式截图\other\1569405178.995434.png"></div><div id="fade" class="black_overlay"></div>
+<a href = "javascript:void(0)" onclick = "document.getElementById('1569813607.2057862').style.display='block';document.getElementById('fade').style.display='block'">上传出现异常预览</a><div id="1569813607.2057862" class="white_content"><a href = "javascript:void(0)" onclick = "document.getElementById('1569813607.2057862').style.display='none';document.getElementById('fade').style.display='none'" style="align-content: center">点这里关闭</a><img height="800" width="1400" src="\Cyprex-ui\自动化验证文档\截图\19种上传格式截图\other\1569813607.2057862.png"></div><div id="fade" class="black_overlay"></div>
 
 
     </pre>
@@ -354,10 +342,10 @@ Message: no such element: Unable to locate element: {"method":"xpath","selector"
     
 ft1_2: 合同
 Traceback (most recent call last):
-  File "D:/work/8python/Cyprex-ui/buttonFunction/compareFile.py", line 137, in test_ocr
+  File "D:/work/8python/Cyprex-ui/buttonFunction/compareFile.py", line 133, in test_ocr
     com_xpath().com_preview(self.driver, self.pdfname1)
-  File "D:\work\8python\Cyprex-ui\common\comfunction.py", line 555, in com_preview
-    #  进入预览界面,有iframe的
+  File "D:\work\8python\Cyprex-ui\common\comfunction.py", line 584, in com_preview
+    driver.find_element_by_xpath("//span[text()='" + fileName + "']/..").click()
   File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 394, in find_element_by_xpath
     return self.find_element(by=By.XPATH, value=xpath)
   File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
@@ -366,8 +354,8 @@ Traceback (most recent call last):
     self.error_handler.check_response(response)
   File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: chrome not reachable
-  (Session info: chrome=77.0.3865.90)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"xpath","selector":"//span[text()='合同']/.."}
+  (Session info: headless chrome=77.0.3865.90)
 
 
 

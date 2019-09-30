@@ -59,6 +59,6 @@ class new_user():
             print(e)
             print("异常")
 
-    # 创建文件夹---用原来的
-    #
+
+
 

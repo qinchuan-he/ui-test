@@ -33,6 +33,7 @@ from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
 from common.comfunction import com_path
+from common.comfunction import addAttribute
 
 resultPath = com_path()+"报告\\"
 # 验证比对功能，比对分为纯文本和图片两种比对
@@ -55,86 +56,24 @@ mode = 2
 driver = execBrower(mode)
 User().login(driver)
 driver.implicitly_wait(5)
-driver.find_element_by_xpath("//span[text()='哇哈哈']/..").click()
-#  上传文件
-version = "以新版本覆盖"
-print_name = "比对上传文件"
-uploadWordUrl = uploadPath + wordname1 + ".docx"
-uploadPdfUrl1 = uploadPath + pdfname1 + ".pdf"
-uploadPdfUrl2 = uploadPath + pdfname2 + ".pdf"
-uploadPdfUrl3 = uploadPath + pdfname3 + ".PDF"
-uploadPdfUrl4 = uploadPath + pdfname4 + ".pdf"
-date = time.time()
-print(date)
-print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(date)))
-i = 0
-# sleep(14)
-# sleep(2)
-com_xpath().com_preview(driver, pdfname1)
-# 衔接TXT文档的位置
-sleep(1)
-
-buttont = "compare"
-# buttont = 'cover'
-el21 = com_xpath().com_previewButton(driver, buttont)
-el21.click()
-printName = "开始比对"
-# driver.switch_to.frame('J_iframe')
-# sleep(0.5)
-#
-# try:
-#     driver.find_element_by_xpath("//span[@class='ant-tree-switcher ant-tree-switcher_close']/..").click()
-# except Exception as e:
-#     print(e)
-driver.switch_to.default_content()
-sleep(3)
-driver.find_element_by_xpath("//span[@class='ant-modal-close-x']/..").send_keys(Keys.ENTER)
+# driver.find_element_by_xpath("//span[text()='哇哈哈']/..").click()
 sleep(0.5)
-el21 = com_xpath().com_previewButton(driver, buttont)
-el21.click()
-# driver.find_element_by_xpath("//span[@class='ant-tree-switcher ant-tree-switcher_close']/..").click()
-
-# driver.find_element_by_xpath("//button[@class='ant-modal-close']").click()
+pdfname = "哇哈哈"
+team_name = team().check_team(driver)
+com_xpath().com_internalSearch(driver, pdfname)
+driver.find_element_by_xpath("//span[contains(text(),'协作共')]/../..").click()
 sleep(1)
-# tag = driver.find_element_by_xpath("//span[text()='1569236875']/../../..")
-# driver.execute_script("arguments[0].scrollIntoView();", tag)
-# driver.switch_to.active_element.send_Keys(Keys.ENTER)
-driver.find_element_by_xpath("//span[text()='1569236875']").send_keys(Keys.ENTER)
+print_name = "文件夹内收藏"
+version = "以新版本覆盖"
+try:
+    WebDriverWait(driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))  # 未考虑txt
+    driver.find_element_by_xpath("//div[contains(@class,'EmmaPage_fileViewBarList')]/div[3]").click()
+    sleep(0.5)
+    com_alert().com_equal(driver, picturePath, print_name, version)
 
-
-# # el3 = driver.find_element_by_xpath("//span[text()='1569236875']/../../..")
-# # ActionChains(driver).click_and_hold(el3).perform()
-# driver.find_element_by_xpath("//span[text()='1569236875']/../../..").click()
-# driver.find_element_by_xpath("//span[text()='1569236875']/../../..").send_keys(Keys.ENTER)
-# driver.find_element_by_xpath("//button[@class='ant-btn']").click()
-# driver.find_element_by_xpath("//span[@class='ant-modal-close-x']/..").send_keys(Keys.ENTER)
-
-
-# js1 = "document.getElementsByClassName('ant-tree-treenode-switcher-close')[1].click()"
-# driver.execute_script(js1)
-# sleep(6)
-# driver.quit()
-
-
-
-
-
-
-# txt文档备份
-# com_xpath().com_preview(driver, '天空1')
-# driver.find_element_by_xpath("//span[text()='编辑文档']/..").click()
-# sleep(3)
-# buttont = "compare"
-# sleep(5)
-# el21 = com_xpath().com_previewButton(driver, buttont)
-# el21.click()
-# printName = "开始比对"
-#
-# sleep(0.5)
-# print(driver.switch_to.active_element)
-# sleep(1)
-# driver.find_element_by_xpath("//span[text()='哇哈哈']/../../..").click()
-
+except Exception as e:
+    print(e)
+    print("超时未加载出来或者选中为txt")
 
 
 

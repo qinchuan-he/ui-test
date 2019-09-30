@@ -33,6 +33,7 @@ from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
 from common.comfunction import com_path
+from common.comfunction import com_opration
 
 resultPath = com_path()+"报告\\"
 
@@ -80,11 +81,16 @@ class test_Pick(unittest.TestCase):
         version = "以新版本覆盖"
         print_name = "图例上传文件"
         com_alert().com_equal(self.driver, self.picturePath, print_name, version)
-        sleep(20)
+        for i in range(2):
+            sleep(2)
+            com_alert().com_equal(self.driver, version="保留两者")
         try:
             WebDriverWait(self.driver, 20, 0.5).until(
                 ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.wordTextName+"']/..")))
-            self.driver.find_element_by_xpath("//span[text()='"+self.wordTextName+"']/..").click()
+            # 进入预览模式
+            com_opration().com_preview(self.driver, self.wordTextName, resource='team', pattern='search')
+            # self.driver.find_element_by_xpath("//span[text()='"+self.wordTextName+"']/..").click()
+
             try:
                 WebDriverWait(self.driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
                 # 查看图例
@@ -164,8 +170,7 @@ class test_Pick(unittest.TestCase):
                 ActionChains(self.driver).send_keys(Keys.PAGE_DOWN).perform()
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="滚动验证")
                 self.driver.switch_to.default_content()
-                self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-                sleep(0.5)
+                com_opration().com_close_preview(self.driver, pattern='search') # 封装退出方法
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="退出预览")
                 sleep(2)
             except Exception as e:
@@ -174,8 +179,8 @@ class test_Pick(unittest.TestCase):
                 datename12 = str(time.time())
                 self.driver.get_screenshot_as_file(self.picturePath + datename12 + ".png")
                 comHtml().print_html(printName, self.picturePath, datename12)
-                self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-                sleep(2)
+                com_opration().com_close_preview(self.driver, pattern='search')
+                sleep(1.5)
         except Exception as e:
             print(e)
             printName = "上传异常"
@@ -193,7 +198,7 @@ class test_Pick(unittest.TestCase):
         try:
             WebDriverWait(self.driver, 2, 0.5).until(
                 ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.wordvectorName+"']/..")))
-            self.driver.find_element_by_xpath("//span[text()='"+self.wordvectorName+"']/..").click()
+            com_opration().com_preview(self.driver, self.wordvectorName, resource='team', pattern='search')
             try:
                 WebDriverWait(self.driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
                 try:
@@ -221,13 +226,13 @@ class test_Pick(unittest.TestCase):
                 except Exception as e:
                     print(e)
                     comHtml().screen_shot(self.driver, self.picturePath, print("未提取出图例"))
-                self.driver.find_element_by_xpath("//span[contains(text(), '返回')]/..").click()
-                sleep(2)
+                com_opration().com_close_preview(self.driver, pattern='search')
+                sleep(1.5)
             except Exception as e:
                 print(e)
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="预览异常")
-                self.driver.find_element_by_xpath("//span[contains(text(), '返回')]/..").click()
-                sleep(2)
+                com_opration().com_close_preview(self.driver, pattern='search')
+                sleep(1.5)
         except Exception as e:
             print(e)
             comHtml().screen_shot(self.driver, self.picturePath, print_name="上传异常")
@@ -241,7 +246,9 @@ class test_Pick(unittest.TestCase):
         try:
             WebDriverWait(self.driver, 3, 0.5).until(
                 ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.pdfName+"']/..")))
-            self.driver.find_element_by_xpath("//span[text()='"+self.pdfName+"']/..").click()
+            # self.driver.find_element_by_xpath("//span[text()='"+self.pdfName+"']/..").click()
+            com_opration().com_preview(self.driver, self.pdfName, resource='team', pattern='search')
+
             try:
                 WebDriverWait(self.driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
                 try:
@@ -348,15 +355,14 @@ class test_Pick(unittest.TestCase):
                 ActionChains(self.driver).send_keys(Keys.PAGE_DOWN).perform()
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="滚动验证")
                 self.driver.switch_to.default_content()
-                self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-                sleep(0.5)
+                com_opration().com_close_preview(self.driver, pattern='search')
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="退出预览")
                 sleep(2)
             except Exception as e:
                 print(e)
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="预览异常")
-                self.driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-                sleep(2)
+                com_opration().com_close_preview(self.driver, pattern='search')
+                sleep(1.5)
         except Exception as e:
             print(e)
             comHtml().screen_shot(self.driver, self.picturePath, print_name="上传异常")

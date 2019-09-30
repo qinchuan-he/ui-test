@@ -34,6 +34,7 @@ from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
 from common.comfunction import com_path
 
+
 resultPath = com_path()+"报告\\"
 # 验证比对功能，比对分为纯文本和图片两种比对
 class test_compare(unittest.TestCase):
@@ -51,7 +52,7 @@ class test_compare(unittest.TestCase):
     folder = str(time.time()) #  文件夹名字
 
     # 启动浏览器
-    mode = 2
+    mode = 1
     driver = execBrower(mode)
     User().login(driver)
     driver.implicitly_wait(45)
@@ -78,13 +79,12 @@ class test_compare(unittest.TestCase):
     # driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadPdfUrl3)
     # driver.find_element_by_xpath("//input[@type='file']").send_keys(uploadPdfUrl4)
     #  上传等待时间,比对不要看解析，速度加快2019/09/24
-    print('开始时间：'+ time.strftime('%Y-%m-%d %H:%M:S', time.localtime(time.time())))
-    # for i in range(2):
-    #     sleep(3)
-    #     com_alert().com_equal(driver, version="保留两者")
+    # print('开始时间：'+ time.strftime('%Y-%m-%d %H:%M:S', time.localtime(time.time())))
+    for i in range(1):
+        sleep(3)
+        com_alert().com_equal(driver, version="保留两者")
     # # sleep(14)
-    sleep(4)
-    print('结束时间：'+time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+    # sleep(4)
 
 
     #  比对纯文字型文件
@@ -92,18 +92,14 @@ class test_compare(unittest.TestCase):
         '''纯文字的word和PDF比对'''
         try:
             com_xpath().com_preview(self.driver, self.pdfname1)
-            print("已点击预览")
-            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             buttont = "compare"
             el21 = com_xpath().com_previewButton(self.driver, buttont)
             el21.click()
-            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             printName = "开始比对"
             com_alert().com_alertCompare(self.driver, self.folder, self.wordname1, self.picturePath, printName)
-            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             datename = str(int(time.time()))
             self.driver.get_screenshot_as_file(self.picturePath+datename+".png")
-            print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+            # print(time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())))
             printName = "比对结果"
             comHtml().print_html(printName, self.picturePath, datename)
             #  生成报告
@@ -129,7 +125,7 @@ class test_compare(unittest.TestCase):
             self.driver.find_element_by_xpath("//button[@class='ant-btn ant-btn-sm']").click()
         except Exception as e:
             comHtml().screen_shot(self.driver, self.picturePath, print_name="上传出现异常")
-        sleep(600)
+        sleep(3)
 
     #  含有ocr的比对报告
     def test_ocr(self):

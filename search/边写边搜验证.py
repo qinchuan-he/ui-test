@@ -32,7 +32,7 @@ driver.set_window_size(1400, 900)  # 调整窗口大小
 # 通用变量,搜索变量,保存图片路径,等待时间
 # search="公司"
 search = "股份"
-picturePath = com_path()+"截图\\"+"边写边搜\\"
+picturePath = com_path()+"截图\\"+" 边写边搜\\"
 if not(os.path.exists(picturePath)):
     os.makedirs(picturePath)
 waitTime = 12
@@ -60,7 +60,7 @@ ActionChains(driver).move_to_element(el1).perform()
 driver.find_element_by_xpath("//li[text()='见远笔记(.doc)']").click()
 WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
 
-driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+driver.find_element_by_xpath("//span[text()=' 边写边搜']/..").click()
 
 WebDriverWait(driver, 5, 0.2).until(ec.presence_of_element_located((By.XPATH, "//div[text()='私有资料与共享']")))
 driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
@@ -99,7 +99,7 @@ if count > 0:
 
 # 中场切换
 driver.find_element_by_xpath("//span[text()='关闭搜索']/..").click()
-driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+driver.find_element_by_xpath("//span[text()=' 边写边搜']/..").click()
 sleep(1)
 driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
 driver.switch_to.active_element.send_keys(Keys.ENTER)
@@ -143,7 +143,7 @@ if count2 > 0:
 
 # 中场切换
 driver.find_element_by_xpath("//span[text()='关闭搜索']/..").click()
-driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+driver.find_element_by_xpath("//span[text()=' 边写边搜']/..").click()
 sleep(1)
 driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
 driver.switch_to.active_element.send_keys(Keys.ENTER)
@@ -189,7 +189,7 @@ sleep(waitTime)
 #
 # # 中场切换
 # driver.find_element_by_xpath("//span[text()='关闭搜索']/..").click()
-# driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+# driver.find_element_by_xpath("//span[text()=' 边写边搜']/..").click()
 # sleep(1)
 # driver.find_element_by_xpath("//input[contains(@placeholder,'搜')]").send_keys(search)
 # driver.switch_to.active_element.send_keys(Keys.ENTER)
@@ -239,7 +239,7 @@ if count4 > 0:
 # 增加站外搜索模块
 # 中场切换
 driver.find_element_by_xpath("//span[text()='关闭搜索']/..").click()
-driver.find_element_by_xpath("//span[text()='边写边搜']/..").click()
+driver.find_element_by_xpath("//span[text()=' 边写边搜']/..").click()
 sleep(1)
 driver.find_element_by_xpath("//div[text()='站外搜索']").click()
 sleep(1)

@@ -28,7 +28,7 @@ from common.comfunction import com_xpath
 from common.comfunction import com_alert
 from common.comfunction import com_path
 
-# 上传word，修改word（未用边写边搜），下载word, 20190716增加了分享功能
+# 上传word，修改word（未用 边写边搜），下载word, 20190716增加了分享功能
 # 2019-07-24 增加图例表格提取的验证，分别是更新和copy的验证，增加在返回列表之后，准备重构这个类
 
 opt=Options()
@@ -43,8 +43,8 @@ picturePath =com_path()+"截图\\"+"编辑文件截图\\"
 if not(os.path.exists(picturePath)):
     os.makedirs(picturePath)
 waitTime=2
-# url="https://testcyprex.fir.ai/sign-in"
-url="https://cyprex.fir.ai/sign-in"
+url="https://testcyprex.fir.ai/sign-in"
+# url="https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/sign-in"
 user="13248131618"
 pwd="Test123456"
@@ -209,7 +209,7 @@ dom1.send_keys("本次编辑完成")
 dom1.send_keys(Keys.ENTER)
 sleep(waitTime)
 picture=str(int(time.time()))
-driver.get_screenshot_as_file(picturePath+"边写边搜截图"+str(int(time.time()))+".png")
+driver.get_screenshot_as_file(picturePath+" 边写边搜截图"+str(int(time.time()))+".png")
 
 # 下载
 driver.switch_to.default_content()
@@ -232,7 +232,7 @@ sleep(waitTime)
 # 退出编辑
 driver.switch_to.default_content()
 driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
-driver.get_screenshot_as_file(picturePath+"边写边搜返回截图"+str(int(time.time()))+".png")
+driver.get_screenshot_as_file(picturePath+" 边写边搜返回截图"+str(int(time.time()))+".png")
 sleep(5)
 # 2019-07-24 增加 文件夹内搜索操作，验证图例和表格---准备新开任务做这个
 sleep(25)

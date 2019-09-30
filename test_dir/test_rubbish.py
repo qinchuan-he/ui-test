@@ -39,7 +39,7 @@ name = "2017年12月11日-2017年12月15日发行监管部"
 name2 = "146页年度报告"
 
 
-class Testrubbist:
+class Testrubbish:
     ''' 回收站验证'''
 
     def test_folder(self, browser, base_url, images_path):
@@ -120,7 +120,7 @@ class Testrubbist:
                     driver.find_element_by_xpath(
                         "//span[text()='" + name2 + "']/../../..//td[1]//input[@type='checkbox']").click()
                     print("找到了第二个文件")
-                    driver.get_screenshot_as_file(images_path + "Testrubbist-回收站截图" + ".png")
+                    driver.get_screenshot_as_file(images_path + "test_folder-回收站截图" +str(time.time())+ ".png")
                     break
                 except Exception as e:
                     print(e)
@@ -152,9 +152,11 @@ class Testrubbist:
 
             # 返回私有资料
             com_xpath().com_log(driver)
-            driver.get_screenshot_as_file(images_path + "Testrubbist-恢复目录查看" + ".png")
+            driver.get_screenshot_as_file(images_path + "test_folder-恢复目录查看" + str(time.time())+".png")
+            sleep(0.5)
             driver.find_element_by_xpath("//span[text()='" + folder + "']").click()
-            driver.get_screenshot_as_file(images_path + "Testrubbist-恢复文件查看" + ".png")
+            sleep(0.5)
+            driver.get_screenshot_as_file(images_path + "test_folder-恢复文件查看" +str(time.time())+ ".png")
 
         except Exception as e:
             print(e)

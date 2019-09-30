@@ -24,11 +24,14 @@ import paramiko
 url = "https://testcyprex.fir.ai/sign-in"
 # url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
+# url = 'http://192.168.1.83/sign-in'
 # user = "19958585555"
 user = "10025253635"
+# user = '19958955388'
 # user = "13248131618"
 # # user="10056966528"
 pwd = "Test123456"
+# pwd = '955388'
 
 
 # 启动浏览器
@@ -63,7 +66,7 @@ class User:
         driver.find_element_by_xpath(
             "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         # sleep(1.5)
-        # driver.find_element_by_xpath("//a[text()='私有资料资料']").click()
+        # driver.find_element_by_xpath("//a[text()='私有资料']").click()
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
     #  创建文件夹
@@ -82,7 +85,16 @@ class User:
         driver.switch_to.active_element.send_keys(Keys.ENTER)
         sleep(0.5)
 
-    # 返回私有资料资料根目录
+    # 创建文件,传入文件名，文件类型名称（笔记文档等名字）
+    def create_file(self, driver, file_type):
+        button = 'create'
+        el1 = com_xpath().com_listButton(driver, button)
+        ActionChains(driver).move_to_element(el1).perform()
+        driver.find_element_by_xpath("//li[text()='"+file_type+"']").click()
+        WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        sleep(0.5)
+
+    # 返回私有资料根目录
     def root_private(self, driver):
         sleep(0.5)
         driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
@@ -109,7 +121,7 @@ class comHtml:
         comHtml().print_html(print_name, pic_path, datename)
 
 
-# 团队相关功能
+# 团队相关功能，2019/09/29调整，增加点击团队兼容
 class team:
     def check_team(self, driver):
         '''检查团队是否存在,不存在就创建，目前没有判断5个团队的情况的'''
@@ -129,9 +141,41 @@ class team:
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
             sleep(1)
             print(e)
-        driver.find_element_by_xpath("//span[text()='验证的团队']").click()
+        try:
+            driver.find_element_by_xpath("//span[text()='验证的团队']").click()  #  修改规则为新建之后直接进去
+        except Exception as e:
+            pass
         sleep(0.5)
         return team_name
+
+    # 创建第二团队，在第一团队基础上
+    def check_team2(self, driver):
+        '''团队内分享用'''
+        sleep(0.5)
+        driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
+        sleep(1)
+        driver.find_element_by_xpath("//a[text()='协作共享']").click()
+        team_name = "分享团队"
+        try:
+            WebDriverWait(driver, 2, 0.5).until(ec.presence_of_element_located((By.XPATH, "//span[text()='分享团队']")))
+        except Exception as e:
+            print("团队不存在准备新建")
+            driver.find_element_by_xpath("//span[text()='创建新项目']/..").click()
+            driver.find_element_by_xpath("//input[@placeholder='项目及项目文件夹名称']").send_keys(team_name)
+            # driver.find_element_by_xpath("//span[text()='确 定']/..").click()
+            sleep(1)
+            driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
+            sleep(1)
+            print(e)
+        try:
+            driver.find_element_by_xpath("//span[text()='分享团队']").click()  #  修改规则为新建之后直接进去
+        except Exception as e:
+            pass
+        sleep(0.5)
+        return team_name
+
+
+
 
 
 # 分享，公共方法,这个方法不带批注关联权限--->>>点击了分享按钮之后调用这个方法
@@ -147,11 +191,11 @@ def com_share(team_name, version, print_name, pic_path, driver):  # 分别是团
     comHtml().print_html(print_name, pic_path, datename)
     # 检查弹框是否关闭
     try:
-        WebDriverWait(driver, 5, 0.5).until_not(
+        WebDriverWait(driver, 10, 0.5).until_not(
             ec.presence_of_element_located((By.XPATH, "//span[text()='分享给项目组']")))
         # 兼容版本冲突
         try:
-            WebDriverWait(driver, 5, 0.5).until(
+            WebDriverWait(driver, 10, 0.5).until(
                 ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
             # print("找到了")
             driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
@@ -208,15 +252,16 @@ class com_alert(object):
             comHtml().print_html(print_name, pic_path, datename)
         #  第二步，判断是否有弹框
         try:
-            WebDriverWait(driver, 3, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
-            # driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
-            # 2019-07-23,增加兼容，点击一次出现两次弹框文案的情况
-            if version:
-                el1 = driver.find_elements_by_xpath("//span[text()='" + version + "']/..")
-                if len(el1) > 1:
-                    el1[-1].click()
-                else:
-                    el1[0].click()
+            WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='版本冲突']")))
+            # 2019/09/29增加兼容，原格式打开PDF，弹框遮罩问题
+            try:
+                el1 = driver.find_element_by_xpath("//div[@class='ant-modal-content']")
+                el1 = driver.find_element_by_xpath("//section[contains(@class,'GlobalSearchPage_hideContent')]")
+                # addAttribute(driver, el1, 'style', 'display:none')
+                addAttribute(driver, el1, 'style', 'opacity:0')
+            except Exception as e:
+                pass
+            driver.find_element_by_xpath("//span[text()='" + version + "']/..").click()
         except Exception as e:
             print(e)
             print("--没有冲突--")
@@ -450,7 +495,7 @@ class com_xpath(object):
         try:
             # 首先确定是否进入预览界面
             WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
-            # mode = 1，代表私有资料资料，其余都是团队
+            # mode = 1，代表私有资料，其余都是团队
             # 2019/09/24根据需求调整，本次需求改了预览模式的按钮规则和排列，这一步是打开更多按钮
             driver.find_element_by_xpath("//i[@class='anticon anticon-more']").click()
             # el = driver.find_elements_by_xpath("//div[contains(@class,'FileToolbar_toolButton')]") #  样式改了废弃
@@ -485,6 +530,12 @@ class com_xpath(object):
             else:
                 el1 = ""
                 print("传入预览按钮类型不对")
+            # 2019/09/26增加消除遮罩层设置，某些没有
+            try:
+                el = driver.find_element_by_xpath("//section[contains(@class,'PreviewContent_viewLayout')]")  # 定位到元素
+                addAttribute(driver, el, 'style', 'display:none')  # 隐藏元素
+            except Exception as e:
+                pass
         except Exception as e:
             print(e)
             print("没有进入预览")
@@ -497,7 +548,9 @@ class com_xpath(object):
         try:
             WebDriverWait(driver, 2, 0.5).until(
                 ec.presence_of_element_located((By.XPATH, "//div[contains(@class,'FileListToolbar_toolButton')]")))
+            # 有边框的按钮
             el2 = driver.find_elements_by_xpath("//div[contains(@class,'FileListToolbar_toolButton')]")
+            # 无边框的按钮
             el3 = driver.find_elements_by_xpath("//button[contains(@class,'ant-btn FileListToolbar_toolButton')]")
             if button == 'create':
                 el21 = el3[0]
@@ -505,8 +558,10 @@ class com_xpath(object):
                 el21 = el3[1]
             elif button == 'import1':
                 el21 = el3[2]
+            elif button=='createSpace':
+                el21 = el3[3]
             elif button == 'share':
-                el21 = el2[-5]
+                el21 = el2[1]
             elif button == 'store':
                 el21 = el2[-5]
             elif button == 'move':
@@ -525,7 +580,7 @@ class com_xpath(object):
             print("没有处在资源页面中")
         return el21
 
-    #  文件夹内搜索,边写边搜，艾玛搜索,传入搜索关键字进行搜索跳转
+    #  文件夹内搜索, 边写边搜，艾玛搜索,传入搜索关键字进行搜索跳转
     def com_internalSearch(self, driver, key):
         sleep(1)
         driver.find_element_by_xpath("//input[contains(@placeholder,'搜文件，也可以通过')]").clear()
@@ -568,3 +623,78 @@ class com_xpath(object):
     def com_log(self, driver):
         driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]/img").click()
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
+
+# 封装公共的操作，比如只读预览，内容搜索预览，编辑
+class com_opration():
+    # 打开预览模式，只读预览,传入，名字、来源（私有可不传）、模式（read_only、search、edit）
+    def com_preview(self, driver, name, resource=None, pattern=None):
+        driver.find_element_by_xpath("//span[text()='"+name+"']/..").click()
+        try:
+            WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        except Exception as e:
+            print(e)
+            print("打开预览失败")
+        # 打开内容搜索模式
+        if(pattern=='search'):
+            driver.find_element_by_xpath("//span[text()='内容搜索']/..").click()
+            try:
+                WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+            except Exception as e:
+                print(e)
+                print("打开预览失败")
+        # 进入编辑模式
+        elif(pattern=='edit'):
+            # 团队资源，默认有值就是团队资源
+            if(resource):
+                driver.find_element_by_xpath("//span[text()='协作编辑']/..").click()
+                try:
+                    WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+                except Exception as e:
+                    print(e)
+                    print("打开预览失败")
+            else:
+                driver.find_element_by_xpath("//span[text()='编辑文档']/..").click()
+                try:
+                    WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+                except Exception as e:
+                    print(e)
+                    print("打开预览失败")
+
+    # 退出预览,pattern默认只读,历史版本和内容搜索模式需要再次返回
+    def com_close_preview(self, driver, pattern=None):
+        driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        if pattern:  # 包含两种情况，一直是search，一种是history
+            sleep(0.5)
+            driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
+        sleep(0.5)
+
+
+
+
+
+
+
+
+
+# 封装对于元素的操作
+def addAttribute(driver, elementobj, attributeName, value):
+    '''
+    封装向页面标签添加新属性的方法
+    调用JS给页面标签添加新属性，arguments[0]~arguments[2]分别
+    会用后面的element，attributeName和value参数进行替换
+    添加新属性的JS代码语法为：element.attributeName=value
+    比如input.name='test'
+    '''
+    driver.execute_script("arguments[0].%s=arguments[1]" % attributeName, elementobj, value)
+
+
+
+
+
+
+
+
+
+
+
+
