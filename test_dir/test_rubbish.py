@@ -161,6 +161,6 @@ class Testrubbish:
         except Exception as e:
             print(e)
 
-
+#
 # if __name__ == '__main__':
 #     pytest.main(["-sv", "test_rubbish.py"])

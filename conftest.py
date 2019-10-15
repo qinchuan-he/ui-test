@@ -22,7 +22,7 @@ path = "C:\\2services\\driver\\chromedriver.exe"
 # 配置运行的 URL, ---------改为了登录方法中控制,为了切换环境时候方便
 # url = "https://testcyprex.fir.ai/sign-in"
 # 失败重跑次数
-rerun = "0"
+rerun = "1"
 # 当达到最大失败数，停止执行
 max_fail = "1"
 # 运行测试用例的目录或文件

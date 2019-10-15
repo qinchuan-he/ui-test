@@ -21,6 +21,7 @@ from email.mime.multipart import MIMEMultipart  # 上传附件用
 import paramiko
 
 # 公共参数
+# path = "C:\\2services\\driver\\chromedriver.exe" # 驱动
 url = "https://testcyprex.fir.ai/sign-in"
 # url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
@@ -68,6 +69,13 @@ class User:
         # sleep(1.5)
         # driver.find_element_by_xpath("//a[text()='私有资料']").click()
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
+
+    # 退出登录
+    def login_out(self,driver):
+        el = com_xpath().com_head(driver, buttonType='Portrait')
+        el.click()
+        driver.find_element_by_xpath("//li[text()='退出']").click()
+
 
     #  创建文件夹
     def createFolder(self, driver, folder=None):
@@ -132,6 +140,7 @@ class team:
         team_name = "验证的团队"
         try:
             WebDriverWait(driver, 2, 0.5).until(ec.presence_of_element_located((By.XPATH, "//span[text()='验证的团队']")))
+            driver.find_element_by_xpath("//span[text()='验证的团队']").click()  # 修改规则为新建之后直接进去
         except Exception as e:
             print("团队不存在准备新建")
             driver.find_element_by_xpath("//span[text()='创建新项目']/..").click()
@@ -141,10 +150,6 @@ class team:
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
             sleep(1)
             print(e)
-        try:
-            driver.find_element_by_xpath("//span[text()='验证的团队']").click()  #  修改规则为新建之后直接进去
-        except Exception as e:
-            pass
         sleep(0.5)
         return team_name
 
@@ -488,6 +493,19 @@ def server_upload(localFile, remoteFile):
 
 #  封装定位
 class com_xpath(object):
+    # 封装页面公共头部buttonType是按钮类型
+    def com_head(self,driver,buttonType):
+        el = driver.find_elements_by_xpath("//span[contains(@class,'GlobalHeader_dropdownButton')]")
+        if buttonType=='help':
+            return el[0]
+        elif buttonType=='date':
+            return el[-3]
+        elif buttonType=='msg':
+            return el[-2]
+        elif buttonType=='Portrait':
+            return el[-1]
+
+
     # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）,
     def com_previewButton(self, driver, button):
         '''预览中的定位'''

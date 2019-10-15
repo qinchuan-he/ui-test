@@ -41,7 +41,7 @@ resultpath = com_path()+"报告\\"
 class test_frager(unittest.TestCase):
     '''零散的验证，主要是ui方面的检查'''
     # 公共参数
-    mode = 1
+    mode = 2
     picturePath = com_path()+"截图\\"+"零散\\"  # 生成截图路径
     if not (os.path.exists(picturePath)):
         os.makedirs(picturePath)
@@ -121,6 +121,7 @@ class test_frager(unittest.TestCase):
 
 
 if __name__ == "__main__":
+
     case = unittest.TestSuite()
     case.addTest(test_frager("test_filePath"))
 
