@@ -24,6 +24,7 @@ import paramiko
 from common.comfunction import user
 from common.comfunction import url
 from common.comfunction import pwd
+from common.comfunction import User
 
 # 针对pytest框架的封装---20190903,还是用一部分原来的封装
 
@@ -53,6 +54,7 @@ class new_user():
             driver.find_element_by_id("password").send_keys(pwd)
         driver.find_element_by_xpath(
             "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
+        User().root_private(driver)
         try:
             WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
         except Exception as e:

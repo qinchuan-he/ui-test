@@ -3,39 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="4a2aebbb-1706-4124-b7fc-2c98f7978b4d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttonFunction/fragerCheck.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/fragerCheck.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttonFunction/new_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/buttonFunction/new_test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common/comfunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/comfunction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_contractCompare.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/1test_contractCompare.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_edit_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_rename.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_dir/test_rubbish.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_dir/test_rubbish.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_folder-回收站截图1569831020.8773308.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_folder-恢复文件查看1569831023.193827.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_folder-恢复目录查看1569831022.7609863.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_one-比对之后截图1569830992.8495262.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_one-预览pdf1569831003.4719472.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_one-预览word1569830998.4038122.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_one-预览纯文本1569830999.3723154.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/image/test_one-预览返回1569831004.9113011.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_09_45/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_17_15/image/test_folder-error-1569831466.742909.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_17_15/image/test_one-比对之后截图1569831443.4020715.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_17_15/image/test_one-预览pdf1569831454.0780659.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_17_15/image/test_one-预览word1569831448.9215097.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_17_15/image/test_one-预览纯文本1569831450.0505486.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_17_15/image/test_one-预览返回1569831455.488552.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_17_15/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_folder-回收站截图1569831726.7911425.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_folder-恢复文件查看1569831729.7038627.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_folder-恢复目录查看1569831728.2096217.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_one-比对之后截图1569831699.909167.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_one-预览pdf1569831710.5423632.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_one-预览word1569831705.436661.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_one-预览纯文本1569831706.425289.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/image/test_one-预览返回1569831711.9599845.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_report/2019_09_30_16_21_32/report.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/自动化验证文档/报告/零散功能验证.html" beforeDir="false" afterPath="$PROJECT_DIR$/自动化验证文档/报告/零散功能验证.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/newcomfunction.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/newcomfunction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_10_01_12/image/test_folder-回收站截图1570932093.5071537.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_10_01_12/image/test_folder-恢复文件查看1570932096.4588518.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_10_01_12/image/test_folder-恢复目录查看1570932094.9669118.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_10_01_12/image/test_private-新建文件夹成功截图1570932079.223827.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_10_01_12/report.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_11_00_07/image/test_folder-回收站截图1570935628.0912676.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_11_00_07/image/test_folder-恢复文件查看1570935631.239916.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_11_00_07/image/test_folder-恢复目录查看1570935629.6894307.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_11_00_07/image/test_private-新建文件夹成功截图1570935613.287417.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_report/2019_10_13_11_00_07/report.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_tests.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="45" column="44" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="44" />
+            <state relative-caret-position="825">
+              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -60,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/conftest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+            <state relative-caret-position="25">
+              <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -69,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/new_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+            <state relative-caret-position="300">
+              <caret line="14" selection-start-line="14" selection-end-line="16" selection-end-column="55" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -84,7 +63,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
+            <state relative-caret-position="2400">
               <caret line="112" selection-start-line="112" selection-end-line="114" selection-end-column="69" />
             </state>
           </provider>
@@ -93,7 +72,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/buttonFunction/fragerCheck.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
+            <state relative-caret-position="625">
               <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
@@ -102,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/common/comfunction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+            <state relative-caret-position="215">
+              <caret line="106" column="18" lean-forward="true" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -117,8 +96,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_dir/test_rubbish.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="500">
+              <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="127" selection-end-column="33" />
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/common/newcomfunction.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="56" column="21" lean-forward="true" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
               <folding>
                 <element signature="e#15#24#0" expanded="true" />
               </folding>
@@ -141,8 +132,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test_dir/test_rename.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="325">
+              <caret line="46" column="23" lean-forward="true" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
+              <folding>
+                <element signature="e#15#24#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,8 +152,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>other</find>
-      <find>com_path</find>
       <find>os.makedirs(picturePath)</find>
       <find>上传出现异常预览</find>
       <find>上传出现异常</find>
@@ -188,6 +180,8 @@
       <find>report.html</find>
       <find>HTMLTestRunner</find>
       <find>config</find>
+      <find>logo</find>
+      <find>127.0</find>
     </findStrings>
     <replaceStrings>
       <replace>见远笔记(.doc)</replace>
@@ -266,7 +260,6 @@
         <option value="$PROJECT_DIR$/search/智能搜索检查.py" />
         <option value="$PROJECT_DIR$/search/collectionAndsubScribe.py" />
         <option value="$PROJECT_DIR$/edit/fileModifyWord.py" />
-        <option value="$PROJECT_DIR$/common/newcomfunction.py" />
         <option value="$PROJECT_DIR$/buttonFunction/picturePick.py" />
         <option value="$PROJECT_DIR$/buttonFunction/share.py" />
         <option value="$PROJECT_DIR$/buttonFunction/store.py" />
@@ -274,19 +267,20 @@
         <option value="$PROJECT_DIR$/test_dir/1test_edit_name.py" />
         <option value="$PROJECT_DIR$/test_dir/test_edit_name.py" />
         <option value="$PROJECT_DIR$/test_dir/1test_rubbish.py" />
-        <option value="$PROJECT_DIR$/test_dir/test_rubbish.py" />
-        <option value="$PROJECT_DIR$/run_tests.py" />
         <option value="$PROJECT_DIR$/test_dir/test_rename.py" />
-        <option value="$PROJECT_DIR$/conftest.py" />
-        <option value="$PROJECT_DIR$/common/comfunction.py" />
         <option value="$PROJECT_DIR$/buttonFunction/fragerCheck.py" />
         <option value="$PROJECT_DIR$/buttonFunction/new_test.py" />
+        <option value="$PROJECT_DIR$/run_tests.py" />
+        <option value="$PROJECT_DIR$/test_dir/test_rubbish.py" />
+        <option value="$PROJECT_DIR$/common/newcomfunction.py" />
+        <option value="$PROJECT_DIR$/conftest.py" />
+        <option value="$PROJECT_DIR$/common/comfunction.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-277" />
-    <option name="y" value="66" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
     <option name="width" value="1936" />
     <option name="height" value="1056" />
   </component>
@@ -295,28 +289,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="test_report" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
-              <item name="test_report" type="462c0819:PsiDirectoryNode" />
-              <item name="2019_10_13_10_01_12" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -328,6 +300,38 @@
               <item name="Cyprex-ui" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="D:\work\8python\Cyprex-ui" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="test_dir" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_dir" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Cyprex-ui" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Cyprex-ui" type="462c0819:PsiDirectoryNode" />
+              <item name="test_report" type="462c0819:PsiDirectoryNode" />
+              <item name="2019_10_18_18_58_01" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -374,7 +378,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.new_test">
+  <component name="RunManager" selected="Python.run_tests">
     <configuration name="问答搜索检查" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Cyprex-ui" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -922,9 +926,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.1512118" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" side_tool="true" visible="true" weight="0.1512118" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -935,9 +940,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49683878" weight="0.3286334" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49841937" weight="0.33741647" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" visible="true" weight="0.77616924" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49894625" visible="true" weight="0.30734965" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50474185" side_tool="true" weight="0.311804" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.31236443" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.49894625" weight="0.311804" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -980,7 +985,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/自动化验证文档/截图/移动/1568800609.323919.png" />
     <entry file="file://$PROJECT_DIR$/自动化验证文档/截图/移动/1568800553.4023087.png" />
     <entry file="file://$PROJECT_DIR$/自动化验证文档/截图/移动/1568800577.2049274.png" />
     <entry file="file://$PROJECT_DIR$/自动化验证文档/截图/零散/1568801109.7076027.png" />
@@ -1146,16 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/newcomfunction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-          <folding>
-            <element signature="e#15#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/buttonFunction/picturePick.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1650">
@@ -1262,20 +1256,51 @@
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/fractions.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/pluggy/callers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="24" column="41" selection-start-line="24" selection-start-column="41" selection-end-line="24" selection-end-column="41" />
+        <state relative-caret-position="798">
+          <caret line="207" selection-start-line="207" selection-end-line="207" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/2services/apache-tomcat-7.0.78/webapps/jenkins.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_dir/test_rubbish.py">
+    <entry file="file://$PROJECT_DIR$/buttonFunction/new_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="300">
+          <caret line="14" selection-start-line="14" selection-end-line="16" selection-end-column="55" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="112" selection-start-line="112" selection-end-line="114" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/buttonFunction/fragerCheck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
@@ -1292,61 +1317,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_dir/test_rename.py">
+    <entry file="file://$PROJECT_DIR$/test_dir/test_rubbish.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/pluggy/callers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="207" selection-start-line="207" selection-end-line="207" />
+        <state relative-caret-position="500">
+          <caret line="126" column="20" selection-start-line="126" selection-start-column="20" selection-end-line="127" selection-end-column="33" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/conftest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="43" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
+        <state relative-caret-position="25">
+          <caret line="31" column="10" selection-start-line="31" selection-start-column="10" selection-end-line="31" selection-end-column="10" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/fragerCheck.py">
+    <entry file="file://$PROJECT_DIR$/test_dir/test_rename.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+        <state relative-caret-position="325">
+          <caret line="46" column="23" lean-forward="true" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="23" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_tests.py">
+    <entry file="file://$PROJECT_DIR$/common/newcomfunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="45" column="44" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="44" />
+        <state relative-caret-position="425">
+          <caret line="56" column="21" lean-forward="true" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
+    <entry file="file://$PROJECT_DIR$/common/comfunction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="112" selection-start-line="112" selection-end-line="114" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/buttonFunction/new_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="19" column="30" lean-forward="true" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
+        <state relative-caret-position="215">
+          <caret line="106" column="18" lean-forward="true" selection-start-line="106" selection-start-column="18" selection-end-line="106" selection-end-column="18" />
           <folding>
             <element signature="e#15#24#0" expanded="true" />
           </folding>

@@ -107,6 +107,8 @@ class User:
         sleep(0.5)
         driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
         sleep(0.5)
+        driver.find_element_by_xpath("//a[text()='私有资料']").click()
+        sleep(0.5)
 
 
 # 生成html相关的类
