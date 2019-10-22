@@ -42,7 +42,7 @@ from common.comfunction import team
 class Test_Rename:
     '''私有中重命名文件夹和文件'''
     def test_private(self, browser, base_url, images_path):
-
+        """验证登录并截图"""
         print("base_url:" + base_url)
         new_user().new_login(browser, base_url)
         driver = browser

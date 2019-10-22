@@ -641,7 +641,7 @@ class com_xpath(object):
 
     # log定位
     def com_log(self, driver):
-        driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]/img").click()
+        User().root_private(driver)
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
 # 封装公共的操作，比如只读预览，内容搜索预览，编辑

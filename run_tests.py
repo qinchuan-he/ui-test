@@ -44,7 +44,7 @@ def run(m):
                     # "test_dir/test_rubbish.py",
                      cases_path,
                      "--html=" + html_report,
-                     # "--junit-xml=" + xml_report,
+                     "--junit-xml=" + xml_report,
                      "--self-contained-html",
                      "--maxfail", max_fail,
                      "--reruns", rerun])

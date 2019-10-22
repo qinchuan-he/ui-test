@@ -55,7 +55,7 @@ class Testrubbish:
         # 上传文件
         driver.find_element_by_xpath("//input[@type='file']").send_keys(upload_url)
         driver.find_element_by_xpath("//input[@type='file']").send_keys(upload_url2)
-        sleep(5)
+        sleep(15)
         try:
             WebDriverWait(driver, 5, 0.5).until(
                 ec.element_to_be_clickable((By.XPATH, "//span[text()='" + name2 + "']")))
@@ -161,6 +161,6 @@ class Testrubbish:
         except Exception as e:
             print(e)
 
-#
+
 # if __name__ == '__main__':
 #     pytest.main(["-sv", "test_rubbish.py"])
