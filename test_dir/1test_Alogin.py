@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 # 公共方法
-from common.comfunction import new_screen_short
+from common.newcomfunction import new_screen_short
 
 # 第二例子
 

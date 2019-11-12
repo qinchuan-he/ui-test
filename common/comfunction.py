@@ -99,7 +99,7 @@ class User:
         el1 = com_xpath().com_listButton(driver, button)
         ActionChains(driver).move_to_element(el1).perform()
         driver.find_element_by_xpath("//li[text()='"+file_type+"']").click()
-        WebDriverWait(driver, 10, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
+        WebDriverWait(driver, 20, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(0.5)
 
     # 返回私有资料根目录
@@ -495,6 +495,12 @@ def server_upload(localFile, remoteFile):
 
 #  封装定位
 class com_xpath(object):
+    # 本地上传按钮定位封装,传入路径
+    def com_localupload(self,driver,url):
+        sleep(0.3)
+        driver.find_element_by_xpath("//input[@type='file']").send_keys(url)
+        sleep(0.5)
+
     # 封装页面公共头部buttonType是按钮类型
     def com_head(self,driver,buttonType):
         el = driver.find_elements_by_xpath("//span[contains(@class,'GlobalHeader_dropdownButton')]")
@@ -506,6 +512,22 @@ class com_xpath(object):
             return el[-2]
         elif buttonType=='Portrait':
             return el[-1]
+
+    # 文件夹，文件列表更多操作,传入文件名字（无重名） 目前不用传入文件夹或者文件类型
+    def com_listmoreActions(self,driver,filename):
+        el = driver.find_element_by_xpath("//span[text()='"+ filename +"']/../../../../../../../../../i")
+        return el
+
+    # 文件夹、文件更多操作按钮,传入按钮名称
+    def com_listmoreButton(self,driver,buttonName):
+        el = driver.find_element_by_xpath("//span[text()='"+buttonName+"']/..")
+        return el
+    # 重命名的input输入框,由于输入框是动态的，需要光标协助,传入名字
+    def com_listrename(self,driver,name):
+        el = driver.find_element_by_xpath("//input[contains(@class,'FileList_listInputFileName')]")
+        sleep(0.3)
+        ActionChains(driver).move_to_element(el).send_keys(name).perform()
+        driver.switch_to.active_element.send_keys(Keys.ENTER)
 
 
     # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）,
@@ -680,7 +702,7 @@ class com_opration():
                     print(e)
                     print("打开预览失败")
 
-    # 退出预览,pattern默认只读,历史版本和内容搜索模式需要再次返回
+    # 退出预览,pattern默认只读,历史版本和内容搜索模式需要再次返回，尝试编辑使用
     def com_close_preview(self, driver, pattern=None):
         driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         if pattern:  # 包含两种情况，一直是search，一种是history
