@@ -3,9 +3,11 @@ import os
 import time
 import logging
 import pytest
+import shutil
 # from conftest import *
 from conftest import REPORT_DIR
 from conftest import cases_path, rerun, max_fail
+from conftest import history_save
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -26,8 +28,19 @@ def init_env(now_time):
     """
     初始化测试报告目录
     """
-    os.mkdir(REPORT_DIR + now_time)
-    os.mkdir(REPORT_DIR + now_time + "/image")
+    if history_save==1:
+        os.mkdir(REPORT_DIR + now_time)
+        os.mkdir(REPORT_DIR + now_time + "/image")
+    else:
+        if not os.path.exists(REPORT_DIR + "image"):
+            os.mkdir(REPORT_DIR + "image")
+        else:
+            shutil.rmtree(REPORT_DIR+"image/",ignore_errors=True)
+            os.mkdir(REPORT_DIR + "image")
+
+# 增加一个后置方法，为了访问报告用
+def teardown_module():
+    print("-----------------------------------------后置方法")
 
 
 # @click.command()
@@ -38,8 +51,12 @@ def run(m):
         logger.info("回归模式，开始执行✈✈！")
         now_time = time.strftime("%Y_%m_%d_%H_%M_%S")
         init_env(now_time)
-        html_report = os.path.join(REPORT_DIR, now_time, "report.html")
-        xml_report = os.path.join(REPORT_DIR, now_time, "junit-xml.xml")
+        if history_save==1:   # 保留历史记录
+            html_report = os.path.join(REPORT_DIR, now_time, "report.html")
+            xml_report = os.path.join(REPORT_DIR, now_time, "junit-xml.xml")
+        else:
+            html_report = os.path.join(REPORT_DIR, "report.html")
+            xml_report = os.path.join(REPORT_DIR, "junit-xml.xml")
         pytest.main(["-s", "-v",
                     # "test_dir/test_rubbish.py",
                      cases_path,

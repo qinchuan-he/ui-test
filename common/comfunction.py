@@ -22,12 +22,12 @@ import paramiko
 
 # 公共参数
 # path = "C:\\2services\\driver\\chromedriver.exe" # 驱动
-url = "https://testcyprex.fir.ai/sign-in"
-# url = "https://cyprex.fir.ai/sign-in"
+# url = "https://testcyprex.fir.ai/sign-in"
+url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
 # url = 'http://192.168.1.83/sign-in'
-# user = "19958585555"
-user = "10025253635"
+user = "10058585555"
+# user = "10025253635"
 # user = '19958955388'
 # user = "13248131618"
 # # user="10056966528"
@@ -68,6 +68,7 @@ class User:
             "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         # sleep(1.5)
         # driver.find_element_by_xpath("//a[text()='私有资料']").click()
+        User().root_private(driver)
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
     # 退出登录
@@ -109,6 +110,16 @@ class User:
         sleep(0.5)
         driver.find_element_by_xpath("//a[text()='私有资料']").click()
         sleep(0.5)
+
+    # 导航栏模块切换,传入切换的名称
+    def switch_navigation(self,driver,name):
+        sleep(0.5)
+        try:
+            driver.find_element_by_xpath("//a[text()='"+name+"']").click()
+        except Exception as e:
+            print("没有权限开启模块")
+        sleep(0.5)
+
 
 
 # 生成html相关的类
@@ -495,10 +506,15 @@ def server_upload(localFile, remoteFile):
 
 #  封装定位
 class com_xpath(object):
-    # 本地上传按钮定位封装,传入路径
-    def com_localupload(self,driver,url):
+    # 本地上传按钮定位封装,传入路径,位置数值(某些地方要用到）
+    def com_localupload(self,driver,url,position=None):
         sleep(0.3)
-        driver.find_element_by_xpath("//input[@type='file']").send_keys(url)
+        # driver.find_element_by_xpath("//input[@type='file']").send_keys(url) # 为了合同防伪，改的
+        el =driver.find_elements_by_xpath("//input[@type='file']")
+        if position:
+            el[int(position-1)].send_keys(url)
+        else:
+            el[0].send_keys(url)
         sleep(0.5)
 
     # 封装页面公共头部buttonType是按钮类型
@@ -528,6 +544,7 @@ class com_xpath(object):
         sleep(0.3)
         ActionChains(driver).move_to_element(el).send_keys(name).perform()
         driver.switch_to.active_element.send_keys(Keys.ENTER)
+
 
 
     # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）,

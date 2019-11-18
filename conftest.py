@@ -7,17 +7,20 @@ from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FF_Options
 import time
+import shutil
 # 引入公共参数，把url和用户信息放在一起的
 from common.comfunction import url
 # 项目目录配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # 移动了配置文件，调整路径
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # 移动了配置文件，调整路径,又移动回来了
 # BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 REPORT_DIR = BASE_DIR + "/test_report/"
 ############################
+# 配置是否保留上一次的报告
+history_save = 0 # 是否保留上次报告，1是保留，其他都不保留
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
-driver_type = "chrome"
-# driver_type = "chrome-headless"
+# driver_type = "chrome"
+driver_type = "chrome-headless"
 path = "C:\\2services\\driver\\chromedriver.exe"
 # 配置运行的 URL, ---------改为了登录方法中控制,为了切换环境时候方便
 # url = "https://testcyprex.fir.ai/sign-in"
@@ -140,8 +143,8 @@ def capture_screenshot(case_name):
     new_report_dir = new_report_time()
     if new_report_dir is None:
         raise RuntimeError('没有初始化测试目录')
-    image_dir = os.path.join(REPORT_DIR, new_report_dir, "image", case_name) # 调整了图片名称
-    driver.save_screenshot(image_dir)
+    image_name = os.path.join(REPORT_DIR, new_report_dir, "image", case_name) # 调整了图片名称
+    driver.save_screenshot(image_name)  # 截图保存在当前目录下
 
 
 def new_report_time():
@@ -151,7 +154,17 @@ def new_report_time():
     files = os.listdir(REPORT_DIR)
     files.sort()
     try:
-        return files[-2]
+        if history_save==1:  # 为了可以直接访问报告，这里增加了一个判断参数
+            # 为了保证路径正确，把那两个报告删了
+            if os.path.exists(REPORT_DIR+"image"):
+                shutil.rmtree(REPORT_DIR+"image/",ignore_errors=True)
+            if os.path.exists(REPORT_DIR+"junit-xml.xml"):
+                os.remove(REPORT_DIR+"junit-xml.xml")
+            if os.path.exists(REPORT_DIR + "report.html"):
+                os.remove(REPORT_DIR + "report.html")
+            return files[-2]
+        else:
+            return ""
     except IndexError:
         return None
 
@@ -170,7 +183,7 @@ def browser():
         print("进入chrome浏览器流程")
         driver = webdriver.Chrome(path)
         driver.set_window_size(1400, 900)
-        driver.implicitly_wait(0.5)
+        driver.implicitly_wait(15)
 
     elif driver_type == "firefox":
         # 本地firefox浏览器
