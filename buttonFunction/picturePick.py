@@ -33,7 +33,7 @@ from common.comfunction import com_xpath  # 公共的定位方法类
 from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
 from common.comfunction import com_path
-from common.comfunction import com_opration
+from common.comfunction import com_operation
 
 resultPath = com_path()+"报告\\"
 
@@ -88,7 +88,7 @@ class test_Pick(unittest.TestCase):
             WebDriverWait(self.driver, 20, 0.5).until(
                 ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.wordTextName+"']/..")))
             # 进入预览模式
-            com_opration().com_preview(self.driver, self.wordTextName, resource='team', pattern='search')
+            com_operation().com_preview(self.driver, self.wordTextName, resource='team', pattern='search')
             # self.driver.find_element_by_xpath("//span[text()='"+self.wordTextName+"']/..").click()
 
             try:
@@ -170,7 +170,7 @@ class test_Pick(unittest.TestCase):
                 ActionChains(self.driver).send_keys(Keys.PAGE_DOWN).perform()
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="滚动验证")
                 self.driver.switch_to.default_content()
-                com_opration().com_close_preview(self.driver, pattern='search') # 封装退出方法
+                com_operation().com_close_preview(self.driver, pattern='search') # 封装退出方法
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="退出预览")
                 sleep(2)
             except Exception as e:
@@ -179,7 +179,7 @@ class test_Pick(unittest.TestCase):
                 datename12 = str(time.time())
                 self.driver.get_screenshot_as_file(self.picturePath + datename12 + ".png")
                 comHtml().print_html(printName, self.picturePath, datename12)
-                com_opration().com_close_preview(self.driver, pattern='search')
+                com_operation().com_close_preview(self.driver, pattern='search')
                 sleep(1.5)
         except Exception as e:
             print(e)
@@ -198,7 +198,7 @@ class test_Pick(unittest.TestCase):
         try:
             WebDriverWait(self.driver, 2, 0.5).until(
                 ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.wordvectorName+"']/..")))
-            com_opration().com_preview(self.driver, self.wordvectorName, resource='team', pattern='search')
+            com_operation().com_preview(self.driver, self.wordvectorName, resource='team', pattern='search')
             try:
                 WebDriverWait(self.driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
                 try:
@@ -226,12 +226,12 @@ class test_Pick(unittest.TestCase):
                 except Exception as e:
                     print(e)
                     comHtml().screen_shot(self.driver, self.picturePath, print("未提取出图例"))
-                com_opration().com_close_preview(self.driver, pattern='search')
+                com_operation().com_close_preview(self.driver, pattern='search')
                 sleep(1.5)
             except Exception as e:
                 print(e)
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="预览异常")
-                com_opration().com_close_preview(self.driver, pattern='search')
+                com_operation().com_close_preview(self.driver, pattern='search')
                 sleep(1.5)
         except Exception as e:
             print(e)
@@ -247,7 +247,7 @@ class test_Pick(unittest.TestCase):
             WebDriverWait(self.driver, 3, 0.5).until(
                 ec.element_to_be_clickable((By.XPATH, "//span[text()='"+self.pdfName+"']/..")))
             # self.driver.find_element_by_xpath("//span[text()='"+self.pdfName+"']/..").click()
-            com_opration().com_preview(self.driver, self.pdfName, resource='team', pattern='search')
+            com_operation().com_preview(self.driver, self.pdfName, resource='team', pattern='search')
 
             try:
                 WebDriverWait(self.driver, 5, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
@@ -355,13 +355,13 @@ class test_Pick(unittest.TestCase):
                 ActionChains(self.driver).send_keys(Keys.PAGE_DOWN).perform()
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="滚动验证")
                 self.driver.switch_to.default_content()
-                com_opration().com_close_preview(self.driver, pattern='search')
+                com_operation().com_close_preview(self.driver, pattern='search')
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="退出预览")
                 sleep(2)
             except Exception as e:
                 print(e)
                 comHtml().screen_shot(self.driver, self.picturePath, print_name="预览异常")
-                com_opration().com_close_preview(self.driver, pattern='search')
+                com_operation().com_close_preview(self.driver, pattern='search')
                 sleep(1.5)
         except Exception as e:
             print(e)
