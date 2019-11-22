@@ -32,7 +32,7 @@ from common.comfunction import User
 # from common.comfunction import com_xpath
 from common.comfunction import com_path
 # from common.comfunction import team
-from common.comfunction import com_opration
+from common.comfunction import com_operation
 
 # 2019/11/11
 # 尝试见远编辑器的验证，新建word文档
@@ -44,7 +44,7 @@ file_name = "表格图片"
 class Test_createword:
     '''私有中新建远文档'''
     def test_word(self, browser, base_url, images_path):
-        """私有中新建远文档"""
+        """ 私有中新建远文档"""
         print("base_url:" + base_url)
         new_user().new_login(browser,base_url)
         driver = browser
@@ -63,7 +63,7 @@ class Test_createword:
         driver.get_screenshot_as_file(images_path + "test_word-编辑了内容" + str(time.time()) + ".png")
         driver.switch_to.default_content()
         sleep(0.5)
-        com_opration().com_close_preview(driver)
+        com_operation().com_close_preview(driver)
         sleep(1)
 
 

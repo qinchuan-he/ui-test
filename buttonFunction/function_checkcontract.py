@@ -20,13 +20,13 @@ def check_conpare(driver, image_path=None,image_prefix=None):
     sleep(1)
     if image_path:
         driver.get_screenshot_as_file(image_path + image_prefix+"-比对结果" + str(time.time()) + ".png")
-    com_opration().com_close_preview(driver)
+    com_operation().com_close_preview(driver)
     sleep(1)
     driver.find_element_by_xpath("//div[contains(text(),'今天')]/..//span[text()='查看报告']").click()
     WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='查看报告']")))
     if image_path:
         driver.get_screenshot_as_file(image_path + image_prefix+"-比对报告" + str(time.time()) + ".png")
-    com_opration().com_close_preview(driver)
+    com_operation().com_close_preview(driver)
 
 def check_poorfreading(driver,image_path=None,image_prefix=None):
     '''检查当日审校'''
@@ -44,7 +44,7 @@ def check_poorfreading(driver,image_path=None,image_prefix=None):
     sleep(0.5)
     if image_path:
         driver.get_screenshot_as_file(image_path+image_prefix+"-风险报告"+str(time.time())+".png")
-    com_opration().com_close_preview(driver)
+    com_operation().com_close_preview(driver)
 
 
 

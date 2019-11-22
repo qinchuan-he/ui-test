@@ -43,7 +43,7 @@ file_name = "表格图片"
 class Test_Rename:
     '''私有中重命名文件夹和文件'''
     def test_private(self, browser, base_url, images_path):
-        """私有中重命名文件夹和文件"""
+        """ 私有中重命名文件夹和文件"""
         print("base_url:" + base_url)
         new_user().new_login(browser, base_url)
         driver = browser

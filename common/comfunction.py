@@ -684,7 +684,7 @@ class com_xpath(object):
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
 # 封装公共的操作，比如只读预览，内容搜索预览，编辑
-class com_opration():
+class com_operation():
     # 打开预览模式，只读预览,传入，名字、来源（私有可不传）、模式（read_only、search、edit）
     def com_preview(self, driver, name, resource=None, pattern=None):
         driver.find_element_by_xpath("//span[text()='"+name+"']/..").click()
