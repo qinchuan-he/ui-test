@@ -46,10 +46,10 @@ def check_poorfreading(driver,image_path=None,image_prefix=None):
     com_operation().com_close_preview(driver)
 
 
-
-mode = 2
-driver = execBrower(mode)
-driver.get(url)
-User().login(driver)
-# image_path=""
-check_conpare(driver)
+#
+# mode = 2
+# driver = execBrower(mode)
+# driver.get(url)
+# User().login(driver)
+# # image_path=""
+# check_conpare(driver)

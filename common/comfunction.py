@@ -22,17 +22,18 @@ import paramiko
 
 # 公共参数
 # path = "C:\\2services\\driver\\chromedriver.exe" # 驱动
-url = "https://testcyprex.fir.ai/sign-in"
-# url = "https://cyprex.fir.ai/sign-in"
+# url = "https://testcyprex.fir.ai/sign-in"
+url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
 # url = 'http://192.168.1.83/sign-in'
-# user = "10058585555"
-user = "10025253635"
+user = "10058585555"
+# user = "10025253635"
 # user = '19958955388'
 # user = "13248131618"
 # # user="10056966528"
 pwd = "Test123456"
 # pwd = '955388'
+
 
 
 # 启动浏览器
@@ -54,6 +55,7 @@ def com_path():
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     folder_path = root_path+"\\自动化验证文档\\"
     return folder_path
+
 
 # 登录相关
 class User:
@@ -748,6 +750,29 @@ class com_operation():
             driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         sleep(0.5)
 
+# 公共上传参数
+url1 = com_path() + "19种格式\\" + "office\\" + "003_模板_TestLink测试用例导入.xls"
+url2 = com_path() + "19种格式\\" + "office\\" + "2017年12月11日-2017年12月15日发行监管部.doc"
+url3 = com_path() + "19种格式\\" + "office\\" + "cyprex1.3测试用例.xlsx"
+url4 = com_path() + "19种格式\\" + "office\\" + "带图片表格文档.docx"
+url5 = com_path() + "19种格式\\" + "office\\" + "小z素材-商务炫酷风格动态模板-003.ppt"
+
+url6 = com_path() + "19种格式\\" + "图片\\" + "BMP图片.bmp"
+url7 = com_path() + "19种格式\\" + "图片\\" + "timg.jpg"
+url8 = com_path() + "19种格式\\" + "图片\\" + "验证图片.png"
+
+url9 = com_path() + "19种格式\\" + "音频\\" + "16k.pcm"
+url10 = com_path() + "19种格式\\" + "音频\\" + "筷子兄弟《小苹果》.wav"
+url11 = com_path() + "19种格式\\" + "音频\\" + "另一种格式.amr"
+url12 = com_path() + "19种格式\\" + "音频\\" + "群星 - 贾谊《过秦论》.mp3"
+url13 = com_path() + "19种格式\\" + "音频\\" + "世纪大道199号.m4a"
+
+url14 = com_path() + "19种格式\\" + "其他\\" + "146页年度报告.PDF"
+url15 = com_path() + "19种格式\\" + "其他\\" + "测试解压.zip"
+url16 = com_path() + "19种格式\\" + "其他\\" + "厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知.html"
+url17 = com_path() + "19种格式\\" + "其他\\" + "天空1.txt"
+
+up_list = [url1,url2,url3,url4,url5,url6,url7,url8,url9,url10,url11,url12,url3,url4,url5,url6,url7]
 
 
 
