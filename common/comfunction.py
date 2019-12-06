@@ -22,12 +22,12 @@ import paramiko
 
 # 公共参数
 # path = "C:\\2services\\driver\\chromedriver.exe" # 驱动
-# url = "https://testcyprex.fir.ai/sign-in"
-url = "https://cyprex.fir.ai/sign-in"
+url = "https://testcyprex.fir.ai/sign-in"
+# url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
 # url = 'http://192.168.1.83/sign-in'
-user = "10058585555"
-# user = "10025253635"
+# user = "10058585555"
+user = "10025253635"
 # user = '19958955388'
 # user = "13248131618"
 # # user="10056966528"
@@ -75,6 +75,7 @@ class User:
     def login_out(self,driver):
         el = com_xpath().com_head(driver, buttonType='Portrait')
         el.click()
+        sleep(0.5)
         driver.find_element_by_xpath("//li[text()='退出']").click()
 
 
@@ -413,6 +414,18 @@ class com_alert(object):
             comHtml().screen_shot(driver, pic_path, print_name="移动弹窗异常")
             sleep(1)
 
+    # 删除弹窗,传入控制方式
+    def com_delete(self,driver,button=None):
+        try:
+            WebDriverWait(driver,5,0.5).until(ec.presence_of_element_located((By.XPATH,"//div[@class='ant-modal-body']")))
+            if button=='确定':
+                driver.find_element_by_xpath("//span[text()='确 定']/..").click()
+            else:
+                driver.find_element_by_xpath("//span[text()='取 消']/..").click()
+        except Exception as e:
+            print(e)
+            print("删除弹框操作错误----")
+
 
 # 发送邮件,传入参数为邮件主题和html文件url，不带附件
 def send_mail(subject, fileurl):
@@ -529,6 +542,15 @@ class com_xpath(object):
         elif buttonType=='Portrait':
             return el[-1]
 
+    # 封装内容管理中二级目录,传入，按钮名称，比如回收站
+    def com_contentcatalog(self,driver,button):
+        sleep(0.5)
+        if button=='回收站':
+            driver.find_element_by_xpath("//span[text()='回收站']/../..").click()
+        else:
+            driver.find_element_by_xpath("//a[text()='"+button+"']/../..").click()
+        sleep(0.5)
+
     # 文件夹，文件列表更多操作,传入文件名字（无重名） 目前不用传入文件夹或者文件类型
     def com_listmoreActions(self,driver,filename):
         el = driver.find_element_by_xpath("//span[text()='"+ filename +"']/../../../../../../../../../i")
@@ -538,14 +560,13 @@ class com_xpath(object):
     def com_listmoreButton(self,driver,buttonName):
         el = driver.find_element_by_xpath("//span[text()='"+buttonName+"']/..")
         return el
+
     # 重命名的input输入框,由于输入框是动态的，需要光标协助,传入名字
     def com_listrename(self,driver,name):
         el = driver.find_element_by_xpath("//input[contains(@class,'FileList_listInputFileName')]")
         sleep(0.3)
         ActionChains(driver).move_to_element(el).send_keys(name).perform()
         driver.switch_to.active_element.send_keys(Keys.ENTER)
-
-
 
     # 封装预览头部按钮的定位，传入driver，button（区分按钮类型）,
     def com_previewButton(self, driver, button):
@@ -735,7 +756,7 @@ class com_operation():
 
 
 
-# 封装对于元素的操作
+# 封装对于元素的操作js操作
 def addAttribute(driver, elementobj, attributeName, value):
     '''
     封装向页面标签添加新属性的方法
@@ -746,7 +767,12 @@ def addAttribute(driver, elementobj, attributeName, value):
     '''
     driver.execute_script("arguments[0].%s=arguments[1]" % attributeName, elementobj, value)
 
-
+# 封装对于元素高亮的操作
+def highlight(driver,element):
+    # driver.execute_script("arguments[0].setAttribute('style',arguments[1]);",
+    #                       element, "background:green ;border:2px solid red;")
+    driver.execute_script("arguments[0].setAttribute('style',arguments[1]);",
+                          element, "border:2px solid red;")
 
 
 

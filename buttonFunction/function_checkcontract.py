@@ -1,13 +1,10 @@
 # coding=utf-8
 
 from common.comfunction import *
+import time
 
 # 合同比对和审校的检查，设计是一小时之前执行了创建数据
-# mode = 2
-# driver = execBrower(mode)
-# driver.get(url)
-# User().login(driver)
-# image_path=""
+
 #检查合同比对，传入driver和image_path
 def check_conpare(driver, image_path=None,image_prefix=None):
     '''检查当日比对'''
@@ -39,6 +36,8 @@ def check_poorfreading(driver,image_path=None,image_prefix=None):
     sleep(0.5)
     if image_path:
         driver.get_screenshot_as_file(image_path+image_prefix+"-要素快照"+str(time.time())+".png")
+    driver.find_element_by_xpath("//span[@class='ant-modal-close-x']/..").click()
+    sleep(0.5)
     driver.find_element_by_xpath("//div[contains(text(),'今天')]/../..//span[text()='风险报告']").click()
     WebDriverWait(driver,10,0.5).until(ec.presence_of_element_located((By.XPATH,"//div[text()='查看报告']")))
     sleep(0.5)
@@ -48,5 +47,9 @@ def check_poorfreading(driver,image_path=None,image_prefix=None):
 
 
 
-
-# check_conpare(driver)
+mode = 2
+driver = execBrower(mode)
+driver.get(url)
+User().login(driver)
+# image_path=""
+check_conpare(driver)
