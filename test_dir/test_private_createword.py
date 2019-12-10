@@ -78,8 +78,8 @@ class Test_createword:
 
 
 
-# if __name__ == '__main__':
-#     pytest.main(["-sv", "test_private_createword.py"])
+if __name__ == '__main__':
+    pytest.main(["-sv", "test_private_createword.py"])
 
 
 
