@@ -1,1 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="0" hostname="DESKTOP-IDUFA2K" name="pytest" skipped="0" tests="4" time="120.348" timestamp="2019-12-06T10:23:54.055303"><testcase classname="test_dir.test_checkcontract.Test_checkcontract" file="test_dir\test_checkcontract.py" line="14" name="test_checkcontract" time="26.232"></testcase><testcase classname="test_dir.test_private_createword.Test_createword" file="test_dir\test_private_createword.py" line="45" name="test_word" time="36.756"></testcase><testcase classname="test_dir.test_rename.Test_Rename" file="test_dir\test_rename.py" line="44" name="test_private" time="22.913"></testcase><testcase classname="test_dir.test_rubbish.Testrubbish" file="test_dir\test_rubbish.py" line="44" name="test_folder" time="34.366"></testcase></testsuite></testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite errors="0" failures="1" hostname="DESKTOP-IDUFA2K" name="pytest" skipped="0" tests="3" time="136.985" timestamp="2019-12-09T10:22:10.306635"><testcase classname="test_dir.test_checkcontract.Test_checkcontract" file="test_dir\test_checkcontract.py" line="15" name="test_checkcontract" time="19.514"></testcase><testcase classname="test_dir.test_checkdata.Test_checkData" file="test_dir\test_checkdata.py" line="7" name="test_checkupload" time="43.067"></testcase><testcase classname="test_dir.test_private_createword.Test_createword" file="test_dir\test_private_createword.py" line="45" name="test_word" time="73.518"><failure message="selenium.common.exceptions.TimeoutException: Message:">self = &lt;test_dir.test_private_createword.Test_createword object at 0x00000148FAD60DD8&gt;
+browser = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;2754437f693826d63515817267afcce5&quot;)&gt;
+base_url = &apos;https://cyprex.fir.ai/sign-in&apos;
+images_path = &apos;d:\\work\\8python\\cyprex-ui/test_report//image/&apos;
+
+    def test_word(self, browser, base_url, images_path):
+        &quot;&quot;&quot; 私有中新建远文档&quot;&quot;&quot;
+        print(&quot;base_url:&quot; + base_url)
+        new_user().new_login(browser,base_url)
+        driver = browser
+        folder = str(time.time())
+        User().createFolder(driver,folder)
+        driver.find_element_by_xpath(&quot;//span[text()=&apos;&quot;+folder+&quot;&apos;]&quot;).click()
+&gt;       User().create_file(driver,file_type=&quot;见远文档(.docx)&quot;)
+
+test_dir\test_private_createword.py:54: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+common\comfunction.py:106: in create_file
+    WebDriverWait(driver, 20, 0.5).until(ec.presence_of_element_located((By.XPATH, &quot;//iframe&quot;)))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;2754437f693826d63515817267afcce5&quot;)&gt;
+method = &lt;selenium.webdriver.support.expected_conditions.presence_of_element_located object at 0x00000148FAD12198&gt;
+message = &apos;&apos;
+
+    def until(self, method, message=&apos;&apos;):
+        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \
+        return value is not False.&quot;&quot;&quot;
+        screen = None
+        stacktrace = None
+    
+        end_time = time.time() + self._timeout
+        while True:
+            try:
+                value = method(self._driver)
+                if value:
+                    return value
+            except self._ignored_exceptions as exc:
+                screen = getattr(exc, &apos;screen&apos;, None)
+                stacktrace = getattr(exc, &apos;stacktrace&apos;, None)
+            time.sleep(self._poll)
+            if time.time() &gt; end_time:
+                break
+&gt;       raise TimeoutException(message, screen, stacktrace)
+E       selenium.common.exceptions.TimeoutException: Message:
+
+C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\support\wait.py:80: TimeoutException</failure></testcase></testsuite></testsuites>

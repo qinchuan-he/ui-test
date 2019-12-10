@@ -5,6 +5,7 @@ from common.newcomfunction import new_user
 from common.comfunction import *
 from buttonFunction.function_contractrelated import *
 from buttonFunction.function_checkcontract import *
+from common.comfunction import User
 
 
 # 检查合同比对和审校，结果
@@ -19,6 +20,8 @@ class Test_checkcontract:
 
         check_conpare(driver,images_path,"test_checkcontract")
         check_poorfreading(driver,images_path,"test_checkcontract")
+
+
 
 
 

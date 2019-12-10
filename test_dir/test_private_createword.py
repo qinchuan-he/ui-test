@@ -5,7 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
-# from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.chrome.options import Options
 # 报告
 import pytest
@@ -59,8 +59,9 @@ class Test_createword:
         sleep(15)
         el2 = driver.find_element_by_xpath("//canvas[@id='id_target_cursor']")
         ActionChains(driver).move_to_element(el2).send_keys("本王编辑的内容，重要的内容").perform()
+        ActionChains(driver).move_to_element(el2).send_keys(Keys.ENTER).perform()
         ActionChains(driver).move_to_element(el2).send_keys("现对你公司推荐的杭州福膜新材料科技股份有限"
-                                                            "公司（以下简称“公司”或“发行人”）首发申请文件提出反"
+                                                            "公司（以下简称）首发申请文件提出反"
                                                             "馈意见，请你公司在30日内对下列问题逐项落实并提供书面回复和"
                                                             "电子文档。若涉及对招股说明书的修改，请以楷体加粗标明。我会"
                                                             "收到你公司的回复后，将根据情况决定是否再次向你公司发出"

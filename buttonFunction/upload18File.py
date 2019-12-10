@@ -281,10 +281,10 @@ class up_all(unittest.TestCase):
         # 音频
         ypath = com_path()+"19种格式\\音频\\"
         pamname = "16k"
-        wavname = "筷子兄弟《小苹果》"
+        wavname = "m4a"
         amrname = "另一种格式"
         mp3name = "群星 - 贾谊《过秦论》"
-        m4aname = "世纪大道199号"
+        m4aname = "电话会议兴业证券"
 
         # 新建音频文件夹，并进入
         el1=self.driver.find_element_by_xpath("//span[text()='新建']")

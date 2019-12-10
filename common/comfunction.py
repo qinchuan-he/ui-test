@@ -530,7 +530,7 @@ class com_xpath(object):
             el[int(position-1)].send_keys(url)
         else:
             el[0].send_keys(url)
-        sleep(0.5)
+        sleep(1.5)
 
     # 封装页面公共头部buttonType是按钮类型
     def com_head(self,driver,buttonType):
@@ -762,22 +762,28 @@ url7 = com_path() + "19种格式\\" + "图片\\" + "timg.jpg"
 url8 = com_path() + "19种格式\\" + "图片\\" + "验证图片.png"
 
 url9 = com_path() + "19种格式\\" + "音频\\" + "16k.pcm"
-url10 = com_path() + "19种格式\\" + "音频\\" + "筷子兄弟《小苹果》.wav"
+url10 = com_path() + "19种格式\\" + "音频\\" + "m4a.wav"
 url11 = com_path() + "19种格式\\" + "音频\\" + "另一种格式.amr"
 url12 = com_path() + "19种格式\\" + "音频\\" + "群星 - 贾谊《过秦论》.mp3"
-url13 = com_path() + "19种格式\\" + "音频\\" + "世纪大道199号.m4a"
+url13 = com_path() + "19种格式\\" + "音频\\" + "电话会议兴业证券.m4a"
 
 url14 = com_path() + "19种格式\\" + "其他\\" + "146页年度报告.PDF"
 url15 = com_path() + "19种格式\\" + "其他\\" + "测试解压.zip"
 url16 = com_path() + "19种格式\\" + "其他\\" + "厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知.html"
 url17 = com_path() + "19种格式\\" + "其他\\" + "天空1.txt"
 
-up_list = [url1,url2,url3,url4,url5,url6,url7,url8,url9,url10,url11,url12,url3,url4,url5,url6,url7]
+up_list = [url1,url2,url3,url4,url5,url6,url7,url8,url9,url10,url11,url12,url13,url14,url15,url16,url17]
 
+url21 =  com_path() + "19种格式\\" + "图例提取文件\\" + "PDF后缀验证解析.PDF"
+url22 =  com_path() + "19种格式\\" + "图例提取文件\\" + "pdf小写验证解析.pdf"
+url23 =  com_path() + "19种格式\\" + "图例提取文件\\" + "docx验证解析.docx"
+url24 =  com_path() + "19种格式\\" + "图例提取文件\\" + "doc验证解析.doc"
 
+up_analysis = [url21,url22,url23,url24]
 
-
-
+def get_urlname(url):
+    """ 获取url的name"""
+    return os.path.splitext(os.path.split(url)[1])[0]
 
 
 
