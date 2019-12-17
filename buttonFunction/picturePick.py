@@ -51,7 +51,7 @@ class test_Pick(unittest.TestCase):
     if not (os.path.exists(picturePath)):
         os.makedirs(picturePath)
     uploadPath = com_path()+"19种格式\\图例提取文件\\"  # 上传路径
-    wordTextName = "表格图片"   # 后缀是doc
+    wordTextName = "doc验证解析"   # 后缀是doc
     wordvectorName = "纯矢量图"   # 后缀是docx
     pdfName = "验证图例文件"  # 后缀是pdf
     texturl = uploadPath+wordTextName+".doc"

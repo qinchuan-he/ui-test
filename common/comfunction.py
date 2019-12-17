@@ -22,12 +22,12 @@ import paramiko
 
 # 公共参数
 # path = "C:\\2services\\driver\\chromedriver.exe" # 驱动
-# url = "https://testcyprex.fir.ai/sign-in"
-url = "https://cyprex.fir.ai/sign-in"
+url = "https://testcyprex.fir.ai/sign-in"
+# url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
 # url = 'http://192.168.1.83/sign-in'
-user = "10058585555"
-# user = "10025253635"
+# user = "10058585555"
+user = "10025253635"
 # user = '19958955388'
 # user = "13248131618"
 # # user="10056966528"
@@ -160,7 +160,7 @@ class team:
         except Exception as e:
             print("团队不存在准备新建")
             driver.find_element_by_xpath("//span[text()='创建新项目']/..").click()
-            driver.find_element_by_xpath("//input[@placeholder='项目及项目文件夹名称']").send_keys(team_name)
+            driver.find_element_by_xpath("//input[@placeholder='请输入项目名称']").send_keys(team_name)
             # driver.find_element_by_xpath("//span[text()='确 定']/..").click()
             sleep(1)
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
@@ -182,7 +182,7 @@ class team:
         except Exception as e:
             print("团队不存在准备新建")
             driver.find_element_by_xpath("//span[text()='创建新项目']/..").click()
-            driver.find_element_by_xpath("//input[@placeholder='项目及项目文件夹名称']").send_keys(team_name)
+            driver.find_element_by_xpath("//input[@placeholder='请输入项目名称']").send_keys(team_name)
             # driver.find_element_by_xpath("//span[text()='确 定']/..").click()
             sleep(1)
             driver.find_element_by_xpath("//div[@class='ant-modal-footer']/div/button[2]").click()
@@ -780,11 +780,11 @@ url23 =  com_path() + "19种格式\\" + "图例提取文件\\" + "docx验证解�
 url24 =  com_path() + "19种格式\\" + "图例提取文件\\" + "doc验证解析.doc"
 
 up_analysis = [url21,url22,url23,url24]
-
+# 解析文件夹前缀名字
+folder_analysis = "解析"
 def get_urlname(url):
     """ 获取url的name"""
     return os.path.splitext(os.path.split(url)[1])[0]
-
 
 
 # 封装对于元素的操作js操作

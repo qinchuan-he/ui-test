@@ -12,8 +12,10 @@ from common.comfunction import com_xpath
 from common.comfunction import com_path
 from common.comfunction import up_list
 from common.comfunction import up_analysis
+from common.comfunction import team
+from common.comfunction import folder_analysis
 
-folder_analysis = "解析"
+
 
 def upload_all(driver,image_path=None,image_prefix=None):
     """ 上传所有文件，到私有根目录"""
@@ -40,8 +42,17 @@ def upload_all(driver,image_path=None,image_prefix=None):
         driver.get_screenshot_as_file(image_path+image_prefix+"-上传第二次截图"+str(time.time())+".png")
     sleep(0.5)
 
-def upload_fileanalysis(driver,image_path=None,image_prefix=None):
+# 传入teamname 名称，默认是私有,传入团队名称，目前使用的默认名称
+def upload_fileanalysis(driver, teamname=None, image_path=None,image_prefix=None):
     """ 上传解析验证文件"""
+    if teamname:
+        # 检查和创建团队
+        teamname = team().check_team(driver)
+        # 进入团队
+        # driver.find_element_by_xpath("//span[text()='"+teamname+"']/..").click()
+    else:
+        # 进入私有
+        User().root_private(driver)
     folder = folder_analysis+str(time.time())
     User().createFolder(driver,folder)
     driver.find_element_by_xpath("//span[text()='"+folder+"']/..").click()
@@ -61,8 +72,9 @@ def upload_fileanalysis(driver,image_path=None,image_prefix=None):
 # mode = 2
 # driver = execBrower(mode)
 # User().login(driver)
-# upload_all(driver)
-
+# # upload_all(driver)
+# upload_fileanalysis(driver)
+# # upload_fileanalysis(driver,teamname="test")
 
 
 

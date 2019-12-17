@@ -50,7 +50,7 @@ class test_move(unittest.TestCase):
     if not (os.path.exists(picturePath)):
         os.makedirs(picturePath)
     upload_url = com_path()+"19种格式\\图例提取文件\\"
-    upload_name = "表格图片"
+    upload_name = "doc验证解析"
     upUrl = upload_url + upload_name + ".doc"
 
     mode = 1

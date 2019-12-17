@@ -39,8 +39,8 @@ from common.comfunction import com_operation
 #
 #
 # mode = 2
-url  = com_path()+"19种格式\\图例提取文件\\表格图片.doc"    # 上传路径
-file_name = "表格图片"
+url  = com_path()+"19种格式\\图例提取文件\\doc验证解析.doc"    # 上传路径
+file_name = "doc验证解析"
 class Test_createword:
     '''私有中新建远文档'''
     def test_word(self, browser, base_url, images_path):

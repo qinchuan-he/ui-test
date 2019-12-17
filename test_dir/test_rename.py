@@ -38,8 +38,8 @@ from common.comfunction import com_path
 # 目前实现私有文件夹的重命名
 #
 # mode = 2
-url  = com_path()+"19种格式\\图例提取文件\\表格图片.doc"    # 上传路径
-file_name = "表格图片"
+url  = com_path()+"19种格式\\图例提取文件\\doc验证解析.doc"    # 上传路径
+file_name = "doc验证解析"
 class Test_Rename:
     '''私有中重命名文件夹和文件'''
     def test_private(self, browser, base_url, images_path):
