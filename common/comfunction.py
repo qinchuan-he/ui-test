@@ -469,11 +469,14 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     smtpServer = "smtp.exmail.qq.com"
     # 发送邮箱用户
     user = "qinchuan.he@fir.ai"
-    pwd = "Test123456"
+    pwd = "Test12345678"
     # 发送邮箱
     sender = "qinchuan.he@fir.ai"
     # 接收邮箱
     receiver = "qinchuan.he@fir.ai"
+    receiver = ["qinchuan.he@fir.ai","849446261@qq.com"]
+
+    # receiver = "xiaohui.zhou@fir.ai"
     # 发送邮件主题
     subject = subject
     # 发送邮件内容，这里发送传入html的内容

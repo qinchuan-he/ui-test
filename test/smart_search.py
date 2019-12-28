@@ -13,6 +13,7 @@ from common.comfunction import highlight
 from common.comparameter import symbol
 from common.comfunction import com_xpath
 from selenium.webdriver.common.keys import Keys
+from common.comfunction import send_mail
 
 class search_home(object):
     """ 智能搜索首页的相关操作，需要按照函数顺序来执行 """
@@ -87,6 +88,31 @@ class search_result(object):
                 driver.get_screenshot_as_file(image_path + image_prefix + str(time.time()) + ".png")
         print("中文符号完毕")
 
+    def check_jmeter(self,driver,report_url,image_path=None,image_prefix=None):
+        """
+        检查jmeter执行情况
+        :param driver:
+        :param image:
+        :param image_prefix:
+        :return:
+        """
+        sleep(10)
+        driver.get(report_url)
+        sleep(0.5)
+        el = driver.find_elements_by_xpath("//div[@style='font-size:8pt;text-align:center;padding:2px;color:white;']")
+        ss='D:\\1.html'
+        if len(el)>1:
+            print("有问题")
+            if image_path:
+                driver.get_screenshot_as_file(image_path+image_prefix+str(time.time())+".png")
+            send_mail("test",ss,ss,"哎临时用下")
+        else:
+           s = str(el[0].text)
+           a = s.split("\n",2)[0]
+           if a=='OK':
+               print("全部通过")
+
+        # sleep(5)
 
 
 
@@ -100,14 +126,18 @@ class search_result(object):
 
 
 
-mode = 2
-driver = execBrower(mode)
-User().login(driver)
-# search_home().lately_collection(driver)
-# search_home().my_subscribe(driver)
-# search_home().my_annotation(driver)
-search_result().search(driver)
-driver.quit()
+
+
+
+# mode = 2
+# driver = execBrower(mode)
+# # User().login(driver)
+# # search_home().lately_collection(driver)
+# # search_home().my_subscribe(driver)
+# # search_home().my_annotation(driver)
+# # search_result().search(driver)
+# search_result().check_jmeter(driver,"http://192.168.1.49:8080/jmeter/report/index.html")
+# driver.quit()
 
 
 
