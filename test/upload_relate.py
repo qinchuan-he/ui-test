@@ -16,7 +16,6 @@ from common.comfunction import team
 from common.comfunction import folder_analysis
 
 
-
 def upload_all(driver,image_path=None,image_prefix=None):
     """ 上传所有文件，到私有根目录"""
     # 返回私有根目录

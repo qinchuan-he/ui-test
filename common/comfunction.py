@@ -22,12 +22,12 @@ import paramiko
 
 # 公共参数
 # path = "C:\\2services\\driver\\chromedriver.exe" # 驱动
-url = "https://testcyprex.fir.ai/sign-in"
-# url = "https://cyprex.fir.ai/sign-in"
+# url = "https://testcyprex.fir.ai/sign-in"
+url = "https://cyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/"
 # url = 'http://192.168.1.83/sign-in'
-# user = "10058585555"
-user = "10025253635"
+user = "10058585555"
+# user = "10025253635"
 # user = '19958955388'
 # user = "13248131618"
 # # user="10056966528"
@@ -80,7 +80,6 @@ class User:
         sleep(0.5)
         driver.find_element_by_xpath("//li[text()='退出']").click()
 
-
     #  创建文件夹
     def createFolder(self, driver, folder=None):
         sleep(0.5)
@@ -123,6 +122,12 @@ class User:
             print("没有权限开启模块")
         sleep(0.5)
 
+    # 进入文件和文件,目前就点击最近的,类型和位置目前不需要
+    def into_folder(self,driver,button_name,type=None,position=None):
+        """ 根据type来切换文件夹和文件，目前不需要区分"""
+        sleep(0.5)
+        el = driver.find_elements_by_xpath("//span[text()='"+button_name+"']/..")
+        el[0].click()
 
 
 # 生成html相关的类
@@ -656,7 +661,6 @@ class com_xpath(object):
                 el21 = el2[-1]
             else:
                 print("传入按钮类型错误")
-
         except Exception as e:
             print(e)
             print("没有处在资源页面中")
@@ -706,6 +710,20 @@ class com_xpath(object):
         User().root_private(driver)
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
 
+    # 智能搜索输入框,传入driver和位置,传入值认为是问答搜索
+    def smart_search(self,driver,position=None):
+        """
+        智能搜索输入框
+        :param driver:
+        :param position:
+        :return:
+        """
+        if position:
+            el = driver.find_element_by_xpath("//input[contains(@class,'GlobalSearch_searchInputTwo')]")
+        else:
+            el = driver.find_element_by_xpath("//input[contains(@class,'GlobalSearch_searchInputOne')]")
+        return el
+
 # 封装公共的操作，比如只读预览，内容搜索预览，编辑
 class com_operation():
     # 打开预览模式，只读预览,传入，名字、来源（私有可不传）、模式（read_only、search、edit）
@@ -750,7 +768,7 @@ class com_operation():
             driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
         sleep(0.5)
 
-# 公共上传参数
+# 公共上传参数,公共参数
 url1 = com_path() + "19种格式\\" + "office\\" + "003_模板_TestLink测试用例导入.xls"
 url2 = com_path() + "19种格式\\" + "office\\" + "2017年12月11日-2017年12月15日发行监管部.doc"
 url3 = com_path() + "19种格式\\" + "office\\" + "cyprex1.3测试用例.xlsx"
@@ -785,8 +803,7 @@ folder_analysis = "解析"
 def get_urlname(url):
     """ 获取url的name"""
     return os.path.splitext(os.path.split(url)[1])[0]
-
-
+#
 # 封装对于元素的操作js操作
 def addAttribute(driver, elementobj, attributeName, value):
     '''

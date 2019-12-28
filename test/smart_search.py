@@ -10,6 +10,9 @@ import time
 from common.comfunction import User
 from common.comfunction import execBrower
 from common.comfunction import highlight
+from common.comparameter import symbol
+from common.comfunction import com_xpath
+from selenium.webdriver.common.keys import Keys
 
 class search_home(object):
     """ 智能搜索首页的相关操作，需要按照函数顺序来执行 """
@@ -54,6 +57,35 @@ class search_home(object):
         if image_path:
             driver.get_screenshot_as_file(image_path+image_prefix+"-我的批注"+str(time.time())+".png")
 
+class search_result(object):
+    # 智能搜索
+    def search(self,driver,image_path=None,image_prefix=None):
+        # 切换到智能搜索
+        User().switch_navigation(driver, name="智能搜索")
+        el = com_xpath().smart_search(driver)
+        el.send_keys("*")
+        driver.switch_to.active_element.send_keys(Keys.ENTER)
+        sleep(2)
+        for i in symbol().english_symbol:
+            el1 =  driver.find_element_by_xpath("//input[@type='text']")
+            el1.send_keys(Keys.BACK_SPACE)
+            el1.clear()
+            el1.send_keys(i)
+            driver.switch_to.active_element.send_keys(Keys.ENTER)
+            sleep(3)
+            if image_path:
+                driver.get_screenshot_as_file(image_path+image_prefix+str(time.time())+".png")
+        print("英文符号完毕")
+        for i in symbol().china_symbol:
+            el1 = driver.find_element_by_xpath("//input[@type='text']")
+            el1.send_keys(Keys.BACK_SPACE)
+            el1.clear()
+            el1.send_keys(i)
+            driver.switch_to.active_element.send_keys(Keys.ENTER)
+            sleep(3)
+            if image_path:
+                driver.get_screenshot_as_file(image_path + image_prefix + str(time.time()) + ".png")
+        print("中文符号完毕")
 
 
 
@@ -63,12 +95,18 @@ class search_home(object):
 
 
 
-mode = 1
+
+
+
+
+
+mode = 2
 driver = execBrower(mode)
 User().login(driver)
-search_home().lately_collection(driver)
-search_home().my_subscribe(driver)
-search_home().my_annotation(driver)
+# search_home().lately_collection(driver)
+# search_home().my_subscribe(driver)
+# search_home().my_annotation(driver)
+search_result().search(driver)
 driver.quit()
 
 

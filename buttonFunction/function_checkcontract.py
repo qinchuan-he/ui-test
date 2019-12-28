@@ -6,9 +6,9 @@ import time
 # 合同比对和审校的检查，设计是一小时之前执行了创建数据
 
 #检查合同比对，传入driver和image_path
-def check_conpare(driver, image_path=None,image_prefix=None):
+def check_compare(driver, image_path=None,image_prefix=None):
     '''检查当日比对'''
-    User().switch_navigation(driver, name="合同防伪校验")
+    User().switch_navigation(driver, name="智能比对")
     sleep(1)
     if image_path:
         driver.get_screenshot_as_file(image_path+image_prefix+"-合同防伪列表"+str(time.time())+".png")
@@ -25,10 +25,10 @@ def check_conpare(driver, image_path=None,image_prefix=None):
         driver.get_screenshot_as_file(image_path + image_prefix+"-比对报告" + str(time.time()) + ".png")
     com_operation().com_close_preview(driver)
 
-def check_poorfreading(driver,image_path=None,image_prefix=None):
+def check_proofreading(driver,image_path=None,image_prefix=None):
     '''检查当日审校'''
     User().root_private(driver)
-    User().switch_navigation(driver,name="合同审校")
+    User().switch_navigation(driver,name="智能审核")
     sleep(0.5)
     if image_path:
         driver.get_screenshot_as_file(image_path+image_prefix+"-审校列表"+str(time.time())+".png")
@@ -52,4 +52,4 @@ def check_poorfreading(driver,image_path=None,image_prefix=None):
 # driver.get(url)
 # User().login(driver)
 # # image_path=""
-# check_conpare(driver)
+# check_compare(driver)

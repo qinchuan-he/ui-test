@@ -1,6 +1,6 @@
 # coding=utf-8
 
-# 造数据，目前造合同防伪和合同审校的数据,扩展造别的数据
+# 造数据，目前造合同防伪和智能审核的数据,扩展造别的数据
 import sys
 import os
 curPath = os.path.abspath(os.path.dirname(__file__))
@@ -20,6 +20,8 @@ contract_Proofreading(driver,url1)
 
 # 增加造解析数据
 upload_fileanalysis(driver)
+
+# 增加数据，分享用
 
 
 

@@ -14,12 +14,12 @@ file2_name="合同1扫描件（8张合并）"
 class Test_checkcontract:
     '''合同检查'''
     def test_checkcontract(self,browser,base_url,images_path):
-        ''' 合同防伪校验和合同审校'''
+        ''' 智能比对和智能审核'''
         new_user().new_login(browser,base_url)
         driver = browser
 
-        check_conpare(driver,images_path,"test_checkcontract")
-        check_poorfreading(driver,images_path,"test_checkcontract")
+        check_compare(driver,images_path,"test_checkcontract")
+        check_proofreading(driver,images_path,"test_checkcontract")
 
 
 
@@ -28,7 +28,7 @@ class Test_checkcontract:
 
 
 
-    # def test_poorfreading(self,browser):
+    # def test_proofreading(self,browser):
     #     '''检查当日审校'''
 
 

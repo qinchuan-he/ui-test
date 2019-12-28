@@ -24,7 +24,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 from common.newcomfunction import new_user
 from common.comfunction import com_path
 
-# 验证合同防伪校验模块，这里不验证比对结果，其他用例查看
+# 验证智能比对模块，这里不验证比对结果，其他用例查看
 # 公共参数
 upload_path1 = com_path()+"19种格式\比对文件\\合同1.docx"
 upload_path2 = com_path()+"19种格式\比对文件\\合同1扫描件（8张合并）.pdf"
@@ -35,12 +35,12 @@ class TestContractCompare:
     ''' 合同防伪模块'''
 
     def test_one(self, browser, base_url, images_path):
-        ''' 合同防伪校验'''
+        ''' 智能比对'''
         print("base_url:"+base_url)
         new_user().new_login(browser, base_url)
         driver = browser
         # 进入模块
-        driver.find_element_by_xpath("//a[text()='合同防伪校验']").click()
+        driver.find_element_by_xpath("//a[text()='智能比对']").click()
         uploads = driver.find_elements_by_xpath("//input[@type='file']")
         uploads[0].send_keys(upload_path1)
         uploads[1].send_keys(upload_path2)

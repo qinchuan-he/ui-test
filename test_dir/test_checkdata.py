@@ -11,6 +11,8 @@ class Test_checkData:
         driver = browser
         upload_all(driver,images_path,image_prefix='test_checkupload')
 
+        # 增加分享和版本冲突验证
+
 
 
 

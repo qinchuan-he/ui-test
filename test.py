@@ -2,12 +2,13 @@
 import io
 import sys
 from selenium import webdriver
-from selenium.webdriver.support.ui import Testrubbish
+# from selenium.webdriver.support.ui import Testrubbish
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
 from time import sleep
 import time   #生成时间戳用
 import os    #上传autoit用
