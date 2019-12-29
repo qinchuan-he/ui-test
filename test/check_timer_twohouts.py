@@ -10,7 +10,7 @@ sys.path.append(rootPath)
 print(sys.path)
 
 from common.comfunction import execBrower
-from smart_search import search_result
+from test.smart_search import search_result
 
 
 mode = 2
@@ -20,5 +20,5 @@ driver = execBrower(mode)
 # search_home().my_subscribe(driver)
 # search_home().my_annotation(driver)
 # search_result().search(driver)
-search_result().check_jmeter(driver,"http://192.168.1.49:8080/jmeter/report2/index.html")
+search_result().check_jmeter(driver,"http://192.168.1.49:8080/jmeter/report2/index.html",2)
 driver.quit()

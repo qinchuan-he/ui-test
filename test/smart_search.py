@@ -88,7 +88,7 @@ class search_result(object):
                 driver.get_screenshot_as_file(image_path + image_prefix + str(time.time()) + ".png")
         print("中文符号完毕")
 
-    def check_jmeter(self,driver,report_url,image_path=None,image_prefix=None):
+    def check_jmeter(self,driver,report_url,position,image_path=None,image_prefix=None):
         """
         检查jmeter执行情况
         :param driver:
@@ -101,11 +101,15 @@ class search_result(object):
         sleep(0.5)
         el = driver.find_elements_by_xpath("//div[@style='font-size:8pt;text-align:center;padding:2px;color:white;']")
         ss='D:\\1.html'
+        ss2 ="D:\\2.html"
         if len(el)>1:
             print("有问题")
             if image_path:
                 driver.get_screenshot_as_file(image_path+image_prefix+str(time.time())+".png")
-            send_mail("test",ss,ss,"哎临时用下.html")
+            if position==1:
+                send_mail("test",ss,ss,"哎临时用下.html")
+            elif position==2:
+                send_mail("test", ss2, ss2, "哎临时用下.html")
         else:
            s = str(el[0].text)
            a = s.split("\n",2)[0]
