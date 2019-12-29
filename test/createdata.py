@@ -9,7 +9,7 @@ rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 from common.comfunction import *
 from buttonFunction.function_contractrelated import *
-from test.upload_relate import upload_fileanalysis
+from upload_relate import upload_fileanalysis
 mode = 1
 driver = execBrower(mode)
 driver.get(url)

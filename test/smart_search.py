@@ -105,7 +105,7 @@ class search_result(object):
             print("有问题")
             if image_path:
                 driver.get_screenshot_as_file(image_path+image_prefix+str(time.time())+".png")
-            send_mail("test",ss,ss,"哎临时用下")
+            send_mail("test",ss,ss,"哎临时用下.html")
         else:
            s = str(el[0].text)
            a = s.split("\n",2)[0]

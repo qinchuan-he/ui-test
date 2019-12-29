@@ -16,24 +16,17 @@ import smtplib
 from email.mime.text import MIMEText  # 正文
 from email.header import Header  # 头部
 from email.mime.multipart import MIMEMultipart  # 上传附件用
-from private import email_property
+from private import EmailProperty
+from private import UserProperty
 
 # 服务器上传
 import paramiko
 
 # 公共参数
-# path = "C:\\2services\\driver\\chromedriver.exe" # 驱动
-# url = "https://testcyprex.fir.ai/sign-in"
-url = "https://cyprex.fir.ai/sign-in"
-# url = "http://firai-test.gjzqth.com:4680/"
-# url = 'http://192.168.1.83/sign-in'
-user = "10058585555"
-# user = "10025253635"
-# user = '19958955388'
-# user = "13248131618"
-# # user="10056966528"
-pwd = "Test123456"
-# pwd = '955388'
+url = UserProperty().url
+user = UserProperty().user
+pwd = UserProperty().pwd
+
 
 
 
@@ -42,7 +35,7 @@ def execBrower(mode):
     opt = Options()
     opt.add_argument('--disable--gpu')
     opt.add_argument('--headless')
-    path = "C:\\2services\\driver\\chromedriver.exe"
+    path = UserProperty().BROWER_PATH
     if mode == 1:
         driver = webdriver.Chrome(options=opt, executable_path=path)
     else:
@@ -441,8 +434,8 @@ def send_mail(subject, fileurl):
     # 发送邮箱服务器
     smtpServer = "smtp.exmail.qq.com"
     # 发送邮箱用户
-    user = email_property().SEND_EMAIL_USER
-    pwd = email_property().SEND_EMAIL_PWD
+    user = EmailProperty().SEND_EMAIL_USER
+    pwd = EmailProperty().SEND_EMAIL_PWD
     # 发送邮箱
     sender = "qinchuan.he@fir.ai"
     # 接收邮箱
@@ -469,12 +462,12 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     # 发送邮箱服务器
     smtpServer = "smtp.exmail.qq.com"
     # 发送邮箱用户
-    user = email_property().SEND_EMAIL_USER
-    pwd = email_property().SEND_EMAIL_PWD
+    user = EmailProperty().SEND_EMAIL_USER
+    pwd = EmailProperty().SEND_EMAIL_PWD
     # 发送邮箱
-    sender = email_property().SEND_EMAIL
+    sender = EmailProperty().SEND_EMAIL
     # 接收邮箱
-    receiver = email_property().RECEVI_EMAIL
+    receiver = EmailProperty().RECEIVE_EMAIL
     # receiver = "xiaohui.zhou@fir.ai"
     # 发送邮件主题
     subject = subject
