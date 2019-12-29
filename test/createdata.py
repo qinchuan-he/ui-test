@@ -3,6 +3,7 @@
 # 造数据，目前造合同防伪和智能审核的数据,扩展造别的数据
 import sys
 import os
+# 解决执行不能跨包问题
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)

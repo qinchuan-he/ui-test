@@ -1,8 +1,16 @@
 # coding = utf-8
 
+# 解决执行不能跨包问题
+import os
+import sys
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
+
+print(sys.path)
 
 from common.comfunction import execBrower
-from test.smart_search import search_result
+from smart_search import search_result
 
 
 mode = 1

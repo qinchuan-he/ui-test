@@ -16,6 +16,7 @@ import smtplib
 from email.mime.text import MIMEText  # 正文
 from email.header import Header  # 头部
 from email.mime.multipart import MIMEMultipart  # 上传附件用
+from private import email_property
 
 # 服务器上传
 import paramiko
@@ -440,8 +441,8 @@ def send_mail(subject, fileurl):
     # 发送邮箱服务器
     smtpServer = "smtp.exmail.qq.com"
     # 发送邮箱用户
-    user = "qinchuan.he@fir.ai"
-    pwd = "Test123456"
+    user = email_property().SEND_EMAIL_USER
+    pwd = email_property().SEND_EMAIL_PWD
     # 发送邮箱
     sender = "qinchuan.he@fir.ai"
     # 接收邮箱
@@ -468,14 +469,12 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     # 发送邮箱服务器
     smtpServer = "smtp.exmail.qq.com"
     # 发送邮箱用户
-    user = "qinchuan.he@fir.ai"
-    pwd = "Test12345678"
+    user = email_property().SEND_EMAIL_USER
+    pwd = email_property().SEND_EMAIL_PWD
     # 发送邮箱
-    sender = "qinchuan.he@fir.ai"
+    sender = email_property().SEND_EMAIL
     # 接收邮箱
-    receiver = "qinchuan.he@fir.ai"
-    receiver = ["qinchuan.he@fir.ai","849446261@qq.com"]
-
+    receiver = email_property().RECEVI_EMAIL
     # receiver = "xiaohui.zhou@fir.ai"
     # 发送邮件主题
     subject = subject
