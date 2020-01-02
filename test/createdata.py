@@ -9,7 +9,7 @@ rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 from common.comfunction import *
 from buttonFunction.function_contractrelated import *
-from upload_relate import upload_fileanalysis
+# from upload_relate import upload_fileanalysis
 mode = 1
 driver = execBrower(mode)
 driver.get(url)
@@ -20,7 +20,7 @@ contract_compare(driver,url1,url2)
 contract_Proofreading(driver,url1)
 
 # 增加造解析数据
-upload_fileanalysis(driver)
+# upload_fileanalysis(driver)
 
 # 增加数据，分享用
 

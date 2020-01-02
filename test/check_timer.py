@@ -5,20 +5,22 @@ import os
 import sys
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
-sys.path.append(rootPath)
+sys.path.insert(0,rootPath)
 
 print(sys.path)
 
 from common.comfunction import execBrower
-from smart_search import search_result
+from test.smart_search import search_result
+from common.private import ReportProperty
 
 
-mode = 2
+mode = 1
 driver = execBrower(mode)
 # User().login(driver)
 # search_home().lately_collection(driver)
 # search_home().my_subscribe(driver)
 # search_home().my_annotation(driver)
 # search_result().search(driver)
-search_result().check_jmeter(driver,"http://192.168.1.49:8080/jmeter/report/index.html",1)
+# check_jmeter 方法传1代表15分钟检查，2代表2小时检查
+search_result().check_jmeter(driver,ReportProperty().FIFTEEN_MINUTES_REPORT,1)
 driver.quit()

@@ -16,8 +16,8 @@ import smtplib
 from email.mime.text import MIMEText  # 正文
 from email.header import Header  # 头部
 from email.mime.multipart import MIMEMultipart  # 上传附件用
-from private import EmailProperty
-from private import UserProperty
+from common.private import EmailProperty
+from common.private import UserProperty
 
 # 服务器上传
 import paramiko
@@ -55,10 +55,13 @@ def com_path():
 class User:
 
     # 登录
-    def login(self, driver):
+    def login(self, driver,new_user=None):
         driver.get(url)
         driver.find_element_by_xpath("//div[text()='账号登录']").click()
-        driver.find_element_by_id("username_no").send_keys(user)
+        if new_user:
+            driver.find_element_by_id("username_no").send_keys(new_user)
+        else:
+            driver.find_element_by_id("username_no").send_keys(user)
         driver.find_element_by_id("password").send_keys(pwd)
         driver.find_element_by_xpath(
             "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
@@ -193,6 +196,24 @@ class team:
             pass
         sleep(0.5)
         return team_name
+
+    # 团队根目录创建协作空间，自动进入协作空间
+    def create_cooperation(self,driver,spacename):
+        """
+        团队根目录创建协作空间
+        :param driver:
+        :return:
+        """
+        el = com_xpath().com_listButton(driver, button="createSpace")
+        el.click()
+        sleep(0.5)
+        driver.find_element_by_xpath("//input[@placeholder='请输入流转协作空间名称']").send_Keys(spacename)
+        sleep(0.5)
+        driver.find_element_by_xpath("//span[text()='确 定']/..").click() # 自动进入空间
+        sleep(0.5)
+
+
+
 
 
 
@@ -467,7 +488,7 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     # 发送邮箱
     sender = EmailProperty().SEND_EMAIL
     # 接收邮箱
-    receiver = EmailProperty().RECEIVE_EMAIL
+    receiver = EmailProperty().RECEVI_EMAIL
     # receiver = "xiaohui.zhou@fir.ai"
     # 发送邮件主题
     subject = subject

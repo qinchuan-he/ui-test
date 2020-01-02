@@ -19,18 +19,34 @@ def contract_compare(driver,url1,url2):
     WebDriverWait(driver,5,0.2).until(ec.element_to_be_clickable((By.XPATH,"//span[text()='开始比对']/..")))
     driver.find_element_by_xpath("//span[text()='开始比对']/..").click()
 
-# 智能审核
+# 智能审核，传入一个url
 def contract_Proofreading(driver,url):
     User().switch_navigation(driver,name="智能审核")
     com_xpath().com_localupload(driver,url)
     WebDriverWait(driver,5,0.2).until(ec.element_to_be_clickable((By.XPATH,"//span[text()='智能审核']/..")))
     driver.find_element_by_xpath("//span[text()='智能审核']/..").click()
 
+# 合同拆分
+def contratc_split(driver,urk):
+    """
+    合同拆分
+    :param driver:
+    :param urk:
+    :return:
+    """
+    # 创建拆分协作空间，默认进入团队根目录
+    space_name = "我的团队"+str(time.time())
+    team().create_cooperation(driver,space_name)
+
+
+
+
+
 mode = 2
 driver = execBrower(mode)
 driver.get(url)
 User().login(driver)
-# contract_compare(driver,file1,file2)
-contract_Proofreading(driver,file1)
+# # contract_compare(driver,file1,file2)
+# contract_Proofreading(driver,file1)
 sleep(7)
 driver.quit()

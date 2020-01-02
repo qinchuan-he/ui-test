@@ -14,6 +14,7 @@ from common.comparameter import symbol
 from common.comfunction import com_xpath
 from selenium.webdriver.common.keys import Keys
 from common.comfunction import send_mail
+from common.private import EmailProperty
 
 class search_home(object):
     """ 智能搜索首页的相关操作，需要按照函数顺序来执行 """
@@ -100,21 +101,21 @@ class search_result(object):
         driver.get(report_url)
         sleep(0.5)
         el = driver.find_elements_by_xpath("//div[@style='font-size:8pt;text-align:center;padding:2px;color:white;']")
-        ss='D:\\1.html'
-        ss2 ="D:\\2.html"
         if len(el)>1:
             print("有问题")
             if image_path:
                 driver.get_screenshot_as_file(image_path+image_prefix+str(time.time())+".png")
             if position==1:
-                send_mail("test",ss,ss,"哎临时用下.html")
+                send_mail("接口检查有问题",EmailProperty().EMAIL_ATTACHMENT1,EmailProperty().EMAIL_ATTACHMENT1,"15minutes_check.html")
             elif position==2:
-                send_mail("test", ss2, ss2, "哎临时用下.html")
+                send_mail("接口检查有问题", EmailProperty().EMAIL_ATTACHMENT2, EmailProperty().EMAIL_ATTACHMENT2, "twoHours_check.html")
         else:
            s = str(el[0].text)
            a = s.split("\n",2)[0]
            if a=='OK':
                print("全部通过")
+               # send_mail("没有问题", EmailProperty().EMAIL_ATTACHMENT2, EmailProperty().EMAIL_ATTACHMENT2, "哎临时用下.html")
+
 
         # sleep(5)
 
