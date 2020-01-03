@@ -1,4 +1,6 @@
 # coding = utf-8
+
+# 最终检查发报告的地方
 import os
 import sys
 curPath = os.path.abspath(os.path.dirname(__file__))
@@ -17,19 +19,22 @@ from common.private import EmailProperty
 from common.private import ReportProperty
 from common.comfunction import send_mail
 from test.smart_search import search_result
+from common.comfunction import team
+from common.comfunction import url25,url26,url27,url28
+from buttonFunction.function_contractrelated import contratc_split
+from buttonFunction.function_contractrelated import contract_combine
 
+# 检查同步比对、查询等接口
 mode = 1
 driver = execBrower(mode)
 search_result().check_jmeter(driver,ReportProperty().TWO_HOURS_REPORT_JMETER,2) # 2表示每隔两小时
 driver.quit()
 sleep(1)
 
-
-
+# 检查智能比对和审校
 mode = 1
 driver = execBrower(mode)
 driver.get(ReportProperty().TWO_HOURS_REPORT_UI)
-
 # driver.find_element_by_xpath("//td[contains(text(),'通过率= 100.00%')]")
 try:
     WebDriverWait(driver,1.5,0.5).until(ec.presence_of_element_located((By.XPATH,"//td[contains(text(),'通过率：100.00%')]")))
@@ -40,3 +45,16 @@ except Exception as e:
     send_mail("ui检查存在问题", EmailProperty().EMAIL_ATTACHMENT3, EmailProperty().EMAIL_ATTACHMENT3, "twoHours_check.html")
 driver.quit()
 
+# 检查拆分和合并
+mode = 1
+driver = execBrower(mode)
+driver.get(UserProperty().url)
+User().login(driver,UserProperty().user_check2)
+team().dismiss_team(driver,"验证的团队")
+contratc_split(driver,url25)
+# # contract_compare(driver,file1,file2)
+# contract_Proofreading(driver,file1)
+contract_combine(driver,url26,url27,url28)
+
+sleep(7)
+driver.quit()
