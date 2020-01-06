@@ -6,10 +6,12 @@ import time
 # 合同比对和审校的检查，设计是一小时之前执行了创建数据
 
 #检查合同比对，传入driver和image_path
-def check_compare(driver, image_path=None,image_prefix=None):
+def check_compare(driver, image_path=None,image_prefix=None,is_check=None):
     '''检查当日比对'''
     User().switch_navigation(driver, name="智能比对")
     sleep(1)
+    if is_check: # 执行检查，截图
+        driver.get_screenshot_as_file(com_path() + "截图\\" + "智能比对列表截图.png")
     if image_path:
         driver.get_screenshot_as_file(image_path+image_prefix+"-合同防伪列表"+str(time.time())+".png")
     driver.find_element_by_xpath("//div[contains(text(),'今天')]/..//span[text()='查看明细']").click()
@@ -25,11 +27,13 @@ def check_compare(driver, image_path=None,image_prefix=None):
         driver.get_screenshot_as_file(image_path + image_prefix+"-比对报告" + str(time.time()) + ".png")
     com_operation().com_close_preview(driver)
 
-def check_proofreading(driver,image_path=None,image_prefix=None):
+def check_proofreading(driver,image_path=None,image_prefix=None,is_check=None):
     '''检查当日审校'''
     User().root_private(driver)
     User().switch_navigation(driver,name="智能审核")
     sleep(0.5)
+    if is_check: # 执行检查，截图
+        driver.get_screenshot_as_file(com_path() + "截图\\" + "智能审校列表截图.png")
     if image_path:
         driver.get_screenshot_as_file(image_path+image_prefix+"-审校列表"+str(time.time())+".png")
     driver.find_element_by_xpath("//div[contains(text(),'今天')]/../..//span[text()='要素快照']").click()

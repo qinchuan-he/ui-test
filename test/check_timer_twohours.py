@@ -50,9 +50,9 @@ class Test_twohourse(unittest.TestCase):
         driver.get(UserProperty().url)
         User().login(driver,UserProperty().user_check2)
         sleep(360)
-        check_compare(driver)
+        check_compare(driver,is_check="2")
         print("检查比对完毕")
-        check_proofreading(driver)
+        check_proofreading(driver,is_check="2")
         print("检查审校完毕")
 
 

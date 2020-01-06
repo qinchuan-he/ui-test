@@ -107,7 +107,6 @@ def contract_combine(driver,url1,url2,url3):
             sleep(6)
             try:
                 el = driver.find_element_by_xpath("//div[contains(@class,'WorkSpaceTasks_taskFileNameBox')]")
-                print(time.time())
                 print("合并成功")
                 break
             except Exception as e:
