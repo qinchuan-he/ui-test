@@ -22,6 +22,8 @@ rootPath = os.path.split(curPath)[0]
 print("rootPath: "+rootPath)
 sys.path.append(rootPath)
 from common.comfunction import send_mail
+from common.private import EmailProperty
+from common.comfunction import com_path
 import pytest
 import math
 # from test.conftest import test_url
@@ -36,9 +38,20 @@ addfilename="helloworld.txt"
 # send_mail(subject,fileurl,addfileurl,addfilename)
 
 
-s = open(fileurl,'rb')
-print(s.readlines())
-s.close()
+s=[com_path() + "截图\\" + "合并失败截图.png",com_path() + "截图\\" + "拆分截图.png"]
+p=["combine.png","split.png"]
+
+send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, com_path() + "截图\\" + "合并失败截图.png",
+                              "combine.png")
+
+s1 = com_path() + "截图\\" + "合并失败截图.png"
+
+print(type(s1).__name__)
+
+
+
+
+
 
 
 
