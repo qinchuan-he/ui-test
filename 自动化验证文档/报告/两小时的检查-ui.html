@@ -246,9 +246,9 @@ function html_escape(s) {
 <div class='heading'>
 <h4 style="font-family: Microsoft YaHei">两小时的检查</h4>
 <p class='attribute'><strong>测试人员 : </strong> 乌鸦</p>
-<p class='attribute'><strong>开始时间 : </strong> 2020-01-02 16:45:55</p>
-<p class='attribute'><strong>合计耗时 : </strong> 0:00:14.097433</p>
-<p class='attribute'><strong>测试结果 : </strong> 共 2，错误 2，通过率= 0.00%</p>
+<p class='attribute'><strong>开始时间 : </strong> 2020-01-06 15:12:12</p>
+<p class='attribute'><strong>合计耗时 : </strong> 0:06:48.661531</p>
+<p class='attribute'><strong>测试结果 : </strong> 共 2，通过 2，通过率= 100.00%</p>
 
 <p class='description'>检查比对和审校</p>
 </div>
@@ -256,10 +256,10 @@ function html_escape(s) {
 
 
 <p id='show_detail_line'>
-<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 0.00% }</a>
-<a class="btn btn-warning" href='javascript:showCase(4)'>错误{ 2 }</a>
+<a class="btn btn-primary" href='javascript:showCase(0)'>概要{ 100.00% }</a>
+<a class="btn btn-warning" href='javascript:showCase(4)'>错误{ 0 }</a>
 <a class="btn btn-danger" href='javascript:showCase(1)'>失败{ 0 }</a>
-<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 0 }</a>
+<a class="btn btn-success" href='javascript:showCase(2)'>通过{ 2 }</a>
 <a class="btn btn-info" href='javascript:showCase(3)'>所有{ 2 }</a>
 </p>
 <table id='result_table' class="table table-condensed table-bordered table-hover">
@@ -282,98 +282,44 @@ function html_escape(s) {
     <td>截图</td>
 </tr>
 
-<tr class='errorClass warning'>
+<tr class='passClass warning'>
     <td>Test_twohourse</td>
     <td class="text-center">2</td>
-    <td class="text-center">0</td>
-    <td class="text-center">0</td>
     <td class="text-center">2</td>
+    <td class="text-center">0</td>
+    <td class="text-center">0</td>
     <td class="text-center"><a href="javascript:showClassDetail('c1',2)" class="detail" id='c1'>详细</a></td>
     <td class="text-center">Assert or Error Image</td>
 </tr>
 
-<tr id='ft1_1' class='none'>
-    <td class='errorCase' width='300px'><div class='testcase'>test_create</div></td>
-    <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
-    <!--默认收起错误信息 -Findyou
-    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
-																								  
-					  
-
-    <div id='div_ft1_1' class="collapse">  -->
-    <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_ft1_1' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_1'>错误</button>
-    <div id='div_ft1_1' class="collapse in">
-    <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
-			  
-			 
-    
-ft1_1: Traceback (most recent call last):
-  File "check_timer_twohours.py", line 30, in test_create
-    User().login(driver,UserProperty().user_check2)
-  File "C:\2services\apache-tomcat-7.0.78\webapps\ui-test\common\comfunction.py", line 70, in login
-    User().root_private(driver)
-  File "C:\2services\apache-tomcat-7.0.78\webapps\ui-test\common\comfunction.py", line 108, in root_private
-    driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
-    self._execute(Command.CLICK_ELEMENT)
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
-    return self._parent.execute(command, params)
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="GlobalHeader_logo__pUGPo">...</div> is not clickable at point (87, 30). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap ant-modal-centered user-guide-creatTeamF-modal" role="dialog">...</div>
-  (Session info: headless chrome=79.0.3945.88)
-
-
-
-    </pre>
-    </div>
-    </td>
+<tr id='pt1_1' class='hiddenRow'>
+    <td class='passCase'><div class='testcase'>test_create</div></td>
+    <td colspan='5' align='center'><span class="label label-success success">通过</span></td>
     <td align="right">
         <a hidden="hidden" href="">
-            <img   src="" height="200px" width="400px"/>
+            <img   src="" height="200" width="400"/>
         </a>
     </td>
 </tr>
 
-
-
-<tr id='ft1_2' class='none'>
-    <td class='errorCase' width='300px'><div class='testcase'>test_check</div></td>
+<tr id='pt1_2' class='hiddenRow'>
+    <td class='passCase' width='300px'><div class='testcase'>test_check</div></td>
     <td colspan='5' align='left' width='600px'> <!--print 输出框位置-->
     <!--默认收起错误信息 -Findyou
-    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_ft1_2'>错误</button>
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs collapsed" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
 																								  
 					  
 
-    <div id='div_ft1_2' class="collapse">  -->
+    <div id='div_pt1_2' class="collapse">  -->
     <!-- 默认展开错误信息 -Findyou -->
-    <button id='btn_ft1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_ft1_2'>错误</button>
-    <div id='div_ft1_2' class="collapse in">
+    <button id='btn_pt1_2' type="button"  class="btn btn-danger btn-xs" data-toggle="collapse" data-target='#div_pt1_2'>通过</button>
+    <div id='div_pt1_2' class="collapse in">
     <pre style="overflow-y:scroll; overflow-x:hidden;height:200px; width:600px; margin:auto; border:1px solid #e1e1e1;">
 			  
 			 
     
-ft1_2: Traceback (most recent call last):
-  File "check_timer_twohours.py", line 40, in test_check
-    User().login(driver,UserProperty().user_check2)
-  File "C:\2services\apache-tomcat-7.0.78\webapps\ui-test\common\comfunction.py", line 70, in login
-    User().root_private(driver)
-  File "C:\2services\apache-tomcat-7.0.78\webapps\ui-test\common\comfunction.py", line 108, in root_private
-    driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
-    self._execute(Command.CLICK_ELEMENT)
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
-    return self._parent.execute(command, params)
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
-    self.error_handler.check_response(response)
-  File "C:\Users\fir\AppData\Local\Programs\Python\Python37\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
-    raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.ElementClickInterceptedException: Message: element click intercepted: Element <div class="GlobalHeader_logo__pUGPo">...</div> is not clickable at point (87, 30). Other element would receive the click: <div tabindex="-1" class="ant-modal-wrap ant-modal-centered user-guide-creatTeamF-modal" role="dialog">...</div>
-  (Session info: headless chrome=79.0.3945.88)
-
+pt1_2: 检查比对完毕
+检查审校完毕
 
 
     </pre>
@@ -391,10 +337,10 @@ selenium.common.exceptions.ElementClickInterceptedException: Message: element cl
 <tr id='total_row' class="text-center active">
     <td>总计</td>
     <td>2</td>
-    <td>0</td>
-    <td>0</td>
     <td>2</td>
-    <td>通过率：0.00%</td>
+    <td>0</td>
+    <td>0</td>
+    <td>通过率：100.00%</td>
     <td> <a href="" target="_blank"></a></td>
 </tr>
 </table>

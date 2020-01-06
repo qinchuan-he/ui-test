@@ -58,6 +58,7 @@ def contratc_split(driver,url):
                 el = driver.find_elements_by_xpath("//span[contains(@class,'WorkSpaceTasks_taskItemTitle')]")
                 if len(el)>1: # 拆分成功
                     print("拆分成功")
+                    break
                 else:# 拆分失败
                     print("拆分失败")
                     # 截图
@@ -103,16 +104,15 @@ def contract_combine(driver,url1,url2,url3):
         driver.find_element_by_xpath("//span[text()='确 定']/..").click()
         sleep(1)
         for i in range(15):
-            print(time.time())
             sleep(6)
             try:
                 el = driver.find_element_by_xpath("//div[contains(@class,'WorkSpaceTasks_taskFileNameBox')]")
                 print(time.time())
                 print("合并成功")
+                break
             except Exception as e:
                 print(e)
                 if i==14:
-                    print(time.time())
                     # 截图
                     driver.get_screenshot_as_file(com_path() + "截图\\" + "合并失败截图.png")
                     send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, com_path() + "截图\\" + "合并失败截图.png",

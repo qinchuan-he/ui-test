@@ -55,6 +55,5 @@ contratc_split(driver,url25)
 # # contract_compare(driver,file1,file2)
 # contract_Proofreading(driver,file1)
 contract_combine(driver,url26,url27,url28)
-
 sleep(7)
 driver.quit()
