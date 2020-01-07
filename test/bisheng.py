@@ -16,7 +16,9 @@ print(sign)
 
 print(str(datetime.datetime.now()))
 s =str(datetime.datetime.now())[:19]
-print(str(datetime.datetime.now())[1::-1])
+print(str(datetime.datetime.now())[1::])
+print(str(datetime.datetime.now())[1::-1]) # 从下标1开始往前，直到下标0
+print(str(datetime.datetime.now())[::-1])
 print(str(datetime.datetime.now())[:19])
 print(len(s))
 

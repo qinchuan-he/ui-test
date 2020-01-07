@@ -1,2 +1,4 @@
 # Created by pytest automatically.
 common/private.py
+*.pyc
+__pycache__/

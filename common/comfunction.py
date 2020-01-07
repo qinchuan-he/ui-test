@@ -525,11 +525,14 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     mail_body = fp.read()
     fp.close()
     msg = MIMEText(mail_body, 'html', 'utf-8')
-    msg['Subject'] = Header(subject, 'utf-8')
+    # msg['Subject'] = Header(subject, 'utf-8')
     # 附件,可能多个
     add_file_type = type(addfileurl).__name__
     msgRoot = MIMEMultipart('related')
     msgRoot['Subject'] = Header(subject, 'utf-8')
+    msgRoot['From'] = EmailProperty().SEND_EMAIL
+    msgRoot['To'] = ','.join(EmailProperty().RECEVI_EMAIL)
+
     if add_file_type=="str":
         af = open(addfileurl, 'rb').read()
         att = MIMEText(af, 'base64', 'utf-8')

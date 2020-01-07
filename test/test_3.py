@@ -15,27 +15,37 @@ from time import sleep
 import time   #生成时间戳用
 import os    #上传autoit用
 import sys
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
+from common.comfunction import com_path,send_mail
+from common.private import EmailProperty
 """解决vscode中不能引用别的模块的问题"""
 import os
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
-print("rootPath: "+rootPath)
-sys.path.append(rootPath)
-from common.comfunction import send_mail
-from common.private import EmailProperty
-from common.comfunction import com_path
-import pytest
-import math
-# from test.conftest import test_url
-# print(sys.path)
-# sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')  # 有这一句会导致，pytest运行报IO错误
-subject = "test"
-fileurl = "D:\\2.html"
-addfileurl = "D:\\1.txt"
-addfilename="helloworld.txt"
+
+# sender = "qinchuan.he@fir.ai"
+# recivie = ["m13248131618@163.com","849446261@qq.com"]
+# msg = MIMEText("我发送的邮件","plain","utf-8")
+# print(sender)
+# msg['From'] = sender
+# print(','.join(recivie))
+# msg['To'] = ','.join(recivie)
+# msg['Subject'] ="验证的邮件"
+# # Header("","utf-8")
+# print(" msg--------:%s" % msg)
+# smtp  = smtplib.SMTP("smtp.exmail.qq.com")
+# # smtp.connect("smtp.exmail.qq.com")
+# smtp.login("qinchuan.he@fir.ai","Test12345678")
+# smtp.sendmail("qinchuan.he@fir.ai",["m13248131618@163.com","849446261@qq.com"],msg.as_string())
+# smtp.quit()
 
 
-# send_mail(subject,fileurl,addfileurl,addfilename)
+
+
+
 
 
 s=[com_path() + "截图\\" + "合并失败截图.png",com_path() + "截图\\" + "拆分截图.png"]

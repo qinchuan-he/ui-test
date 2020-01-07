@@ -52,7 +52,7 @@ def contratc_split(driver,url):
     if el2.is_enabled():
         el2.click()
         sleep(3)
-        for i in range(15):
+        for i in range(20):
             sleep(6)
             try:
                 el = driver.find_elements_by_xpath("//span[contains(@class,'WorkSpaceTasks_taskItemTitle')]")
