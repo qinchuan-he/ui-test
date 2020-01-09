@@ -20,9 +20,8 @@ from email.mime.multipart import MIMEMultipart # 上传附件用
 from HTMLTestRunner import HTMLTestRunner
 # 服务器上传
 import paramiko
-
-resultpath = com_path()+"报告\\"
-
+from common.comfunction import com_path
+resultpath = os.path.join(com_path(),"报告")
 if __name__ == "__main__":
     case = unittest.defaultTestLoader.discover(start_dir='test', pattern='testlogin.py')
     fp = open(resultpath+"这次测试setup方法.html", 'wb')

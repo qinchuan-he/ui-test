@@ -36,7 +36,7 @@ from common.comfunction import com_path
 
 # 零散功能验证，验证文件何文件夹名字长度，看板显示等
 
-resultpath = com_path()+"报告\\"
+resultpath = os.path.join(com_path(),"报告")
 
 class test_frager(unittest.TestCase):
     '''零散的验证，主要是ui方面的检查'''

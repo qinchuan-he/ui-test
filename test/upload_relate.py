@@ -68,12 +68,12 @@ def upload_fileanalysis(driver, teamname=None, image_path=None,image_prefix=None
 
 
 
-# mode = 2
-# driver = execBrower(mode)
-# User().login(driver)
-# # upload_all(driver)
+mode = 2
+driver = execBrower(mode)
+User().login(driver)
+upload_all(driver)
 # upload_fileanalysis(driver)
-# # upload_fileanalysis(driver,teamname="test")
+# upload_fileanalysis(driver,teamname="test")
 
 
 

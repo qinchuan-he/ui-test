@@ -15,16 +15,37 @@ from time import sleep
 import time   #生成时间戳用
 import os    #上传autoit用
 import sys
-import smtplib
-from email.mime.text import MIMEText
-from email.header import Header
-
-from common.comfunction import com_path,send_mail
-from common.private import EmailProperty
 """解决vscode中不能引用别的模块的问题"""
 import os
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
+sys.path.append(rootPath)
+# print(sys.path)
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
+
+from common.comfunction import com_path,send_mail,execBrower,User
+from common.private import EmailProperty
+
+
+
+mode = 1
+driver = execBrower(mode)
+User().login(driver)
+User().createFolder(driver)
+print("执行完毕")
+
+
+# p1="test.png"
+# s1 = os.path.join(com_path(),"截图","合并失败截图.png")
+# send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, s1,p1)
+
+
+
+
+
+
 
 # sender = "qinchuan.he@fir.ai"
 # recivie = ["m13248131618@163.com","849446261@qq.com"]
@@ -48,17 +69,11 @@ rootPath = os.path.split(curPath)[0]
 
 
 
-s=[com_path() + "截图\\" + "合并失败截图.png",com_path() + "截图\\" + "拆分截图.png"]
-p=["combine.png","split.png"]
-
-send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, com_path() + "截图\\" + "合并失败截图.png",
-                              "combine.png")
-
-s1 = com_path() + "截图\\" + "合并失败截图.png"
-
-print(type(s1).__name__)
 
 
+
+
+# send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, s,p)
 
 
 

@@ -17,11 +17,11 @@ import smtplib
 from email.mime.text import  MIMEText  # 正文
 from email.header import Header  # 头部
 from email.mime.multipart import MIMEMultipart # 上传附件用
-
+from common.private import UserProperty
 
 
 # from buttonFunction.store import test_store
-path = "C:\\2services\\driver\\chromedriver.exe"
+path = UserProperty().BROWER_PATH
 url = "https://cyprex.fir.ai/sign-in"
 user = "13248131618"
 pwd = "Test123456"

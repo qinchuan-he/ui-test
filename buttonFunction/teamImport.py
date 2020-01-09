@@ -34,7 +34,8 @@ from common.comfunction import com_alert  #  公共的弹窗方法类
 from common.comfunction import com_share  #  分享类公共方法
 from common.comfunction import com_path
 
-resultPath = com_path()+"报告\\"
+
+resultPath = os.path.join(com_path(),"报告")
 # 验证团队导入功能
 # 1.私有资料中文件夹，上传文件
 # 2.检查团队，进入团队，导入文件（截图弹窗，刷新之后截图导入结果）
@@ -44,7 +45,7 @@ resultPath = com_path()+"报告\\"
 class test_teamImportFile(unittest.TestCase):
     '''验证团队导入功能'''
     # 设置公共参数
-    picturePath = com_path()+"截图\\"+"19种上传格式截图\\other\\"  # 生成截图路径
+    picturePath = os.path.join(com_path(),"截图","19种上传格式截图","other")# 生成截图路径
     if not (os.path.exists(picturePath)):
         os.makedirs(picturePath)
     uploadPath = com_path()+"19种格式\\图例提取文件\\"  # 上传路径

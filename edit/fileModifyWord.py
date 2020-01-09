@@ -27,6 +27,7 @@ from common.comfunction import com_share
 from common.comfunction import com_xpath
 from common.comfunction import com_alert
 from common.comfunction import com_path
+from common.private import UserProperty
 
 # 上传word，修改word（未用 边写边搜），下载word, 20190716增加了分享功能
 # 2019-07-24 增加图例表格提取的验证，分别是更新和copy的验证，增加在返回列表之后，准备重构这个类
@@ -34,12 +35,13 @@ from common.comfunction import com_path
 opt=Options()
 opt.add_argument('--disable-gpu')
 opt.add_argument('--headless')
-path="C:\\2services\\driver\\chromedriver.exe"
+path=UserProperty().BROWER_PATH
 driver=webdriver.Chrome(path)
 # driver=webdriver.Chrome(options=opt,executable_path=path)   #无头模式
 
 search="股份"
-picturePath =com_path()+"截图\\"+"编辑文件截图\\"
+# picturePath =com_path()+"截图\\"+"编辑文件截图\\"
+picturePath = os.path.join(com_path(),"截图","编辑文件截图")
 if not(os.path.exists(picturePath)):
     os.makedirs(picturePath)
 waitTime=2
@@ -49,7 +51,8 @@ url="https://testcyprex.fir.ai/sign-in"
 user="13248131618"
 pwd="Test123456"
 # uploadPath="C:\\work\\1测试\\10自动化\\word插入图片脚本\\upfile.exe"
-uploadPath = com_path()+"word插入图片脚本\\upfile.exe"
+# uploadPath = com_path()+"word插入图片脚本\\upfile.exe"
+uploadPath = os.path.join(com_path(),"word插入图片脚本","upfile.exe")
 driver.set_window_size(1400,900) 
 
 

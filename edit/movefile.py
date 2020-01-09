@@ -12,10 +12,11 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 import time
 from common.comfunction import com_path
+from common.private import UserProperty
 
 """上传word，修改word（未用 边写边搜），下载word"""
 
-path="C:\\2services\\driver\\chromedriver.exe"
+path=UserProperty().BROWER_PATH
 driver=webdriver.Chrome(path)
 
 driver.implicitly_wait(15)

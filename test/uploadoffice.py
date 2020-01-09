@@ -27,10 +27,9 @@ sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 # 引入公共方法
 from common.comfunction import execBrower
 from common.comfunction import User
-from common.comfunction import comHtml
+from common.comfunction import comHtml,com_path
 
-resultpath = com_path()+"报告\\"
-
+resultpath = os.path.join(com_path(),"报告")
 # 上传office相关文件
 class up_office(unittest.TestCase):
     '''上传office相关文件'''
@@ -41,6 +40,7 @@ class up_office(unittest.TestCase):
         User().login(driver)
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\office\\"
+
         if not (os.path.exists(picturePath)):
             os.makedirs(picturePath)
         showPath="file:///C:/work/1测试/10自动化/截图保存/19种上传格式截图/office/"

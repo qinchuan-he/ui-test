@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver import Remote
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.firefox.options import Options as FF_Options
+from common.private import UserProperty
 import time
 import shutil
 # 引入公共参数，把url和用户信息放在一起的
@@ -21,8 +22,10 @@ history_save = 0 # 是否保留上次报告，1是保留，其他都不保留
 # 配置浏览器驱动类型(chrome/firefox/chrome-headless/firefox-headless)。
 # driver_type = "chrome"
 driver_type = "chrome-headless"
-path = "C:\\2services\\driver\\chromedriver.exe"
-# 配置运行的 URL, ---------改为了登录方法中控制,为了切换环境时候方便
+# path = "C:\\2services\\driver\\chromedriver.exe" # 2020/01/09调整参数化
+path = UserProperty().BROWER_PATH
+# 配置运行的 URL, ---------改为了登录方法中控制,为
+# 了切换环境时候方便
 # url = "https://testcyprex.fir.ai/sign-in"
 # 失败重跑次数
 rerun = "1"

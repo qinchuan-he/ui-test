@@ -35,6 +35,7 @@ def execBrower(mode):
     opt = Options()
     opt.add_argument('--disable--gpu')
     opt.add_argument('--headless')
+    opt.add_argument('--no-sandbox')
     path = UserProperty().BROWER_PATH
     if mode == 1:
         driver = webdriver.Chrome(options=opt, executable_path=path)
@@ -47,7 +48,8 @@ def execBrower(mode):
 # 设置上传文件、报告、截图的根路径
 def com_path():
     root_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    folder_path = root_path+"\\自动化验证文档\\"
+    # folder_path = root_path+"\\自动化验证文档\\"   # 2020/01/09调整，这个路径不适用Linux
+    folder_path = os.path.join(root_path,"自动化验证文档")
     return folder_path
 
 
@@ -477,7 +479,7 @@ class com_alert(object):
             print("删除弹框操作错误----")
 
 
-# 发送邮件,传入参数为邮件主题和html文件url，不带附件
+# 发送邮件,传入参数为邮件主题和html文件url，不带附件.后面发现居然没有发件人和收件人
 def send_mail(subject, fileurl):
     # 配置发送邮件参数
     # 发送邮箱服务器
@@ -526,13 +528,13 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     fp.close()
     msg = MIMEText(mail_body, 'html', 'utf-8')
     # msg['Subject'] = Header(subject, 'utf-8')
-    # 附件,可能多个
-    add_file_type = type(addfileurl).__name__
+
     msgRoot = MIMEMultipart('related')
     msgRoot['Subject'] = Header(subject, 'utf-8')
     msgRoot['From'] = EmailProperty().SEND_EMAIL
     msgRoot['To'] = ','.join(EmailProperty().RECEVI_EMAIL)
-
+    # 附件,可能多个
+    add_file_type = type(addfileurl).__name__
     if add_file_type=="str":
         af = open(addfileurl, 'rb').read()
         att = MIMEText(af, 'base64', 'utf-8')
