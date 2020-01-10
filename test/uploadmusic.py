@@ -30,7 +30,7 @@ from common.comfunction import User
 from common.comfunction import comHtml
 from common.comfunction import com_path
 
-resultpath = com_path()+"报告\\"
+resultpath = os.path.join(com_path(),"报告")
 
 # 上传office相关文件
 class up_music(unittest.TestCase):

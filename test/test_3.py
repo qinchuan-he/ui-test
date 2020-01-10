@@ -30,7 +30,7 @@ from common.private import EmailProperty
 
 
 
-mode = 1
+mode = 2
 driver = execBrower(mode)
 User().login(driver)
 User().createFolder(driver)

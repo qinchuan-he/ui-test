@@ -40,7 +40,6 @@ driver=webdriver.Chrome(path)
 # driver=webdriver.Chrome(options=opt,executable_path=path)   #无头模式
 
 search="股份"
-# picturePath =com_path()+"截图\\"+"编辑文件截图\\"
 picturePath = os.path.join(com_path(),"截图","编辑文件截图")
 if not(os.path.exists(picturePath)):
     os.makedirs(picturePath)
@@ -50,8 +49,7 @@ url="https://testcyprex.fir.ai/sign-in"
 # url = "http://firai-test.gjzqth.com:4680/sign-in"
 user="13248131618"
 pwd="Test123456"
-# uploadPath="C:\\work\\1测试\\10自动化\\word插入图片脚本\\upfile.exe"
-# uploadPath = com_path()+"word插入图片脚本\\upfile.exe"
+
 uploadPath = os.path.join(com_path(),"word插入图片脚本","upfile.exe")
 driver.set_window_size(1400,900) 
 

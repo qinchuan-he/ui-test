@@ -43,6 +43,7 @@ def execBrower(mode):
         driver = webdriver.Chrome(path)
     driver.set_window_size(1400, 900)  # 设置窗口大小
     driver.implicitly_wait(30)
+    sleep(1)
     return driver
 
 # 设置上传文件、报告、截图的根路径
@@ -828,40 +829,43 @@ class com_operation():
         sleep(0.5)
 
 # 公共上传参数,公共参数
-url1 = com_path() + "19种格式\\" + "office\\" + "003_模板_TestLink测试用例导入.xls"
-url2 = com_path() + "19种格式\\" + "office\\" + "2017年12月11日-2017年12月15日发行监管部.doc"
-url3 = com_path() + "19种格式\\" + "office\\" + "cyprex1.3测试用例.xlsx"
-url4 = com_path() + "19种格式\\" + "office\\" + "带图片表格文档.docx"
-url5 = com_path() + "19种格式\\" + "office\\" + "小z素材-商务炫酷风格动态模板-003.ppt"
 
-url6 = com_path() + "19种格式\\" + "图片\\" + "BMP图片.bmp"
-url7 = com_path() + "19种格式\\" + "图片\\" + "timg.jpg"
-url8 = com_path() + "19种格式\\" + "图片\\" + "验证图片.png"
+url1 = os.path.join(com_path(),"19种格式","office","003_模板_TestLink测试用例导入.xls")
+url2 = os.path.join(com_path(),"19种格式","office","2017年12月11日-2017年12月15日发行监管部.doc")
+url3 = os.path.join(com_path(),"19种格式","office","cyprex1.3测试用例.xlsx")
+url4 = os.path.join(com_path(),"19种格式","office","带图片表格文档.docx")
+url5 = os.path.join(com_path(),"19种格式","office","小z素材-商务炫酷风格动态模板-003.ppt")
 
-url9 = com_path() + "19种格式\\" + "音频\\" + "16k.pcm"
-url10 = com_path() + "19种格式\\" + "音频\\" + "m4a.wav"
-url11 = com_path() + "19种格式\\" + "音频\\" + "另一种格式.amr"
-url12 = com_path() + "19种格式\\" + "音频\\" + "群星 - 贾谊《过秦论》.mp3"
-url13 = com_path() + "19种格式\\" + "音频\\" + "电话会议兴业证券.m4a"
 
-url14 = com_path() + "19种格式\\" + "其他\\" + "146页年度报告.PDF"
-url15 = com_path() + "19种格式\\" + "其他\\" + "测试解压.zip"
-url16 = com_path() + "19种格式\\" + "其他\\" + "厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知.html"
-url17 = com_path() + "19种格式\\" + "其他\\" + "天空1.txt"
+url6 = os.path.join(com_path(),"19种格式","图片","BMP图片.bmp")
+url7 = os.path.join(com_path(),"19种格式","图片","timg.jpg")
+url8 = os.path.join(com_path(),"19种格式","图片","验证图片.png")
+
+url9 = os.path.join(com_path(),"19种格式","音频","16k.pcm")
+url10 = os.path.join(com_path(),"19种格式","音频","m4a.wav")
+url11 = os.path.join(com_path(),"19种格式","音频","另一种格式.amr")
+url12 = os.path.join(com_path(),"19种格式","音频","群星 - 贾谊《过秦论》.mp3")
+url13 = os.path.join(com_path(),"19种格式","音频","电话会议兴业证券.m4a")
+
+url14 = os.path.join(com_path(),"19种格式","其他","146页年度报告.PDF")
+url15 = os.path.join(com_path(),"19种格式","其他","测试解压.zip")
+url16 = os.path.join(com_path(),"19种格式","其他","厦门亿联网络技术股份有限公司 关于召开 2018 年年度股东大会的通知.html")
+url17 = os.path.join(com_path(),"19种格式","其他","天空1.txt")
+
 
 up_list = [url1,url2,url3,url4,url5,url6,url7,url8,url9,url10,url11,url12,url13,url14,url15,url16,url17]
 
-url21 =  com_path() + "19种格式\\" + "图例提取文件\\" + "PDF后缀验证解析.PDF"
-url22 =  com_path() + "19种格式\\" + "图例提取文件\\" + "pdf小写验证解析.pdf"
-url23 =  com_path() + "19种格式\\" + "图例提取文件\\" + "docx验证解析.docx"
-url24 =  com_path() + "19种格式\\" + "图例提取文件\\" + "doc验证解析.doc"
+url21 = os.path.join(com_path(),"19种格式","图例提取文件","PDF后缀验证解析.PDF")
+url22 = os.path.join(com_path(),"19种格式","图例提取文件","pdf小写验证解析.pdf")
+url23 = os.path.join(com_path(),"19种格式","图例提取文件","docx验证解析.docx")
+url24 = os.path.join(com_path(),"19种格式","图例提取文件","doc验证解析.doc")
 
-url25 =  com_path() + "19种格式\\" + "拆分\\" + "拆分模板.doc"
+url25 = os.path.join(com_path(),"19种格式","拆分","拆分模板.doc")
 
-url26 = com_path() + "19种格式\\" + "合并\\" + "封面.doc"
-url27 = com_path() + "19种格式\\" + "合并\\" + "发行人声明.doc"
-url28 = com_path() + "19种格式\\" + "合并\\" + "本次发行概况.doc"
-url29 = com_path() + "19种格式\\" + "合并\\" + "重大事项提示.doc"
+url26 = os.path.join(com_path(),"19种格式","合并","封面.doc")
+url27 = os.path.join(com_path(),"19种格式","合并","发行人声明.doc")
+url28 = os.path.join(com_path(),"19种格式","合并","本次发行概况.doc")
+url29 = os.path.join(com_path(),"19种格式","合并","重大事项提示.doc")
 
 up_analysis = [url21,url22,url23,url24]
 # 解析文件夹前缀名字

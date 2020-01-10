@@ -20,7 +20,7 @@ logger = logging.getLogger(__name__)
   > python3 run_tests.py -m debug  (调试模式)
 '''
 print("REPORT_DIR "+REPORT_DIR)
-# REPORT_DIR = "C:\\work\\8python\\Cyprex-ui\\test_report\\"
+
 # cases_path = "./test_dir/"
 # rerun = "3"
 # max_fail = "5"

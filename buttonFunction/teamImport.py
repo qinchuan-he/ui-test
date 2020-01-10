@@ -48,7 +48,7 @@ class test_teamImportFile(unittest.TestCase):
     picturePath = os.path.join(com_path(),"截图","19种上传格式截图","other")# 生成截图路径
     if not (os.path.exists(picturePath)):
         os.makedirs(picturePath)
-    uploadPath = com_path()+"19种格式\\图例提取文件\\"  # 上传路径
+    uploadPath = os.path.join(com_path(),"19种格式","图例提取文件")
     wordName = "结构复杂的文件"   # 后缀是doc
     wordurl = uploadPath+wordName+".doc"
     folder = str(time.time())
