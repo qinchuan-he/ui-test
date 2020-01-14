@@ -867,6 +867,10 @@ url27 = os.path.join(com_path(),"19种格式","合并","发行人声明.doc")
 url28 = os.path.join(com_path(),"19种格式","合并","本次发行概况.doc")
 url29 = os.path.join(com_path(),"19种格式","合并","重大事项提示.doc")
 
+# 比对和审核文件
+url31 = os.path.join(com_path(),"19种格式","比对文件","合同1.doc")
+url32 = os.path.join(com_path(),"19种格式","比对文件","合同1扫描件（8张合并）.pdf")
+
 up_analysis = [url21,url22,url23,url24]
 # 解析文件夹前缀名字
 folder_analysis = "解析"

@@ -9,7 +9,7 @@ rootPath = os.path.split(curPath)[0]
 sys.path.insert(0,rootPath)
 # print(sys.path)
 from common.comfunction import execBrower
-from common.comfunction import User
+from common.comfunction import User,url31,url32
 import time
 from time import sleep
 import unittest
@@ -32,10 +32,8 @@ class Test_twohourse(unittest.TestCase):
         driver = execBrower(mode)
         driver.get(UserProperty().url)
         User().login(driver,UserProperty().user_check2)
-        url1 = str(com_path()+"19种格式\\比对文件\\合同1.doc")
-        url2 = com_path()+"19种格式\\比对文件\\合同1扫描件（8张合并）.pdf"
-        contract_compare(driver,url1,url2)
-        contract_Proofreading(driver,url1)
+        contract_compare(driver,url31,url32)
+        contract_Proofreading(driver,url31)
         driver.quit()
 
     def test_split(self):

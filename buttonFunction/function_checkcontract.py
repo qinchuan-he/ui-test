@@ -33,7 +33,7 @@ def check_proofreading(driver,image_path=None,image_prefix=None,is_check=None):
     User().switch_navigation(driver,name="智能审核")
     sleep(0.5)
     if is_check: # 执行检查，截图
-        driver.get_screenshot_as_file(com_path() + "截图\\" + "智能审校列表截图.png")
+        driver.get_screenshot_as_file(com_path() + "截图\\" + "智能审核列表截图.png")
     if image_path:
         driver.get_screenshot_as_file(image_path+image_prefix+"-审校列表"+str(time.time())+".png")
     driver.find_element_by_xpath("//div[contains(text(),'今天')]/../..//span[text()='要素快照']").click()

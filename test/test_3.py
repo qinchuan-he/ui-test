@@ -1,6 +1,8 @@
 #coding=utf-8
 
 import io
+
+from PIL.PngImagePlugin import PngImageFile
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -28,13 +30,78 @@ from email.header import Header
 from common.comfunction import com_path,send_mail,execBrower,User
 from common.private import EmailProperty
 
+from PIL import Image
+from PIL import ImageChops
 
 
-mode = 2
-driver = execBrower(mode)
-User().login(driver)
-User().createFolder(driver)
-print("执行完毕")
+def compare_images(path_one, path_two, diff_save_location):
+    """
+    比较图片，如果有不同则生成展示不同的图片
+
+    @参数一: path_one: 第一张图片的路径
+    @参数二: path_two: 第二张图片的路径
+    @参数三: diff_save_location: 不同图的保存路径
+    """
+    image_one = Image.open(path_one)  # type:PngImageFile
+    print("%s----%s-----%s"%(image_one.size,image_one.format,image_one.mode))
+    print(image_one)
+    # image_one.show()
+    # image_one.resize((400,400))
+    # image_one.show()
+    print(len(image_one.split()))
+    image_one = image_one.convert("RGB")
+    print(image_one)
+    image_two = Image.open(path_two) # type:PngImageFile
+    print(image_two)
+    # image_two.resize((400,400))
+    # image_two.show()
+
+    # image_two.convert()
+    print(len(image_two.split()))
+    image_two = image_two.convert("RGB")
+    print(image_two)
+    try:
+        diff = ImageChops.difference(image_one, image_two)
+        # print(diff)
+        # diff.getpixel((100,100))
+        diff.show()
+        # diff.save(diff_save_location)
+        # print(diff.getbbox())
+        if diff.getbbox() is None:
+            # 图片间没有任何不同则直接退出
+            print("【+】We are the same!")
+        else:
+            diff.save(diff_save_location)
+        diff.close()
+    except ValueError as e:
+        text = ("表示图片大小和box对应的宽度不一致，参考API说明：Pastes another image into this image."
+                "The box argument is either a 2-tuple giving the upper left corner, a 4-tuple defining the left, upper, "
+                "right, and lower pixel coordinate, or None (same as (0, 0)). If a 4-tuple is given, the size of the pasted "
+                "image must match the size of the region.使用2纬的box避免上述问题")
+        print("【{0}】{1}".format(e, text))
+
+
+if __name__ == '__main__':
+    root = "C:\\Users\\fir\\Pictures\\QQ浏览器截图\\"
+    picture1 = root+"QQ浏览器截图20200113110005.png"
+    picture2 = root+"QQ浏览器截图20200113105958.png"
+    compare_images(picture1,
+                   picture2,
+                   'C:\\Users\\fir\\Pictures\\QQ浏览器截图\\我们不一样.png')
+
+
+
+
+
+# mode = 2
+# driver = execBrower(mode)
+# try:
+#     User().login(driver)
+#     User().createFolder(driver)
+#     print("执行完毕")
+# except Exception as e:
+#     print(e)
+# driver.quit()
 
 
 # p1="test.png"

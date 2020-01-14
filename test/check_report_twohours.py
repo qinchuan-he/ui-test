@@ -42,7 +42,7 @@ try:
     # send_mail("两小时检查没有问题", EmailProperty().EMAIL_ATTACHMENT2, EmailProperty().EMAIL_ATTACHMENT2, "twoHours_check.html")
 except Exception as e:
     print("存在问题，要发邮件")
-    add_file = [com_path() + "截图\\" + "智能比对列表截图.png",com_path() + "截图\\" + "智能审校列表截图.png"]
+    add_file = [com_path() + "截图\\" + "智能比对列表截图.png",com_path() + "截图\\" + "智能审核列表截图.png"]
     add_name = ["compare.png","proofread.png"]
     send_mail("智能比对和审校检查存在问题", EmailProperty().EMAIL_ATTACHMENT3, add_file, add_name)
 driver.quit()
