@@ -62,8 +62,8 @@ def contratc_split(driver,url):
                 else:# 拆分失败
                     print("拆分失败")
                     # 截图
-                    driver.get_screenshot_as_file(com_path()+"截图\\"+"拆分失败截图.png")
-                    send_mail("拆分检查邮件",EmailProperty().EMAIL_SPLIT,com_path()+"截图\\"+"拆分失败截图.png","split.png")
+                    driver.get_screenshot_as_file(os.path.join(com_path(),"截图","拆分失败截图.png"))
+                    send_mail("拆分检查邮件",EmailProperty().EMAIL_SPLIT,os.path.join(com_path(),"截图","拆分失败截图.png"),"split.png")
                     break
             except Exception as e:
                 print(e)
@@ -71,8 +71,8 @@ def contratc_split(driver,url):
         print("上传超时")
         sleep(1)
         # 截图
-        driver.get_screenshot_as_file(com_path() + "截图\\" + "拆分上传截图.png")
-        send_mail("拆分检查邮件", EmailProperty().EMAIL_SPLIT, com_path() + "截图\\" + "拆分上传截图.png", "upload_file.png")
+        driver.get_screenshot_as_file(os.path.join(com_path(),"截图","拆分上传截图.png"))
+        send_mail("拆分检查邮件", EmailProperty().EMAIL_SPLIT, os.path.join(com_path(),"截图","拆分上传截图.png"), "upload_file.png")
     sleep(1)
 
 # 协作空间合并
@@ -113,14 +113,14 @@ def contract_combine(driver,url1,url2,url3):
                 print(e)
                 if i==14:
                     # 截图
-                    driver.get_screenshot_as_file(com_path() + "截图\\" + "合并失败截图.png")
-                    send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, com_path() + "截图\\" + "合并失败截图.png",
+                    driver.get_screenshot_as_file(os.path.join(com_path(),"截图","合并失败截图.png"))
+                    send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, os.path.join(com_path(),"截图","合并失败截图.png"),
                               "combine.png")
     else:
         print("上传超时导致没有选中")
         # 截图
-        driver.get_screenshot_as_file(com_path() + "截图\\" + "合并上传截图.png")
-        send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, com_path() + "截图\\" + "合并上传截图.png",
+        driver.get_screenshot_as_file(os.path.join(com_path(),"截图","合并上传截图.png"))
+        send_mail("合并检查邮件", EmailProperty().EMAIL_COMBINE, os.path.join(com_path(),"截图","合并上传截图.png"),
                   "upload_file.png")
     sleep(1)
 

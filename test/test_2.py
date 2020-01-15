@@ -1,20 +1,28 @@
 # coding=utf-8
 
+import os
 import time
+import math
+import operator
+from functools import reduce
 from time import sleep
-
-from common.comfunction import User,execBrower,com_path
+from PIL import Image
+from PIL import ImageChops
+from PIL.PngImagePlugin import PngImageFile
+from common.comfunction import User,execBrower,com_path,url31,url32
 from buttonFunction.function_contractrelated import contract_Proofreading
 from buttonFunction.function_checkcontract import check_proofreading
+
+
 
 mode = 2
 driver = execBrower(mode)
 User().login(driver)
-url1 = str(com_path()+"19种格式\\比对文件\\合同1.doc")
-contract_Proofreading(driver,url1)
+contract_Proofreading(driver,url31)
 User().switch_navigation(driver,name="智能审核")
 for i in range(36):
     els = driver.find_elements_by_xpath("//div[@class='ant-row']/div[3]")
+    picture_url = os.path.join(com_path(),"样本","智能审核样本.png")
     print(len(els))
     print(els[1])
     content = els[1].text
@@ -30,12 +38,26 @@ for i in range(36):
         break
     else:
         sleep(10)
+picture_url2 = os.path.join(com_path(),"截图","智能审核截图.png")
+driver.get_screenshot_as_file(picture_url2)
+
+image1 = Image.open(picture_url) #type:PngImageFile
+image2 = Image.open(picture_url2) # type:PngImageFile
+img1 = image1.convert("RGB")
+img2 = image2.convert("RGB")
+diff = ImageChops.difference(img1,img2)
+img_1 = image1.histogram()
+img_2 = image2.histogram()
+diff_sqrt = math.sqrt(reduce(operator.add,list(map(lambda x,y:(x-y)**2,img_1,img_2))))
+print(diff_sqrt)
+if diff.getbbox() != None:
+    if diff_sqrt>38:
+        result_url = os.path.join(com_path(),"截图","不一样.png")
+        diff.save(result_url)
 
 sleep(2)
 
-
-
-check_proofreading(driver,is_check="2")
+# check_proofreading(driver,is_check="2")
 driver.quit()
 
 

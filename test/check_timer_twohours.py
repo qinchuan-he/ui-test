@@ -21,7 +21,7 @@ from buttonFunction.function_checkcontract import check_proofreading
 from buttonFunction.function_checkcontract import com_path
 from common.private import UserProperty
 # from upload_relate import upload_fileanalysis
-resultpath = com_path()+"报告\\"
+resultpath = os.path.join(com_path(),"报告")
 class Test_twohourse(unittest.TestCase):
     def test_create(self):
         """
@@ -59,8 +59,7 @@ if __name__=="__main__":
     case = unittest.TestSuite()
     case.addTest(Test_twohourse("test_create"))
     case.addTest(Test_twohourse("test_check"))
-
-    fp = open(resultpath+"两小时的检查-ui.html", "wb")
+    fp = open(os.path.join(resultpath,"两小时的检查-ui.html"), "wb")
     runner = HTMLTestRunner(stream=fp, title="两小时的检查", description="检查比对和审校")
     runner.run(case)
     fp.close()

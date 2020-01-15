@@ -62,11 +62,11 @@ def compare_images(path_one, path_two, diff_save_location):
     print(image_two)
     try:
         diff = ImageChops.difference(image_one, image_two)
-        # print(diff)
+        print("diff: %s" % diff)
         # diff.getpixel((100,100))
         diff.show()
         # diff.save(diff_save_location)
-        # print(diff.getbbox())
+        print(diff.getbbox())
         if diff.getbbox() is None:
             # 图片间没有任何不同则直接退出
             print("【+】We are the same!")
