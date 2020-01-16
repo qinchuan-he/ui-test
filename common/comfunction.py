@@ -8,6 +8,9 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
+from PIL import Image # 图像处理
+from PIL import ImageChops # 图像处理
+from PIL.PngImagePlugin import PngImageFile
 from time import sleep
 import time  # 生成时间戳用
 import os  # 上传autoit用
@@ -31,7 +34,7 @@ pwd = UserProperty().pwd
 
 
 # 启动浏览器
-def execBrower(mode):
+def execBrower(mode,overtime=None):
     opt = Options()
     opt.add_argument('--disable--gpu')
     opt.add_argument('--headless')
@@ -42,7 +45,10 @@ def execBrower(mode):
     else:
         driver = webdriver.Chrome(path)
     driver.set_window_size(1400, 900)  # 设置窗口大小
-    driver.implicitly_wait(30)
+    if overtime:
+        pass
+    else:
+        driver.implicitly_wait(30)
     sleep(1)
     return driver
 
@@ -877,7 +883,35 @@ folder_analysis = "解析"
 def get_urlname(url):
     """ 获取url的name"""
     return os.path.splitext(os.path.split(url)[1])[0]
-#
+
+#图像处理
+class Image_Processing(object):
+    """
+    图像处理类
+    """
+    def image_Diffence(self,image_1,image_2,image_error=None):
+        """
+        diffence方法比较了两张图片全路径，目前传入截图是32位深，需要转成24位深
+        第三个地址放置比对失败之后的差异图片
+        :param driver:
+        :param image1:
+        :param image2:
+        :return:
+        """
+        img_1 = Image.open(image_1) # type:PngImageFile
+        img_2 = Image.open(image_2) # type:PngImageFile
+        diff = ImageChops.difference(img_1.convert("RGB"),img_2.convert("RGB"))
+        if diff.getbbox()==None:
+            print("两张图片一样")
+        else:
+            print("两张图片不一样")
+            if image_error:
+                diff.save(image_error)
+            else:
+                diff.save(os.path.join(com_path(),"error","diff.png"))
+
+
+
 # 封装对于元素的操作js操作
 def addAttribute(driver, elementobj, attributeName, value):
     '''

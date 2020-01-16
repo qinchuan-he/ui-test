@@ -1,4 +1,5 @@
 import os
+import sys
 import pytest
 # from py.xml import html  # 我的python3.7上面没有这个
 from py._xmlgen import html # 使用这个代替上面的
@@ -15,7 +16,7 @@ from common.comfunction import url
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) # 移动了配置文件，调整路径,又移动回来了
 # BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-REPORT_DIR = BASE_DIR + "/test_report/"
+REPORT_DIR = os.path.join(BASE_DIR,"test_report")
 ############################
 # 配置是否保留上一次的报告
 history_save = 0 # 是否保留上次报告，1是保留，其他都不保留
@@ -32,7 +33,8 @@ rerun = "1"
 # 当达到最大失败数，停止执行
 max_fail = "1"
 # 运行测试用例的目录或文件
-cases_path = "./test_dir/"
+cases_path = os.path.join(os.path.abspath(os.path.dirname(__file__)),"test_dir")
+
 ############################
 
 # 定义基本测试环境
@@ -68,7 +70,7 @@ def pytest_runtest_makereport(item):
     report.description = description_html(item.function.__doc__)
     extra = getattr(report, 'extra', [])
     case_path = report.nodeid.split("::")[-1] # 取函数的名字作为截图前缀
-    case_name_e = case_path+"-error-"+str(time.time())+".png"  # -连接截图路径
+    case_name_e = os.path.join(case_path,"-error-",str(time.time())+".png") # -连接截图路径
     if report.when == 'call' or report.when == "setup":
         xfail = hasattr(report, 'wasxfail')
         if (report.skipped and xfail) or (report.failed and not xfail):
@@ -76,13 +78,14 @@ def pytest_runtest_makereport(item):
             case_name = case_name_e
             capture_screenshot(case_name)
             # img_path = "image/" + case_name.split("/")[-1] # 根据我的需要，截图为时间戳
-            img_path = "image/" + case_name
+            # img_path = "image/" + case_name
+            img_path = os.path.join("image",case_name) # 调整路径
             if img_path:
                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
                        'onclick="window.open(this.src)" align="right"/></div>' % img_path
                 extra.append(pytest_html.extras.html(html))
         report.extra = extra
-    image_path = str(REPORT_DIR)+str(new_report_time())+"/image/"
+    image_path = os.path.join(REPORT_DIR,new_report_time(),"image")
     images = os.listdir(image_path)
     images.sort()
     print("获取列表中文件----")
@@ -106,7 +109,7 @@ def pytest_configure(config):
 @pytest.fixture(scope='function')
 def images_path():
     global image_path
-    image_path = str(REPORT_DIR) + str(new_report_time()) + "/image/"
+    image_path = os.path.join(REPORT_DIR,new_report_time(),"image")
     return image_path
 #########################################################
 
@@ -159,12 +162,13 @@ def new_report_time():
     try:
         if history_save==1:  # 为了可以直接访问报告，这里增加了一个判断参数
             # 为了保证路径正确，把那两个报告删了
-            if os.path.exists(REPORT_DIR+"image"):
-                shutil.rmtree(REPORT_DIR+"image/",ignore_errors=True)
-            if os.path.exists(REPORT_DIR+"junit-xml.xml"):
-                os.remove(REPORT_DIR+"junit-xml.xml")
-            if os.path.exists(REPORT_DIR + "report.html"):
-                os.remove(REPORT_DIR + "report.html")
+
+            if os.path.exists(os.path.join(REPORT_DIR,"image")):
+                shutil.rmtree(os.path.join(REPORT_DIR,"image"),ignore_errors=True)
+            if os.path.exists(os.path.join(REPORT_DIR,"junit-xml.xml")):
+                os.remove(os.path.join(REPORT_DIR,"junit-xml.xml"))
+            if os.path.exists(os.path.join(REPORT_DIR,"report.html")):
+                os.remove(os.path.join(REPORT_DIR,"report.html"))
             return files[-2]
         else:
             return ""
