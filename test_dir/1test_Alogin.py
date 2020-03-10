@@ -43,7 +43,7 @@ class Testsign():
         # page.user_input = "19958585555"
         driver = browser
         driver.get(base_url)
-        driver.find_element_by_xpath("//div[text()='账号登录']").click()
+        driver.find_element_by_xpath("//span[text()='账号登录']").click()
         driver.get_screenshot_as_file( images_path+"test_login_case-验证截图-" + str(time.time()) + ".png")
         driver.find_element_by_id("username_no").send_keys(self.user)
         driver.find_element_by_id("password").send_keys(self.pwd)

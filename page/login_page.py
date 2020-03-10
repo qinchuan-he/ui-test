@@ -2,7 +2,7 @@ from poium import Page, PageElement, PageElements
 
 
 class LoginPage(Page):
-    switch_login = PageElement(xpath="//div[text()='账号登录']", describe="账号登录")
+    switch_login = PageElement(xpath="//span[text()='账号登录']", describe="账号登录")
     user_input = PageElement(id_="username_no", describe="用户名输入")
     pwd_input = PageElement(id_="password", describe="密码输入")
     login_button = PageElement(xpath="//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span",

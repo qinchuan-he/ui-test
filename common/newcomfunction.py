@@ -43,7 +43,7 @@ class new_user():
             driver.get(base_url)
         else:
             driver.get(url)
-        driver.find_element_by_xpath("//div[text()='账号登录']").click()
+        driver.find_element_by_xpath("//span[text()='账号登录']").click()
         if bae_user:
             driver.find_element_by_id("username_no").send_keys(bae_user)
         else:

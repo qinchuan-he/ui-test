@@ -28,7 +28,7 @@ pwd = "Test123456"
 driver = webdriver.Chrome(path)
 driver.set_window_size(1400, 900)
 driver.get(url)
-driver.find_element_by_xpath("//div[text()='账号登录']").click()
+driver.find_element_by_xpath("//span[text()='账号登录']").click()
 driver.find_element_by_id("username_no").send_keys(user)
 driver.find_element_by_id("password").send_keys(pwd)
 driver.find_element_by_xpath(

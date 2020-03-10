@@ -29,7 +29,7 @@ class login_test(login.MyTest):
     '''验证unittest自带的初始化和执行之后的方法'''
     def test_login1(self):
         '''第一次执行'''
-        self.driver.find_element_by_xpath("//div[text()='账号登录']").click()
+        self.driver.find_element_by_xpath("//span[text()='账号登录']").click()
         self.driver.find_element_by_id("username_no").send_keys("13248131618")
         self.driver.find_element_by_id("password").send_keys("Test123456")
         self.driver.find_element_by_xpath(
@@ -40,7 +40,7 @@ class login_test(login.MyTest):
         # WebDriverWait(self.driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
     def test_login2(self):
         '''第二个用例'''
-        self.driver.find_element_by_xpath("//div[text()='账号登录']").click()
+        self.driver.find_element_by_xpath("//span[text()='账号登录']").click()
         self.driver.find_element_by_id("username_no").send_keys('13248131618')
         self.driver.find_element_by_id("password").send_keys('Test123456')
         self.driver.find_element_by_xpath(

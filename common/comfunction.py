@@ -66,7 +66,6 @@ class User:
     # 登录
     def login(self, driver,new_user=None):
         driver.get(url)
-        # driver.find_element_by_xpath("//div[text()='账号登录']").click()
         driver.find_element_by_xpath("//span[text()='账号登录']").click()
         if new_user:
             driver.find_element_by_id("username_no").send_keys(new_user)

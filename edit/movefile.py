@@ -22,7 +22,7 @@ driver=webdriver.Chrome(path)
 driver.implicitly_wait(15)
 
 driver.get("https://testcyprex.fir.ai/sign-in")
-driver.find_element_by_xpath("//div[text()='账号登录']").click() 
+driver.find_element_by_xpath("//span[text()='账号登录']").click()
 driver.find_element_by_id("username_no").send_keys("19958966366")
 driver.find_element_by_id("password").send_keys("Test123456")
 driver.find_element_by_xpath("//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()   # 登录，好像伪类中的文字不能识别
