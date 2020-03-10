@@ -142,7 +142,7 @@ class search_result(object):
 # search_home().my_annotation(driver)
 # search_result().search(driver)
 # search_result().check_jmeter(driver,"http://192.168.1.49:8080/jmeter/report/index.html")
-sleep(10)
+# sleep(10)
 # driver.quit()
 
 

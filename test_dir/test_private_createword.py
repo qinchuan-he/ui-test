@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.chrome.options import Options
 # 报告
 import pytest
+import os
 # import unittest
 # from HTMLTestRunner import HTMLTestRunner
 from time import sleep
@@ -69,7 +70,7 @@ class Test_createword:
                                                             "回复的申请。若对本反馈意见有任何问"
                                                             "题，请致电我会审核人员。").perform()
         sleep(0.5)
-        driver.get_screenshot_as_file(images_path + "test_word-编辑了内容" + str(time.time()) + ".png")
+        driver.get_screenshot_as_file( os.path.join(images_path,"test_word-编辑了内容",str(time.time()) + ".png"))
         driver.switch_to.default_content()
         sleep(0.5)
         com_operation().com_close_preview(driver)
@@ -78,8 +79,8 @@ class Test_createword:
 
 
 
-if __name__ == '__main__':
-    pytest.main(["-sv", "test_private_createword.py"])
+# if __name__ == '__main__':
+#     pytest.main(["-sv", "test_private_createword.py"])
 
 
 

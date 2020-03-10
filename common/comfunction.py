@@ -66,7 +66,8 @@ class User:
     # 登录
     def login(self, driver,new_user=None):
         driver.get(url)
-        driver.find_element_by_xpath("//div[text()='账号登录']").click()
+        # driver.find_element_by_xpath("//div[text()='账号登录']").click()
+        driver.find_element_by_xpath("//span[text()='账号登录']").click()
         if new_user:
             driver.find_element_by_id("username_no").send_keys(new_user)
         else:
@@ -326,6 +327,7 @@ class com_alert(object):
         sleep(2)
         if pic_path and print_name:
             datename = str(time.time())
+
             driver.get_screenshot_as_file(pic_path + datename + ".png")
             comHtml().print_html(print_name, pic_path, datename)
         #  第二步，判断是否有弹框

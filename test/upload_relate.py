@@ -34,11 +34,11 @@ def upload_all(driver,image_path=None,image_prefix=None):
         count+=1
         if count==10:
             if image_path:
-                driver.get_screenshot_as_file(image_path+image_prefix+"-上传第一次截图"+str(time.time())+".png")
+                driver.get_screenshot_as_file(os.path.join(image_path,image_prefix,"-上传第一次截图",str(time.time())+".png"))
         # print("上传的是："+i)
     sleep(2)
     if image_path:
-        driver.get_screenshot_as_file(image_path+image_prefix+"-上传第二次截图"+str(time.time())+".png")
+        driver.get_screenshot_as_file(os.path.join(image_path,image_prefix,"-上传第二次截图",str(time.time())+".png"))
     sleep(0.5)
 
 # 传入teamname 名称，默认是私有,传入团队名称，目前使用的默认名称

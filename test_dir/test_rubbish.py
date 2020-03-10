@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
+import os
 # from selenium.webdriver.chrome.options import Options
 # 报告
 # import pytest
@@ -33,8 +34,8 @@ from common.comfunction import com_xpath
 from common.comfunction import com_path
 
 # 回收站验证
-upload_url = com_path()+"19种格式\\office\\2017年12月11日-2017年12月15日发行监管部.doc"
-upload_url2 = com_path()+"19种格式\\其他\\146页年度报告.PDF"
+upload_url = os.path.join(com_path(),"19种格式","office","2017年12月11日-2017年12月15日发行监管部.doc")
+upload_url2 = os.path.join(com_path(),"19种格式","其他","146页年度报告.PDF")
 name = "2017年12月11日-2017年12月15日发行监管部"
 name2 = "146页年度报告"
 
@@ -120,7 +121,7 @@ class Testrubbish:
                     driver.find_element_by_xpath(
                         "//span[text()='" + name2 + "']/../../..//td[1]//input[@type='checkbox']").click()
                     print("找到了第二个文件")
-                    driver.get_screenshot_as_file(images_path + "test_folder-回收站截图" +str(time.time())+ ".png")
+                    driver.get_screenshot_as_file(os.path.join(images_path,"test_folder-回收站截图",str(time.time())+ ".png"))
                     break
                 except Exception as e:
                     print(e)
@@ -152,11 +153,11 @@ class Testrubbish:
 
             # 返回私有资料
             com_xpath().com_log(driver)
-            driver.get_screenshot_as_file(images_path + "test_folder-恢复目录查看" + str(time.time())+".png")
+            driver.get_screenshot_as_file(os.path.join(images_path,"test_folder-恢复目录查看",str(time.time())+".png"))
             sleep(0.5)
             driver.find_element_by_xpath("//span[text()='" + folder + "']").click()
             sleep(0.5)
-            driver.get_screenshot_as_file(images_path + "test_folder-恢复文件查看" +str(time.time())+ ".png")
+            driver.get_screenshot_as_file(os.path.join(images_path,"test_folder-恢复文件查看",str(time.time())+ ".png"))
 
         except Exception as e:
             print(e)

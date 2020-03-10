@@ -61,6 +61,7 @@ class test_compare(unittest.TestCase):
     driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
     sleep(0.5)
     driver.find_element_by_xpath("//a[text()='私有资料']").click()
+    driver.switch_to_alert().accept()
     #  文件夹，存放比对文件
     User().createFolder(driver, folder)
     # 进入文件夹

@@ -5,6 +5,7 @@
 # from selenium.webdriver.support import expected_conditions as ec
 # from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+import os
 # from selenium.webdriver.common.keys import Keys
 # from selenium.webdriver.chrome.options import Options
 # 报告
@@ -38,7 +39,7 @@ from common.comfunction import com_path
 # 目前实现私有文件夹的重命名
 #
 # mode = 2
-url  = com_path()+"19种格式\\图例提取文件\\doc验证解析.doc"    # 上传路径
+url = os.path.join(com_path(),"19种格式","图例提取文件","doc验证解析.doc") # 上传路径
 file_name = "doc验证解析"
 class Test_Rename:
     '''私有中重命名文件夹和文件'''
@@ -69,7 +70,7 @@ class Test_Rename:
         name = "重命名了.哈哈.后缀"
         com_xpath().com_listrename(driver,name)
         # 重命名截图
-        driver.get_screenshot_as_file(images_path + "test_private-重命名文件夹截图" + str(time.time()) + ".png")
+        driver.get_screenshot_as_file(os.path.join(images_path,"test_private-重命名文件夹截图",str(time.time()) + ".png"))
         sleep(5) # 等待上传
         driver.refresh()
         # 重命名文件
@@ -85,7 +86,7 @@ class Test_Rename:
         newname = "这个文件重命名了.cc.end"
         com_xpath().com_listrename(driver,newname)
         # 重命名截图
-        driver.get_screenshot_as_file(images_path + "test_private-重命名文件截图" + str(time.time()) + ".png")
+        driver.get_screenshot_as_file(os.path.join(images_path,"test_private-重命名文件截图",str(time.time()) + ".png"))
         sleep(1)
 
 

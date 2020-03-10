@@ -29,14 +29,14 @@ def init_env(now_time):
     初始化测试报告目录
     """
     if history_save==1:
-        os.mkdir(REPORT_DIR + now_time)
-        os.mkdir(REPORT_DIR + now_time + "/image")
+        os.mkdir(os.path.join(REPORT_DIR,now_time))
+        os.mkdir(os.path.join(REPORT_DIR,now_time,"image"))
     else:
-        if not os.path.exists(REPORT_DIR + "image"):
-            os.mkdir(REPORT_DIR + "image")
+        if not os.path.exists(os.path.join(REPORT_DIR,"image")):
+            os.mkdir(os.path.join(REPORT_DIR,"image"))
         else:
-            shutil.rmtree(REPORT_DIR+"image/",ignore_errors=True)
-            os.mkdir(REPORT_DIR + "image")
+            shutil.rmtree(os.path.join(REPORT_DIR,"image"),ignore_errors=True)
+            os.mkdir(os.path.join(REPORT_DIR,"image"))
 
 # 增加一个后置方法，为了访问报告用
 def teardown_module():
