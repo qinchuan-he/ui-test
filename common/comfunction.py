@@ -244,7 +244,7 @@ class team:
         el = com_xpath().com_listButton(driver, button="createSpace")
         el.click()
         sleep(0.5)
-        driver.find_element_by_xpath("//input[@placeholder='请输入流转协作空间名称']").send_keys(spacename)
+        driver.find_element_by_xpath("//input[@placeholder='请输入分工协作空间名称']").send_keys(spacename)
         sleep(0.5)
         driver.find_element_by_xpath("//span[text()='确 定']/..").click() # 自动进入空间
         sleep(0.5)
