@@ -831,7 +831,7 @@ class com_operation():
     # 2.0.7版本返回按钮统一调整
     def com_close_preview(self, driver, pattern=None):
         # driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click() # 2.0.7版本废弃
-        driver.find_element_by_xpath("//span[contains(@class,'ComparisonHeader_backBtnImg')]").click()
+        driver.find_element_by_xpath("//span[contains(@class,'backBtnImg')]").click()
         if pattern:  # 包含两种情况，一直是search，一种是history
             sleep(0.5)
             driver.find_element_by_xpath("//span[contains(text(),'返回')]/..").click()
