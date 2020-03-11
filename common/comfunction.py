@@ -158,13 +158,14 @@ class comHtml:
 
 # 团队相关功能，2019/09/29调整，增加点击团队兼容
 class team:
-    def check_team(self, driver):
+    def check_team(self, driver,team_name=None):
         '''检查团队是否存在,不存在就创建，目前没有判断5个团队的情况的'''
         sleep(0.5)
         driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
         sleep(1)
         driver.find_element_by_xpath("//a[text()='协作共享']").click()
-        team_name = "验证的团队"
+        if team_name==None:
+            team_name = "验证的团队"
         try:
             WebDriverWait(driver, 2, 0.5).until(ec.presence_of_element_located((By.XPATH, "//span[text()='验证的团队']")))
             driver.find_element_by_xpath("//span[text()='验证的团队']").click()  # 修改规则为新建之后直接进去
@@ -626,9 +627,10 @@ class com_xpath(object):
         sleep(0.5)
 
     # 文件夹，文件列表更多操作,传入文件名字（无重名） 目前不用传入文件夹或者文件类型
-    def com_listmoreActions(self,driver,filename):
-        el = driver.find_element_by_xpath("//span[text()='"+ filename +"']/../../../../../../../../..//i")
-        return el
+    def com_listmoreActions(self,driver,filename=None):
+        # el = driver.find_element_by_xpath("//span[text()='"+ filename +"']/../../../../../../../../..//i") #20200311废弃
+        el = driver.find_elements_by_xpath("//img[@style='cursor: pointer;']")
+        return el[1]
 
     # 文件夹、文件更多操作按钮,传入按钮名称
     def com_listmoreButton(self,driver,buttonName):

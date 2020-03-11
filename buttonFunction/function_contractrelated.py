@@ -95,9 +95,10 @@ def contract_combine(driver,url1,url2,url3):
     driver.find_element_by_xpath("//input[@type='file']").send_keys(url2)
     driver.find_element_by_xpath("//input[@type='file']").send_keys(url3)
     sleep(10)
-    driver.find_element_by_xpath("//div[text()='全选']/label").click()
+    driver.find_element_by_xpath("//input[@type='checkbox']").click()
     sleep(1)
-    el = driver.find_element_by_xpath("//div[text()='合并任务文档']")
+    # el = driver.find_element_by_xpath("//div[text()='合并任务文档']")
+    el = driver.find_element_by_xpath("//i[@class='anticon anticon-cluster']")
     if el.is_enabled():
         el.click()
         sleep(0.5)
