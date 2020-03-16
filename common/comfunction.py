@@ -72,8 +72,8 @@ class User:
         else:
             driver.find_element_by_id("username_no").send_keys(user)
         driver.find_element_by_id("password").send_keys(pwd)
-        driver.find_element_by_xpath(
-            "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
+        el = driver.find_elements_by_xpath("//span[text()='登 录']/..")
+        el[1].click()
         # sleep(1.5)
         # driver.find_element_by_xpath("//a[text()='私有资料']").click()
         User().root_private(driver)
@@ -883,11 +883,12 @@ url31 = os.path.join(com_path(),"19种格式","比对文件","合同1.doc")
 url32 = os.path.join(com_path(),"19种格式","比对文件","合同1扫描件（8张合并）.pdf")
 
 up_analysis = [url21,url22,url23,url24]
-# 解析文件夹前缀名字
+# 解析文件夹前缀名字,可也通过此方法获取后缀名
 folder_analysis = "解析"
 def get_urlname(url):
     """ 获取url的name"""
     return os.path.splitext(os.path.split(url)[1])[0]
+
 
 #图像处理
 class Image_Processing(object):

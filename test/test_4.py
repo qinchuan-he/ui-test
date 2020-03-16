@@ -21,6 +21,22 @@ import sys
 # from robotide import run
 # print(sys.path)
 
+from common.comfunction import *
+from buttonFunction.function_contractrelated import contratc_split
+from buttonFunction.function_contractrelated import contract_combine
+
+# 检查拆分和合并
+
+mode = 2
+driver = execBrower(mode)
+User().login(driver)
+
+driver.quit()
+
+
+
+
+
 # 通用解密方法
 from hashids import Hashids
 text='ZnbexRpp6dRVqwJW'
