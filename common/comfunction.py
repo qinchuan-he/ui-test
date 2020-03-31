@@ -39,6 +39,7 @@ def execBrower(mode,overtime=None):
     opt.add_argument('--disable--gpu')
     opt.add_argument('--headless')
     opt.add_argument('--no-sandbox')
+    opt.add_argument("--auto-open-devtools-for-tabs")
     path = UserProperty().BROWER_PATH
     if mode == 1:
         driver = webdriver.Chrome(options=opt, executable_path=path)
@@ -77,7 +78,7 @@ class User:
         # sleep(1.5)
         # driver.find_element_by_xpath("//a[text()='私有资料']").click()
         User().root_private(driver)
-        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
+        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
 
     # 退出登录
     def login_out(self,driver):
@@ -603,7 +604,7 @@ class com_xpath(object):
             el[int(position-1)].send_keys(url)
         else:
             el[0].send_keys(url)
-        sleep(1.5)
+        # sleep(1.5)
 
     # 封装页面公共头部buttonType是按钮类型
     def com_head(self,driver,buttonType):
@@ -777,7 +778,7 @@ class com_xpath(object):
     # log定位
     def com_log(self, driver):
         User().root_private(driver)
-        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='艾玛同学']")))
+        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
 
     # 智能搜索输入框,传入driver和位置,传入值认为是问答搜索
     def smart_search(self,driver,position=None):
