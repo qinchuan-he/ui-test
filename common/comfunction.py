@@ -80,6 +80,7 @@ class User:
         User().root_private(driver)
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
 
+
     # 退出登录
     def login_out(self,driver):
         el = com_xpath().com_head(driver, buttonType='Portrait')

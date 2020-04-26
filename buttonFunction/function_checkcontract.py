@@ -20,13 +20,14 @@ def check_compare(driver, image_path=None,image_prefix=None,is_check=None):
     if image_path:
         driver.get_screenshot_as_file(os.path.join(image_path,image_prefix,"-比对结果",str(time.time())+".png"))
     com_operation().com_close_preview(driver)
-    sleep(1)
-    driver.find_element_by_xpath("//div[contains(text(),'今天')]/..//span[text()='查看报告']").click()
-
-    WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='查看报告']")))
-    if image_path:
-        driver.get_screenshot_as_file(image_path + image_prefix + "-比对报告" + str(time.time()) + ".png")
-    com_operation().com_close_preview(driver)
+    # 2020-01-26功能变更，比对不生成报告了
+    # sleep(1)
+    # driver.find_element_by_xpath("//div[contains(text(),'今天')]/..//span[text()='查看报告']").click()
+    #
+    # WebDriverWait(driver, 15, 0.5).until(ec.presence_of_element_located((By.XPATH, "//div[text()='查看报告']")))
+    # if image_path:
+    #     driver.get_screenshot_as_file(image_path + image_prefix + "-比对报告" + str(time.time()) + ".png")
+    # com_operation().com_close_preview(driver)
 
 
 
