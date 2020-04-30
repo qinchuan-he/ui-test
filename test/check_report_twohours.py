@@ -12,7 +12,7 @@ from selenium.webdriver.common.by import By
 import time
 from time import sleep
 
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User
 from common.private import UserProperty
 from common.private import EmailProperty
@@ -26,14 +26,14 @@ from buttonFunction.function_contractrelated import contract_combine
 
 # 检查同步比对、查询等接口
 mode = 1
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 search_result().check_jmeter(driver,ReportProperty().TWO_HOURS_REPORT_JMETER,2) # 2表示每隔两小时
 driver.quit()
 sleep(1)
 
 # 检查智能比对和审校
 mode = 1
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 driver.get(ReportProperty().TWO_HOURS_REPORT_UI)
 # driver.find_element_by_xpath("//td[contains(text(),'通过率= 100.00%')]")
 try:
@@ -51,7 +51,7 @@ driver.quit()
 
 # 检查拆分和合并
 mode = 1
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 driver.get(UserProperty().url)
 User().login(driver,UserProperty().user_check2)
 team().dismiss_team(driver,"验证的团队")

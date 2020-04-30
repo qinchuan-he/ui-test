@@ -2,7 +2,7 @@
 import time
 from time import sleep
 
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User
 from common.comfunction import com_xpath
 from common.comfunction import url22
@@ -28,7 +28,7 @@ class create_buttonfunction(object):
 
 
 mode = 2
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 User().login(driver)
 create_buttonfunction().create_share(driver)
 

@@ -3,7 +3,7 @@
 import os
 # import time
 # from time import sleep
-# from common.comfunction import execBrower,User,com_path
+# from common.comfunction import OpenBrowser,User,com_path
 # from test.smart_search import search_home,search_result
 # from buttonFunction.function_checkcontract import check_proofreading
 # from common.comfunction import Image_Processing

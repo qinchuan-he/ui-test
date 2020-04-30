@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 # 引入公共方法
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User
 from common.comfunction import comHtml,com_path
 
@@ -36,7 +36,7 @@ class up_office(unittest.TestCase):
     def upload_office(self):
         '''上传office文件'''
         mode=2
-        driver = execBrower(mode)
+        driver = OpenBrowser(mode)
         User().login(driver)
         # 公共参数
         picturePath=com_path()+"截图\\"+"19种上传格式截图\\office\\"

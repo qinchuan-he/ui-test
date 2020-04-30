@@ -8,7 +8,7 @@ from time import sleep
 import time
 
 from common.comfunction import User
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import highlight
 from common.comparameter import symbol
 from common.comfunction import com_xpath
@@ -135,7 +135,7 @@ class search_result(object):
 
 
 # mode = 2
-# driver = execBrower(mode)
+# driver = OpenBrowser(mode)
 # User().login(driver)
 # search_home().lately_collection(driver)
 # # search_home().my_subscribe(driver)

@@ -27,7 +27,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
-from common.comfunction import com_path,send_mail,execBrower,User
+from common.comfunction import com_path,send_mail,OpenBrowser,User
 from common.private import EmailProperty
 
 from PIL import Image
@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
 
 # mode = 2
-# driver = execBrower(mode)
+# driver = OpenBrowser(mode)
 # try:
 #     User().login(driver)
 #     User().createFolder(driver)

@@ -6,7 +6,7 @@
 import time
 from time import sleep
 import os
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User
 from common.comfunction import com_xpath
 from common.comfunction import com_path
@@ -69,7 +69,7 @@ def upload_fileanalysis(driver, teamname=None, image_path=None,image_prefix=None
 
 
 # mode = 2
-# driver = execBrower(mode)
+# driver = OpenBrowser(mode)
 # User().login(driver)
 # upload_all(driver)
 # # upload_fileanalysis(driver)

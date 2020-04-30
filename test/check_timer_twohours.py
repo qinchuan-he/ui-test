@@ -8,7 +8,7 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.insert(0,rootPath)
 # print(sys.path)
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User,url31,url32
 import time
 from time import sleep
@@ -29,7 +29,7 @@ class Test_twohourse(unittest.TestCase):
         :return:
         """
         mode = 1
-        driver = execBrower(mode)
+        driver = OpenBrowser(mode)
         driver.get(UserProperty().url)
         User().login(driver,UserProperty().user_check2)
         contract_compare(driver,url31,url32)
@@ -44,7 +44,7 @@ class Test_twohourse(unittest.TestCase):
 
     def test_check(self):
         mode = 1
-        driver = execBrower(mode)
+        driver = OpenBrowser(mode)
         driver.get(UserProperty().url)
         User().login(driver,UserProperty().user_check2)
         sleep(360)

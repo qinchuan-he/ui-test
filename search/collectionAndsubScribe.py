@@ -20,7 +20,7 @@ rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
 
 
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User
 from common.comfunction import com_path
 
@@ -34,7 +34,7 @@ from common.comfunction import com_path
 
 #mode为1是无头模式
 mode=1
-driver=execBrower(mode)
+driver=OpenBrowser(mode)
 
 # 通用变量,搜索变量,保存图片路径,等待时间
 search="股份"

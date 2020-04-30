@@ -128,7 +128,7 @@ def contract_combine(driver,url1,url2,url3):
 
 
 # mode = 2
-# driver = execBrower(mode)
+# driver = OpenBrowser(mode)
 # driver.get(url)
 # User().login(driver)
 # # contratc_split(driver,url25)

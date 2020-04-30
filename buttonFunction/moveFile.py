@@ -24,7 +24,7 @@ sys.path.append(rootPath)
 # print(sys.path)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 # 引入公共方法
-from common.comfunction import execBrower  # 启动浏览器函数
+from common.comfunction import OpenBrowser  # 启动浏览器函数
 from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
@@ -54,7 +54,7 @@ class test_move(unittest.TestCase):
     upUrl = upload_url + upload_name + ".doc"
 
     mode = 1
-    driver = execBrower(mode)
+    driver = OpenBrowser(mode)
     User().login(driver)
     def test_moveFolder_private(self):
         '''私有资料中移动文件夹(重名)'''

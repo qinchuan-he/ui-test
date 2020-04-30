@@ -82,7 +82,7 @@ def check_proofreading(driver,image_path=None,image_prefix=None,is_check=None):
 
 #
 # mode = 2
-# driver = execBrower(mode)
+# driver = OpenBrowser(mode)
 # driver.get(url)
 # User().login(driver)
 # # image_path=""

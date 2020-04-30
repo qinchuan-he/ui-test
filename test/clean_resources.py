@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 from common.comfunction import User
 from common.comfunction import com_xpath
 from common.comfunction import com_alert
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 
 # 清空私有資源，只需传入driver
 def clean_private(driver):
@@ -43,7 +43,7 @@ def clean_private(driver):
 
 
 mode = 2
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 User().login(driver)
 clean_private(driver)
 User().login_out(driver)

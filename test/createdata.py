@@ -11,7 +11,7 @@ from common.comfunction import *
 from buttonFunction.function_contractrelated import *
 # from upload_relate import upload_fileanalysis
 mode = 1
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 driver.get(url)
 User().login(driver)
 url1 = str(com_path()+"19种格式\\比对文件\\合同1.doc")

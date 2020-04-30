@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')
 
 # 引入公共方法
-from common.comfunction import execBrower  # 启动浏览器函数
+from common.comfunction import OpenBrowser  # 启动浏览器函数
 from common.comfunction import User  # 用户登录类
 from common.comfunction import comHtml  # 生成html报告类
 from common.comfunction import team  # 团队类
@@ -51,7 +51,7 @@ class test_frager(unittest.TestCase):
     lname = "赵客缦胡缨吴钩霜雪明银鞍照白马飒沓如流星十步杀一人千里不留行事了拂衣去深藏身与名闲过信陵饮脱剑膝前横将炙啖朱亥持觞劝侯嬴"
 
     # 启动浏览器
-    driver = execBrower(mode)
+    driver = OpenBrowser(mode)
     User().login(driver)
 
     def test_filePath(self):

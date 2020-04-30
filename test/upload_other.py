@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 # 引入公共方法
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User
 from common.comfunction import comHtml
 from common.comfunction import com_path
@@ -36,7 +36,7 @@ class up_other(unittest.TestCase):
     '''上传office相关文件'''
 
     mode=2
-    driver = execBrower(mode)
+    driver = OpenBrowser(mode)
     User().login(driver)
     waitTime = 5
 

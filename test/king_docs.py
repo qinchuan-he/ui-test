@@ -7,7 +7,7 @@ from common.comfunction import url22
 import time
 import json
 from time import sleep
-from common.comfunction import execBrower,User
+from common.comfunction import OpenBrowser,User
 import openpyxl
 import os
 import re

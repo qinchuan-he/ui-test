@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 
 from common.comfunction import User
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import team
 from common.comfunction import up_analysis
 from common.comfunction import folder_analysis
@@ -166,7 +166,7 @@ class share(object):
 
 
 mode = 2
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 User().login(driver)
 # analysis().check_analysis(driver,get_urlname(up_analysis[0]))
 # analysis().check_analysis(driver,"验证图例文件")

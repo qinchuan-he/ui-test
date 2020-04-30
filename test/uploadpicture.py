@@ -25,7 +25,7 @@ sys.path.append(rootPath)
 sys.stdout=io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
 
 # 引入公共方法
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from common.comfunction import User
 from common.comfunction import comHtml
 from common.comfunction import com_path
@@ -36,7 +36,7 @@ resultpath = com_path()+"报告\\"
 class up_picture(unittest.TestCase):
     '''上传office相关文件'''
     mode=2
-    driver = execBrower(mode)
+    driver = OpenBrowser(mode)
     User().login(driver)
         # # 私有资料根目录文件夹
     el1=driver.find_element_by_xpath("//span[text()='新建']")

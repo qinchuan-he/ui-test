@@ -9,7 +9,7 @@ from time import sleep
 from PIL import Image
 from PIL import ImageChops
 from PIL.PngImagePlugin import PngImageFile
-from common.comfunction import User,execBrower,com_path,url31,url32
+from common.comfunction import User,OpenBrowser,com_path,url31,url32
 from buttonFunction.function_contractrelated import contract_Proofreading
 from common.comfunction import com_operation
 from buttonFunction.function_checkcontract import check_proofreading
@@ -19,7 +19,7 @@ from selenium.webdriver.common.by import By
 
 
 mode = 2
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 User().login(driver,"10034345659")
 User().switch_navigation(driver, name="智能比对")
 sleep(1)

@@ -9,13 +9,13 @@ sys.path.insert(0,rootPath)
 
 print(sys.path)
 
-from common.comfunction import execBrower
+from common.comfunction import OpenBrowser
 from test.smart_search import search_result
 from common.private import ReportProperty
 
 
 mode = 1
-driver = execBrower(mode)
+driver = OpenBrowser(mode)
 # User().login(driver)
 # search_home().lately_collection(driver)
 # search_home().my_subscribe(driver)

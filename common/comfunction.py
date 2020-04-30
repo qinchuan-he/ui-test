@@ -32,9 +32,11 @@ pwd = UserProperty().pwd
 
 
 
-
+driver_new = None
 # 启动浏览器
-def execBrower(mode,overtime=None):
+def OpenBrowser(mode,overtime=None):
+
+    global driver_new  # 2020-04-30,关键字驱动增加
     opt = Options()
     opt.add_argument('--disable--gpu')
     opt.add_argument('--headless')
@@ -46,12 +48,21 @@ def execBrower(mode,overtime=None):
     else:
         driver = webdriver.Chrome(path)
     driver.set_window_size(1400, 900)  # 设置窗口大小
+
     if overtime:
         pass
     else:
         driver.implicitly_wait(30)
     sleep(1)
+    driver_new = driver
     return driver
+
+def CloseBrowsers(driver=None):
+    """ 关闭浏览器"""
+    global driver_new
+    if not driver:
+        driver=driver_new
+    driver.quit()
 
 # 设置上传文件、报告、截图的根路径
 def com_path():
@@ -61,11 +72,14 @@ def com_path():
     return folder_path
 
 
+
 # 登录相关
 class User:
-
     # 登录
-    def login(self, driver,new_user=None):
+    global driver_new
+    def login(self,driver=None,new_user=None):
+        if not driver:
+            driver=driver_new
         driver.get(url)
         driver.find_element_by_xpath("//span[text()='账号登录']").click()
         if new_user:
@@ -89,7 +103,9 @@ class User:
         driver.find_element_by_xpath("//li[text()='退出']").click()
 
     #  创建文件夹
-    def createFolder(self, driver, folder=None):
+    def createFolder(self, driver=None, folder=None):
+        if not driver:
+            driver=driver_new
         sleep(0.5)
         createType = "create"
         el11 = com_xpath().com_listButton(driver, createType)

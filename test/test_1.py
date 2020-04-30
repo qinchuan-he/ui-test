@@ -13,12 +13,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 
-from common.comfunction import execBrower,User
+from common.comfunction import OpenBrowser,User
 
 
 # mode = 2
 # overtime = 1
-# driver = execBrower(mode,overtime)
+# driver = OpenBrowser(mode,overtime)
 # User().login(driver)
 #
 # s = "alert('你看到我了吗')"
@@ -94,7 +94,7 @@ load_iframe2 = """
 
 mode = 2
 overtime = 1
-driver = execBrower(mode,overtime)
+driver = OpenBrowser(mode,overtime)
 User().login(driver)
 driver.find_element_by_xpath("//span[text()='146页年度报告']/..").click()
 # driver.get("https://testjianyuan.fir.ai/apps/editor/openPreview/?callURL=aHR0cDovLzE5Mi4xNjguMS4yMjQ6ODA0MS9vZmZpY2Uv"
