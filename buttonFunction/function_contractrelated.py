@@ -17,6 +17,7 @@ def contract_compare(driver,url1,url2):
     com_xpath().com_localupload(driver,url1)
     sleep(0.5)
     com_xpath().com_localupload(driver, url2,position=2)
+    sleep(1)
     WebDriverWait(driver,5,0.2).until(ec.element_to_be_clickable((By.XPATH,"//span[text()='开始比对']/..")))
     driver.find_element_by_xpath("//span[text()='开始比对']/..").click()
 
@@ -24,6 +25,7 @@ def contract_compare(driver,url1,url2):
 def contract_Proofreading(driver,url):
     User().switch_navigation(driver,name="智能审核")
     com_xpath().com_localupload(driver,url)
+    sleep(1)
     WebDriverWait(driver,5,0.2).until(ec.element_to_be_clickable((By.XPATH,"//span[text()='智能审核']/..")))
     driver.find_element_by_xpath("//span[text()='智能审核']/..").click()
 

@@ -49,17 +49,17 @@ except Exception as e:
     send_mail("智能比对和审校检查存在问题", EmailProperty().EMAIL_ATTACHMENT3, add_file, add_name)
 driver.quit()
 
-# 检查拆分和合并
-mode = 1
-driver = OpenBrowser(mode)
-driver.get(UserProperty().url)
-User().login(driver,UserProperty().user_check2)
-team().dismiss_team(driver,"验证的团队")
-sleep(3)
-driver.refresh()
-sleep(2)
-team().check_team(driver,"验证的团队")
-contratc_split(driver,url25)
-contract_combine(driver,url26,url27,url28)
-sleep(7)
-driver.quit()
+# 检查拆分和合并----2020-05-20
+# mode = 1
+# driver = OpenBrowser(mode)
+# driver.get(UserProperty().url)
+# User().login(driver,UserProperty().user_check2)
+# team().dismiss_team(driver,"验证的团队")
+# sleep(3)
+# driver.refresh()
+# sleep(2)
+# team().check_team(driver,"验证的团队")
+# contratc_split(driver,url25)
+# contract_combine(driver,url26,url27,url28)
+# sleep(7)
+# driver.quit()

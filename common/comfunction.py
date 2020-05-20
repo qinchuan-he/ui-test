@@ -94,6 +94,22 @@ class User:
         User().root_private(driver)
         WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
 
+    def login2(self,driver=None,new_user=None,password=None):
+        """ 登录错误使用"""
+        if not driver:
+            driver=driver_new
+        if not password:
+            password = pwd
+        driver.get(url)
+        driver.find_element_by_xpath("//span[text()='账号登录']").click()
+        if new_user:
+            driver.find_element_by_id("username_no").send_keys(new_user)
+        else:
+            driver.find_element_by_id("username_no").send_keys(user)
+        driver.find_element_by_id("password").send_keys(password)
+        el = driver.find_elements_by_xpath("//span[text()='登 录']/..")
+        el[1].click()
+
 
     # 退出登录
     def login_out(self,driver):
@@ -613,7 +629,10 @@ def server_upload(localFile, remoteFile):
 #  封装定位
 class com_xpath(object):
     # 本地上传按钮定位封装,传入路径,位置数值(某些地方要用到）
-    def com_localupload(self,driver,url,position=None):
+    def com_localupload(self,driver=None,url=None,position=None):
+        global driver_new
+        if not driver:
+            driver=driver_new
         sleep(0.3)
         # driver.find_element_by_xpath("//input[@type='file']").send_keys(url) # 为了合同防伪，改的
         el =driver.find_elements_by_xpath("//input[@type='file']")
@@ -645,9 +664,15 @@ class com_xpath(object):
         sleep(0.5)
 
     # 文件夹，文件列表更多操作,传入文件名字（无重名） 目前不用传入文件夹或者文件类型
-    def com_listmoreActions(self,driver,filename=None):
+    def com_listmoreActions(self,driver=None,filename=None):
+        global driver_new
+        if not driver:
+            driver = driver_new
         # el = driver.find_element_by_xpath("//span[text()='"+ filename +"']/../../../../../../../../..//i") #20200311废弃
-        el = driver.find_elements_by_xpath("//img[@style='cursor: pointer;']")
+        if filename:
+            el=driver.find_element_by_xpath("//span[text()='"+ filename +"']/../../../../../../../../..//img[@style='cursor: pointer;']")
+        else:
+            el = driver.find_elements_by_xpath("//img[@style='cursor: pointer;']") # 不传名字默认第一个
         return el[1]
 
     # 文件夹、文件更多操作按钮,传入按钮名称
@@ -906,6 +931,55 @@ folder_analysis = "解析"
 def get_urlname(url):
     """ 获取url的name"""
     return os.path.splitext(os.path.split(url)[1])[0]
+
+# 2020-05-07 增加关键字断言方法，关键字驱动使用,有需要可以传入位置参数
+def assertls(path,expect,position=None):
+    """ 断言方法,传入定位和期望值"""
+    global driver_new
+
+    if position:
+        el = driver_new.find_elements_by_xpath(path)
+        print(el[int(position)].text)
+        print(str(expect) in el[int(position)].text)
+        assert str(expect) in el[int(position)].text
+    else:
+        el = driver_new.find_element_by_xpath(path)
+        print(el.text)
+        print(str(expect) in el.text)
+        assert str(expect) in el.text
+
+    # assert el.text==expect # 启用字符串包含关系，in
+
+
+
+# 2020-05-08 增加移动方法,关键字驱动使用
+class MouseOperation():
+    """ 封装鼠标操作方法"""
+    def mouse_over(self,driver = None,path=None):
+        """ 鼠标悬停到元素上"""
+        global driver_new
+        if not driver:
+            driver = driver_new
+        el = driver.find_element_by_xpath(path)
+        ActionChains(driver).move_to_element(el).perform()
+
+# 2020-05-08 点击元素,关键字驱动用
+def clickElement(driver=None,path=None):
+    """ 点击元素"""
+    global driver_new
+    if not driver:
+        driver = driver_new
+    driver.find_element_by_xpath(path).click()
+
+# 2020-05-08 浏览器后退，关键字驱动用
+def go_back(driver = None):
+    """ 浏览器后退"""
+    global driver_new
+    if not driver:
+        driver = driver_new
+        driver.back()
+
+
 
 
 #图像处理

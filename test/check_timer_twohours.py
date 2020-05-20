@@ -28,11 +28,12 @@ class Test_twohourse(unittest.TestCase):
         造比对和审校
         :return:
         """
-        mode = 1
+        mode = 2
         driver = OpenBrowser(mode)
         driver.get(UserProperty().url)
         User().login(driver,UserProperty().user_check2)
         contract_compare(driver,url31,url32)
+        sleep(1)
         contract_Proofreading(driver,url31)
         driver.quit()
 
@@ -43,7 +44,7 @@ class Test_twohourse(unittest.TestCase):
         """
 
     def test_check(self):
-        mode = 1
+        mode = 2
         driver = OpenBrowser(mode)
         driver.get(UserProperty().url)
         User().login(driver,UserProperty().user_check2)
