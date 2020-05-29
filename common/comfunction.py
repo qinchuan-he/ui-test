@@ -137,13 +137,20 @@ class User:
         sleep(0.5)
 
     # 创建文件,传入文件名，文件类型名称（笔记文档等名字）
-    def create_file(self, driver, file_type):
+    def create_file(self, driver=None, file_type=None):
+        global driver_new
+        if not driver:
+            driver=driver_new
         button = 'create'
         el1 = com_xpath().com_listButton(driver, button)
         ActionChains(driver).move_to_element(el1).perform()
         driver.find_element_by_xpath("//li[text()='"+file_type+"']").click()
         WebDriverWait(driver, 20, 0.5).until(ec.presence_of_element_located((By.XPATH, "//iframe")))
         sleep(0.5)
+        # frame = driver.find_element_by_xpath("//iframe")
+        # driver.switch_to.frame(frame)
+        # sleep(0.5)
+        # driver.switch_to.active_element.send_keys("我是一个验证文件")
 
     # 返回私有资料根目录
     def root_private(self, driver):
@@ -979,6 +986,27 @@ def go_back(driver = None):
         driver = driver_new
         driver.back()
 
+# 2020-05-20 失败截图方法 关键字驱动用
+def screenShot(driver = None,url = None):
+    """ 截图，失败截图"""
+    global driver_new
+    if not driver:
+        driver=driver_new
+    if url:
+        driver.get_screenshot_as_file(url)
+
+# 2020-05-20 时间戳函数 关键字驱动用,传入需要的时间戳格式
+def timeStamp(driver=None,format=None):
+    global driver_new
+    if not driver:
+        driver=driver_new
+    if format=='date':
+        stamp = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+    elif format=='number':
+        stamp= int(time.time())
+    else:
+        stamp=str(time.time())
+    return stamp
 
 
 

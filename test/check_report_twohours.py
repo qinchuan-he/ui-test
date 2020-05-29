@@ -49,7 +49,7 @@ except Exception as e:
     send_mail("智能比对和审校检查存在问题", EmailProperty().EMAIL_ATTACHMENT3, add_file, add_name)
 driver.quit()
 
-# 检查拆分和合并----2020-05-20
+# 检查拆分和合并----2020-05-20 saas版本关闭协作空间入口
 # mode = 1
 # driver = OpenBrowser(mode)
 # driver.get(UserProperty().url)
