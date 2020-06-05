@@ -1,7 +1,8 @@
 # coding = utf-8
 
-# 智能搜索验证
+# 智能搜索验证,其中包含了jmeter报告的检查方法
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from time import sleep
@@ -14,7 +15,8 @@ from common.comparameter import symbol
 from common.comfunction import com_xpath
 from selenium.webdriver.common.keys import Keys
 from common.comfunction import send_mail
-from common.private import EmailProperty
+from common.private import EmailProperty,folder_path
+import os
 
 class search_home(object):
     """ 智能搜索首页的相关操作，需要按照函数顺序来执行 """
@@ -97,18 +99,40 @@ class search_result(object):
         :param image_prefix:
         :return:
         """
+
+        # 2020-06-05增加方法，创建jmeter报告截图
+        jmeter_path = os.path.join(folder_path, '截图', 'jmeter报告')
+        if os.path.exists(jmeter_path):
+            for i in os.listdir(jmeter_path):
+                os.remove(os.path.join(jmeter_path, i))
+        else:
+            os.mkdir(jmeter_path)
+
         sleep(10)
         driver.get(report_url)
         sleep(0.5)
         el = driver.find_elements_by_xpath("//div[@style='font-size:8pt;text-align:center;padding:2px;color:white;']")
         if len(el)>1:
             print("有问题")
+
+            # 2020-06-05 增加，错误排序之后滚动
+            el3s = driver.find_elements_by_xpath("//div[@class='tablesorter-header-inner']")
+            for i in range(len(el3s)):
+                if 'Error' in el3s[i].text:
+                    if '%' in el3s[i].text:
+                        ActionChains(driver).move_to_element(el3s[i]).perform()
+                        ActionChains(driver).double_click(el3s[i]).perform()
+                        ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
+
             if image_path:
                 driver.get_screenshot_as_file(image_path+image_prefix+str(time.time())+".png")
+            # 2020-06-05 增加截图
+            screenshot_name = 'error.png'
+            screenshot = os.path.join(jmeter_path,str(time.time())+'.png')
             if position==1:
-                send_mail("接口检查有问题",EmailProperty().EMAIL_ATTACHMENT1,EmailProperty().EMAIL_ATTACHMENT1,"15minutes_check.html")
+                send_mail("接口检查有问题",EmailProperty().EMAIL_ATTACHMENT1,screenshot,screenshot_name)
             elif position==2:
-                send_mail("接口检查有问题", EmailProperty().EMAIL_ATTACHMENT2, EmailProperty().EMAIL_ATTACHMENT2, "twoHours_check.html")
+                send_mail("接口检查有问题", EmailProperty().EMAIL_ATTACHMENT2, screenshot, screenshot_name)
         else:
            s = str(el[0].text)
            a = s.split("\n",2)[0]

@@ -586,6 +586,7 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     # 附件,可能多个
     add_file_type = type(addfileurl).__name__
     if add_file_type=="str":
+        print('传入文件是str')
         af = open(addfileurl, 'rb').read()
         att = MIMEText(af, 'base64', 'utf-8')
         att['Content-Type'] = 'application/octet-stream'
