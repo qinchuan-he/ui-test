@@ -63,14 +63,25 @@ def sendemail1():
     driver.quit()
 
 def yousee():
-    image_path = os.path.join(folder_path, '截图', 'jmeter报告')
-    print(os.path.exists(image_path))
-    if os.path.exists(image_path):
-        print(os.listdir(image_path))
-        for i in os.listdir(image_path):
-            os.remove(os.path.join(image_path,i))
-    else:
-        os.mkdir(image_path)
+    a = [1,2,3,4,5,6,7,8,9,10]
+    b=[]
+    part = 9
+    c = len(a)/part
+
+    if int(c)==0:
+        b=a
+    elif int(c)>0:
+
+        for i in range(int(c)):
+            d = 1
+            cc = []
+            for j in range(len(a)):
+                cc.append(a[j])
+
+
+
+
+    print(b)
 
 
 
