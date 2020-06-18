@@ -118,6 +118,7 @@ class search_result(object):
             # 2020-06-05 增加，错误排序之后滚动
             el3s = driver.find_elements_by_xpath("//div[@class='tablesorter-header-inner']")
             screenshot = []
+            screenshot_name = []
             for i in range(len(el3s)):
                 if 'Error' in el3s[i].text:
                     if '%' in el3s[i].text:
@@ -126,12 +127,11 @@ class search_result(object):
                         ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
                         image = driver.get_screenshot_as_file(os.path.join(jmeter_path,str(time.time())+'.png'))
                         screenshot.append(image)
+                        screenshot_name.append('error'+str(i)+'.png')
 
             if image_path:
                 driver.get_screenshot_as_file(image_path+image_prefix+str(time.time())+".png")
             # 2020-06-05 增加截图
-            screenshot_name = 'error.png'
-            # screenshot = os.path.join(jmeter_path,str(time.time())+'.png')
             if position==1:
                 send_mail("接口检查有问题",EmailProperty().EMAIL_ATTACHMENT1,screenshot,screenshot_name)
             elif position==2:
