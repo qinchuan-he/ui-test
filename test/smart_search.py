@@ -125,8 +125,9 @@ class search_result(object):
                         ActionChains(driver).move_to_element(el3s[i]).perform()
                         ActionChains(driver).double_click(el3s[i]).perform()
                         ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
-                        image = driver.get_screenshot_as_file(os.path.join(jmeter_path,str(time.time())+'.png'))
-                        screenshot.append(image)
+                        images_url= os.path.join(jmeter_path,str(time.time())+'.png')
+                        driver.get_screenshot_as_file(images_url)
+                        screenshot.append(images_url)
                         screenshot_name.append('error'+str(i)+'.png')
 
             if image_path:
