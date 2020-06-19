@@ -157,7 +157,7 @@ class User:
         sleep(0.5)
         driver.find_element_by_xpath("//div[contains(@class,'GlobalHeader_logo')]").click()
         sleep(0.5)
-        driver.find_element_by_xpath("//a[text()='私有资料']").click()
+        driver.find_element_by_xpath("//span[text()='私有资料']").click()
         sleep(0.5)
 
     # 导航栏模块切换,传入切换的名称
