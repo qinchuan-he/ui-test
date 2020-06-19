@@ -25,7 +25,8 @@ def insert_frag():
     action.move_by_offset(200,0)
     action.release()
     action.perform()
-    driver.find_element_by_xpath("//span[text()='加入碎片']").click()
+    sleep(0.5)
+    driver.find_element_by_xpath("//span[text()='加入碎片']/..").click()
     # el2 = driver.find_elements_by_xpath("//p[contains(text(),'本公司董事会、监事会及董事、监事、高级管理')]")
     # ActionChains(driver).move_to_element(el2).perform()
 
