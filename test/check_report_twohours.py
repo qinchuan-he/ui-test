@@ -24,7 +24,7 @@ from common.comfunction import url25,url26,url27,url28
 from buttonFunction.function_contractrelated import contratc_split
 from buttonFunction.function_contractrelated import contract_combine
 
-# 检查同步比对、查询等接口
+# 检查同步比对、查询等接口,扩展为功能性接口检查
 def check_one():
     mode = 1
     driver = OpenBrowser(mode)

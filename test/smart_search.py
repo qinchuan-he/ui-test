@@ -123,7 +123,9 @@ class search_result(object):
                 if 'Error' in el3s[i].text:
                     if '%' in el3s[i].text:
                         ActionChains(driver).move_to_element(el3s[i]).perform()
+                        sleep(0.5)
                         ActionChains(driver).double_click(el3s[i]).perform()
+                        sleep(0.5)
                         ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
                         images_url= os.path.join(jmeter_path,str(time.time())+'.png')
                         driver.get_screenshot_as_file(images_url)
