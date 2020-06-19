@@ -13,8 +13,6 @@ def check_frag():
     driver.get('https://cyprex.fir.ai/files/DrqxJ1xM6EPQl27z')
     sleep(3)
     el1 = driver.find_element_by_xpath("//p[contains(text(),'本年度报告摘要来自年度报告全文')]")
-    print(el1)
-    print(type(el1))
     action = ActionChains(driver)
     action.click_and_hold(el1)
     action.move_by_offset(100,0)
