@@ -25,7 +25,6 @@ def check_frag():
     sleep(5)
     driver.quit()
 
-
 if __name__=="__main__":
     check_frag()
 
