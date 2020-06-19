@@ -125,8 +125,9 @@ class search_result(object):
                         ActionChains(driver).move_to_element(el3s[i]).perform()
                         sleep(0.5)
                         ActionChains(driver).double_click(el3s[i]).perform()
-                        sleep(0.5)
-                        ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
+                        for loop in range(4):
+                            sleep(0.5)
+                            ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
                         images_url= os.path.join(jmeter_path,str(time.time())+'.png')
                         driver.get_screenshot_as_file(images_url)
                         screenshot.append(images_url)

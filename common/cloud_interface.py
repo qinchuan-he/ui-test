@@ -14,67 +14,6 @@ import openpyxl
 from typing import List
 import requests
 
-# sendemail
-
-def sendemail1():
-    """ send email test"""
-    file_url = r'D:\work\1测试\6接口\3服务器检查脚本\report\index.html'
-    image_path = r'D:\上传文件\pdf比对\1专业数据\新建文件夹'
-    image_path = os.path.join(image_path)
-    email_subject = 'test email'
-    url = 'http://192.168.1.223:8077/jmeter/report2/index.html'
-    url = 'D:/work/1测试/6接口/3服务器检查脚本/report2/index.html'
-    # send_mail()
-
-
-
-    # 启动一个浏览器
-    driver = OpenBrowser(mode=2)
-    driver.get(url)
-    sleep(0.5)
-    el = driver.find_elements_by_xpath("//div[@style='font-size:8pt;text-align:center;padding:2px;color:white;']")
-
-    # print('准备截图')
-    # els = driver.find_elements_by_xpath("//div[@class='panel-body']")
-    # for i in range(len(els)):
-    #     ActionChains(driver).move_to_element(els[i]).perform()
-    #     image = driver.get_screenshot_as_file(image_path + '\\' + str(time.time()) + '.png')
-    # print('截图完成')
-
-    el3s = driver.find_elements_by_xpath("//div[@class='tablesorter-header-inner']")
-    for i in range(len(el3s)):
-        if 'Error' in el3s[i].text:
-            if '%' in el3s[i].text:
-                ActionChains(driver).move_to_element(el3s[i]).perform()
-                ActionChains(driver).double_click(el3s[i]).perform()
-                ActionChains(driver).send_keys(Keys.PAGE_DOWN).perform()
-
-
-
-
-    print(len(el3s))
-    el2s = driver.find_elements_by_xpath("//tr[@role='row']/td[3]")
-    # for i in range(len(el2s)):
-    #     print(el2s[i].text)
-    sleep(1)
-    driver.quit()
-
-def yousee():
-    a = [1,8,6,2,5,4,8,3,7]
-    area_max = 0
-    i = 0
-    j = len(a)-1
-
-    area_max=0
-    while(j!=i):
-        if area_max<(j-i)*min(a[i],a[j]):
-            area_max=(j-i)*min(a[i],a[j])
-        if a[i]>a[j]:
-            j-=1
-        else:
-            i+=1
-    print(area_max)
-
 def insert_content(parameter:List):
     """ 往数据库插入东西"""
     url = r'D:\5python'
@@ -190,10 +129,10 @@ def interface(head_key,resource_id=None):
     #     count+=1
 
     # 文件重命名
-    url = 'https://testcloud.fir.ai/api/group/meeting/resource/update/'
-    date = {'resource_id':'50','name':'单一名字.pdf'}
-    res = requests.post(url=url,data=date,headers=header)
-    print(res.text)
+    # url = 'https://testcloud.fir.ai/api/group/meeting/resource/update/'
+    # date = {'resource_id':'50','name':'单一名字.pdf'}
+    # res = requests.post(url=url,data=date,headers=header)
+    # print(res.text)
 
     # 文件删除
     # url='https://testcloud.fir.ai/api/group/meeting/resource/delete/'
@@ -213,18 +152,18 @@ def interface(head_key,resource_id=None):
     # res = requests.get(url=request_url,headers = header)
     # print(res.text)
 
-def send_url():
-    """ 访问地址"""
-    url = 'http://124.77.120.212:9650/apis/download/?data_id=2020-06-19/af701826-b1d6-11ea-b925-0242ac110008'
-    # date = {''}
-    res = requests.get(url)
-    print(res.text)
-
-
 
 
 if __name__=='__main__':
-    send_url()
+    # sendemail1()
+    # yousee()
+    # insert_content()
+    # result = read_excel()
+    # insert_content(result)
+    key = generate_jwt()
+    # print(key)
+    interface(key)  # 会议系统和IM系统接口
+
 
 
 
