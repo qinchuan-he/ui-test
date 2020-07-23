@@ -18,7 +18,7 @@ def refresh_url():
 
     driver = OpenBrowser(mode)
     driver.get(url)
-    for i in range(100000):
+    for i in range(100):
         sleep(3)
         driver.refresh()
         print('刷新次数: %d'%i)
