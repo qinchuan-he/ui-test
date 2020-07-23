@@ -1,15 +1,15 @@
 
 # 刷新联想页面
-
-
-from  common.comfunction import OpenBrowser
-from time import sleep
-import threading
 import os
 import sys
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.insert(0,rootPath)
+
+from  common.comfunction import OpenBrowser
+from time import sleep
+import threading
+
 
 # 刷新联想页面多线程
 def refresh_url():
