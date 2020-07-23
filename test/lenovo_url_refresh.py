@@ -5,9 +5,13 @@
 from  common.comfunction import OpenBrowser
 from time import sleep
 import threading
+import os
+import sys
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.insert(0,rootPath)
 
-
-# 刷新联想页面
+# 刷新联想页面多线程
 def refresh_url():
     mode = 1
     url = 'http://124.77.120.212:8060/data/fetch?params=eyJmaWxlX2lkIjoiOTQzMDQiLCJ2aWV3X3R5cGUiOiJwcmV2aWV3IiwiZmlsZV9uYW1lIjoiMeWfuuehgO+8muS4h+S4iOmrmOalvOW5s+WcsOi1tyDigJTigJQgUmVkaXMg5Z+656GA5pWw5o2u57uT5p6ELnBkZiIsInJldiI6ImM5NWU4Mzc4YjE4MzQ1M2I5ODg0N2ZmYzk1YTU0YWUyIiwidXNlcl9pZCI6IjI3In0=&sign=61b27d1b7593de213f97a498b0b6549d'
