@@ -21,6 +21,7 @@ def refresh_url():
     for i in range(100000):
         sleep(3)
         driver.refresh()
+        print('刷新次数: %d'%i)
     sleep(7)
     driver.quit()
 
