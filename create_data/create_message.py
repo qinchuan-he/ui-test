@@ -93,10 +93,10 @@ def createTeamMessage(user1,user2 = None,dismiss=None):
 
     # 用户1和用户2互相发消息
     url_11 = InterBaseUrl().Base_url+InterfaceUrl().team_sendmsg
-    argument_9={'team_id':team_id,'member_list':str([user2[1]]),'content':'来自脚本的消息2,来自脚本的消息2,来自脚本的消息2,来自脚本的消息2'}
+    argument_9={'team_id':team_id,'member_list':str([user2[1]]),'content':'来自脚本的消息2,来自脚本的消息2来自脚本的消息2,来自脚本的消息2,来自脚本的消息2'}
     res_sendmsg2 = requests.post(url_11,data=argument_9,cookies=user1[0])
     print(eval(res_sendmsg2.text).get('msg'))
-    argument_9 = {'team_id':team_id,'member_list':str([user1[1]]),'content':'来自脚本的消息1,来自脚本的消息1,来自脚本的消息1,来自脚本的消息1'}
+    argument_9 = {'team_id':team_id,'member_list':str([user1[1]]),'content':'来自脚本的消息来自脚本的消息11,来自脚本的消息1,来自脚本的消息1,来自脚本的消息1'}
     res_sendmsg1 = requests.post(url_11,data=argument_9,cookies=user2[0])
     print(eval(res_sendmsg1.text).get('msg'))
 
@@ -223,8 +223,8 @@ if __name__ == '__main__':
 
     t = time.strftime("%Y-%m-%d %H:%M",time.localtime(time.time()+61))
     argument = {'remind_time': t, 'content': '调用接口创建'}
-    # r = createRemindMyself(url,argument,user1) # 创建代办事项
-    # print('创建代办事项成功')
+    r = createRemindMyself(url,argument,user1) # 创建代办事项
+    print('创建代办事项成功')
 
 
     createTeamMessage(user1,user2) #  团队相关消息

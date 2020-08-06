@@ -5,6 +5,7 @@ import datetime
 import uuid
 
 import requests
+import openpyxl
 
 
 def gen(url, params):
@@ -18,7 +19,7 @@ def gen(url, params):
     # print(sign)
 
     url = "%sparams=%s&sign=%s" % (url, params, sign)
-    print(url)
+    # print(url)
     return url
 
 def test_api(file_name,file_id,rev,user_id,view_type):
@@ -31,6 +32,42 @@ def test_api(file_name,file_id,rev,user_id,view_type):
     url = "http://192.168.1.224:8060/data/fetch?"
     params = {"file_id": file_id, "view_type": view_type, "file_name": file_name, "rev": rev, "user_id": user_id}
     gen(url, params)
+
+# 读取Excel文档获取neid和rev
+def read_excel():
+    rest = []
+    wk = openpyxl.load_workbook('lenovo.xlsx')
+    wb = wk.worksheets[0]
+    print(wb.cell(2,2).value)
+    row = wb.max_row
+    for i in range(2,row+1):
+        a = {'rev':wb.cell(i,2).value,'neid':wb.cell(i,3).value}
+        rest.append(a)
+        # print(a)
+    return  rest
+
+# 创建联想网盘的更新索引接口url，存入文件
+def create_url(lst):
+    url = 'http://192.168.1.224:8061/api/file/parse?'
+    url = 'api/file/parse?'
+    file = open(r'D:\work\1测试\16测试数据\1.txt', 'w+')
+    for i in lst:
+        params = {"file_id": i.get('neid'), "rev": i.get('rev'), "opt_type": "01"}
+        url_2 = gen(url, params)
+        # print(url_2)
+        file.write(url_2+str('\n'))
+
+# 造预览调用接口url
+def create_url2(lst):
+    url = 'http://192.168.1.224:8060/data/fetch?'
+    url =  '/api/data/fetch?'
+    file = open(r'D:\work\1测试\16测试数据\preview.txt','w+')
+    for i in lst:
+        params = {"view_type":"preview","file_id": i.get('neid'), "file_name":"cesces.pdf","rev": i.get('rev'),"user_id":27}
+        url_2 = gen(url,params)
+        file.write(url_2+str('\n'))
+    file.close()
+
 
 if __name__ == '__main__':
     # 必传rev
@@ -50,9 +87,13 @@ if __name__ == '__main__':
     file_name = '表格图片.doc'
     neid = 145
     rev = '0c1466f88a124d32bb244eccc6a39217'
-    # view_type = 'preview'
-    view_type = 'editor'
+    view_type = 'preview'
+    # view_type = 'editor'
     test_api(file_name,neid,rev,user_id,view_type)
+
+    # res = read_excel()
+    # create_url(res) # 造索引，
+    # create_url2(res) # 预览
 
 
 

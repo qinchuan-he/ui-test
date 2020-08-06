@@ -558,7 +558,7 @@ def send_mail(subject, fileurl):
 
 
 # 重构发送邮件方法，添加了附件参数
-def send_mail(subject, fileurl, addfileurl, addfilename):
+def send_mail(subject, fileurl=None, addfileurl=None, addfilename=None,content=None):
     # 配置发送邮件参数
     # 发送邮箱服务器
     smtpServer = "smtp.exmail.qq.com"
@@ -573,10 +573,13 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     # 发送邮件主题
     subject = subject
     # 发送邮件内容，这里发送传入html的内容
-    fp = open(fileurl, 'rb')
-    mail_body = fp.read()
-    fp.close()
-    msg = MIMEText(mail_body, 'html', 'utf-8')
+    if fileurl:
+        fp = open(fileurl, 'rb')
+        mail_body = fp.read()
+        fp.close()
+        msg = MIMEText(mail_body, 'html', 'utf-8')
+    if content:
+        msg = MIMEText(content, 'html', 'utf-8')
     # msg['Subject'] = Header(subject, 'utf-8')
 
     msgRoot = MIMEMultipart('related')
@@ -584,22 +587,23 @@ def send_mail(subject, fileurl, addfileurl, addfilename):
     msgRoot['From'] = EmailProperty().SEND_EMAIL
     msgRoot['To'] = ','.join(EmailProperty().RECEVI_EMAIL)
     # 附件,可能多个
-    add_file_type = type(addfileurl).__name__
-    if add_file_type=="str":
-        print('传入文件是str')
-        af = open(addfileurl, 'rb').read()
-        att = MIMEText(af, 'base64', 'utf-8')
-        att['Content-Type'] = 'application/octet-stream'
-        att['Content-Disposition'] = 'attachment; filename = ' + addfilename
-        msgRoot.attach(att)
-    elif add_file_type=="list":
-        for i in range(len(addfileurl)):
-            print(i)
-            af = open(addfileurl[i], 'rb').read()
+    if addfileurl:
+        add_file_type = type(addfileurl).__name__
+        if add_file_type=="str":
+            print('传入文件是str')
+            af = open(addfileurl, 'rb').read()
             att = MIMEText(af, 'base64', 'utf-8')
             att['Content-Type'] = 'application/octet-stream'
-            att['Content-Disposition'] = 'attachment; filename = ' + addfilename[i]
+            att['Content-Disposition'] = 'attachment; filename = ' + addfilename
             msgRoot.attach(att)
+        elif add_file_type=="list":
+            for i in range(len(addfileurl)):
+                print(i)
+                af = open(addfileurl[i], 'rb').read()
+                att = MIMEText(af, 'base64', 'utf-8')
+                att['Content-Type'] = 'application/octet-stream'
+                att['Content-Disposition'] = 'attachment; filename = ' + addfilename[i]
+                msgRoot.attach(att)
     msgRoot.attach(msg)  # 添加文案描述信息
     # 发送邮件
     smtp = smtplib.SMTP()

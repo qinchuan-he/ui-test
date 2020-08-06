@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from time import sleep
 import time
-
+import openpyxl
 from common.comfunction import User
 from common.comfunction import OpenBrowser
 from common.comfunction import highlight
@@ -17,6 +17,11 @@ from selenium.webdriver.common.keys import Keys
 from common.comfunction import send_mail
 from common.private import EmailProperty,folder_path
 import os
+import requests
+import json
+from common.comparameter import symbol
+
+
 
 class search_home(object):
     """ 智能搜索首页的相关操作，需要按照函数顺序来执行 """
@@ -152,6 +157,79 @@ class search_result(object):
         # sleep(5)
 
 
+# 新版本的站内搜索  2020-08-04
+class site_serach_rcheck():
+    cookie={'fir_session_id':'04cjzss0vbou6v16s1sqerilssz5l255'}
+    def get_result(self,search_keywords,search_type,clickSearch,tag_name=None,start_time=None,end_time=None,author_list=None):
+        """ 获取分词"""
+        url = 'https://testcyprex.fir.ai/api/resource/search/'
+        if start_time and end_time and author_list:
+            parament = {'search_keywords': search_keywords, 'search_type': search_type, 'clickSearch': clickSearch, 'start_time': ''
+                , 'end_time': '', 'page_row': '20', 'page': '1', 'keywords_pos': '0', 'info_type': ''
+                , 'ordering': 'score', 'author_list': '[]', 'is_correct': 'true'}
+        else:
+            parament = {'search_keywords': search_keywords, 'search_type': search_type, 'clickSearch': clickSearch,
+                        'start_time': ''
+                , 'end_time': '', 'page_row': '20', 'page': '1', 'keywords_pos': '0', 'info_type': ''
+                , 'ordering': 'score', 'author_list': '[]', 'is_correct': 'true'}
+        if tag_name:
+            parament.setdefault('tag_name','')
+        # print(parament)
+        res = requests.get(url=url,params=parament,cookies=self.cookie)
+        # print(res.text)
+        result = json.loads(res.text).get('data')
+        cut_words = result.get('cut_words')
+        similar_words = result.get('similar_words')
+        corrects = result.get('corrects')
+        # print(cut_words)
+        # print(similar_words)
+        # print(corrects)
+        return cut_words,similar_words,corrects
+
+
+
+
+# 阅读excel
+def read_excel():
+    search_keywords = '中华人民共盒国'
+    search_type = '002'
+    clickSearch = 'false'
+    tag_name = '126'
+    path = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5\搜索数据.xlsx'
+    wb = openpyxl.load_workbook(path)
+    # for i in wb.worksheets:
+    sheet = wb.worksheets[0]
+    max = sheet.max_row+1
+    max = len(symbol.chinese)
+
+    for i in range(2,sheet.max_row+1):
+        search_keywords = sheet.cell(i, 2).value
+    # for i in range(2, max+2):
+    #     search_keywords = symbol.chinese[i-2]
+    #     sheet.cell(i, 2).value = str(search_keywords)
+        cut_words,similar_words,corrects = site_serach_rcheck().get_result(search_keywords, search_type, clickSearch, tag_name)
+        if cut_words:
+            sheet.cell(i, 5).value = str(cut_words)
+        if similar_words:
+            sheet.cell(i, 6).value = str(similar_words)
+        if corrects:
+            sheet.cell(i, 3).value=corrects[0]
+        print('执行中...')
+    path_2 = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5\搜索数据'+time.strftime('%Y_%m_%d-%H_%M_%S',time.localtime(time.time()))+'.xlsx'
+    wb.save(path_2)
+    print('执行完成')
+
+
+
+if __name__=='__main__':
+    # search_keywords='国泰军安'
+    search_keywords = '中华人民共盒国'
+    search_type='002'
+    clickSearch='false'
+    tag_name='126'
+    path = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5\搜索数据.xlsx'
+    # site_serach_rcheck().get_result(search_keywords,search_type,clickSearch,tag_name)
+    read_excel()
 
 
 
@@ -162,20 +240,6 @@ class search_result(object):
 
 
 
-
-
-
-
-# mode = 2
-# driver = OpenBrowser(mode)
-# User().login(driver)
-# search_home().lately_collection(driver)
-# # search_home().my_subscribe(driver)
-# search_home().my_annotation(driver)
-# search_result().search(driver)
-# search_result().check_jmeter(driver,"http://192.168.1.49:8080/jmeter/report/index.html")
-# sleep(10)
-# driver.quit()
 
 
 

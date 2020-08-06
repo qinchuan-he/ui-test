@@ -66,8 +66,8 @@ import json
 import base64
 def generate_jwt(**kwargs):
     """调试jwt的测试接口"""
-    user_open_id = kwargs.get("user_open_id", "1")
-    username = kwargs.get("username", "滴滴")
+    user_open_id = kwargs.get("user_open_id", "680")
+    username = kwargs.get("username", "员工")
 
     p = hashlib.sha256('MzY1Mjk0OTM5NTgz'.encode("utf-8"))
     header = {
@@ -93,13 +93,13 @@ def interface(head_key,resource_id=None):
     print(header)
     cookie = {'fir_session_id':'vkbbijcvul6y8hw7kkzvoqp2jvbw9bv2'}
 
-
-
+    team_type= '3'
+    team_open_id = '222225'
     # 创建会议接口
     # url = 'https://testcloud.fir.ai/api/group/meeting/create/'
-    # url = 'https://devcloud.fir.ai/api/group/meeting/create/'
-    # url = 'http://117.9.200.62:20080/api/group/meeting/create/'
-    # parameters = {'name':'第一个IM','team_type':'3','team_open_id':'1','extra_info':'来自接口'}
+    # # url = 'https://devcloud.fir.ai/api/group/meeting/create/'
+    # # url = 'http://117.9.200.62:20080/api/group/meeting/create/'
+    # parameters = {'name':'IM管理','team_type':team_type,'team_open_id':team_open_id,'extra_info':'来自接口'}
     # res = requests.post(url=url,data=parameters,headers=header)
     # print(res.text)
 
@@ -111,22 +111,24 @@ def interface(head_key,resource_id=None):
     # print(res.text)
 
     # s上传会议文件
-    # url = 'https://testcloud.fir.ai/api/group/meeting/resource/upload/'
+    url = 'https://testcloud.fir.ai/api/group/meeting/resource/upload/'
     # url = 'http://117.9.200.62:20080/api/group/meeting/resource/upload/'
     # file_path =os.path.join(r'D:\上传文件\自动化验证文档\19种格式\office')
-    # # file_path = os.path.join(r'D:\上传文件\自动化验证文档\19种格式\图例提取文件')
-    # # file_path = os.path.join(r'D:\上传文件\自动化验证文档\19种格式\合并')
-    # # file_path = os.path.join(r'D:\上传文件\自动化验证文档\19种格式\比对文件')
-    # count = 1
-    # for i in os.listdir(file_path):
-    #     print(i)
-    #     file_info = {'name':i,'author':'qinchuan'}
-    #     file={'file':open(os.path.join(file_path,i),'rb')}
-    #     date = {'team_type':'2','team_open_id':'1','resource_id':count,'file_info':json.dumps(file_info)}
-    #     res = requests.post(url=url,data=date,headers = header,files=file)
-    #     print(res.text)
-    #     print(count)
-    #     count+=1
+    # file_path = os.path.join(r'D:\上传文件\自动化验证文档\19种格式\图例提取文件')
+    # file_path = os.path.join(r'D:\上传文件\自动化验证文档\19种格式\合并')
+    # file_path = os.path.join(r'D:\上传文件\自动化验证文档\19种格式\比对文件')
+    file_path = r'D:\上传文件\自动化验证文档\19种格式\图片'
+    file_path = r'D:\上传文件\自动化验证文档\19种格式\其他'
+    count = 430
+    for i in os.listdir(file_path):
+        print(i)
+        file_info  = {'name':i,'author':'qinchuan'}
+        file={'file':open(os.path.join(file_path,i),'rb')}
+        date = {'team_type':team_type,'team_open_id':team_open_id,'resource_id':count,'file_info':json.dumps(file_info)}
+        res = requests.post(url=url,data=date,headers = header,files=file)
+        print(res.text)
+        print(count)
+        count+=1
 
     # 文件重命名
     # url = 'https://testcloud.fir.ai/api/group/meeting/resource/update/'

@@ -14,7 +14,7 @@ def cyprex_decode(code):
     return result[0]
 
 if __name__=='__main__':
-    text = 'aGxEv1d22z08MlYk'
+    text = 'p9D6JRmEljRqbyNw'
     print(cyprex_decode(text))
 
 

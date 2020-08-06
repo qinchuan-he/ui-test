@@ -5,6 +5,7 @@ import os
 from common.comfunction import OpenBrowser
 from time import sleep
 import time
+import datetime
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from common.private import EmailProperty,folder_path,DB
@@ -220,13 +221,17 @@ def send_url():
     res = requests.get(url)
     print(res.text)
 
-
-
+def cv():
+    now = datetime.datetime.now()
+    query_time = now - datetime.timedelta(days=90, hours=now.hour, minutes=now.minute, seconds=now.second)
+    print(query_time)
 
 
 if __name__=='__main__':
-    send_url()
+    # send_url()
 
+    print(3205755-(1475182+1077967))
+    cv()
 
 
 
