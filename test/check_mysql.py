@@ -102,7 +102,7 @@ def send():
                   "<td>提取纯文本</td></tr><tr><td>报错信息</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "</table></body></html>".format(content_fail,html_fail,format_fail)
         send_mail(subject, content=content)
-
+    print('执行完成')
 
 if __name__=="__main__":
     # connection_mysql()
