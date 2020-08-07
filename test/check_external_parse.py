@@ -80,7 +80,7 @@ def check_ocr():
         current_day = time.strftime('%Y-%m-%d', time.localtime(time.time()))
         stdin, stdout, stderr = ssh_client.exec_command(
             "cat {} | grep {} | grep 'request_user_info' | awk '{{print {}}}'"
-            .format(ServerInfo().server_file_path_2, '2020-08-06', '$1" "$3" "$4'))
+            .format(ServerInfo().server_file_path_2, current_day, '$1" "$3" "$4'))
         msg = stdout.read().decode('utf-8')
 
         result_msg = msg.split('\n')
