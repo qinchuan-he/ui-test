@@ -37,6 +37,7 @@ def check_pdf_parse():
 
         # 获取文件在docker中路径
         inner_container_file_path = ServerInfo().inner_container_file_path
+        # cat info.log | grep 2020-08-07| grep 'request_user_info' | awk '{print $1" "$2" "$9" "$10}'
         stdin, stdout, stderr = ssh_client.exec_command(
             'docker cp  {}:{} {}'.format(container_id, inner_container_file_path, ServerInfo().server_folder_path))
         msg = stdout.read().decode('utf-8')
