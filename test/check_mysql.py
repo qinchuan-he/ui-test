@@ -106,7 +106,7 @@ def send():
         content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引</td><td>解析服务</td>" \
                   "<td>提取纯文本</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
                   "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
-                  "<td>任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "</table></body></html>".format(contes_result[0],html_result[0],format_result[0],contes_result[1]
                                                   ,html_result[1],format_result[1],contes_result[2],html_result[2]
                                                   ,format_result[2],contes_result[3],html_result[3],format_result[3])
@@ -116,7 +116,7 @@ def send():
         content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引</td><td>解析服务</td>" \
                   "<td>提取纯文本</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
                   "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
-                  "<td>任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "</table></body></html>".format(contes_result[0], html_result[0], format_result[0], contes_result[1]
                                                   , html_result[1], format_result[1], contes_result[2], html_result[2]
                                                   , format_result[2],contes_result[3],html_result[3],format_result[3])
