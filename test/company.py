@@ -2,7 +2,7 @@
 import time
 import requests
 from time import sleep
-cookie = {'fir_session_id':'naa2kpliextdaky1z52o4wxoboqvu4dy'}
+cookie = {'fir_session_id':'d2klnfvnxpc7su9acm459zys9b999cud'}
 
 def createUser(mobile:str):
     """ 企业后台中企业添加成员 ，需要企业管理员的session"""

@@ -9,7 +9,7 @@ host = 'http://192.168.1.57'
 def single_parse():
     url = host+'/apis/pdf2html/'
 
-    dir_path = r'D:\上传文件\pdf比对\数据组--公告'
+    dir_path = r'D:\上传文件\pdf比对\1专业数据\数据组--公告'
     files = os.listdir(dir_path)
     print(files)
     for i in files:
@@ -25,7 +25,7 @@ def single_two():
     url = host+'/apis/pdf2html/'
 
     # dir_path = r'D:\上传文件\pdf比对\1专业数据\识别结果问题数据\公告\f2783c17-7b3a-4940-b779-bdd984fb7dea.PDF' # 失败文件
-    dir_path = r'D:\上传文件\pdf比对\数据组--公告\SAAS供应链管理软件(1).pdf'
+    dir_path = r'D:\上传文件\pdf比对\1专业数据\数据组--公告\SAAS供应链管理软件(1).pdf'
     name = os.path.split(dir_path)[1]
     file_url = dir_path
     datas = {"filename": name, "url": ""}
@@ -47,8 +47,8 @@ def upload_image():
     print(host+'/show/?id='+re.findall('"id":"(.*?)"',res.text)[0])
 
 if __name__=="__main__":
-    # single_parse()
-    single_two()
+    single_parse()
+    # single_two()
     # upload_image()
 
 

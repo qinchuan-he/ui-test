@@ -61,7 +61,7 @@ def  openfile():
 def three():
     url = r'D:\work\1测试\3测试报告\日报\前端日志\cyprex_web\cyprex_web.log.2020-07-18'
     folder = r'D:\work\1测试\3测试报告\日报\前端日志\cyprex_web'
-    files = os.listdir(folder)
+    files = os.dir(folder)
 
     for s in files:
         file_url = os.path.join(folder,s)

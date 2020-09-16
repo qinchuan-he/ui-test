@@ -159,13 +159,18 @@ class search_result(object):
 
 # 新版本的站内搜索  2020-08-04
 class site_serach_rcheck():
-    cookie={'fir_session_id':'04cjzss0vbou6v16s1sqerilssz5l255'}
-    def get_result(self,search_keywords,search_type,clickSearch,tag_name=None,start_time=None,end_time=None,author_list=None):
+    cookie={'fir_session_id':'kstm0mpewpu7xux0zuzohliq95xn51cq'}
+
+    # ,2020-08-28调整，返回文件json结果
+    def get_result(self,search_keywords,search_type,clickSearch,page=None,tag_name=None,start_time=None,end_time=None,author_list=None):
         """ 获取分词"""
+        if not page:
+            page=1
+
         url = 'https://testcyprex.fir.ai/api/resource/search/'
         if start_time and end_time and author_list:
             parament = {'search_keywords': search_keywords, 'search_type': search_type, 'clickSearch': clickSearch, 'start_time': ''
-                , 'end_time': '', 'page_row': '20', 'page': '1', 'keywords_pos': '0', 'info_type': ''
+                , 'end_time': '', 'page_row': '20', 'page': str(page), 'keywords_pos': '0', 'info_type': ''
                 , 'ordering': 'score', 'author_list': '[]', 'is_correct': 'true'}
         else:
             parament = {'search_keywords': search_keywords, 'search_type': search_type, 'clickSearch': clickSearch,
@@ -175,27 +180,30 @@ class site_serach_rcheck():
         if tag_name:
             parament.setdefault('tag_name','')
         # print(parament)
-        res = requests.get(url=url,params=parament,cookies=self.cookie)
-        # print(res.text)
-        result = json.loads(res.text).get('data')
-        cut_words = result.get('cut_words')
-        similar_words = result.get('similar_words')
-        corrects = result.get('corrects')
-        # print(cut_words)
-        # print(similar_words)
-        # print(corrects)
-        return cut_words,similar_words,corrects
+        try:
+            res = requests.get(url=url,params=parament,cookies=self.cookie)
+            # print(res.text)
+            # result = json.loads(res.text).get('data')
+            # cut_words = result.get('cut_words')
+            # similar_words = result.get('similar_words')
+            # corrects = result.get('corrects')
+            # # print(cut_words)
+            # # print(similar_words)
+            # # print(corrects)
+            # return cut_words,similar_words,corrects
+            return json.loads(res.text)
+        except Exception as e:
+            return e
 
 
 
-
-# 阅读excel
+# 阅读excel,上面方法改了，需要改，或者使用时候把上面注释放开
 def read_excel():
     search_keywords = '中华人民共盒国'
     search_type = '002'
     clickSearch = 'false'
     tag_name = '126'
-    path = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5\搜索数据.xlsx'
+    path = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5和边写边搜插件\搜索数据.xlsx'
     wb = openpyxl.load_workbook(path)
     # for i in wb.worksheets:
     sheet = wb.worksheets[0]
@@ -215,10 +223,85 @@ def read_excel():
         if corrects:
             sheet.cell(i, 3).value=corrects[0]
         print('执行中...')
-    path_2 = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5\搜索数据'+time.strftime('%Y_%m_%d-%H_%M_%S',time.localtime(time.time()))+'.xlsx'
+    path_2 = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5和边写边搜插件\搜索数据'+time.strftime('%Y_%m_%d-%H_%M_%S',time.localtime(time.time()))+'.xlsx'
     wb.save(path_2)
     print('执行完成')
 
+# 检查特殊符号的搜索结果,本次检查后端是否有报错
+def symbolSearch():
+    search_keywords = '中华人民共盒国'
+    search_type = '002'
+    clickSearch = 'false'
+    msg_list = []
+    for i in symbol.english:
+        search_keywords = i
+        result = site_serach_rcheck().get_result(search_keywords, search_type, clickSearch)
+
+        try:
+            # print('{}==>{}'.format(i,result.get('msg')))
+
+            if result.get('status')==0:
+                print('{}----存在异常----'.format(i))
+            else:
+                num=result.get('data').get('data_list')
+                msg = {i: result.get('msg'),'num':len(num)}
+                msg_list.append(msg)
+        except Exception as e:
+            print(e)
+            msg = {i: e}
+            msg_list.append(msg)
+            continue
+    print(msg_list)
+
+def read_file_search():
+    search_type = '002'
+    clickSearch = 'false'
+    msg_list = []
+    path_2 = r'D:\work\3文档\招聘\d.txt'
+    path_3 = r'D:\work\3文档\招聘\f.txt'
+    with open(path_2,'r+',encoding='utf-8') as file:
+        with open(path_3,'a+',encoding='utf-8') as file_3:
+            while True:
+                search_keywords = file.readline()
+                if search_keywords:
+                    try:
+                        result = site_serach_rcheck().get_result(search_keywords, search_type, clickSearch)
+                        if result.get('status') == 0:
+                            print('{}----存在异常----'.format(search_keywords))
+                            s = {search_keywords:result.get('msg')}
+                            msg_list.append(s)
+                            file_3.write(search_keywords)
+                    except  Exception as e:
+                        s = {search_keywords: '出现异常'}
+                        msg_list.append(s)
+                        file_3.write(search_keywords)
+                        print('{}:{}'.format(e,search_keywords))
+
+                else:
+                    break
+    print('over')
+    print(msg_list)
+
+
+# 查询返回结果是否有em标签
+def search_mark():
+    search_type = '002'
+    clickSearch = 'false'
+    search_keywords='公司，股份，进入 哇哈哈'
+    try:
+        result = site_serach_rcheck().get_result(search_keywords, search_type, clickSearch)
+        num = result.get('data').get('page').get('total_pages')
+        for i in range(1,num+1):
+            print(i)
+            print('---------------------------')
+            result_1 = site_serach_rcheck().get_result(search_keywords, search_type, clickSearch,page=i)
+            data_list=result_1.get('data').get('data_list')
+            for j in data_list:
+                s=j.get('norm_content')
+                if '<' in s or '>' in s:
+                    print('{}:{}:{}'.format(j.get('oid'),j.get('name'),s))
+    except Exception as e:
+        print(e)
 
 
 if __name__=='__main__':
@@ -228,10 +311,11 @@ if __name__=='__main__':
     clickSearch='false'
     tag_name='126'
     path = r'D:\work\1测试\2用例\cypress系统\cyprex2.2.5\搜索数据.xlsx'
-    # site_serach_rcheck().get_result(search_keywords,search_type,clickSearch,tag_name)
-    read_excel()
-
-
+    # site_serach_rcheck().get_result(search_keywords,search_type,clickSearch)
+    # read_excel()
+    # symbolSearch()
+    # read_file_search()
+    search_mark()
 
 
 

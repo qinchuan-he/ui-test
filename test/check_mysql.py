@@ -75,13 +75,13 @@ def check_to_html():
     sql_s.append(sql_4)
     return sql_s
 
-# 提取纯文本
+# 提取纯文本,2020-09-16排除word
 def check_text_format():
     time_s = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-    sql_1 = "select count(1) from jobs_extractjob where extract_code='txt_format' and `status`='new';"
-    sql_2 = "select count(1) from jobs_extractjob where extract_code='txt_format' and `status`='running';"
-    sql_3 = "select count(1) from jobs_extractjob where extract_code='txt_format' and `status`='failed' and created > '{}';".format(time_s)
-    sql_4 = "select count(1) from jobs_extractjob where extract_code='txt_format'  and created > '{}';".format(time_s)
+    sql_1 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='new';"
+    sql_2 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='running';"
+    sql_3 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='failed' and created > '{}';".format(time_s)
+    sql_4 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and created > '{}';".format(time_s)
     sql_s = []
     sql_s.append(sql_1)
     sql_s.append(sql_2)
