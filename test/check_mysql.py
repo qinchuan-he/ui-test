@@ -32,12 +32,19 @@ def connection_mysql(sqls):
     count = []
     fail = []
     try:
-        for i in sqls:
-            # sql = "select count(1) from jobs_extractjob where `status`='new' or `status`='running'"
-            cur.execute(i)
-            s=cur.fetchall()
+        if type(sqls)==str:
+            cur.execute(sqls)
+            s = cur.fetchall()
             connect.commit()
             count.append(s[0][0])
+        else:
+            for i in sqls:
+                # sql = "select count(1) from jobs_extractjob where `status`='new' or `status`='running'"
+                # print(i)
+                cur.execute(i)
+                s=cur.fetchall()
+                connect.commit()
+                count.append(s[0][0])
     except Exception as e:
         connect.rollback()
         count.append(0)
@@ -130,10 +137,26 @@ def send():
     print('执行完成')
 
 
+# 定时检查接入公告数据，jenkins中每天定时执行
+def check_notice():
+    date = time.strftime('%y-%m-%d 00:00:00',time.localtime(time.time()))
+    notice_sql = "select count(1) from store_publicdatainfo where created > '{}'".format(date)
+    # print(notice_sql)
+    collect_result, content_fail = connection_mysql(notice_sql)
+    # print(collect_result)
+    # print(collect_result[0])
+    if collect_result[0]==0:
+        subject = '公告未获取到'
+        # content = "<html><header></header><body>今日公告获取数量为:{}</body></html>".format(collect_result[0])
+        content = "<html><header></header><body>今日公告获取数量为:0</body></html>"
+        send_mail(subject, content=content)
+    print('公告获取检查，执行完成')
+
+
 if __name__=="__main__":
     # connection_mysql()
     send()
-
+    # check_notice()
 
 
 

@@ -10,6 +10,7 @@ from common.private import ServerInfo
 import time
 from common.comfunction import send_mail
 
+
 """
 任务：接口测试账号：PDF解析+OCR解析根据IP每天自动发调用量+明细
 实现：检查221服务器中的日志，输出查询的结果发送邮件

@@ -130,24 +130,35 @@ def three():
     print('完毕')
 
 def four():
-    path = r'D:\work\3文档\招聘\abc.txt'
-    path_2 = r'D:\work\3文档\招聘\d.txt'
-    with open(path,'r+',encoding='utf-8') as file:
-        s=file.readline()
-        with open(path_2,'a+',encoding='utf-8') as file_2:
-            for i in range(1,int(len(s)/10)):
-                file_2.write(s[i*10:i*10+random.randint(0,20)])
-                file_2.write('\n')
+    url = 'http://192.168.1.211:8030/user_data_index_233/user_data_index_233/91c18fce-7fa3-4cca-b24d-dace6ad5c771'
+    res = requests.get(url=url)
+    result=str(json.loads(res.text).get('_source').get('content'))
+    s = result.replace(' ','')
+    print(len(s))
 
     print('操作完毕')
 
+
+def five():
+    mob = '10025666973'
+    company='!@#@$#%^'
+    source='1001' # 官网-企业
+    # source='1003' # 官网-个人
+    url = 'https://testcyprexsvc.fir.ai/account/userInfoCollect/'
+    if source=='1001':
+        data = {'name': mob, 'phone': mob, 'company': company, 'source': source}
+    else:
+        data = {'name': mob, 'phone': mob, 'source': source}
+    res = requests.post(url=url,data=data)
+    print(res.text)
 
 
 if __name__=='__main__':
     # one()
     # two(88488)
     # three()
-    four()
+    # four()
+    five()
     # getcut()
     # send_login()
     # getPrivateFile()

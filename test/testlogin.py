@@ -37,7 +37,7 @@ class login_test(login.MyTest):
         sleep(5)
         # sleep(1.5)
         # driver.find_element_by_xpath("//a[text()='私有资料']").click()
-        # WebDriverWait(self.driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
+        # WebDriverWait(self.driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='要点摘录']")))
     def test_login2(self):
         '''第二个用例'''
         self.driver.find_element_by_xpath("//span[text()='账号登录']").click()
@@ -45,7 +45,7 @@ class login_test(login.MyTest):
         self.driver.find_element_by_id("password").send_keys('Test123456')
         self.driver.find_element_by_xpath(
             "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
-        WebDriverWait(self.driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
+        WebDriverWait(self.driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='要点摘录']")))
         sleep(0.5)
         createType = "create"
         el11 = self.driver.find_element_by_xpath("//span[text()='新建']/..")

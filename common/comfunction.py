@@ -92,7 +92,7 @@ class User:
         # sleep(1.5)
         # driver.find_element_by_xpath("//a[text()='私有资料']").click()
         User().root_private(driver)
-        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
+        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='要点摘录']")))
 
     def login2(self,driver=None,new_user=None,password=None):
         """ 登录错误使用"""
@@ -208,8 +208,8 @@ class team:
         if team_name==None:
             team_name = "验证的团队"
         try:
-            WebDriverWait(driver, 2, 0.5).until(ec.presence_of_element_located((By.XPATH, "//span[text()='验证的团队']")))
-            driver.find_element_by_xpath("//span[text()='验证的团队']").click()  # 修改规则为新建之后直接进去
+            WebDriverWait(driver, 2, 0.5).until(ec.presence_of_element_located((By.XPATH, "//span[text()='"+team_name+"']")))
+            driver.find_element_by_xpath("//span[text()='"+team_name+"']").click()  # 修改规则为新建之后直接进去
         except Exception as e:
             print("团队不存在准备新建")
             driver.find_element_by_xpath("//span[text()='创建新项目']/..").click()
@@ -832,7 +832,7 @@ class com_xpath(object):
     # log定位
     def com_log(self, driver):
         User().root_private(driver)
-        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='碎片素材']")))
+        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='要点摘录']")))
 
     # 智能搜索输入框,传入driver和位置,传入值认为是问答搜索
     def smart_search(self,driver,position=None):
