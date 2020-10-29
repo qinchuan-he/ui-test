@@ -20,11 +20,11 @@ import time
 
 # 连接mysql
 def connection_mysql(sqls):
-    m_host = DB.host_pd
-    m_port = int(DB.port_pd)
-    m_data = DB.db_pd_storage
-    m_user = DB.user_pd
-    m_pwd = DB.pwd_pd
+    m_host = DB.host
+    m_port = int(DB.port)
+    m_data = DB.db_storage
+    m_user = DB.user
+    m_pwd = DB.pwd
     m_charset='utf8'
     connect = pymysql.connect(host=m_host,port=m_port,database=m_data,user=m_user,password=m_pwd,charset=m_charset)
 
