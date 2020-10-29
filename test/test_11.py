@@ -152,16 +152,63 @@ def five():
     res = requests.post(url=url,data=data)
     print(res.text)
 
+def six():
+    url = 'http://192.168.1.225:8080/plugins/servlet/embedded-crowd/directories/troubleshoot/'
+    data_s = {'username':'admin','password':'fir2018518','test':'测试设置','atl_token':'c6beade1dc846869f1ab2e4916fb37dcb76e69fe','directoryId':'10000',}
+    res = requests.post(url=url,data=data_s)
+    print(res.text)
+
+
+def check_serch_repeat():
+    compare = '1208318237'
+    compare=[]
+
+    cookie = {'fir_session_id':'vzc15ehmalssgxe8wv980ld28algrrbn'}
+    url1='https://testcyprex.fir.ai/api/resource/publicSearch/?url=%2Fresource%2FpublicSearch%2F&search_keywords=%E5%9B%BD%E6%B3%B0%E5%90%9B%E5%AE%89%20%E5%90%88%E7%BA%B5%E7%A7%91%E6%8A%80%20%E8%88%AA%E5%8F%91%E5%8A%A8%E5%8A%9B&table_code=004&info_type=02&ordering=last_open_time&search_level=1&start_time=&end_time=&page_row=20&page=1&author_list=%5B%5D&is_correct=true'
+    res1 = requests.get(url=url1,cookies=cookie)
+    res1_json=json.loads(res1.text)
+    for k in res1_json.get('data').get('results')[0].get('data_list'):
+        compare.append(k.get('file_id'))
+    print(compare)
+
+    url = 'https://testcyprex.fir.ai/api/resource/publicSearch/?url=%2Fresource%2FpublicSearch%2F&search_keywords=%E5%90%88%E7%BA%B5%E7%A7%91%E6%8A%80%20%E5%9B%BD%E6%B3%B0%E5%90%9B%E5%AE%89&table_code=004&info_type=02&search_pattern=01&ordering=last_open_time&search_level=1&start_time=&end_time=&page_row=20&page=1&author_list=%5B%5D&is_correct=true&exclude_ids=1208534207&exclude_ids=1208317877&exclude_ids=1208534209&exclude_ids=1208534208&exclude_ids=1208318237'
+    res = requests.get(url=url,cookies=cookie)
+    result = json.loads(res.text)
+    # print(result.get('data').get('results')[0].get('data_list')[0].get('file_id'))
+    num = result.get('data').get('results')[0].get('page').get('total_pages')
+
+    for i in range(1,num+1):
+        url2 = 'https://testcyprex.fir.ai/api/resource/publicSearch/?url=%2Fresource%2FpublicSearch%2F&search_keywords=%E5%90%88%E7%BA%B5%E7%A7%91%E6%8A%80%20%E5%9B%BD%E6%B3%B0%E5%90%9B%E5%AE%89&table_code=004&info_type=02&search_pattern=01&ordering=last_open_time&search_level=1&start_time=&end_time=&page_row=20' \
+               '&page='+str(i)+'&author_list=%5B%5D&is_correct=true&exclude_ids=1208534207&exclude_ids=1208317877&exclude_ids=1208534209&exclude_ids=1208534208&exclude_ids=1208318237'
+        res2 = requests.get(url=url2,cookies=cookie)
+        result2=json.loads(res2.text)
+        data_list=result2.get('data').get('results')[0].get('data_list')
+        for j in data_list:
+            # print(j.get('file_id'))
+            if j.get('file_id')==compare:
+                print('存在相同的:{}页，file_id：{}'.format(i,compare))
+            # if j.get('file_id')in compare:
+            #     print('存在相同的:{}页，file_id：{}'.format(i,compare))
+        if i >15:
+            break
+
+def test_date():
+    now = time.time()
+    now_1=now+183*24*60*60
+    print(now)
+    print(time.strftime('%Y-%m-%d',time.localtime(now_1)))
 
 if __name__=='__main__':
     # one()
     # two(88488)
     # three()
     # four()
-    five()
+    # five()
+    # six()
     # getcut()
     # send_login()
     # getPrivateFile()
     # getTeamList()
-
+    # check_serch_repeat()
+    test_date()
 

@@ -5,10 +5,16 @@ import sys
 import shutil
 import requests
 import json
+import pymysql
 from concurrent.futures import ThreadPoolExecutor
-
+from common.private import UserProperty,DB
+from common.decode import cyprex_decode
+import time
+from time import sleep
 # 文件操作
-
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.insert(0,rootPath)
 
 
 
@@ -56,6 +62,97 @@ def uploadFile(file,file_name,team_id,pid=None,folder=None):
                 continue
     print('--执行完成--')
 
+# 检查上传文件是否生成对应任务（word+pdf）,传入文件
+def check_parsejobs(file,fir_session_id=None):
+    # 需要检查的任务
+    word_jobs = ['to_html','to_pdf','to_content','bookmarks','thumbnail','extract_pagenum','extract_images']
+    pdf_jobs = ['to_html','to_content','to_html','txt_format','thumbnail','extract_images','file_tables']
+    # 1.准备上传，
+    if fir_session_id:
+        cookie = {'fir_session_id':fir_session_id}
+    else:
+        cookie = {'fir_session_id':'nbony33gvvd8onrmalf5ae5lulohq8jo'}
+    url = UserProperty().SYSTEM+'/resource/upload/whole/'
+    file_s={'file':open(file,'rb')}
+    data_s={'file_info': '{"name":"'+os.path.split(file)[1]+'","task_id":'+str(time.time())+'}'}
+    res = requests.post(url=url,data=data_s,files=file_s,cookies=cookie)
+    # print(res.text)
+    # 获取上传成功返回id
+    id_encryption=json.loads(res.text).get('data').get('meta_info').get('id')
+    id = cyprex_decode(id_encryption)
+    print(id)
+    sleep(10) # 上传成功之后等待一定时间生成任务
+    # 通过id获取到file_id
+    host = DB.host_test
+    db_c = DB.db_test_cyprex
+    db_s = DB.db_test_storage
+    port=int(DB.port_test)
+    user = DB.user_test
+    pwd=DB.pwd_test
+    char_set='utf8'
+    connection_1 = pymysql.connect(host=host,port=port,database=db_c,user=user,password=pwd,charset=char_set)
+    connection_2 = pymysql.connect(host=host,port=port,database=db_s,user=user,password=pwd,charset=char_set)
+    cur1 = connection_1.cursor()
+    cur2 = connection_2.cursor()
+    sql_1 = 'select fileId from resources_resourcedatads where resource_id={}'.format(id)
+    job_list = []
+    file_id=''
+    try:
+        cur1.execute(sql_1)
+        connection_1.commit()
+        file_id=cur1.fetchone()[0] # 获取查询结果第一个中的第一个结果（只有这唯一一个结果）
+        cur1.close()
+        print(file_id)
+        #  通过file_id 查询是否生成任务
+        sql_2 = "select extract_code from jobs_extractjob where file_id='{}'".format(file_id)
+        cur2.execute(sql_2)
+        connection_2.commit()
+        jobs=cur2.fetchall()
+        cur2.close()
+        print(jobs)
+        for i in jobs:
+            # print(i)
+            job_list.append(i[0]) # 元组转换成数组
+    except Exception as e:
+        # connection_1.rollback()  # 查询不需要回滚
+        # connection_2.rollback()
+        print(e)
+    # finally:
+    # print(job_list)
+    connection_1.close()
+    connection_2.close()
+    suffix = os.path.splitext(file)[1]
+    result_msg = ''
+    if suffix.lower() in ['.docx','.doc']:
+        for i in word_jobs:
+            if i not in job_list:
+                print('上传word文件没有生成 {} 任务'.format(i))
+                result_msg = result_msg + i +'，'
+        if len(result_msg)>0:
+            # result_msg=result_msg[:-1:]
+            result_msg =   '上传word文件没有生成：' + result_msg[:-1] + '任务。file_id：'+file_id+'<br>'
+
+    elif suffix.lower() =='.pdf':
+        for i in pdf_jobs:
+            if i not in job_list:
+                print('上传pdf文件没有生成 {} 任务'.format(i))
+                result_msg = result_msg + i +'，'
+        if len(result_msg)>0:
+            # result_msg = result_msg[:-1:]
+            result_msg =  '上传pdf文件没有生成：' + result_msg[:-1] + '任务。file_id：'+file_id+'<br>'
+    else:
+        print('上传格式不对')
+    # 检查完成之后删除文件
+    url_2 = UserProperty().SYSTEM+'/resource/merge/delete/'
+    data_s2 = {'src_list': '[{"id":"'+id_encryption+'","type":"info"}]'}
+    res2 = requests.post(url=url_2,data=data_s2,cookies=cookie)
+    print(res2.text)
+    return result_msg
+
+
+
+
+# 线程池
 def manyThread():
     threads = ThreadPoolExecutor(max_workers=6)
     folder_path = os.path.dirname(os.path.abspath(__file__))
@@ -79,7 +176,7 @@ def manyThread():
     file_s.append(files_6)
     for i in range(6):
         future = threads.submit(uploadFile, file_s[i], file_name, team_id, pid, folder_path)
-        print('启动线程')
+        print('启动线程池')
     threads.shutdown(wait=True)
 
 
@@ -91,8 +188,10 @@ def manyThread():
 if __name__=='__main__':
     # copyFile()
     # uploadFile()
-    manyThread()
-
+    # manyThread()
+    file = os.path.join(r'D:\上传文件\自动化验证文档\回归的word文档.docx')
+    file = os.path.join(r'D:\上传文件\自动化验证文档\2018-0403_origin.pdf')
+    check_parsejobs(file)
 
 
 

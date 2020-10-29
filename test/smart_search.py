@@ -1,6 +1,8 @@
 # coding = utf-8
 
 # 智能搜索验证,其中包含了jmeter报告的检查方法
+from concurrent.futures.thread import ThreadPoolExecutor
+
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as ec
@@ -304,6 +306,90 @@ def search_mark():
         print(e)
 
 
+# 检查公告实体，目前实体对应公司，通过公司股票代码，简称，全程去对应
+def check_entity(key):
+    cookie = {'fir_session_id':'czcoaqfce9mgwsipavzr2j5d1k2cfqvl'}
+    if type(key)==str:
+        key='国泰君安'
+        url = 'https://testcyprex.fir.ai/api/resource/publicSearch/?url=%2Fresource%2FpublicSearch%2F&' \
+              'search_keywords=' + key + '&table_code=004&info_type=02&ordering=score' \
+                                         '&search_level=1&start_time=&end_time=&page_row=20&page=2&author_list=%5B%5D&is_correct=true'
+        res = requests.get(url=url, cookies=cookie)
+        # print(res.text)
+        expand_list = json.loads(res.text).get('data').get('results')[0].get('expand')
+        print(expand_list)
+    else:
+        for i in key:
+            url = 'https://testcyprex.fir.ai/api/resource/publicSearch/?url=%2Fresource%2FpublicSearch%2F&' \
+                  'search_keywords='+i+'&table_code=004&info_type=02&ordering=score' \
+                  '&search_level=1&start_time=&end_time=&page_row=20&page=2&author_list=%5B%5D&is_correct=true'
+            res = requests.get(url=url,cookies=cookie)
+            # print(res.text)
+            expand_list=json.loads(res.text).get('data').get('results')[0].get('expand')
+            # print(expand_list)
+            if i not in expand_list:
+                print('{}:命中实体有问题'.format(i))
+def aac():
+    # 读取Excel文件
+    path = os.path.join(r'D:\work\1测试\16测试数据\entity.xlsx')
+    cookie = {'fir_session_id': 'czcoaqfce9mgwsipavzr2j5d1k2cfqvl'}
+    wk = openpyxl.load_workbook(path)
+    key_list = []
+    for i in wk.worksheets:
+        rows = i.max_row
+        for j in range(rows):
+            cell = i.cell(j+1,1).value
+            key = cell.split(',')[0]
+            # print(type(cell))
+            # print(cell.split(',')[0])
+            #
+            # url = 'https://testcyprex.fir.ai/api/resource/publicSearch/?url=%2Fresource%2FpublicSearch%2F&' \
+            #       'search_keywords='+key+'&table_code=004&info_type=02&ordering=score' \
+            #       '&search_level=1&start_time=&end_time=&page_row=20&page=2&author_list=%5B%5D&is_correct=true'
+            # res = requests.get(url=url, cookies=cookie)
+            # # print(res.text)
+            # expand_list = json.loads(res.text).get('data').get('results')[0].get('expand')
+            # if key not in expand_list:
+            #     print('{}拓展有问题'.format(key))
+
+            # print(expand_list)
+            key_list.append(key)
+    return key_list
+
+def threads_entity():
+    # 实体开启多线程
+    files = aac()
+    threads = ThreadPoolExecutor(max_workers=6)
+    file_s = []
+    num = int(len(files) / 6)
+    files_1 = files[0:num]
+    files_2 = files[num:2 * num]
+    files_3 = files[2 * num:3 * num]
+    files_4 = files[3 * num:4 * num]
+    files_5 = files[4 * num:5 * num]
+    files_6 = files[5 * num:]
+    file_s.append(files_1)
+    file_s.append(files_2)
+    file_s.append(files_3)
+    file_s.append(files_4)
+    file_s.append(files_5)
+    file_s.append(files_6)
+    # 线程池启动
+    for i in range(6):
+        future=threads.submit(check_entity,file_s[i])
+        print('启动线程{}'.format(i))
+    threads.shutdown(wait=True)
+
+
+
+
+
+
+
+
+
+
+
 if __name__=='__main__':
     # search_keywords='国泰军安'
     search_keywords = '中华人民共盒国'
@@ -315,9 +401,10 @@ if __name__=='__main__':
     # read_excel()
     # symbolSearch()
     # read_file_search()
-    search_mark()
-
-
+    # search_mark()
+    # check_entity()
+    # aac()
+    threads_entity()
 
 
 

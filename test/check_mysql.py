@@ -110,8 +110,8 @@ def send():
     fail_percentage=(contes_result[2]+html_result[2]+format_result[2])/(contes_result[3]+html_result[3]+format_result[3])
     if sum>50:
         subject = '任务检查,任务堆积超过50条'
-        content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引</td><td>解析服务</td>" \
-                  "<td>提取纯文本</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
+        content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
+                  "<td>提取纯文本(txt_format)</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
                   "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "</table></body></html>".format(contes_result[0],html_result[0],format_result[0],contes_result[1]
@@ -120,8 +120,8 @@ def send():
         send_mail(subject, content=content)
     elif fail_percentage>0.05 or fail_sum>50:
         subject = '任务检查,失败任务过多'
-        content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引</td><td>解析服务</td>" \
-                  "<td>提取纯文本</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
+        content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
+                  "<td>提取纯文本(txt_format)</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
                   "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "</table></body></html>".format(contes_result[0], html_result[0], format_result[0], contes_result[1]
@@ -130,14 +130,14 @@ def send():
         send_mail(subject, content=content)
     if content_fail or html_fail or format_fail:
         subject = 'sql查询有报错'
-        content = "<html><header></header><body><table><tr><td>分类</td><td>创建索引</td><td>解析服务</td>" \
-                  "<td>提取纯文本</td></tr><tr><td>报错信息</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+        content = "<html><header></header><body><table><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
+                  "<td>提取纯文本(txt_format)</td></tr><tr><td>报错信息</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
                   "</table></body></html>".format(content_fail,html_fail,format_fail)
         send_mail(subject, content=content)
     print('执行完成')
 
 
-# 定时检查接入公告数据，jenkins中每天定时执行
+# 定时检查接入公告数据，jenkins中每天定时执行，目前每天下午5点
 def check_notice():
     date = time.strftime('%y-%m-%d 00:00:00',time.localtime(time.time()))
     notice_sql = "select count(1) from store_publicdatainfo where created > '{}'".format(date)

@@ -42,6 +42,8 @@ def create_indexs(user_id):
         print(e)
         connect.rollback()
         connect2.rollback()
+    connect.close()
+    connect2.close()
 
 # 创建索引,用户团队数据（往job表插数据）
 def create_team_indexs():
