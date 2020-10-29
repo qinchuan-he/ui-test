@@ -1,7 +1,11 @@
 
 
 
-
+import os
+import sys
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.insert(0,rootPath)
 from hashids import Hashids
 from common.private import InterBaseUrl
 
