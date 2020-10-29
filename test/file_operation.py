@@ -65,7 +65,6 @@ def uploadFile(file,file_name,team_id,pid=None,folder=None):
 
 # 检查上传文件是否生成对应job任务（word+pdf）,传入文件，加长等待时间是因为，发现实际线上比较慢
 def check_parsejobs(file,fir_session_id=None):
-    print('fir_session_id={}'.format(fir_session_id))
     # 需要检查的任务
     word_jobs = ['to_html','to_pdf','to_content','bookmarks','thumbnail','extract_pagenum','extract_images']
     pdf_jobs = ['to_html','to_content','to_html','txt_format','thumbnail','extract_images','file_tables']
@@ -74,7 +73,6 @@ def check_parsejobs(file,fir_session_id=None):
         cookie = {'fir_session_id':fir_session_id}
     else:
         cookie = {'fir_session_id':'nbony33gvvd8onrmalf5ae5lulohq8jo'}
-    print(cookie)
     url = InterBaseUrl().Base_url+'/resource/upload/whole/'
     file_s={'file':open(file,'rb')}
     data_s={'file_info': '{"name":"'+os.path.split(file)[1]+'","task_id":'+str(time.time())+'}'}

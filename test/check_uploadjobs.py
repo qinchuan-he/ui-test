@@ -19,6 +19,7 @@ def login():
     print('url:'+url)
     data_s ={'type':'account','username_no':name,'passwd':UserProperty().pwd,'validCode':'','inviteCode':'','userId':'','teamId':''}
     res = requests.post(url=url,data=data_s)
+    print(res.text)
     fir_session_id = res.headers.get('Set-Cookie').split(';')[0].split('fir_session_id=')[1]
     return fir_session_id
 
