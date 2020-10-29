@@ -7,14 +7,15 @@ curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.insert(0,rootPath)
 from test.file_operation import check_parsejobs
-from common.private import UserProperty
+from common.private import UserProperty,InterBaseUrl
 from common.comfunction import send_mail
 import requests
 import json
 
 def login():
     name = UserProperty().user_check1
-    url = UserProperty().SYSTEM+'/account/user/signin/'
+    url = InterBaseUrl().Base_url+'/account/user/signin/'
+    print('url:'+url)
     data_s ={'type':'account','username_no':name,'passwd':UserProperty().pwd,'validCode':'','inviteCode':'','userId':'','teamId':''}
     res = requests.post(url=url,data=data_s)
     fir_session_id = res.headers.get('Set-Cookie').split(';')[0].split('fir_session_id=')[1]

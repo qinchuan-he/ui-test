@@ -10,7 +10,7 @@ import requests
 import json
 import pymysql
 from concurrent.futures import ThreadPoolExecutor
-from common.private import UserProperty,DB
+from common.private import UserProperty,DB,InterBaseUrl
 from common.decode import cyprex_decode
 import time
 from time import sleep
@@ -63,8 +63,9 @@ def uploadFile(file,file_name,team_id,pid=None,folder=None):
                 continue
     print('--执行完成--')
 
-# 检查上传文件是否生成对应任务（word+pdf）,传入文件
+# 检查上传文件是否生成对应job任务（word+pdf）,传入文件，加长等待时间是因为，发现实际线上比较慢
 def check_parsejobs(file,fir_session_id=None):
+    print('fir_session_id={}'.format(fir_session_id))
     # 需要检查的任务
     word_jobs = ['to_html','to_pdf','to_content','bookmarks','thumbnail','extract_pagenum','extract_images']
     pdf_jobs = ['to_html','to_content','to_html','txt_format','thumbnail','extract_images','file_tables']
@@ -73,7 +74,8 @@ def check_parsejobs(file,fir_session_id=None):
         cookie = {'fir_session_id':fir_session_id}
     else:
         cookie = {'fir_session_id':'nbony33gvvd8onrmalf5ae5lulohq8jo'}
-    url = UserProperty().SYSTEM+'/resource/upload/whole/'
+    print(cookie)
+    url = InterBaseUrl().Base_url+'/resource/upload/whole/'
     file_s={'file':open(file,'rb')}
     data_s={'file_info': '{"name":"'+os.path.split(file)[1]+'","task_id":'+str(time.time())+'}'}
     res = requests.post(url=url,data=data_s,files=file_s,cookies=cookie)
@@ -82,14 +84,14 @@ def check_parsejobs(file,fir_session_id=None):
     id_encryption=json.loads(res.text).get('data').get('meta_info').get('id')
     id = cyprex_decode(id_encryption)
     print(id)
-    sleep(10) # 上传成功之后等待一定时间生成任务
+    sleep(12) # 上传成功之后等待一定时间生成任务
     # 通过id获取到file_id
-    host = DB.host_test
-    db_c = DB.db_test_cyprex
-    db_s = DB.db_test_storage
-    port=int(DB.port_test)
-    user = DB.user_test
-    pwd=DB.pwd_test
+    host = DB.host
+    db_c = DB.db_cyprex
+    db_s = DB.db_storage
+    port=int(DB.port)
+    user = DB.user
+    pwd=DB.pwd
     char_set='utf8'
     connection_1 = pymysql.connect(host=host,port=port,database=db_c,user=user,password=pwd,charset=char_set)
     connection_2 = pymysql.connect(host=host,port=port,database=db_s,user=user,password=pwd,charset=char_set)
@@ -104,16 +106,21 @@ def check_parsejobs(file,fir_session_id=None):
         file_id=cur1.fetchone()[0] # 获取查询结果第一个中的第一个结果（只有这唯一一个结果）
         cur1.close()
         print(file_id)
+        sleep(28)  # 等待job任务生成
         #  通过file_id 查询是否生成任务
-        sql_2 = "select extract_code from jobs_extractjob where file_id='{}'".format(file_id)
-        cur2.execute(sql_2)
-        connection_2.commit()
-        jobs=cur2.fetchall()
-        cur2.close()
-        print(jobs)
-        for i in jobs:
-            # print(i)
-            job_list.append(i[0]) # 元组转换成数组
+        if file_id:
+            sql_2 = "select extract_code from jobs_extractjob where file_id='{}'".format(file_id)
+            cur2.execute(sql_2)
+            connection_2.commit()
+            jobs=cur2.fetchall()
+            cur2.close()
+            print(jobs)
+            for i in jobs:
+                # print(i)
+                job_list.append(i[0]) # 元组转换成数组
+        else:
+            print('未获取到file_id')
+
     except Exception as e:
         # connection_1.rollback()  # 查询不需要回滚
         # connection_2.rollback()
@@ -144,10 +151,12 @@ def check_parsejobs(file,fir_session_id=None):
     else:
         print('上传格式不对')
     # 检查完成之后删除文件
-    url_2 = UserProperty().SYSTEM+'/resource/merge/delete/'
+    url_2 = InterBaseUrl().Base_url+'/resource/merge/delete/'
     data_s2 = {'src_list': '[{"id":"'+id_encryption+'","type":"info"}]'}
     res2 = requests.post(url=url_2,data=data_s2,cookies=cookie)
     print(res2.text)
+    if len(result_msg)==0:
+        print('任务都生成了')
     return result_msg
 
 
