@@ -3,10 +3,10 @@
 # 检查上传word+PDF是否生成对应job任务
 import os
 import sys
-from test.file_operation import check_parsejobs
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.insert(0,rootPath)
+from test.file_operation import check_parsejobs
 from common.private import UserProperty
 from common.comfunction import send_mail
 import requests
