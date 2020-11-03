@@ -107,7 +107,12 @@ def send():
 
     sum = contes_result[0]+contes_result[1]+html_result[0]+html_result[1]+format_result[0]+format_result[1]
     fail_sum = contes_result[2]+html_result[2]+format_result[2]
-    fail_percentage=(contes_result[2]+html_result[2]+format_result[2])/(contes_result[3]+html_result[3]+format_result[3])
+    # fail_percentage=(contes_result[2]+html_result[2]+format_result[2])/(contes_result[3]+html_result[3]+format_result[3])
+    fail_percentage_1 = contes_result[2]/contes_result[3]
+    fail_percentage_2 = html_result[2]/html_result[3]
+    fail_percentage_3 = format_result[2]/format_result[3]
+    fail_percentage_max=max(fail_percentage_1,fail_percentage_2,fail_percentage_3)
+    # print(fail_percentage_1,fail_percentage_2,fail_percentage_3,fail_percentage_max)
     if sum>50:
         subject = '任务检查,任务堆积超过50条'
         content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
@@ -118,8 +123,8 @@ def send():
                                                   ,html_result[1],format_result[1],contes_result[2],html_result[2]
                                                   ,format_result[2],contes_result[3],html_result[3],format_result[3])
         send_mail(subject, content=content)
-    elif fail_percentage>0.05 or fail_sum>50:
-        subject = '任务检查,失败任务过多'
+    elif fail_percentage_max>0.05 or fail_sum>50:
+        subject = '任务检查,失败任务超出指标'
         content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
                   "<td>提取纯文本(txt_format)</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
                   "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
