@@ -557,8 +557,8 @@ def send_mail(subject, fileurl):
     smtp.quit()
 
 
-# 重构发送邮件方法，添加了附件参数
-def send_mail(subject, fileurl=None, addfileurl=None, addfilename=None,content=None):
+# 重构发送邮件方法，添加了附件参数2020-11-0增加接收者参数receive（默认为空）
+def send_mail(subject, fileurl=None, addfileurl=None, addfilename=None,content=None,receive=None):
     # 配置发送邮件参数
     # 发送邮箱服务器
     smtpServer = "smtp.exmail.qq.com"
@@ -568,7 +568,10 @@ def send_mail(subject, fileurl=None, addfileurl=None, addfilename=None,content=N
     # 发送邮箱
     sender = EmailProperty().SEND_EMAIL
     # 接收邮箱
-    receiver = EmailProperty().RECEVI_EMAIL
+    if receive:
+        receiver = receive
+    else:
+        receiver = EmailProperty().RECEVI_EMAIL
     # receiver = "xiaohui.zhou@fir.ai"
     # 发送邮件主题
     subject = subject

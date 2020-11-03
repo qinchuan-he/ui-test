@@ -57,43 +57,49 @@ def connection_mysql(sqls):
 #创建索引
 def check_to_content():
     time_s = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-    sql_1 = "select count(1) from jobs_extractjob where extract_code='to_content' and `status`='new';"
-    sql_2 = "select count(1) from jobs_extractjob where extract_code='to_content' and `status`='running';"
+    sql_1 = "select count(1) from jobs_extractjob where extract_code='to_content' and `status`='new' and created > '{}';".format(time_s)
+    sql_2 = "select count(1) from jobs_extractjob where extract_code='to_content' and `status`='running'and created > '{}';".format(time_s)
     sql_3 = "select count(1) from jobs_extractjob where extract_code='to_content' and `status`='failed'and created > '{}';".format(time_s)
     sql_4 = "select count(1) from jobs_extractjob where extract_code='to_content' and created > '{}';".format(time_s)
+    sql_5 = "select count(1) from jobs_extractjob where extract_code='to_content' and `status`='succeed' and created > '{}';".format(time_s)
     sql_s = []
     sql_s.append(sql_1)
     sql_s.append(sql_2)
     sql_s.append(sql_3)
     sql_s.append(sql_4)
+    sql_s.append(sql_5)
     return sql_s
 
 # 文件解析
 def check_to_html():
     time_s = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-    sql_1 = "select count(1) from jobs_extractjob where extract_code='to_html' and `status`='new';"
-    sql_2 = "select count(1) from jobs_extractjob where extract_code='to_html' and `status`='running';"
+    sql_1 = "select count(1) from jobs_extractjob where extract_code='to_html' and `status`='new' and created > '{}';".format(time_s)
+    sql_2 = "select count(1) from jobs_extractjob where extract_code='to_html' and `status`='running' and created > '{}';".format(time_s)
     sql_3 = "select count(1) from jobs_extractjob where extract_code='to_html' and `status`='failed' and created > '{}';".format(time_s)
     sql_4 = "select count(1) from jobs_extractjob where extract_code='to_html'  and created > '{}';".format(time_s)
+    sql_5 = "select count(1) from jobs_extractjob where extract_code='to_html' and `status`='succeed' and created > '{}';".format(time_s)
     sql_s = []
     sql_s.append(sql_1)
     sql_s.append(sql_2)
     sql_s.append(sql_3)
     sql_s.append(sql_4)
+    sql_s.append(sql_5)
     return sql_s
 
-# 提取纯文本,2020-09-16排除word
+# 提取纯文本,2020-09-16排除word,2020-11-3修改，new和running的只统计当天的
 def check_text_format():
     time_s = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-    sql_1 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='new';"
-    sql_2 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='running';"
+    sql_1 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='new' and created > '{}';".format(time_s)
+    sql_2 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='running' and created > '{}';".format(time_s)
     sql_3 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and `status`='failed' and created > '{}';".format(time_s)
     sql_4 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type <>'400' and created > '{}';".format(time_s)
+    sql_5 = "select count(1) from jobs_extractjob where extract_code='txt_format' and `status`='succeed' and created > '{}';".format(time_s)
     sql_s = []
     sql_s.append(sql_1)
     sql_s.append(sql_2)
     sql_s.append(sql_3)
     sql_s.append(sql_4)
+    sql_s.append(sql_5)
     return sql_s
 
 # 检查并发送邮件
@@ -133,6 +139,26 @@ def send():
                                                   , html_result[1], format_result[1], contes_result[2], html_result[2]
                                                   , format_result[2],contes_result[3],html_result[3],format_result[3])
         send_mail(subject, content=content)
+    # 2020-11-03 增加每隔两小时发送一份邮件，统计当天的任务情况
+    time_array= [8,10,12,14,16,18,20,22]
+    nowtime = time.strftime('%y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    nowtime_h = int(nowtime.split(' ')[1].split(':')[0])
+    nowtime_m = int(nowtime.split(' ')[1].split(':')[1])
+    if nowtime_m < 30 and nowtime_h in time_array:
+        print('准备发送邮件')
+        subject = nowtime+'当天job任务情况'
+        content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
+                  "<td>提取纯文本(txt_format)</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
+                  "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr><tr>" \
+                  "<td>成功</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "</table></body></html>".format(contes_result[0], html_result[0], format_result[0], contes_result[1]
+                                                  , html_result[1], format_result[1], contes_result[2], html_result[2]
+                                                  , format_result[2],  contes_result[4], html_result[4],
+                                                  format_result[4] ,contes_result[3], html_result[3],
+                                                  format_result[3])
+        send_mail(subject, content=content,receive=EmailProperty().OTHER_EMAIL)
+
     if content_fail or html_fail or format_fail:
         subject = 'sql查询有报错'
         content = "<html><header></header><body><table><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
@@ -158,10 +184,23 @@ def check_notice():
     print('公告获取检查，执行完成')
 
 
+def cctime():
+    now_h = time.strftime('%y-%m-%d %H:%M:%S',time.localtime(time.time()))
+    now_m = time.strftime('%M', time.localtime(time.time()))
+    print(now_h)
+    print(now_h.split(' ')[1].split(':')[0])
+    print(now_h.split(' ')[1].split(':')[1])
+    print(now_m)
+    if int(now_m)>30:
+        print('------')
+
+
+
 if __name__=="__main__":
     # connection_mysql()
     send()
     # check_notice()
+    # cctime()
 
 
 
