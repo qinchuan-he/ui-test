@@ -66,7 +66,8 @@ def uploadFile(file,file_name,team_id,pid=None,folder=None):
 # 检查上传文件是否生成对应job任务（word+pdf）,传入文件，加长等待时间是因为，发现实际线上比较慢
 def check_parsejobs(file,fir_session_id=None):
     # 需要检查的任务
-    word_jobs = ['to_html','to_pdf','to_content','bookmarks','thumbnail','extract_pagenum','extract_images']
+    #word_jobs = ['to_html','to_pdf','to_content','bookmarks','thumbnail','extract_pagenum','extract_images']
+    word_jobs = ['to_content']
     pdf_jobs = ['to_html','to_content','to_html','txt_format','thumbnail','extract_images','file_tables']
     # 1.准备上传，
     if fir_session_id:
