@@ -92,7 +92,7 @@ class User:
         # sleep(1.5)
         # driver.find_element_by_xpath("//a[text()='私有资料']").click()
         User().root_private(driver)
-        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='要点摘录']")))
+        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='笔记摘录']")))
 
     def login2(self,driver=None,new_user=None,password=None):
         """ 登录错误使用"""
@@ -835,7 +835,7 @@ class com_xpath(object):
     # log定位
     def com_log(self, driver):
         User().root_private(driver)
-        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='要点摘录']")))
+        WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='笔记摘录']")))
 
     # 智能搜索输入框,传入driver和位置,传入值认为是问答搜索
     def smart_search(self,driver,position=None):

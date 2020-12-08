@@ -74,13 +74,18 @@ def check_parsejobs(file,fir_session_id=None):
         cookie = {'fir_session_id':fir_session_id}
     else:
         cookie = {'fir_session_id':'nbony33gvvd8onrmalf5ae5lulohq8jo'}
-    url = InterBaseUrl().Base_url+'/resource/upload/whole/'
+    url = InterBaseUrl().Base_url+'/resource/upload/whole/'  # 上传接口
+    url_2 = InterBaseUrl().Base_url+'/resource/new/parse/'  # 手动触发解析接口
     file_s={'file':open(file,'rb')}
     data_s={'file_info': '{"name":"'+os.path.split(file)[1]+'","task_id":'+str(time.time())+'}'}
     res = requests.post(url=url,data=data_s,files=file_s,cookies=cookie)
     # print(res.text)
     # 获取上传成功返回id
     id_encryption=json.loads(res.text).get('data').get('meta_info').get('id')
+    # 2020-12-08 增加，手动点击解析任务
+    data_2 = {'oid':id_encryption}
+    res_2 = requests.post(url=url_2,data=data_2,cookies=cookie)
+    print(res_2.text)
     id = cyprex_decode(id_encryption)
     print(id)
     sleep(12) # 上传成功之后等待一定时间生成任务

@@ -15,7 +15,7 @@ def create_word():
         # 进入团队
         team().check_team(driver, team_name='创建word文档')
         # 进入文件夹
-        User().into_folder(driver,button_name='0922')
+        User().into_folder(driver,button_name='1112')
         # driver.find_element_by_xpath("//span[text()='0922']").click()
         # 新建文件
         User().create_file(driver,file_type='协作文档(.docx)')

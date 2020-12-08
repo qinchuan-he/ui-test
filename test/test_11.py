@@ -198,6 +198,19 @@ def test_date():
     print(now)
     print(time.strftime('%Y-%m-%d',time.localtime(now_1)))
 
+# 添加笔记接口
+def test_note():
+    cookie = {'fir_session_id':'jfa8xjj6gfhd2hnsspql7g6p3nhkv1z8'}
+    url = 'https://testcyprex.fir.ai/api/resource/form/'
+    url = 'https://testcyprex.fir.ai/api/resource/fragment/reference/'
+    data_s = {'resource_list':'[{"type":"info","content":"小舟从此逝，沧海寄余生","createType":400,"contentType":901'
+                              ',"isDataCollect":1,"origId":"n9rGO8WLQabRNa3k","name":"点点.html"}]'}
+    data_s = {'resource_id':'NqGWd1yaDjV1ZkgL','action':'import','orign_id':'n9rGO8WLQabRNa3k','draft_title':'验证图例文件.pdf','orign_content':'江海寄余生','author':'czq'}
+    for i in range(9):
+        res = requests.post(url=url,data=data_s,cookies=cookie)
+        print(res.text)
+
+
 if __name__=='__main__':
     # one()
     # two(88488)
@@ -210,5 +223,6 @@ if __name__=='__main__':
     # getPrivateFile()
     # getTeamList()
     # check_serch_repeat()
-    test_date()
+    # test_date()
+    test_note()
 

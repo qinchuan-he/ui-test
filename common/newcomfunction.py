@@ -56,7 +56,7 @@ class new_user():
             "//*[@id='root']/div/div/div[2]/div[1]/div[3]/div[2]/form/div[3]/div/div/span").click()  # 登录，好像伪类中的文字不能识别
         User().root_private(driver)
         try:
-            WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='要点摘录']")))
+            WebDriverWait(driver, 10, 0.2).until(ec.presence_of_element_located((By.XPATH, "//span[text()='笔记摘录']")))
         except Exception as e:
             print(e)
             print("异常")
