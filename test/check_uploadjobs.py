@@ -28,7 +28,7 @@ if __name__=='__main__':
     fir_session_id = login()
     # rootpath = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
     word_file = os.path.join(rootPath,'自动化验证文档','回归的word文档.docx')
-    pdf_file = os.path.join(rootPath,'自动化验证文档','生物可降解材料的临床应用.pdf')
+    pdf_file = os.path.join(rootPath,'自动化验证文档','验证图例文件.pdf')
     print(word_file)
     print(pdf_file)
     count_msg=''
