@@ -102,42 +102,107 @@ def check_text_format():
     sql_s.append(sql_5)
     return sql_s
 
+# 提取图例 extract_images 2020-12-08
+def check_extract_images():
+    time_s = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+    sql_1 = "select count(1) from jobs_extractjob where extract_code='extract_images' and file_type <>'400' and `status`='new' and created > '{}';".format(time_s)
+    sql_2 = "select count(1) from jobs_extractjob where extract_code='extract_images' and file_type <>'400' and `status`='running' and created > '{}';".format(time_s)
+    sql_3 = "select count(1) from jobs_extractjob where extract_code='extract_images' and file_type <>'400' and `status`='failed' and created > '{}';".format(time_s)
+    sql_4 = "select count(1) from jobs_extractjob where extract_code='extract_images' and file_type <>'400' and created > '{}';".format(time_s)
+    sql_5 = "select count(1) from jobs_extractjob where extract_code='extract_images' and file_type <>'400' and `status`='succeed' and created > '{}';".format(time_s)
+    sql_6 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type ='300' and `status`in('succeed','failed') and created > '{}';".format(time_s)
+    sql_s = []
+    sql_s.append(sql_1)
+    sql_s.append(sql_2)
+    sql_s.append(sql_3)
+    sql_s.append(sql_4)
+    sql_s.append(sql_5)
+    sql_s.append(sql_6)
+    # print(sql_s)
+    return sql_s
+
+# 提取表格 file_tables 2020-12-08
+def check_file_table():
+    time_s = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+    sql_1 = "select count(1) from jobs_extractjob where extract_code='file_tables' and file_type <>'400' and `status`='new' and created > '{}';".format(time_s)
+    sql_2 = "select count(1) from jobs_extractjob where extract_code='file_tables' and file_type <>'400' and `status`='running' and created > '{}';".format(time_s)
+    sql_3 = "select count(1) from jobs_extractjob where extract_code='file_tables' and file_type <>'400' and `status`='failed' and created > '{}';".format(time_s)
+    sql_4 = "select count(1) from jobs_extractjob where extract_code='file_tables' and file_type <>'400' and created > '{}';".format(time_s)
+    sql_5 = "select count(1) from jobs_extractjob where extract_code='file_tables' and file_type <>'400' and `status`='succeed' and created > '{}';".format(time_s)
+    sql_6 = "select count(1) from jobs_extractjob where extract_code='txt_format' and file_type ='300' and `status`='succeed' and created > '{}';".format(time_s)
+    sql_s = []
+    sql_s.append(sql_1)
+    sql_s.append(sql_2)
+    sql_s.append(sql_3)
+    sql_s.append(sql_4)
+    sql_s.append(sql_5)
+    sql_s.append(sql_6)
+    # print(sql_s)
+    return sql_s
+
 # 检查并发送邮件
 def send():
     contes_sqls = check_to_content()
     html_sqls = check_to_html()
     format_sqls = check_text_format()
+    image_sqls = check_extract_images()
+    table_sqls = check_file_table()
     contes_result,content_fail = connection_mysql(contes_sqls)
     html_result,html_fail = connection_mysql(html_sqls)
     format_result,format_fail= connection_mysql(format_sqls)
+    image_result,image_fail = connection_mysql(image_sqls)
+    table_result,table_fail = connection_mysql(table_sqls)
 
-    sum = contes_result[0]+contes_result[1]+html_result[0]+html_result[1]+format_result[0]+format_result[1]
-    fail_sum = contes_result[2]+html_result[2]+format_result[2]
+
+    sum = contes_result[0]+contes_result[1]+html_result[0]+html_result[1]+format_result[0]+format_result[1]\
+          +image_result[0]+image_result[1]+table_result[0]+table_result[1]
+    fail_sum = contes_result[2]+html_result[2]+format_result[2]+image_result[2]+table_result[2]
     # fail_percentage=(contes_result[2]+html_result[2]+format_result[2])/(contes_result[3]+html_result[3]+format_result[3])
     fail_percentage_1 = contes_result[2]/contes_result[3]
     fail_percentage_2 = html_result[2]/html_result[3]
     fail_percentage_3 = format_result[2]/format_result[3]
-    fail_percentage_max=max(fail_percentage_1,fail_percentage_2,fail_percentage_3)
+    fail_percentage_4 = image_result[2]/image_result[3]
+    fail_percentage_5 = table_result[2]/table_result[3]
+    fail_percentage_max=max(fail_percentage_1,fail_percentage_2,fail_percentage_3,fail_percentage_4,fail_percentage_5)
     # print(fail_percentage_1,fail_percentage_2,fail_percentage_3,fail_percentage_max)
     if sum>50:
         subject = '任务检查,任务堆积超过50条'
         content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
-                  "<td>提取纯文本(txt_format)</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
-                  "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
-                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
-                  "</table></body></html>".format(contes_result[0],html_result[0],format_result[0],contes_result[1]
-                                                  ,html_result[1],format_result[1],contes_result[2],html_result[2]
-                                                  ,format_result[2],contes_result[3],html_result[3],format_result[3])
+                  "<td>提取纯文本(txt_format)</td><td>图例(extract_images)</td><td>表格(file_tables)</td></tr><tr><td>等待" \
+                  "</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
+                  "<td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "</table></body></html>".format(contes_result[0], html_result[0], format_result[0], image_result[0], table_result[0], contes_result[1]
+                                                  , html_result[1], format_result[1], image_result[1], table_result[1], contes_result[2], html_result[2]
+                                                  , format_result[2], image_result[2], table_result[2], contes_result[3],html_result[3],format_result[3]
+                                                  , image_result[3], table_result[3])
         send_mail(subject, content=content)
     elif fail_percentage_max>0.05 or fail_sum>50:
         subject = '任务检查,失败任务超出指标'
         content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
-                  "<td>提取纯文本(txt_format)</td></tr><tr><td>等待</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
-                  "<td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
-                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
-                  "</table></body></html>".format(contes_result[0], html_result[0], format_result[0], contes_result[1]
-                                                  , html_result[1], format_result[1], contes_result[2], html_result[2]
-                                                  , format_result[2],contes_result[3],html_result[3],format_result[3])
+                  "<td>提取纯文本(txt_format)</td><td>图例(extract_images)</td><td>表格(file_tables)</td></tr><tr><td>等待" \
+                  "</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
+                  "<td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "</table></body></html>".format(contes_result[0], html_result[0], format_result[0], image_result[0], table_result[0], contes_result[1]
+                                                  , html_result[1], format_result[1], image_result[1], table_result[1], contes_result[2], html_result[2]
+                                                  , format_result[2], image_result[2], table_result[2], contes_result[3],html_result[3],format_result[3]
+                                                  , image_result[3], table_result[3])
+        send_mail(subject, content=content)
+    elif image_result[3]<image_result[5] or table_result[3]<table_result[5]:
+        subject = '任务检查,图例表格任务异常'
+        content = "<html><header></header><body><table border='1'><tr><td>分类</td><td>创建索引(to_content)</td><td>解析服务(to_html)</td>" \
+                  "<td>提取纯文本(txt_format)</td><td>图例(extract_images)</td><td>表格(file_tables)</td></tr><tr><td>等待" \
+                  "</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>执行中</td>" \
+                  "<td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr><tr><td>失败</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "<td>当天任务总数</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td></tr>" \
+                  "</table></body></html>".format(contes_result[0], html_result[0], format_result[0], image_result[0],
+                                                  table_result[0], contes_result[1]
+                                                  , html_result[1], format_result[1], image_result[1], table_result[1],
+                                                  contes_result[2], html_result[2]
+                                                  , format_result[2], image_result[2], table_result[2],
+                                                  contes_result[3], html_result[3], format_result[3]
+                                                  , image_result[3], table_result[3])
         send_mail(subject, content=content)
     # 2020-11-03 增加每隔两小时发送一份邮件，统计当天的任务情况
     time_array= [8,10,12,14,16,18,20,22]
