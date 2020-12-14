@@ -1,6 +1,13 @@
 
+
+import sys
+import os
+curPath = os.path.abspath(os.path.dirname(__file__))
+rootPath = os.path.split(curPath)[0]
+sys.path.insert(0,rootPath)
 from test.check_mysql import connection_mysql,check_User
 from common.comfunction import send_mail
+from common.private import EmailProperty
 import time
 
 def check_newUser():
@@ -64,7 +71,7 @@ def check_newUser():
             num+=1
     subject = '昨日注册人数'
     content=content_head+context+content_foot
-    send_mail(subject,content=content)
+    send_mail(subject,content=content,receive=EmailProperty().RECEVI_EMAIL_MARKET)
 
 if __name__=='__main__':
     check_newUser()
