@@ -18,11 +18,14 @@ from time import sleep
 import time
 
 
-# 连接mysql
-def connection_mysql(sqls):
+# 连接mysql,cyprex数据库和datastorage数据库,传入iscyprex说明是cyprex数据库,type是数据类型，不传返回第一个行的第一个值
+def connection_mysql(sqls,datetype=None,iscyprex=None):
     m_host = DB.host
     m_port = int(DB.port)
-    m_data = DB.db_storage
+    if iscyprex:
+        m_data = DB.db_cyprex
+    else:
+        m_data = DB.db_storage
     m_user = DB.user
     m_pwd = DB.pwd
     m_charset='utf8'
@@ -31,12 +34,16 @@ def connection_mysql(sqls):
     cur = connect.cursor()
     count = []
     fail = []
+
     try:
         if type(sqls)==str:
             cur.execute(sqls)
             s = cur.fetchall()
             connect.commit()
-            count.append(s[0][0])
+            if datetype=='list':
+                count.append(s)
+            else:
+                count.append(s[0][0])
         else:
             for i in sqls:
                 # sql = "select count(1) from jobs_extractjob where `status`='new' or `status`='running'"
@@ -44,7 +51,10 @@ def connection_mysql(sqls):
                 cur.execute(i)
                 s=cur.fetchall()
                 connect.commit()
-                count.append(s[0][0])
+                if datetype == 'list':
+                    count.append(s)
+                else:
+                    count.append(s[0][0])
     except Exception as e:
         connect.rollback()
         count.append(0)
@@ -247,6 +257,19 @@ def check_notice():
         content = "<html><header></header><body>今日公告获取数量为:0</body></html>"
         send_mail(subject, content=content)
     print('公告获取检查，执行完成')
+
+# 检查上一天的注册用户信息
+def check_User():
+    # sql_1 = 'select `name`, mobile, menu_code, edu_active_time, source_type, company, ctime, ltime, exp_time' \
+    #       ', `status`,is_join_improve from account_user where date(ctime) = date_sub(curdate(),interval 2 day); '
+    sql_1 = "select u.`name`, u.mobile, u.menu_code, u.edu_active_time, u.source_type, u.company, u.ctime, u.ltime" \
+            ", u.exp_time, u.`status`,u.is_join_improve ,count(lg.userId),attr.`value` from account_user u " \
+            "LEFT JOIN account_loginlog lg on  u.id=lg.userId LEFT JOIN account_userattrs attr on u.id=attr.user_id " \
+            "where  date(u.ctime) = date_sub(curdate(),interval 1 day) and attr.`key`='usedCapcity' GROUP BY u.id"
+    sql_s = []
+    sql_s.append(sql_1)
+    # print(sql_s)
+    return sql_s
 
 
 def cctime():
