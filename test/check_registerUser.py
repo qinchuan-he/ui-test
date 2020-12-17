@@ -26,8 +26,10 @@ def check_newUser():
         for i in resule[0]:
             transit = []
             # print(i)
-            transit.append(i[0])
-            transit.append(i[1])
+            if i[1][0:3:1]=='100':  # 排除100开头的手机号
+                continue
+            transit.append(i[0]) # 姓名
+            transit.append(i[1]) # 手机号
             if i[2]=='1001':
                 transit.append('个人免费版')
             else:
@@ -51,7 +53,10 @@ def check_newUser():
             else:
                 transit.append('其他未知渠道')
             transit.append(i[6].strftime("%Y-%m-%d %H:%M:%S")) # 创建日期
-            transit.append(i[7].strftime("%Y-%m-%d %H:%M:%S")) # 最后登录日期
+            if i[7] is not None:
+                transit.append(i[7].strftime("%Y-%m-%d %H:%M:%S")) # 最后登录日期
+            else:
+                transit.append('-')  # 最后登录日期
             if i[-4]==1:
                 transit.append('有效')
             else:
@@ -63,7 +68,9 @@ def check_newUser():
 
 
             convert.append(transit)
-        print(convert)
+        # print(convert)
+        # print(len(convert))
+        print('统计完成数据：{}条，准备发送邮件'.format(len(convert)))
         num = 1
         for j in convert:
             context = context+'<tr><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td><td>{}</td>' \
@@ -72,6 +79,7 @@ def check_newUser():
     subject = '昨日注册人数'
     content=content_head+context+content_foot
     send_mail(subject,content=content,receive=EmailProperty().RECEVI_EMAIL_MARKET)
+    print('邮件发送完成')
 
 if __name__=='__main__':
     check_newUser()
