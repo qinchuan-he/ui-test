@@ -587,8 +587,9 @@ def send_mail(subject, fileurl=None, addfileurl=None, addfilename=None,content=N
 
     msgRoot = MIMEMultipart('related')
     msgRoot['Subject'] = Header(subject, 'utf-8')
-    msgRoot['From'] = EmailProperty().SEND_EMAIL
-    msgRoot['To'] = ','.join(EmailProperty().RECEVI_EMAIL)
+    msgRoot['From'] = EmailProperty().SEND_EMAIL # 发送邮箱信息
+    #msgRoot['To'] = ','.join(EmailProperty().RECEVI_EMAIL) # 收件信息，不一定是真的发送邮箱
+    msgRoot['To'] = ','.join(receiver) # 改造于2020-12-28
     # 附件,可能多个
     if addfileurl:
         add_file_type = type(addfileurl).__name__

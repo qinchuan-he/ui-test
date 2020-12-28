@@ -12,8 +12,8 @@ import time
 
 def check_newUser():
 
-    s = check_User()
-    resule,fail = connection_mysql(s,'list',1)
+    sql = check_User() # 获取sql语句
+    resule,fail = connection_mysql(sql,'list',1)
     content_head = '<html><head></head><body><table border="1">'
     content_foot = '</table></body></html>'
     if len(fail)>1:
@@ -63,6 +63,8 @@ def check_newUser():
                 transit.append('无效')
             if i[-3]==0:
                 transit.append('否')
+            else:
+                transit.append('是')
             transit.append(i[-2]) # 登录次数
             transit.append('{}M/500M'.format(int(int(i[-1])/1024/1024)))
 
