@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding=utf-8
 
 
 from datetime import datetime
@@ -15,6 +15,9 @@ sys.path.insert(0,rootPath)
 
 from common.private import EmailProperty
 from common.comfunction import send_mail
+
+import sys
+print(sys.getdefaultencoding())
 
 
 
