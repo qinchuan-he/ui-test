@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="222">
+    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="增加utf-8编码">
       <change beforePath="$PROJECT_DIR$/test/check_yapu47.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/check_yapu47.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,11 +113,20 @@
       <option name="project" value="LOCAL" />
       <updated>1731471327223</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="增加utf-8编码">
+      <option name="closed" value="true" />
+      <created>1731471545966</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731471545966</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="222" />
-    <option name="LAST_COMMIT_MESSAGE" value="222" />
+    <MESSAGE value="增加utf-8编码" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加utf-8编码" />
   </component>
 </project>
