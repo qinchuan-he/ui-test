@@ -28,7 +28,7 @@ def check_url():
     # 如果请求过程发生异常，比如超时等，算异常需要发送邮件
     try:
         # 先期登录
-        url_s = "https://ius-xcx.51xi2.com:6060/api/TokenAuth/Authenticate"
+        url_s = "https://ius-xcx.51xi.com:6060/api/TokenAuth/Authenticate"
         json_s = {"userNameOrEmailAddress":"scan","password":"Ab123456","clientType":"PC"}
         # 直接传递tenant租户id，不用调用租户接口
         headers_s = {"Content-Type": "application/json","tenant":"1d0466fb60e473a9159d3a14c077b265" }
