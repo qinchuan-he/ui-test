@@ -23,7 +23,7 @@ from common.private import EmailProperty
 from common.private import UserProperty
 
 # 服务器上传
-import paramiko
+# import paramiko
 
 # 公共参数
 url = UserProperty().url
@@ -636,29 +636,29 @@ def send_mail(subject, fileurl=None, addfileurl=None, addfilename=None,content=N
     smtp.quit()
 
 
-# 上传文件，上传图片到服务器
-def server_upload(localFile, remoteFile):
-    # 创建ssh对象
-    ssh = paramiko.SSHClient()
-    # 允许连接不在know_hosts文件的主机
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    # 本地文件路径
-    localpath = localFile
-    # 服务器文件路径
-    remotePath = remoteFile
-
-    # 连接服务器
-    transport = paramiko.Transport(("192.168.1.223", 22))
-    transport.connect(username="root", password="fir2018518")
-    ssh = paramiko.SSHClient()
-    ssh._transport = transport
-    # ssh.connect(hostname="192.168.1.223", port=22, username="root", password="fir2018518")
-    # 打开一个channel（频道）并执行命令
-    stdin, stdout, stderr = ssh.exec_command('docker exec -i testpingtai bash;cd /opt;ls')
-    # stdin, stdout, stderr = ssh.exec_command('df -h;ls', timeout=30, get_pty=True)
-    # stdin, stdout, stderr = ssh.exec_command("ls")
-    print(stdout.read().decode('utf-8'))
-    transport.close()
+# 上传文件，上传图片到服务器 2024-11-13 虚拟机无法安装对应模块paramiko，暂时注释
+# def server_upload(localFile, remoteFile):
+#     # 创建ssh对象
+#     ssh = paramiko.SSHClient()
+#     # 允许连接不在know_hosts文件的主机
+#     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+#     # 本地文件路径
+#     localpath = localFile
+#     # 服务器文件路径
+#     remotePath = remoteFile
+#
+#     # 连接服务器
+#     transport = paramiko.Transport(("192.168.1.223", 22))
+#     transport.connect(username="root", password="fir2018518")
+#     ssh = paramiko.SSHClient()
+#     ssh._transport = transport
+#     # ssh.connect(hostname="192.168.1.223", port=22, username="root", password="fir2018518")
+#     # 打开一个channel（频道）并执行命令
+#     stdin, stdout, stderr = ssh.exec_command('docker exec -i testpingtai bash;cd /opt;ls')
+#     # stdin, stdout, stderr = ssh.exec_command('df -h;ls', timeout=30, get_pty=True)
+#     # stdin, stdout, stderr = ssh.exec_command("ls")
+#     print(stdout.read().decode('utf-8'))
+#     transport.close()
 
 
 #  封装定位
