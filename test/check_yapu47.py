@@ -4,7 +4,7 @@ import requests
 import json
 import os,sys
 import time
-from test2 import password
+
 
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
