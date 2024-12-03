@@ -1,5 +1,6 @@
 import json
 import time
+from datetime import datetime
 
 import requests
 import subprocess
@@ -54,15 +55,7 @@ def check_ip():
     s.close()
 
 # 调用231服务器上新项目，新的PDF解析服务
-def test5():
-    url = 'http://192.168.1.231:9008/users/upload_file/'
-    d = r'D:\上传文件\pdf比对\a-novel-k--有目录DOI图例影响因子分区文献信息齐全.pdf'
-    d = r'D:\上传文件\pdf比对\基于DEMATEL的电子健康网站用户体验关键影响因素分析.pdf'
-    file_s = {'file': open(d, 'rb')}
-    result = requests.post(url=url,files=file_s)
-    print(result.text)
-    json_text = json.loads(result.text)
-    print(json_text)
+
 
 def get_xmind():
     url = 'https://app.fir.ai/api/resource/xmind/download/'
@@ -72,20 +65,15 @@ def get_xmind():
     print(result.status_code)
     print(result.text)
 
-def test_open():
-    mode = 2
-    # driver = OpenBrowser(2)
-    # # User().login(driver, UserProperty.user_check1)
-    # driver.get('https://www.fir.ai/')
-    # sleep(3)
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    chrome_options = Options()
-    path = r'C:\2services\driver\chromedriver.exe'
-    driver = webdriver.Chrome(options=chrome_options,executable_path=path)
-    sleep(10)
-    driver.quit()
 
+
+def tday():
+    day1 = datetime
+    print(day1)
+def day2():
+
+    url_s = UserProperty().url + "/api/TokenAuth/Authenticate"
+    print(url_s)
 
 
 if __name__ == "__main__":
@@ -94,4 +82,6 @@ if __name__ == "__main__":
     # check_ip()
     # test5()
     # get_xmind()
-    test_open()
+    # test_open()
+    # tday()
+    day2()
