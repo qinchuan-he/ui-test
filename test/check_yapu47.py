@@ -126,7 +126,7 @@ def check_menulist():
 
 
 if __name__=="__main__":
-    # check_url()
-    check_menulist()
+    check_url()
+    # check_menulist()
 
 
