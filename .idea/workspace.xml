@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="增加检查权限列表">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/check_yapu_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/check_yapu_menu.py" afterDir="false" />
-    </list>
+    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="增加检查权限列表" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -273,7 +270,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733220535002</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="增加检查权限列表">
+      <option name="closed" value="true" />
+      <created>1733221739303</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1733221739303</updated>
+    </task>
+    <task id="LOCAL-00013" summary="增加检查权限列表">
+      <option name="closed" value="true" />
+      <created>1733221864673</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1733221864673</updated>
+    </task>
+    <task id="LOCAL-00014" summary="增加检查权限列表">
+      <option name="closed" value="true" />
+      <created>1733222346379</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1733222346379</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
