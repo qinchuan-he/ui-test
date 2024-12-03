@@ -1,7 +1,0 @@
-[
-  "test_dir/test_checkcontract.py::Test_checkcontract::test_checkcontract",
-  "test_dir/test_checkdata.py::Test_checkData::test_checkupload",
-  "test_dir/test_private_createword.py::Test_createword::test_word",
-  "test_dir/test_rename.py::Test_Rename::test_private",
-  "test_dir/test_rubbish.py::Testrubbish::test_folder"
-]
