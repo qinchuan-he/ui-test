@@ -47,7 +47,7 @@ def check_menulist():
                          "authorization": token_s}
         res_p = requests.get(url=url_menu,headers=headers_menu)
         res_list = json.loads(res_p.text)["result"]
-        print(res_list)
+        # print(res_list)
         # print(type(res_list))
         menu_list = res_list["items"]
         # print(type(menu_list))
