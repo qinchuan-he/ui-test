@@ -26,28 +26,28 @@ def check_url():
     # 如果请求过程发生异常，比如超时等，算异常需要发送邮件
     try:
         # 先期登录
-        url_s = "https://ius-xcx.51xi.com:6060/api/TokenAuth/Authenticate"
-        json_s = {"userNameOrEmailAddress":"scan","password":"Ab123456","clientType":"PC"}
+        url_s = UserProperty().url + "/api/TokenAuth/Authenticate"
+        json_s = {"userNameOrEmailAddress": UserProperty().user2, "password": UserProperty().pwd, "clientType": "PC"}
         # 直接传递tenant租户id，不用调用租户接口
-        headers_s = {"Content-Type": "application/json","tenant":"1d0466fb60e473a9159d3a14c077b265" }
+        headers_s = {"Content-Type": "application/json", "tenant": UserProperty().tenant_id_lin}
         # 登录获取token
         res = requests.post(url=url_s,json=json_s,headers=headers_s)
-        print(type(res.text))
-        print(res.text)
+        # print(type(res.text))
+        # print(res.text)
         # 设置token
         result_s = json.loads(res.text)
         token = result_s['result']['accessToken']
-        print(token)
+        # print(token)
         token_s = "Bearer "+token
-        print(token_s)
+        # print(token_s)
         # 请求区域管理数据
-        url_Clean = "https://ius-xcx.51xi.com:6060/api/services/app/CleanAreaDailyManager/GetCleanAreaCharts"
-        headers_clean = {"Content-Type": "application/json","tenant":"1d0466fb60e473a9159d3a14c077b265","authorization":token_s }
+        url_Clean = UserProperty().url + "/api/services/app/CleanAreaDailyManager/GetCleanAreaCharts"
+        headers_clean = {"Content-Type": "application/json","tenant":UserProperty().tenant_id_lin,"authorization":token_s }
         res_claen = requests.get(url=url_Clean,headers=headers_clean)
-        print(res_claen.text)
+        # print(res_claen.text)
         status_s = json.loads(res_claen.text)['success']
         print(status_s)
-        print(type(status_s))
+        # print(type(status_s))
         if status_s:
             print("成功请求到区域管理数据")
         else:
