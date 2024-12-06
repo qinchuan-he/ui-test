@@ -33,6 +33,7 @@ def check_menulist():
         # 直接传递tenant租户id，不用调用租户接口
         headers_s = {"Content-Type": "application/json", "tenant": UserProperty().tenant_id}
         # 登录获取token
+
         res = requests.post(url=url_s,json=json_s,headers=headers_s)
         # print(type(res.text))
         # print(res.text)
