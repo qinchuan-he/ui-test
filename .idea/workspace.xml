@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="增加检查权限列表2">
+    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="参数化信息">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/check_yapu47.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/check_yapu47.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/check_yapu_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/check_yapu_menu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.check_yapu47">
+  <component name="RunManager" selected="Python.check_yapu_menu">
     <configuration name="check_yapu47" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Cyprex-ui" />
       <option name="ENV_FILES" value="" />
@@ -165,8 +165,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.check_yapu47" />
         <item itemvalue="Python.check_yapu_menu" />
+        <item itemvalue="Python.check_yapu47" />
         <item itemvalue="Python.test_18" />
         <item itemvalue="Python tests.pytest in test_18.py" />
         <item itemvalue="Python.t_1" />
@@ -357,7 +357,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733278720846</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="参数化信息">
+      <option name="closed" value="true" />
+      <created>1733289585568</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1733289585568</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -365,6 +373,7 @@
     <MESSAGE value="增加utf-8编码" />
     <MESSAGE value="增加检查权限列表" />
     <MESSAGE value="增加检查权限列表2" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加检查权限列表2" />
+    <MESSAGE value="参数化信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="参数化信息" />
   </component>
 </project>
