@@ -257,7 +257,7 @@ class Rfid_Package:
         tenants_id = json.loads(token)["tenants_id"]
         token_s = json.loads(token)["token"]
         header_s = {"Content-Type": "application/json", "tenant": tenants_id, "authorization": token_s}
-        json_s = {"packageFileId":"08","sterilizationDate":"20","expiringDate":"20","packerId":"0462c","checkerId":"08dcdf","customerId":"08dc0852","assetsDataIds":["00ff4"],"count":None}
+        json_s = {"packageFileId":"08","sterilizationDate":"20","expiringDate":"20","packerId":package_list["packerId"],"checkerId":package_list["checkerId"],"customerId":package_list["customerId"],"assetsDataIds":[package_list["assetsDataIds"]],"count":None}
         res = requests.post(url=url_s,headers=header_s,json=json_s)
         print(res.text)
 

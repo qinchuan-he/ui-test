@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="---" />
+    <list default="true" id="1a640d88-1fc0-4d6c-8e7f-fa4ffdcdf8bc" name="Changes" comment="---">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/comfunction_finove.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/comfunction_finove.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/check_yapu47.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/check_yapu47.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/check_yapu_menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/check_yapu_menu.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +60,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.comfunction_finove">
+  <component name="RunManager" selected="Python.check_yapu47">
     <configuration name="check_yapu47" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Cyprex-ui" />
       <option name="ENV_FILES" value="" />
@@ -163,9 +168,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.check_yapu47" />
         <item itemvalue="Python.comfunction_finove" />
         <item itemvalue="Python.check_yapu_menu" />
-        <item itemvalue="Python.check_yapu47" />
         <item itemvalue="Python.test_18" />
         <item itemvalue="Python tests.pytest in test_18.py" />
       </list>
@@ -397,6 +402,17 @@
     </task>
     <option name="localTasksCounter" value="27" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="222" />

@@ -30,8 +30,10 @@ def check_url():
         json_s = {"userNameOrEmailAddress": UserProperty().user2, "password": UserProperty().pwd, "clientType": "PC"}
         # 直接传递tenant租户id，不用调用租户接口
         headers_s = {"Content-Type": "application/json", "tenant": UserProperty().tenant_id_lin}
+        print(url_s)
+        print(json_s)
         # 登录获取token
-        res = requests.post(url=url_s,json=json_s,headers=headers_s)
+        res = requests.post(url=url_s,json=json_s,headers=headers_s,timeout=(30,30))
         # print(type(res.text))
         # print(res.text)
         # 设置token
@@ -43,7 +45,7 @@ def check_url():
         # 请求区域管理数据
         url_Clean = UserProperty().url + "/api/services/app/CleanAreaDailyManager/GetCleanAreaCharts"
         headers_clean = {"Content-Type": "application/json","tenant":UserProperty().tenant_id_lin,"authorization":token_s }
-        res_claen = requests.get(url=url_Clean,headers=headers_clean)
+        res_claen = requests.get(url=url_Clean,headers=headers_clean,timeout=(30,30))
         # print(res_claen.text)
         status_s = json.loads(res_claen.text)['success']
         print(status_s)
