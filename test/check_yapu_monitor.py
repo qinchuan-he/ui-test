@@ -51,7 +51,7 @@ def check_server_fail():
                 res_4 = session.get(url=url_4,timeout=(30,30))
                 html_failed = res_4.content
                 # print(html_failed)
-                # 发送邮件
+                # 发送邮件2
                 print("开始发送邮件")
                 email_title = "任务检查"
                 email_content = html_failed
